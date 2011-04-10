@@ -2,7 +2,7 @@
    =Настройка на proxy=
          * Изберете Window>Preferences>General>Network Connections.
          * От падащото меню “Active Provider” изберете “Manual”.
-         * От таблицата Proxy entries изберете HTTP и натиснете Edit (Същото се прави и за HTTPS).
+         * От таблицата Proxy entries изберете HTTP и натиснете Edit попълва се хост и порт на съответния proxy сървър (Същото се прави и за HTTPS).
    =Инсталиране на Subversive=
          * Изберете Help>Install New Software.
          * От падащото меню Work with изберете Helios - http://download.eclipse.org/releases/helios
