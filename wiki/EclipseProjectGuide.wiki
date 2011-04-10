@@ -1,3 +1,4 @@
+#labels Configuration,Install,Eclipse,Config,Guide
 Ще драсна няколко стъпки за работа с Eclipse, чрез които ще можете да си нагласите връзката с code.google.com и общия проект.
 Моля следвайте стъпките:
 1. Ако нямате инсталиран Eclipse можете да го изтеглите от тук - http://www.eclipse.org/downloads/
