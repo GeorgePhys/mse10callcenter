@@ -1,0 +1,15 @@
+<div xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:form>
+		<h:outputLink class="current_page_item" value="#">Home</h:outputLink>
+		<h:commandLink rendered="#{sessionScope.loggedUser == null}"
+			action="userLogin.jsf" value="Login" />
+		<h:commandLink rendered="#{sessionScope.loggedUser != null}"
+			action="#{loginData.logout()}" value="Logout" />
+		<h:commandLink action="userData.jsf" value="Registration" />
+		<h:outputLink value="#">About</h:outputLink>
+		<h:outputLink value="#">Contact</h:outputLink>
+	</h:form>
+</div>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#userData.xhtml" PATH="/userData.xhtml"
+  SHAPE="456,64,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#userData.xhtml:0" NAME="item"
+   PATH="/userData.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="resultData::#resultData.xhtml"
+    NAME="output1" PATH="/resultData.xhtml"
+    SHAPE="505,96,512,96,512,40,40,40,40,360,55,360"
+    TARGET="rules:#resultData.xhtml" TITLE="resultData" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#usersDataList.xhtml"
+  PATH="/usersDataList.xhtml" SHAPE="512,384,50,25" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#usersDataList.xhtml:0" NAME="item"
+   PATH="/usersDataList.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="userData::#userData.xhtml" NAME="output"
+    PATH="/userData.xhtml" TARGET="rules:#userData.xhtml"
+    TITLE="userData" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#resultData.xhtml" PATH="/resultData.xhtml"
+  SHAPE="56,352,50,57" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#resultData.xhtml:0" NAME="item"
+   PATH="/resultData.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="userData::#userData.xhtml" NAME="output1"
+    PATH="/userData.xhtml" SHAPE="105,384,384,384,384,72,455,72"
+    TARGET="rules:#userData.xhtml" TITLE="userData" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="usersDataList::#usersDataList.xhtml"
+    NAME="output" PATH="/usersDataList.xhtml"
+    SHAPE="105,400,224,400,224,392,511,392"
+    TARGET="rules:#usersDataList.xhtml" TITLE="usersDataList" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#userLogin.xhtml" PATH="/userLogin.xhtml"
+  SHAPE="336,496,50,25" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#userLogin.xhtml:0" NAME="item"
+   PATH="/userLogin.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="usersDataList::#usersDataList.xhtml"
+    NAME="output" PATH="/usersDataList.xhtml"
+    TARGET="rules:#usersDataList.xhtml" TITLE="usersDataList" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*" PATH="*" SHAPE="128,496,53,42" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:0" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="UserLogin::#userLogin.xhtml" NAME="output"
+    PATH="/userLogin.xhtml" TARGET="rules:#userLogin.xhtml"
+    TITLE="UserLogin" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>
