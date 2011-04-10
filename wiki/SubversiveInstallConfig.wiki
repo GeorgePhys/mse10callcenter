@@ -1,4 +1,4 @@
-#labels Subveersive,Eclipse,Install,Config,Configure,Configuration
+#labels Subversive,Eclipse,Install,Config,Configure,Configuration
    =Настройка на proxy=
          * Изберете Window>Preferences>General>Network Connections.
          * От падащото меню “Active Provider” изберете “Manual”.
