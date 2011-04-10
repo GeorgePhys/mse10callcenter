@@ -6,16 +6,17 @@
     # Надявам се, правилно сте следвали стъпките и сте готови за работа с инсталирани Plugins. Сега ще прължим с връзката със сървъра;
     # От менюто изберете следното - New ->Other->и търсите SVN - трябва да ви излезе следното Project from SVN и съответно да го изберете.
     # Ще ви се отвори прозорец където трябва да изберете - Create a new repository location - и ще ви се отвори нов прозорец, в който вие ще трябва да попълните следните неща:
-URL - https://mse10callcenter.googlecode.com/svn/
-* - Use the repository URL as the label
-USER - тук слагате вашия логин ID в google.com, в случея моя е - itsura87@gmail.com
-Password - паролата я записана във вашия Google Profile в Settings накратко паролата ви е записана тук - https://code.google.com/hosting/settings
+       * URL - https://mse10callcenter.googlecode.com/svn/
+       * Use the repository URL as the label
+       * USER - тук слагате вашия логин ID в google.com, в случея моя е - itsura87@gmail.com
+       * Password - паролата я записана във вашия Google Profile в Settings накратко паролата ви е записана тук - https://code.google.com/hosting/settings
+
 Изберете следните две отметки за по лесна работа в бъдеще:
-* Save authentication
-* Validate repository Location on finish
-След като сте въвели всички избирате - Next.
+  * Save authentication
+  * Validate repository Location on finish
+  * След като сте въвели всички избирате - Next.
+   6. От новопоказалото се меню можете да изберете източника който ще ви бъде отметнат като проект. Просто от падащото меню го изберете, като препоръка избирайте - https://mse10callcenter.googlecode.com/svn/trunk.
 
-6.  От новопоказалото се меню можете да изберете източника който ще ви бъде отметнат като проект. Просто от падащото меню го изберете, като препоръка избирайте - https://mse10callcenter.googlecode.com/svn/trunk.
-Накрая слагате отметка на - * Head Revision и Finish.
+  * Накрая слагате отметка на - Head Revision и Finish.
 
-7.Ще ви се отвори нов прозорец където имате няколко опции за избор, чрез който можете да започнете вашия проект. В конкретния случай ще се ще вържем с Repository-то в code.google.com, т.е. ще изберем първа опция и ще Въведа името на проекта Call Center и ще дам Finish.
+    7. Ще ви се отвори нов прозорец където имате няколко опции за избор, чрез който можете да започнете вашия проект. В конкретния случай ще се ще вържем с Repository-то в code.google.com, т.е. ще изберем първа опция и ще Въведа името на проекта Call Center и ще дадете Finish.
