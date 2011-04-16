@@ -25,8 +25,32 @@ public class IssueServiceBean extends
 			criteria.add(Restrictions.eq("assignee", args.getAssignedTo()));
 		}
 
+		if (args.getCreatedBy() != null) {
+			criteria.add(Restrictions.eq("reporter", args.getCreatedBy()));
+		}
+
+		if (args.getDateCreate() != null) {
+			criteria.add(Restrictions.eq("dateCreated", args.getDateCreate()));
+		}
+
+		if (args.getDateEnded() != null) {
+			criteria.add(Restrictions.eq("dateEnded", args.getDateEnded()));
+		}
+
+		if (args.getPriority() != null) {
+			criteria.add(Restrictions.eq("priority", args.getPriority()));
+		}
+
+		if (args.getResolution() != null && !args.getResolution().isEmpty()) {
+			criteria.add(Restrictions.in("resolution", args.getResolution()));
+		}
+
+		if (args.getStatus() != null) {
+			criteria.add(Restrictions.eq("status", args.getStatus()));
+		}
+
 		// select * from issueDetail where assignedTo = 'asdasda'
 		List list = criteria.list();
+		args.setResult(list);
 	}
-
 }
