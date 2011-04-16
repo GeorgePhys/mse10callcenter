@@ -6,37 +6,20 @@
 
 <!-- f:loadBundle basename="resources" var="msg" /-->
 <h:head>
-	<title><ui:insert name="title">Page Title</ui:insert>
-	</title>
-	<style type="text/css">
-body {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-size: 14px;
-}
+	<title><ui:insert name="title">Page Title</ui:insert></title>
+	<link rel="stylesheet" type="text/css" href="../../css/template.css" />
 
-.header {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-size: 18px;
-}
-
-.bottom {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-size: 9px;
-	text-align: center;
-	vertical-align: middle;
-	color: #8E969D;
-}
-</style>
 </h:head>
 
-<body bgcolor="#ffffff">
+<body>
 	<table style="border: 1px solid #CAD6E0" align="center" cellpadding="0"
 		cellspacing="0" border="0" width="400">
 		<tbody>
 
 			<tr>
 				<td class="header" height="42" align="center" valign="middle"
-					width="100%" bgcolor="#E4EBEB"><ui:insert name="pageHeader">Page Header</ui:insert>
+					width="100%" bgcolor="#E4EBEB">
+					<ui:insert name="pageHeader">Page Header</ui:insert>
 				</td>
 			</tr>
 			<tr>
@@ -49,11 +32,13 @@ body {
 						cellpadding="0" cellspacing="0" border="0">
 						<tbody>
 							<tr>
-								<td align="center" width="100%" valign="middle"><ui:insert
-										name="body">Page Body</ui:insert></td>
+								<td align="center" width="100%" valign="middle">
+								<ui:insert name="body">Page Body</ui:insert>
+								</td>
 							</tr>
 						</tbody>
-					</table></td>
+					</table>
+				</td>
 			</tr>
 
 			<tr>
