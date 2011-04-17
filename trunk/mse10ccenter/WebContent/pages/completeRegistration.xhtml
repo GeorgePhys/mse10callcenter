@@ -2,11 +2,9 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	template="/pages/templates/template.xhtml">
-
-	<ui:define name="title">Welcome home</ui:define>
+	template="/pages/templates/template.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 	<ui:define name="body">
-		<h:outputLink value="/mse10ccenter/pages/registration.jsf">register me</h:outputLink>
+	<h:outputText value="#{messages.completeRegistration}" />
 	</ui:define>
 </ui:composition>

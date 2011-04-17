@@ -1,13 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <faces-config version="2.0" xmlns="http://java.sun.com/xml/ns/javaee"
-	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
-	<application>
-		<locale-config>
-			<default-locale>bg</default-locale>
-			<supported-locale>en</supported-locale>
-			<supported-locale>bg</supported-locale>
-		</locale-config>
-		
-	</application>
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+ <managed-bean>
+  <managed-bean-name>changeLanguage</managed-bean-name>
+  <managed-bean-class>callcenter.web.ChangeLanguage</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>registrationController</managed-bean-name>
+  <managed-bean-class>callcenter.web.RegistrationController</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
+ <navigation-rule>
+  <display-name>registration</display-name>
+  <from-view-id>/pages/registration.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/pages/completeRegistration.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <application>
+  <locale-config>
+   <default-locale>bg</default-locale>
+   <supported-locale>en</supported-locale>
+   <supported-locale>bg</supported-locale>
+  </locale-config>
+  <message-bundle>labels.labels_bg</message-bundle>
+  <message-bundle>labels.labels_en</message-bundle>
+  <message-bundle>messages.messages_bg</message-bundle>
+  <message-bundle>messages.messages_en</message-bundle>
+ </application>
 </faces-config>
