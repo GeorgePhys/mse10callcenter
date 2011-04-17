@@ -8,8 +8,8 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
+import callcenter.dto.issue.IssueSearchDTO;
 import callcenter.entity.issue.IssueDetail;
-import callcenter.entity.issue.dto.IssueSearchDTO;
 import callcenter.service.base.BaseServiceBean;
 
 @Stateless

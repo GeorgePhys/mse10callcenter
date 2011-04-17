@@ -1,4 +1,4 @@
-package callcenter.entity.issue.dto;
+package callcenter.dto.issue;
 
 public class IssueSearchDTO extends IssueReportDTO {
 	private Long id;

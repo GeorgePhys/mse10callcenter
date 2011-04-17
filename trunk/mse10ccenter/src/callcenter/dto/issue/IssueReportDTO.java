@@ -1,4 +1,4 @@
-package callcenter.entity.issue.dto;
+package callcenter.dto.issue;
 
 import java.util.Date;
 import java.util.List;
