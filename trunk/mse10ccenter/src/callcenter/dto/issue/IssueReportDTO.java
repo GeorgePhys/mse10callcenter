@@ -3,6 +3,7 @@ package callcenter.dto.issue;
 import java.util.Date;
 import java.util.List;
 
+import callcenter.dto.BaseDTO;
 import callcenter.entity.issue.IssueDetail;
 
 public class IssueReportDTO extends BaseDTO<IssueDetail> {
