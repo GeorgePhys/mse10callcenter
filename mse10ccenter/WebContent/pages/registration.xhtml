@@ -5,29 +5,37 @@
 	template="/pages/templates/template.xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 	<ui:define name="body">
-	
+		<h:form>
+			<h:commandButton value="english"
+				action="#{changeLanguage.changeLocal('en')}" />
+			<h:commandButton value="bulgarian"
+				action="#{changeLanguage.changeLocal('bg')}" />
+		</h:form>
+
 		<h:form>
 			<h:panelGrid columns="3">
 
 
-				<h:outputText value="name" />
-				<h:inputText value="your name" id="name" required="true" requiredMessage="you must write your name" >
-					<f:validateLength minimum="6" maximum="13"/>
+				<h:outputText value="#{labels.name}" />
+				<h:inputText id="name" required="true"
+					requiredMessage="you must write your name">
+					<f:validateLength minimum="6" maximum="13" />
 				</h:inputText>
 				<h:message for="name" />
-				<h:outputText value="password" />
-				<h:inputSecret value="" id="password" required="true" />
+				<h:outputText value="#{labels.password}" />
+				<h:inputSecret id="password" required="true" />
 				<h:message for="password" />
-				<h:outputText value="retype password" />
-				<h:inputSecret value="" id="retypePassword" required="true" />
-				<h:message for="retype password"/>
-				<h:outputText value="address" />
-				<h:inputTextarea value="your address" id="address" required="true" />
-				<h:message for="address"/>
-				<h:outputText value="e-mail" />
-				<h:inputText value="your e-mail" id="e-mail" required="true" />
-				<h:message for="e-mail"/>
-				<h:commandButton action="null" value="register" />
+				<h:outputText value="#{labels.retypePassword}" />
+				<h:inputSecret id="retypePassword" required="true" />
+				<h:message for="retypePassword" />
+				<h:outputText value="#{labels.address}" />
+				<h:inputTextarea id="address" required="true" />
+				<h:message for="address" />
+				<h:outputText value="#{labels.email}" />
+				<h:inputText id="e-mail" required="true" />
+				<h:message for="e-mail" />
+				<h:commandButton action="#{registrationController.register()}"
+					value="#{labels.register}" />
 			</h:panelGrid>
 		</h:form>
 	</ui:define>
