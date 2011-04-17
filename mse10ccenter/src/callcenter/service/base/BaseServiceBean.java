@@ -4,7 +4,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import callcenter.entity.issue.dto.BaseDTO;
+import callcenter.dto.issue.BaseDTO;
 
 @Stateless
 public abstract class BaseServiceBean<E, T extends BaseDTO<E>> implements

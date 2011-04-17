@@ -1,6 +1,6 @@
 package callcenter.service.base;
 
-import callcenter.entity.issue.dto.BaseDTO;
+import callcenter.dto.issue.BaseDTO;
 
 public interface BaseService<E, T extends BaseDTO<E>> {
 
