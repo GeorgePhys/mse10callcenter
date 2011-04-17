@@ -5,18 +5,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class IssueDetail implements Serializable {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+public class IssueDetail extends callcenter.entity.Entity implements
+		Serializable {
 
 	@Column(columnDefinition = "Varchar(20)")
 	private String type;
@@ -47,14 +41,6 @@ public class IssueDetail implements Serializable {
 
 	@Column(columnDefinition = "Varchar(200)")
 	private String desctription;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getType() {
 		return type;
