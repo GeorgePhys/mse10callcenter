@@ -1,9 +1,11 @@
 package callcenter.entity.clients;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
@@ -15,9 +17,6 @@ import callcenter.service.administration.UserService;
 @NamedQueries(value = { @NamedQuery(name = UserService.QUERY_EMAIL_EXISTS_KEY, query = UserService.QUERY_EMAIL_EXISTS) })
 public class User extends callcenter.entity.Entity implements Serializable {
 
-	@Column(columnDefinition = "Varchar(20)")
-	private String user;
-
 	@Column(columnDefinition = "Varchar(50)")
 	private String mail;
 
@@ -27,16 +26,14 @@ public class User extends callcenter.entity.Entity implements Serializable {
 	@OneToOne
 	private Address address;
 
-	@Column(columnDefinition = "Varchar(50)")
-	private String companies;
+	@ManyToMany
+	private List<Company> companies;
 
-	public String getUser() {
-		return user;
-	}
+	@Column(columnDefinition = "Varchar(20)")
+	private String phone;
 
-	public void setUser(String user) {
-		this.user = user;
-	}
+	@Column(columnDefinition = "Varchar(200)")
+	private String password;
 
 	public String getMail() {
 		return mail;
@@ -62,11 +59,27 @@ public class User extends callcenter.entity.Entity implements Serializable {
 		this.address = address;
 	}
 
-	public String getCompanies() {
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public List<Company> getCompanies() {
 		return companies;
 	}
 
-	public void setCompanies(String companies) {
+	public void setCompanies(List<Company> companies) {
 		this.companies = companies;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 }

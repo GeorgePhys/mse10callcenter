@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 
+import org.apache.commons.lang.StringUtils;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
@@ -12,6 +13,7 @@ import callcenter.dto.issue.IssueSearchDTO;
 import callcenter.entity.issue.IssueDetail;
 import callcenter.service.administration.IssuesService;
 import callcenter.service.base.BaseServiceBean;
+import callcenter.util.ObjectUtil;
 
 @Stateless
 public class IssueServiceBean extends
@@ -22,31 +24,31 @@ public class IssueServiceBean extends
 		Session session = (Session) getEntityManager().getDelegate();
 		Criteria criteria = session.createCriteria(IssueDetail.class);
 
-		if (args.getAssignedTo() != null) {
+		if (StringUtils.isNotEmpty(args.getAssignedTo())) {
 			criteria.add(Restrictions.eq("assignee", args.getAssignedTo()));
 		}
 
-		if (args.getCreatedBy() != null) {
+		if (StringUtils.isNotEmpty(args.getCreatedBy())) {
 			criteria.add(Restrictions.eq("reporter", args.getCreatedBy()));
 		}
 
-		if (args.getDateCreate() != null) {
+		if (ObjectUtil.isValid(args.getDateCreate())) {
 			criteria.add(Restrictions.eq("dateCreated", args.getDateCreate()));
 		}
 
-		if (args.getDateEnded() != null) {
+		if (ObjectUtil.isValid(args.getDateEnded())) {
 			criteria.add(Restrictions.eq("dateEnded", args.getDateEnded()));
 		}
 
-		if (args.getPriority() != null) {
+		if (StringUtils.isNotEmpty(args.getPriority())) {
 			criteria.add(Restrictions.eq("priority", args.getPriority()));
 		}
 
-		if (args.getResolution() != null && !args.getResolution().isEmpty()) {
+		if (ObjectUtil.isValid(args.getResolution())) {
 			criteria.add(Restrictions.in("resolution", args.getResolution()));
 		}
 
-		if (args.getStatus() != null) {
+		if (StringUtils.isNotEmpty(args.getStatus())) {
 			criteria.add(Restrictions.eq("status", args.getStatus()));
 		}
 

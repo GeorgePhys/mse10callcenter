@@ -20,13 +20,19 @@ public class Company extends callcenter.entity.Entity implements Serializable {
 	private String bulstat;
 
 	@Column(columnDefinition = "Varchar(50)")
-	private String webaddress;
+	private String webAddress;
 
 	@OneToOne
 	private Address address;
 
 	@ManyToMany
 	private List<User> representatives;
+
+	@Column(columnDefinition = "Varchar(20)")
+	private String phone;
+
+	@Column(columnDefinition = "Varchar(50)")
+	private String mail;
 
 	public String getName() {
 		return name;
@@ -44,12 +50,12 @@ public class Company extends callcenter.entity.Entity implements Serializable {
 		this.bulstat = bulstat;
 	}
 
-	public String getWebaddress() {
-		return webaddress;
+	public String getWebAddress() {
+		return webAddress;
 	}
 
-	public void setWebaddress(String webaddress) {
-		this.webaddress = webaddress;
+	public void setWebAddress(String webAddress) {
+		this.webAddress = webAddress;
 	}
 
 	public Address getAddress() {
@@ -66,5 +72,21 @@ public class Company extends callcenter.entity.Entity implements Serializable {
 
 	public void setRepresentatives(List<User> representatives) {
 		this.representatives = representatives;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
 }
