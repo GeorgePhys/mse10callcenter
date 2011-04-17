@@ -1,4 +1,4 @@
-package callcenter.service.administration;
+package callcenter.service.administration.impl;
 
 import java.util.List;
 
@@ -10,6 +10,7 @@ import org.hibernate.criterion.Restrictions;
 
 import callcenter.dto.issue.IssueSearchDTO;
 import callcenter.entity.issue.IssueDetail;
+import callcenter.service.administration.IssuesService;
 import callcenter.service.base.BaseServiceBean;
 
 @Stateless
