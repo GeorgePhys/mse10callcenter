@@ -4,11 +4,15 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
 import callcenter.entity.Address;
+import callcenter.service.administration.UserService;
 
 @Entity
+@NamedQueries(value = { @NamedQuery(name = UserService.QUERY_EMAIL_EXISTS_KEY, query = UserService.QUERY_EMAIL_EXISTS) })
 public class User extends callcenter.entity.Entity implements Serializable {
 
 	@Column(columnDefinition = "Varchar(20)")
