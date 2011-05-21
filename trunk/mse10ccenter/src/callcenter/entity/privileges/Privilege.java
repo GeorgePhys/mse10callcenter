@@ -6,7 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity
-public class Privilege implements Serializable {
+public class Privilege extends callcenter.entity.Entity implements Serializable {
 
 	@Column(columnDefinition = "Varchar(10)")
 	private String code;

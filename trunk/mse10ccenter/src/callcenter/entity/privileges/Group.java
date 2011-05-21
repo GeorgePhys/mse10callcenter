@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 
 @Entity
-public class Group implements Serializable {
+public class Group extends callcenter.entity.Entity implements Serializable {
 
 	@Column(columnDefinition = "Varchar(50)")
 	private String name;
