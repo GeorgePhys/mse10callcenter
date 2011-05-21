@@ -13,7 +13,7 @@ public class Group extends callcenter.entity.Entity implements Serializable {
 	@Column(columnDefinition = "Varchar(50)")
 	private String name;
 
-	@Column(columnDefinition = "Varchar(50)")
+	@Column(columnDefinition = "Varchar(250)")
 	private String description;
 
 	@ManyToMany

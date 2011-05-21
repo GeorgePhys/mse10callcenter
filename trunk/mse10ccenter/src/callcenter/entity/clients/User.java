@@ -32,7 +32,7 @@ public class User extends callcenter.entity.Entity implements Serializable {
 	@Column(columnDefinition = "Varchar(20)")
 	private String phone;
 
-	@Column(columnDefinition = "Varchar(200)")
+	@Column(columnDefinition = "Varchar(15)")
 	private String password;
 
 	public String getMail() {
