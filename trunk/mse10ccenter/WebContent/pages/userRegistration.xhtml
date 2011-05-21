@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head><title>User Registration</title>
+<link  href="admin.css" rel="stylesheet" /></h:head> 
+<body>
+	<div id="frm" align="center">
+    	<form id="formRegistration" name="formRegistration" method="post" action="">
+            <fieldset><legend align="left">Регистрация</legend>
+                <table>
+                  <tr>   
+                    <td><label for="userName">Имейл:</label></td>
+                    <td><input type="text" size="40" name="userName" id="userName" /></td>
+                  </tr>
+                  <tr>
+                    <td><label for="password">Парола:</label></td>
+                    <td><input type="text" name="password" id="password" /></td>
+                  </tr>
+                  <tr>
+                    <td><label for="comfirmPassword">Потвърди паролата:</label></td>
+                    <td><input type="text" name="comfirmPassword" id="comfirmPassword" /></td>
+                  </tr>
+                  <tr>
+                    <td><label for="fullName">Трите имена:</label></td>
+                    <td><input type="text" size="40" name="fullName" id="fullName" /></td>
+                  </tr>
+                   <tr>
+                    <td><label for="phone">Телефон:</label></td>
+                    <td><input type="text" name="phone" id="phone" /></td>
+                  </tr>
+                  <tr>
+                    <td><label for="company">Фирма:</label></td>
+                    <td><select name="company" id="company"><option>Company</option></select></td>
+                  </tr>
+                  <tr><td colspan="2">
+                    <div id="frmAddress" align="center">
+                        <form id="formAddress" name="formAddress" method="post" action="">
+                            <fieldset><legend align="left">Адрес</legend>
+                                <table>
+                                    <tr>
+                                        <td><label for="country">Държава:</label></td>
+                                        <td><input type="text" name="country" id="country" /></td>
+                                    </tr>
+                                    <tr>
+                                    	<td><label for="city">Град:</label></td>
+                                        <td><input type="text" name="city" id="city" /></td>
+                                    </tr>
+                                    <tr>
+                                    	<td><label for="street">Улица:</label></td>
+                                        <td><input type="text" size="50" name="street" id="street" /></td>
+                                    </tr>
+                                    <tr>
+                                    	<td><label for="postCode">Пощенски код:</label></td>
+                                        <td><input type="text" name="postCode" id="postCode" /></td>
+                                    </tr>
+                                </table>
+                           </fieldset>
+                        </form>
+                     </div>
+                  </td></tr>
+                    <tr><td colspan="2">
+                        <div align="center">
+                            <input type="submit" name="buttonSubmit" id="buttonSubmit" value="Регистрирай" />&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="reset" name="buttonReset" id="buttonReset" value="Изчисти" />
+                        </div>
+                        <div style="text-align:right">
+                            <a href="login.html">Вход</a> 
+                        </div>
+                    </td></tr>
+                </table>
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>
