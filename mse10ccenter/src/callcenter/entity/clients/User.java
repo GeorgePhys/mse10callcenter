@@ -82,4 +82,12 @@ public class User extends callcenter.entity.Entity implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	/**
+	 * Validation for the required data
+	 */
+	@Override
+	public void validate() {
+		super.validate();
+	}
 }
