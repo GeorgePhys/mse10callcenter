@@ -15,30 +15,37 @@
 			<fieldset><legend align="left"><h:outputText value="#{labels.registration}" /></legend>
 				<h:panelGrid columns="3">	
 						<h:outputText value="#{labels.email}" />
-						<h:inputText value="" />
-						<h:message />
+						<h:inputText value="#{user.mail}" required="true" id="mail"/>
+						<h:message for="mail"/>
 						
 						<h:outputText value="#{labels.password}" />
-						<h:inputSecret value="" />
-						<h:message />
+						<h:inputSecret value="#{user.password}" required="true" id="password"/>
+						<h:message for="password"/>
 						
 						<h:outputText value="#{labels.confirmPassword}" />
-						<h:inputSecret value="" />
-						<h:message />
+						<h:inputSecret value="" required="true" id="confirmPassword" />
+						<h:message for="confirmPassword"/>
 						
 						<h:outputText value="#{labels.fullName}" />
-						<h:inputText value="" id="fullName" />
+						<h:inputText value="#{user.fullName}" id="fullName" required="true" />
 						<h:message for="fullName"/>
 																		
 						<h:outputText value="#{labels.phone}" />
-						<h:inputText value="" />
-						<h:message />
+						<h:inputText value="#{user.phone}"  id="phone"/>
+						<h:message for="phone"/>
 						
 						<h:outputText value="#{labels.company}" />
-						<h:selectOneMenu value="">
+						<h:inputText value="#{user.companies}" id="company"/>
+						<h:outputLink >add company</h:outputLink>
 						
+						
+						<h:outputText value="#{labels.userType}" />
+						<h:selectOneMenu value="#{user.userType}" id="userType">
+							<f:selectItem id="typeUser"  itemLabel="#{labels.user}"/>
+							<f:selectItem id="typeCompany" itemLabel="#{labels.company}"/>
 						</h:selectOneMenu>
-						<h:message />
+						
+						<h:message for="userType" />
 					
 					
 						
@@ -47,23 +54,28 @@
 				<fieldset><legend align="left"><h:outputText value="#{labels.address}" /></legend>
 					<h:panelGrid columns="3">
 						<h:outputText value="#{labels.country}" />
-						<h:inputText value="" />
-						<h:message />
+						<h:inputText value="#{address.coutry}" required="true" id="country"/>
+						<h:message for="country"/>
+						
+						<h:outputText value="#{labels.municipality}" />
+						<h:inputText value="#{address.municipality}" required="true" id="municipality" />
+						<h:message for="municipality"/>
 						
 						<h:outputText value="#{labels.city}" />
-						<h:inputText value="" />
-						<h:message />
+						<h:inputText value="#{address.city}" required="true" id="city" />
+						<h:message for="city"/>
 						
 						<h:outputText value="#{labels.street}" />
-						<h:inputText value="" />
-						<h:message />
+						<h:inputText value="#{address.street}" required="true" id="street"/>
+						<h:message for="street"/>
 						
 						<h:outputText value="#{labels.postCode}" />
-						<h:inputText value="" />
-						<h:message />
+						<h:inputText value="#{address.postCode}" required="true"  id="postCode"/>
+						<h:message for="postCode"/>
 																		
 					</h:panelGrid>
 				</fieldset>
+				<h:commandButton value="#{labels.registration}" action="#{registrationController.register()}"/>
 			</div>
 			</fieldset>	
 		</h:form>

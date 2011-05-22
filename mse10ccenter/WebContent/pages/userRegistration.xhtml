@@ -1,35 +1,37 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+<ui:composition 
+	  xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/pages/templates/template.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<h:head><title>User Registration</title>
-<link  href="admin.css" rel="stylesheet" /></h:head> 
-<body>
+<ui:define name="title"><h:outputText value="#{labels.userRegistration}" /></ui:define>
+
+<ui:define name="body">
 	<div id="frm" align="center">
     	<form id="formRegistration" name="formRegistration" method="post" action="">
-            <fieldset><legend align="left">Регистрация</legend>
+            <fieldset><legend align="left"><h:outputText value="#{labels.registration}" /></legend>
                 <table>
                   <tr>   
-                    <td><label for="userName">Имейл:</label></td>
-                    <td><input type="text" size="40" name="userName" id="userName" /></td>
+                    <td><h:outputText value="#{labels.email}" /></td>
+                    <td><h:inputText value="" /></td>
                   </tr>
                   <tr>
-                    <td><label for="password">Парола:</label></td>
-                    <td><input type="text" name="password" id="password" /></td>
+                    <td><h:outputText value="#{labels.password}" /></td>
+                    <td><h:inputSecret value="" /></td>
                   </tr>
                   <tr>
-                    <td><label for="comfirmPassword">Потвърди паролата:</label></td>
-                    <td><input type="text" name="comfirmPassword" id="comfirmPassword" /></td>
+                    <td><h:outputText value="#{labels.confirmPassword}" /></td>
+                    <td><h:inputSecret value="" /></td>
                   </tr>
                   <tr>
-                    <td><label for="fullName">Трите имена:</label></td>
-                    <td><input type="text" size="40" name="fullName" id="fullName" /></td>
+                    <td><h:outputText value="#{labels.fullName}" /></td>
+                    <td><h:inputSecret value="" /></td>
                   </tr>
                    <tr>
-                    <td><label for="phone">Телефон:</label></td>
-                    <td><input type="text" name="phone" id="phone" /></td>
+                    <td><h:outputText value="#{labels.phone}" /></td>
+                    <td><h:inputSecret value="" /></td>
                   </tr>
                   <tr>
                     <td><label for="company">Фирма:</label></td>
@@ -74,5 +76,5 @@
             </fieldset>
         </form>
     </div>
-</body>
-</html>
+</ui:define>
+</ui:composition>

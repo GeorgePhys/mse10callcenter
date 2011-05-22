@@ -37,6 +37,9 @@ public class User extends callcenter.entity.Entity implements Serializable {
 	@Column(columnDefinition = "Varchar(15)")
 	private String password;
 
+	@Column(columnDefinition = "Integer")
+	private String userType;
+
 	public String getMail() {
 		return mail;
 	}
@@ -83,6 +86,21 @@ public class User extends callcenter.entity.Entity implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	/**
+	 * @param userType
+	 *            the userType to set
+	 */
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
+
+	/**
+	 * @return the userType
+	 */
+	public String getUserType() {
+		return userType;
 	}
 
 	/**

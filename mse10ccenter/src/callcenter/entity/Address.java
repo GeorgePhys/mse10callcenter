@@ -20,6 +20,9 @@ public class Address extends callcenter.entity.Entity implements Serializable {
 	@Column(columnDefinition = "Varchar(20)")
 	private String postCode;
 
+	@Column(columnDefinition = "Varchar(30)")
+	private String municipality;
+
 	public String getCoutry() {
 		return coutry;
 	}
@@ -50,6 +53,21 @@ public class Address extends callcenter.entity.Entity implements Serializable {
 
 	public void setPostCode(String postCode) {
 		this.postCode = postCode;
+	}
+
+	/**
+	 * @param municipality
+	 *            the municipality to set
+	 */
+	public void setMunicipality(String municipality) {
+		this.municipality = municipality;
+	}
+
+	/**
+	 * @return the municipality
+	 */
+	public String getMunicipality() {
+		return municipality;
 	}
 
 }

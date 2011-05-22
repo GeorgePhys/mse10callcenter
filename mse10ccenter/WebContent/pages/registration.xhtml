@@ -25,7 +25,7 @@
 				<h:outputText value="#{labels.password}" />
 				<h:inputSecret id="password" required="true" />
 				<h:message for="password" />
-				<h:outputText value="#{labels.retypePassword}" />
+				<h:outputText value="#{labels.confirmPassword}" />
 				<h:inputSecret id="retypePassword" required="true" />
 				<h:message for="retypePassword" />
 				<h:outputText value="#{labels.address}" />
@@ -37,7 +37,7 @@
 				</h:inputText>
 				<h:message for="e-mail" />
 				<h:commandButton action="#{registrationController.register()}"
-					value="#{labels.register}" />
+					value="#{labels.registration}" />
 			</h:panelGrid>
 		</h:form>
 	</ui:define>
