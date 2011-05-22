@@ -15,4 +15,6 @@ public interface UserService extends BaseService<User, UserSearchDTO> {
 	boolean userEmailExists(String email);
 
 	User checkLogin(User user);
+
+	String hashPassword(String password);
 }

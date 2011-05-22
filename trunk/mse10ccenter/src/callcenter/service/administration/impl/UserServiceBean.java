@@ -2,6 +2,8 @@ package callcenter.service.administration.impl;
 
 import static callcenter.util.ObjectUtil.isValid;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -18,6 +20,7 @@ import callcenter.entity.clients.User;
 import callcenter.service.administration.UserService;
 import callcenter.service.base.BaseServiceBean;
 import callcenter.util.ObjectUtil;
+import callcenter.util.PasswordHashUtil;
 
 @Stateless
 public class UserServiceBean extends BaseServiceBean<User, UserSearchDTO>
@@ -94,4 +97,16 @@ public class UserServiceBean extends BaseServiceBean<User, UserSearchDTO>
 		return null;
 	}
 
+	@Override
+	public String hashPassword(String password) {
+		String hash = null;
+		try {
+			hash = PasswordHashUtil.getPasswordHash(password);
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		return hash;
+	}
 }
