@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/pages/templates/template.xhtml">
+
+	<ui:define name="title">Създай задача</ui:define>
+	<ui:define name="body">
+		<h:form >
+		<h2>Създаване на задача</h2>
+		<table id="createIssue">
+		<tr><td valign="top">Потребителско име:</td><td></td></tr>
+		
+		<tr><td  align="left">Тип Задача:</td>
+					<td>
+						<!-- tova e comment --> <select size="1" name="issue_type" style=" width : 174px;">
+							<option>Бъг</option>
+							<option>Подобрение</option>
+							<option>Ново свойство</option>
+							<option>Задача</option>
+							<option>Задача по поръчка</option>
+					</select></td></tr>
+		</table>
+		
+		
+		
+		
+		</h:form>
+		
+		
+	</ui:define>
+</ui:composition>
