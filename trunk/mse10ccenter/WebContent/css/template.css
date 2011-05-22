@@ -1,22 +1,18 @@
-@CHARSET "UTF-8";
-
-body {bgcolor ="#ffffff";
+body {background-color:#ffffff;
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 14px;
 }
 
 table {
-	border: 1px solid #CAD6E0 ";
-	align:"center";
-	cellpadding:"0";
-	cellspacing:"0";
-	width:"400";
+	
+	align:center;
+	cellpadding:0;
+	cellspacing:0;
+	width:400;
 }
 
-tr{
-}
+
 .header {
-	
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 18px;
 }
@@ -27,4 +23,15 @@ tr{
 	text-align: center;
 	vertical-align: middle;
 	color: #8E969D;
+}
+
+.search{
+	padding:3px;
+	text-align:left;
+}
+.search td{
+	padding:10px 5px 10px 5px;
+}
+.search select option{
+	size:23px;
 }
