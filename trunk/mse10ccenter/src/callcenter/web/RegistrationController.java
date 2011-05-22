@@ -9,7 +9,6 @@ package callcenter.web;
  */
 public class RegistrationController {
 	public String register() {
-		System.out.println("maa faaa");
 
 		return "success";
 	}

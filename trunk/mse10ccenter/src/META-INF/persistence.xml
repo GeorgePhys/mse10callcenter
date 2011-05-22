@@ -4,9 +4,9 @@
 	version="2.0">
 	<persistence-unit name="ccenter" transaction-type="JTA">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<jta-data-source>java:/ccenter</jta-data-source>
+		<jta-data-source>java:/DefaultDS</jta-data-source>
 		<properties>
-			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
 			<property name="hibernate.hbm2ddl.auto" value="create" />
 			<property name="hibernate.show-sql" value="true" />
 			<property name="hibernate.format-sql" value="true" />

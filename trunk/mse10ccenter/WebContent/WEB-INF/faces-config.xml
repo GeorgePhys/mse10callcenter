@@ -12,21 +12,36 @@
   <managed-bean-class>callcenter.web.RegistrationController</managed-bean-class>
   <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
- <!-- Entity beans start -->
  <managed-bean>
   <managed-bean-name>user</managed-bean-name>
   <managed-bean-class>callcenter.entity.clients.User</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
- <!-- Entity beans end 
- Action managers start -->
+ <managed-bean>
+  <managed-bean-name>address</managed-bean-name>
+  <managed-bean-class>callcenter.entity.Address</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>company</managed-bean-name>
+  <managed-bean-class>callcenter.entity.clients.Company</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ <!-- Entity beans end Action managers start -->
  <managed-bean>
   <managed-bean-name>loginAction</managed-bean-name>
   <managed-bean-class>callcenter.web.action.login.LoginAction</managed-bean-class>
   <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
- <!-- Action managers end 
- navigation rules start -->
+ <navigation-rule>
+  <display-name>registration</display-name>
+  <from-view-id>/pages/userRegistration(inprogres).jsf</from-view-id>
+  <navigation-case>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/pages/completeRegistration.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <!-- Action managers end navigation rules start -->
  <navigation-rule>
   <display-name>registration</display-name>
   <from-view-id>/pages/registration.xhtml</from-view-id>
