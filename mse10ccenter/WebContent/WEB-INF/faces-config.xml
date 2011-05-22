@@ -1,71 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <faces-config version="2.0" xmlns="http://java.sun.com/xml/ns/javaee"
- xmlns:xi="http://www.w3.org/2001/XInclude"
- xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
- <managed-bean>
-  <managed-bean-name>changeLanguage</managed-bean-name>
-  <managed-bean-class>callcenter.web.ChangeLanguage</managed-bean-class>
-  <managed-bean-scope>session</managed-bean-scope>
- </managed-bean>
- <managed-bean>
-  <managed-bean-name>registrationController</managed-bean-name>
-  <managed-bean-class>callcenter.web.RegistrationController</managed-bean-class>
-  <managed-bean-scope>session</managed-bean-scope>
- </managed-bean>
- <managed-bean>
-  <managed-bean-name>user</managed-bean-name>
-  <managed-bean-class>callcenter.entity.clients.User</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
- </managed-bean>
- <managed-bean>
-  <managed-bean-name>address</managed-bean-name>
-  <managed-bean-class>callcenter.entity.Address</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
- </managed-bean>
- <managed-bean>
-  <managed-bean-name>company</managed-bean-name>
-  <managed-bean-class>callcenter.entity.clients.Company</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
- </managed-bean>
- <!-- Entity beans end Action managers start -->
- <managed-bean>
-  <managed-bean-name>loginAction</managed-bean-name>
-  <managed-bean-class>callcenter.web.action.login.LoginAction</managed-bean-class>
-  <managed-bean-scope>session</managed-bean-scope>
- </managed-bean>
- <navigation-rule>
-  <display-name>registration</display-name>
-  <from-view-id>/pages/userRegistration(inprogres).jsf</from-view-id>
-  <navigation-case>
-   <from-outcome>success</from-outcome>
-   <to-view-id>/pages/completeRegistration.xhtml</to-view-id>
-  </navigation-case>
- </navigation-rule>
- <!-- Action managers end navigation rules start -->
- <navigation-rule>
-  <display-name>registration</display-name>
-  <from-view-id>/pages/registration.xhtml</from-view-id>
-  <navigation-case>
-   <from-outcome>success</from-outcome>
-   <to-view-id>/pages/completeRegistration.xhtml</to-view-id>
-  </navigation-case>
- </navigation-rule>
- <navigation-rule>
-  <from-view-id>/pages/login/login.xhtml</from-view-id>
-  <navigation-case>
-   <from-outcome>loginSuccessful</from-outcome>
-   <to-view-id>/pages/home.xhtml</to-view-id>
-  </navigation-case>
- </navigation-rule>
- <!-- navigation rules end -->
- <application>
-  <locale-config>
-   <default-locale>bg</default-locale>
-   <supported-locale>en</supported-locale>
-   <supported-locale>bg</supported-locale>
-  </locale-config>
-  <message-bundle>labels.labels_bg</message-bundle>
-  <message-bundle>labels.labels_en</message-bundle>
-  <message-bundle>messages.messages</message-bundle>
- </application>
+	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+	<managed-bean>
+		<managed-bean-name>changeLanguage</managed-bean-name>
+		<managed-bean-class>callcenter.web.ChangeLanguage</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>registrationController</managed-bean-name>
+		<managed-bean-class>callcenter.web.RegistrationController</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>address</managed-bean-name>
+		<managed-bean-class>callcenter.entity.Address</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<navigation-rule>
+		<display-name>registration</display-name>
+		<from-view-id>/pages/userRegistration(inprogres).jsf</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/pages/completeRegistration.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<!-- Action managers end navigation rules start -->
+	<navigation-rule>
+		<display-name>registration</display-name>
+		<from-view-id>/pages/registration.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/pages/completeRegistration.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/pages/login/login.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>loginSuccessful</from-outcome>
+			<to-view-id>/pages/home.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<!-- navigation rules end -->
+	<application>
+		<locale-config>
+			<default-locale>bg</default-locale>
+			<supported-locale>en</supported-locale>
+			<supported-locale>bg</supported-locale>
+		</locale-config>
+		<message-bundle>labels.labels_bg</message-bundle>
+		<message-bundle>labels.labels_en</message-bundle>
+		<message-bundle>messages.messages</message-bundle>
+	</application>
 </faces-config>

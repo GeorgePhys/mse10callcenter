@@ -3,6 +3,8 @@ package callcenter.entity.clients;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -14,6 +16,8 @@ import callcenter.entity.Address;
 import callcenter.service.administration.UserService;
 
 @Entity
+@ManagedBean(name = "user")
+@RequestScoped
 @NamedQueries(value = {
 		@NamedQuery(name = UserService.QUERY_EMAIL_EXISTS_KEY, query = UserService.QUERY_EMAIL_EXISTS),
 		@NamedQuery(name = UserService.QUERY_USER_LOGIN_KEY, query = UserService.QUERY_USER_LOGIN) })

@@ -9,8 +9,8 @@
 	<title><ui:insert name="title">Page Title</ui:insert></title>
 	<link rel="stylesheet" type="text/css" href="../../css/template.css" />
 	<ui:insert name="head"></ui:insert>
-	<f:loadBundle basename="labels.labels" var="labels"/>
-	<f:loadBundle basename="messages.messages" var="messages"/>
+	<f:loadBundle basename="labels.labels" var="labels" />
+	<f:loadBundle basename="messages.messages" var="messages" />
 </h:head>
 
 <body>
@@ -20,8 +20,7 @@
 
 			<tr>
 				<td class="header" height="42" align="center" valign="middle"
-					width="100%" bgcolor="#E4EBEB">
-					<ui:insert name="pageHeader">Page Header</ui:insert>
+					width="100%" bgcolor="#E4EBEB"><ui:insert name="pageHeader">Page Header</ui:insert>
 				</td>
 			</tr>
 			<tr>
@@ -34,8 +33,8 @@
 						cellpadding="0" cellspacing="0" border="0">
 						<tbody>
 							<tr>
-								<td align="center" width="100%" valign="middle">
-								<ui:insert name="body">Page Body</ui:insert>
+								<td align="center" width="100%" valign="middle"><ui:insert
+										name="body">Page Body</ui:insert>
 								</td>
 							</tr>
 						</tbody>

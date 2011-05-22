@@ -3,12 +3,17 @@ package callcenter.entity.privileges;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 
 @Entity
-public class PrivilegesGroup extends callcenter.entity.Entity implements Serializable {
+@ManagedBean(name = "privilegesGroup")
+@RequestScoped
+public class PrivilegesGroup extends callcenter.entity.Entity implements
+		Serializable {
 
 	@Column(columnDefinition = "Varchar(50)")
 	private String name;
