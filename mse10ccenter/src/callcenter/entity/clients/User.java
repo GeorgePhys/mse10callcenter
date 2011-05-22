@@ -14,7 +14,9 @@ import callcenter.entity.Address;
 import callcenter.service.administration.UserService;
 
 @Entity
-@NamedQueries(value = { @NamedQuery(name = UserService.QUERY_EMAIL_EXISTS_KEY, query = UserService.QUERY_EMAIL_EXISTS) })
+@NamedQueries(value = {
+		@NamedQuery(name = UserService.QUERY_EMAIL_EXISTS_KEY, query = UserService.QUERY_EMAIL_EXISTS),
+		@NamedQuery(name = UserService.QUERY_USER_LOGIN_KEY, query = UserService.QUERY_USER_LOGIN) })
 public class User extends callcenter.entity.Entity implements Serializable {
 
 	@Column(columnDefinition = "Varchar(50)")
