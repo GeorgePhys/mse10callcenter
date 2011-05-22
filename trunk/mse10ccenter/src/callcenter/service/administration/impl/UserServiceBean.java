@@ -17,6 +17,7 @@ import callcenter.dto.user.UserSearchDTO;
 import callcenter.entity.clients.User;
 import callcenter.service.administration.UserService;
 import callcenter.service.base.BaseServiceBean;
+import callcenter.util.ObjectUtil;
 
 @Stateless
 public class UserServiceBean extends BaseServiceBean<User, UserSearchDTO>
@@ -79,8 +80,18 @@ public class UserServiceBean extends BaseServiceBean<User, UserSearchDTO>
 	}
 
 	@Override
-	public boolean checkLogin(User user) {
-		return false;
+	public User checkLogin(User user) {
+		Query queryLoginUser = getEntityManager().createNamedQuery(
+				QUERY_USER_LOGIN_KEY);
+		queryLoginUser.setParameter("mail", user.getMail());
+		queryLoginUser.setParameter("pass", user.getPassword());
+
+		@SuppressWarnings("unchecked")
+		List<User> resultList = queryLoginUser.getResultList();
+		if (ObjectUtil.isValid(resultList)) {
+			return resultList.get(0);
+		}
+		return null;
 	}
 
 }

@@ -12,6 +12,21 @@
   <managed-bean-class>callcenter.web.RegistrationController</managed-bean-class>
   <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
+ <!-- Entity beans start -->
+ <managed-bean>
+  <managed-bean-name>user</managed-bean-name>
+  <managed-bean-class>callcenter.entity.clients.User</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ <!-- Entity beans end 
+ Action managers start -->
+ <managed-bean>
+  <managed-bean-name>loginAction</managed-bean-name>
+  <managed-bean-class>callcenter.web.action.login.LoginAction</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
+ <!-- Action managers end 
+ navigation rules start -->
  <navigation-rule>
   <display-name>registration</display-name>
   <from-view-id>/pages/registration.xhtml</from-view-id>
@@ -20,6 +35,14 @@
    <to-view-id>/pages/completeRegistration.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/pages/login/login.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>loginSuccessful</from-outcome>
+   <to-view-id>/pages/home.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <!-- navigation rules end -->
  <application>
   <locale-config>
    <default-locale>bg</default-locale>
@@ -28,7 +51,6 @@
   </locale-config>
   <message-bundle>labels.labels_bg</message-bundle>
   <message-bundle>labels.labels_en</message-bundle>
-  <message-bundle>messages.messages_bg</message-bundle>
-  <message-bundle>messages.messages_en</message-bundle>
+  <message-bundle>messages.messages</message-bundle>
  </application>
 </faces-config>

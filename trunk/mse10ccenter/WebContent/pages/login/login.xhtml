@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/pages/templates/template.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:define name="title">#{labels.loginTitle}</ui:define>
+	<ui:define name="body">
+		<h:form>
+			<h:messages globalOnly="true"/>
+			<h:panelGrid columns="3">
+				<h:outputText value="#{labels.email}" />
+				<h:inputText id="email" value="#{user.mail}" required="true" />
+				<h:message for="email" />
+
+				<h:outputText value="#{labels.password}" />
+				<h:inputSecret id="password" value="#{user.password}"
+					required="true">
+					<f:validateLength for="password" minimum="6" maximum="20" />
+				</h:inputSecret>
+				<h:message for="password" />
+			</h:panelGrid>
+			<h:commandButton action="#{loginAction.login(user)}"
+				value="#{labels.loginTitle}" />
+		</h:form>
+	</ui:define>
+</ui:composition>
