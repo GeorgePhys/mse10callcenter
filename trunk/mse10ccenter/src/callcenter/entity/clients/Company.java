@@ -3,6 +3,8 @@ package callcenter.entity.clients;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -11,6 +13,8 @@ import javax.persistence.OneToOne;
 import callcenter.entity.Address;
 
 @Entity
+@ManagedBean(name = "company")
+@RequestScoped
 public class Company extends callcenter.entity.Entity implements Serializable {
 
 	@Column(columnDefinition = "Varchar(20)")

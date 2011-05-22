@@ -2,10 +2,14 @@ package callcenter.entity.products;
 
 import java.io.Serializable;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity
+@ManagedBean(name = "software")
+@RequestScoped
 public class Software extends callcenter.entity.Entity implements Serializable {
 
 	@Column(columnDefinition = "Varchar(80)")

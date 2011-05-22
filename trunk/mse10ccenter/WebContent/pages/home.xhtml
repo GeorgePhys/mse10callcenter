@@ -6,6 +6,10 @@
 	template="/pages/templates/template.xhtml">
 
 	<ui:define name="title">Welcome home</ui:define>
+	<ui:define name="pageHeader">
+		<h:outputText value="Welcome back #{loginAction.user.fullName}"
+			rendered="#{loginAction.loggedin}" />
+	</ui:define>
 	<ui:define name="body">
 		<h:outputLink value="/mse10ccenter/pages/userRegistration(inprogres).jsf">register me</h:outputLink>
 	</ui:define>

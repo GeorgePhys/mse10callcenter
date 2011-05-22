@@ -3,12 +3,16 @@ package callcenter.entity.issue;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
+@ManagedBean(name = "issueDetail")
+@RequestScoped
 public class IssueDetail extends callcenter.entity.Entity implements
 		Serializable {
 
