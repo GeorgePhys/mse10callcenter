@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
@@ -6,13 +6,10 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <ui:define name="title">User registration</ui:define>
+<ui:define name="head">
+	<link rel="stylesheet" type="text/css" href="../css/admin.css" />
+</ui:define>
 <ui:define name="body"> 
-<h:form>
-			<h:commandButton value="english"
-				action="#{changeLanguage.changeLocal('en')}" />
-			<h:commandButton value="bulgarian"
-				action="#{changeLanguage.changeLocal('bg')}" />
-</h:form>
 	<div id="frm" align="center">
 		<h:form id="formRegistration" name="formRegistration" method="post" action="">
 			<fieldset><legend align="left"><h:outputText value="#{labels.registration}" /></legend>
@@ -30,8 +27,8 @@
 						<h:message />
 						
 						<h:outputText value="#{labels.fullName}" />
-						<h:inputText value="" id="#{labels.fullName}" />
-						<h:message for="#{labels.fullName}"/>
+						<h:inputText value="" id="fullName" />
+						<h:message for="fullName"/>
 																		
 						<h:outputText value="#{labels.phone}" />
 						<h:inputText value="" />
