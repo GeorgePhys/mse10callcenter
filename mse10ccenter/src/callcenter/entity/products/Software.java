@@ -6,6 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 
 @Entity
 @ManagedBean(name = "software")
@@ -24,7 +25,8 @@ public class Software extends callcenter.entity.Entity implements Serializable {
 	@Column(columnDefinition = "Varchar(10)")
 	private String version;
 
-	@Column(columnDefinition = "Blob")
+	@Lob
+	@Column(length=100000)
 	private byte[] picture;
 
 	@Column

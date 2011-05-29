@@ -6,6 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 
 @Entity
 @ManagedBean(name = "hardware")
@@ -94,7 +95,8 @@ public class Hardware extends callcenter.entity.Entity implements Serializable {
 		this.price = price;
 	}
 
-	@Column(columnDefinition = "Blob")
+	@Lob
+	@Column(length=100000)
 	private byte[] picture;
 
 	@Column
