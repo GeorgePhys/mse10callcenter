@@ -22,7 +22,16 @@
 
 			<tr>
 				<td class="header" height="42" align="center" valign="middle"
-					width="100%" bgcolor="#E4EBEB"><ui:insert name="pageHeader">Page Header</ui:insert>
+					width="100%" bgcolor="#E4EBEB"><ui:insert name="pageHeader" />
+					<div style="float: right;">
+						<h:form>
+							<h:selectOneMenu value="#{localeChenger.localeCode}"
+								onchange="submit()"
+								valueChangeListener="#{localeChenger.countryLocaleCodeChanged}">
+								<f:selectItems value="#{localeChenger.countriesInMap}" />
+							</h:selectOneMenu>
+						</h:form>
+					</div>
 				</td>
 			</tr>
 			<tr>
