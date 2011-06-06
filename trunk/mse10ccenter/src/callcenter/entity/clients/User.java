@@ -44,6 +44,9 @@ public class User extends callcenter.entity.Entity implements Serializable {
 	@Column(columnDefinition = "Integer")
 	private String userType;
 
+	@Column(columnDefinition = "BOOLEAN")
+	private Boolean confirmed;
+
 	public String getMail() {
 		return mail;
 	}
@@ -113,5 +116,13 @@ public class User extends callcenter.entity.Entity implements Serializable {
 	@Override
 	public void validate() {
 		super.validate();
+	}
+
+	public Boolean getConfirmed() {
+		return confirmed;
+	}
+
+	public void setConfirmed(Boolean confirmed) {
+		this.confirmed = confirmed;
 	}
 }
