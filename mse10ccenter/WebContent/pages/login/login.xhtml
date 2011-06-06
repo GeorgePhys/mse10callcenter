@@ -9,27 +9,50 @@
 	<ui:define name="body">
 		<h:form id="CaptchaForm">
 			<h:messages globalOnly="true" />
-			<h:panelGrid columns="3">
-				<h:outputText value="#{labels.email}" />
-				<h:inputText id="email" value="#{user.mail}" required="true" />
-				<h:message for="email" />
-
-				<h:outputText value="#{labels.password}" />
-				<h:inputSecret id="password" value="#{user.password}"
-					required="true">
-					<f:validateLength for="password" minimum="6" maximum="20" />
-				</h:inputSecret>
-				<h:message for="password" />
-
-				<h:graphicImage id="CaptchaImgID" value="/simpleCaptcha.png" />
-				<h:inputText id="CaptchaID" required="true"
-					requiredMessage="Captcha missing"
-					validator="#{captchaValidator.validateCaptcha}"
-					validatorMessage="Captcha does not match" immediate="true">
-				</h:inputText>
-				<h:message id="CaptchaMsgID" for="CaptchaID" style="color:red" />
-
-			</h:panelGrid>
+			<table>
+				<tr>
+					<td><h:outputText value="#{labels.email}" />
+					</td>
+					<td><h:inputText id="email" style="width:100%"
+							value="#{user.mail}" required="true" />
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2"><h:message for="email" errorClass="error" />
+					</td>
+				</tr>
+				<tr>
+					<td><h:outputText value="#{labels.password}" />
+					</td>
+					<td><h:inputSecret id="password" style="width:100%"
+							value="#{user.password}" required="true">
+							<f:validateLength for="password" minimum="6" maximum="20" />
+						</h:inputSecret></td>
+				</tr>
+				<tr>
+					<td colspan="2"><h:message for="password" errorClass="error" />
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><h:graphicImage id="CaptchaImgID" style="width:100%"
+							value="/simpleCaptcha.png" /></td>
+				</tr>
+				<tr>
+					<td>Captcha</td>
+					<td><h:inputText id="CaptchaID" style="width:100%"
+							required="true" requiredMessage="Captcha missing"
+							validator="#{captchaValidator.validateCaptcha}"
+							validatorMessage="Captcha does not match" immediate="true">
+						</h:inputText>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2"><h:message id="CaptchaMsgID" for="CaptchaID"
+							errorClass="error" />
+					</td>
+				</tr>
+			</table>
 			<h:commandButton action="#{loginAction.login(user)}"
 				value="#{labels.loginTitle}" />
 		</h:form>

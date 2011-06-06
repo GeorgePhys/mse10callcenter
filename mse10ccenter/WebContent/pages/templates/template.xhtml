@@ -6,8 +6,10 @@
 
 <!-- f:loadBundle basename="resources" var="msg" /-->
 <h:head>
-	<title><ui:insert name="title">Page Title</ui:insert></title>
+	<title><ui:insert name="title">Page Title</ui:insert>
+	</title>
 	<link rel="stylesheet" type="text/css" href="../../css/template.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/common.css" />
 	<ui:insert name="head"></ui:insert>
 	<f:loadBundle basename="labels.labels" var="labels" />
 	<f:loadBundle basename="messages.messages" var="messages" />
@@ -34,12 +36,10 @@
 						<tbody>
 							<tr>
 								<td align="center" width="100%" valign="middle"><ui:insert
-										name="body">Page Body</ui:insert>
-								</td>
+										name="body">Page Body</ui:insert></td>
 							</tr>
 						</tbody>
-					</table>
-				</td>
+					</table></td>
 			</tr>
 
 			<tr>
