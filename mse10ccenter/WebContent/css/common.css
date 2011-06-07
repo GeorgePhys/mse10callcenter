@@ -1,12 +1,13 @@
-captchaImg {
-	width: 70%;
-	height: 50%;
-}
-
 error {
 	color: red;
 }
 
 warning {
 	color: yellow;
+}
+
+#searchContent {
+	float: right;
+	display: inline;
+	width: 100%;
 }

@@ -31,37 +31,37 @@ public class UserServiceBean extends BaseServiceBean<User, UserSearchDTO>
 		Session session = (Session) getEntityManager().getDelegate();
 		Criteria criteria = session.createCriteria(User.class);
 
-		if (StringUtils.isNotEmpty(args.getMail())) {
+		if (ObjectUtil.isValid(args.getMail())) {
 			criteria.add(Restrictions.eq("mail", args.getMail()));
 		}
 
-		if (StringUtils.isNotEmpty(args.getFullName())) {
+		if (ObjectUtil.isValid(args.getFullName())) {
 			criteria.add(Restrictions.like("fullName", args.getFullName(),
 					MatchMode.ANYWHERE));
 		}
 
-		if (StringUtils.isNotEmpty(args.getCountry())) {
+		if (ObjectUtil.isValid(args.getCountry())) {
 			criteria.add(Restrictions.eq("country", args.getCountry()));
 		}
 
-		if (StringUtils.isNotEmpty(args.getCity())) {
+		if (ObjectUtil.isValid(args.getCity())) {
 			criteria.add(Restrictions.eq("city", args.getCity()));
 		}
 
-		if (StringUtils.isNotEmpty(args.getStreet())) {
+		if (ObjectUtil.isValid(args.getStreet())) {
 			criteria.add(Restrictions.like("street", args.getStreet(),
 					MatchMode.ANYWHERE));
 		}
 
-		if (StringUtils.isNotEmpty(args.getPostCode())) {
+		if (ObjectUtil.isValid(args.getPostCode())) {
 			criteria.add(Restrictions.eq("postCode", args.getPostCode()));
 		}
 
-		if (StringUtils.isNotEmpty(args.getPhone())) {
+		if (ObjectUtil.isValid(args.getPhone())) {
 			criteria.add(Restrictions.eq("phone", args.getPhone()));
 		}
 
-		if (StringUtils.isNotEmpty(args.getPassword())) {
+		if (ObjectUtil.isValid(args.getPassword())) {
 			criteria.add(Restrictions.eq("password", args.getPassword()));
 		}
 
