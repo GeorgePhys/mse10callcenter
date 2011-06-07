@@ -12,4 +12,7 @@ public class ObjectUtil {
 		return c != null && !c.isEmpty();
 	}
 
+	public static boolean isValid(String s) {
+		return s != null && !s.isEmpty();
+	}
 }

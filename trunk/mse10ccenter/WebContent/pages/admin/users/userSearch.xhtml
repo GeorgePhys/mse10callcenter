@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/pages/templates/template.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<ui:define name="title">#{labels.userSearch}</ui:define>
+	<ui:define name="head">
+		<link rel="stylesheet" type="text/css"
+			href="#{facesContext.externalContext.requestContextPath}/css/common.css" />
+	</ui:define>
+	<ui:define name="body">
+		<h:form>
+			<rich:dataTable id="userList" rows="10"
+				value="#{userSearchAction.result}" var="user">
+				<f:facet name="header">
+					<rich:columnGroup>
+						<h:column>
+							<h:outputText styleClass="headerText" value="Names" />
+						</h:column>
+						<h:column>
+							<h:outputText styleClass="headerText" value="Model" />
+						</h:column>
+						<h:column>
+							<h:outputText styleClass="headerText" value="Price" />
+						</h:column>
+						<h:column>
+							<h:outputText styleClass="headerText" value="Mileage" />
+						</h:column>
+						<h:column>
+							<h:commandButton action="#{userSearchAction.search(userDto)}"
+								value="#{labels.search}" />
+						</h:column>
+					</rich:columnGroup>
+				</f:facet>
+				<h:column>
+					<h:outputText value="#{user.fullName}" />
+				</h:column>
+				<!--h:column>
+					<h:outputText value="#{category.model}" />
+				</h:column>
+				<h:column>
+					<h:outputText value="#{category.price}" />
+				</h:column>
+				<h:column>
+					<h:outputText value="#{category.mileage}" />
+				</h:column-->
+			</rich:dataTable>
+			<rich:dataScroller align="left" for="userList" maxPages="10"
+				page="#{dataScrollerBean.scrollerPage}" id="sc2" reRender="sc1" rendered="false" />
+		</h:form>
+	</ui:define>
+</ui:composition>

@@ -1,8 +1,13 @@
 package callcenter.dto.user;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+
 import callcenter.dto.BaseDTO;
 import callcenter.entity.clients.User;
 
+@ManagedBean(name = "userDto")
+@ViewScoped
 public class UserSearchDTO extends BaseDTO<User> {
 
 	private String fullName;
