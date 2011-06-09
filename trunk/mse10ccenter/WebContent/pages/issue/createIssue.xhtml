@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/pages/templates/template.xhtml">
+
+	<ui:define name="title">Create Issue</ui:define>
+	<ui:define name="head">
+		<!-- link rel="stylesheet" type="text/css" href="../css/admin.css" /-->
+	</ui:define>
+	<ui:define name="body">
+		<div id="createIssue" align="left">
+			<h:form id="formCreateIssue" name="formCreateIssue" method=""
+				action="">
+				<fieldset>
+					<legend align="left">
+						<h:outputText value="#{labels.issueDetail}" />
+					</legend>
+					<h:panelGrid columns="3">
+						<h:outputText value="#{labels.email}:" />
+						<h:inputText value="#{user.mail}" required="true" id="mail"
+							style=" width : 180px;" />
+						<h:message for="mail" />
+
+						<h:outputText value="#{labels.titleIssue}:" />
+						<h:inputText value="#{issueDetail.titleIssue}" required="true"
+							id="titleIssue" style=" width : 180px;" />
+						<h:message for="titleIssue" />
+
+
+						<h:outputText value="#{labels.type}:" />
+						<h:selectOneMenu value="#{issueDetail.type}" id="type"
+							style=" width : 180px;">
+							<f:selectItem id="type" itemLabel="#{labels.bug}" />
+							<f:selectItem id="type" itemLabel="#{labels.improvement}" />
+							<f:selectItem id="type" itemLabel="#{labels.newFeature}" />
+							<f:selectItem id="type" itemLabel="#{labels.task}" />
+							<f:selectItem id="type" itemLabel="#{labels.customIssue}" />
+
+						</h:selectOneMenu>
+
+						<h:message for="type" />
+
+						<h:outputText value="#{labels.priority}:" />
+						<h:selectOneMenu value="#{issueDetail.priority}" id="priority"
+							style=" width : 180px;">
+							<f:selectItem id="priority" itemLabel="#{labels.critical}" />
+							<f:selectItem id="priority" itemLabel="#{labels.major}" />
+							<f:selectItem id="priority" itemLabel="#{labels.minor}" />
+							<f:selectItem id="priority" itemLabel="#{labels.trivial}" />
+						</h:selectOneMenu>
+
+						<h:message for="priority" />
+
+						<h:outputText value="#{labels.status}:" />
+						<h:selectOneMenu value="#{issueDetail.status}" id="status"
+							style=" width : 180px;">
+							<f:selectItem id="status" itemLabel="#{labels.open}" />
+							<f:selectItem id="status" itemLabel="#{labels.inProgress}" />
+							<f:selectItem id="status" itemLabel="#{labels.resolved}" />
+							<f:selectItem id="status" itemLabel="#{labels.reopened}" />
+							<f:selectItem id="status" itemLabel="#{labels.closed}" />
+						</h:selectOneMenu>
+
+						<h:message for="status" />
+
+						<h:outputText value="#{labels.resolution}:" />
+						<h:selectOneMenu value="#{issueDetail.resolution}" id="resolution"
+							style=" width : 180px;">
+							<f:selectItem id="resolution" itemLabel="#{labels.fixed}" />
+							<f:selectItem id="resolution" itemLabel="#{labels.woNotFix}" />
+							<f:selectItem id="resolution" itemLabel="#{labels.duplicate}" />
+							<f:selectItem id="resolution" itemLabel="#{labels.incomplete}" />
+							<f:selectItem id="resolution"
+								itemLabel="#{labels.cannotReproduce}" />
+						</h:selectOneMenu>
+
+						<h:message for="resolution" />
+
+
+
+
+					</h:panelGrid>
+
+
+					<div id="createIssue" align="left" style="width: 443px;">
+						<td style="width: 694px;">
+							<fieldset style="height: 153px; width: 525px;">
+								<legend align="left">
+									<h:outputText value="#{labels.staff}" />
+								</legend>
+								<h:panelGrid columns="3">
+									<h:outputText value="#{labels.reporter}:" />
+									<h:inputText value="#{issueDetail.reporter}" id="reporter"
+										style=" width : 180px;" />
+									<h:message for="reporter" />
+
+									<h:outputText value="#{labels.assignee}:" />
+									<h:inputText value="#{issueDetail.assignee}" id="assignee"
+										style=" width : 180px;" />
+									<h:message for="assignee" />
+
+								</h:panelGrid>
+							</fieldset></td>
+						<td>
+							<fieldset style="height: 153px; width: 525px;">
+								<legend align="left">
+									<h:outputText value="#{labels.date}" />
+								</legend>
+								<h:panelGrid columns="3">
+									<h:outputText value="#{labels.dateCreated}:" />
+									<h:inputText value="#{issueDetail.dateCreated}"
+										id="dateCreated" style=" width : 180px;" />
+									<h:message for="dateCreated" />
+
+									<h:outputText value="#{labels.dateEnded}:" />
+									<h:inputText value="#{issueDetail.dateEnded}" id="dateEnded"
+										style=" width : 180px;" />
+									<h:message for="dateEnded" />
+
+								</h:panelGrid>
+							</fieldset></td>
+						<h:commandButton value="#{labels.createIssue}" action=""
+							style=" width : 80px;" />
+						<h:commandButton value="#{labels.cancel}" action=""
+							style=" width : 80px;" />
+					</div>
+
+				</fieldset>
+			</h:form>
+
+
+
+
+		</div>
+
+	</ui:define>
+</ui:composition>
