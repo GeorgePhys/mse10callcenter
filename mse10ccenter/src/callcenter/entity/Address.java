@@ -13,7 +13,7 @@ import javax.persistence.Entity;
 public class Address extends callcenter.entity.Entity implements Serializable {
 
 	@Column(columnDefinition = "Varchar(100)")
-	private String coutry;
+	private String country;
 
 	@Column(columnDefinition = "Varchar(100)")
 	private String street;
@@ -27,12 +27,12 @@ public class Address extends callcenter.entity.Entity implements Serializable {
 	@Column(columnDefinition = "Varchar(30)")
 	private String municipality;
 
-	public String getCoutry() {
-		return coutry;
+	public String getCountry() {
+		return country;
 	}
 
-	public void setCoutry(String coutry) {
-		this.coutry = coutry;
+	public void setCountry(String country) {
+		this.country = country;
 	}
 
 	public String getStreet() {

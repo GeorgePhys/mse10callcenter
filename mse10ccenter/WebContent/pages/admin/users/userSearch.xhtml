@@ -13,21 +13,44 @@
 	</ui:define>
 	<ui:define name="body">
 		<h:form>
-			<rich:dataTable id="userList" rows="10"
-				value="#{userSearchAction.result}" var="user">
+			<rich:dataTable keepSaved="true" id="richTable" var="user"
+				value="#{userSearchAction.dataModel}" rows="10">
 				<f:facet name="header">
 					<rich:columnGroup>
 						<h:column>
-							<h:outputText styleClass="headerText" value="Names" />
+							<h:outputText styleClass="headerText" value="Full Name" />
+							<br />
+							<h:inputText value="#{userDto.fullName}" />
 						</h:column>
 						<h:column>
-							<h:outputText styleClass="headerText" value="Model" />
+							<h:outputText styleClass="headerText" value="E-mail" />
+							<br />
+							<h:inputText value="#{userDto.mail}" />
 						</h:column>
 						<h:column>
-							<h:outputText styleClass="headerText" value="Price" />
+							<h:outputText styleClass="headerText" value="Country" />
+							<br />
+							<h:inputText value="#{userDto.country}" />
 						</h:column>
 						<h:column>
-							<h:outputText styleClass="headerText" value="Mileage" />
+							<h:outputText styleClass="headerText" value="City" />
+							<br />
+							<h:inputText value="#{userDto.city}" />
+						</h:column>
+						<h:column>
+							<h:outputText styleClass="headerText" value="Street" />
+							<br />
+							<h:inputText value="#{userDto.street}" />
+						</h:column>
+						<h:column>
+							<h:outputText styleClass="headerText" value="Post Code" />
+							<br />
+							<h:inputText value="#{userDto.postCode}" />
+						</h:column>
+						<h:column>
+							<h:outputText styleClass="headerText" value="Phone" />
+							<br />
+							<h:inputText value="#{userDto.phone}" />
 						</h:column>
 						<h:column>
 							<h:commandButton action="#{userSearchAction.search(userDto)}"
@@ -38,18 +61,28 @@
 				<h:column>
 					<h:outputText value="#{user.fullName}" />
 				</h:column>
-				<!--h:column>
-					<h:outputText value="#{category.model}" />
+				<h:column>
+					<h:outputText value="#{user.mail}" />
 				</h:column>
 				<h:column>
-					<h:outputText value="#{category.price}" />
+					<h:outputText value="#{user.address.country}" />
 				</h:column>
 				<h:column>
-					<h:outputText value="#{category.mileage}" />
-				</h:column-->
+					<h:outputText value="#{user.address.city}" />
+				</h:column>
+				<h:column>
+					<h:outputText value="#{user.address.street}" />
+				</h:column>
+				<h:column>
+					<h:outputText value="#{user.address.postCode}" />
+				</h:column>
+				<h:column>
+					<h:outputText value="#{user.phone}" />
+				</h:column>
+				<f:facet name="footer">
+					<rich:dataScroller id="scroller" />
+				</f:facet>
 			</rich:dataTable>
-			<rich:dataScroller align="left" for="userList" maxPages="10"
-				page="#{dataScrollerBean.scrollerPage}" id="sc2" reRender="sc1" rendered="false" />
 		</h:form>
 	</ui:define>
 </ui:composition>

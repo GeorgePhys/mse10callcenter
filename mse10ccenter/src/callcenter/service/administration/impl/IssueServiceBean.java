@@ -20,7 +20,7 @@ public class IssueServiceBean extends
 		BaseServiceBean<IssueDetail, IssueSearchDTO> implements IssuesService {
 
 	@Override
-	public void search(IssueSearchDTO args) {
+	public List<IssueDetail> search(IssueSearchDTO args, boolean countOnly) {
 		Session session = (Session) getEntityManager().getDelegate();
 		Criteria criteria = session.createCriteria(IssueDetail.class);
 
@@ -54,6 +54,6 @@ public class IssueServiceBean extends
 
 		// select * from issueDetail where assignedTo = 'asdasda'
 		List list = criteria.list();
-		args.setResult(list);
+		return list;
 	}
 }
