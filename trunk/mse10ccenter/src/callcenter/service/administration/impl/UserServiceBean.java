@@ -7,12 +7,15 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.persistence.Query;
 
 import org.apache.commons.lang.StringUtils;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import callcenter.dto.user.UserSearchDTO;
@@ -27,7 +30,8 @@ public class UserServiceBean extends BaseServiceBean<User, UserSearchDTO>
 		implements UserService {
 
 	@Override
-	public void search(UserSearchDTO args) {
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+	public List<User> search(UserSearchDTO args, boolean countOnly) {
 		Session session = (Session) getEntityManager().getDelegate();
 		Criteria criteria = session.createCriteria(User.class);
 
@@ -37,7 +41,7 @@ public class UserServiceBean extends BaseServiceBean<User, UserSearchDTO>
 
 		if (ObjectUtil.isValid(args.getFullName())) {
 			criteria.add(Restrictions.like("fullName", args.getFullName(),
-					MatchMode.ANYWHERE));
+					MatchMode.ANYWHERE).ignoreCase());
 		}
 
 		if (ObjectUtil.isValid(args.getCountry())) {
@@ -50,7 +54,7 @@ public class UserServiceBean extends BaseServiceBean<User, UserSearchDTO>
 
 		if (ObjectUtil.isValid(args.getStreet())) {
 			criteria.add(Restrictions.like("street", args.getStreet(),
-					MatchMode.ANYWHERE));
+					MatchMode.ANYWHERE).ignoreCase());
 		}
 
 		if (ObjectUtil.isValid(args.getPostCode())) {
@@ -61,15 +65,26 @@ public class UserServiceBean extends BaseServiceBean<User, UserSearchDTO>
 			criteria.add(Restrictions.eq("phone", args.getPhone()));
 		}
 
-		if (ObjectUtil.isValid(args.getPassword())) {
-			criteria.add(Restrictions.eq("password", args.getPassword()));
+		if (countOnly) {
+			criteria.setProjection(Projections.count("id"));
+			Number count = (Number) criteria.list().get(0);
+			if (count == null || count.intValue() == 0) {
+				args.setTotalNumberOfRows(0);
+			} else {
+				args.setTotalNumberOfRows(count.intValue());
+			}
+			return null;
 		}
 
+		criteria.setMaxResults(args.getMaxResults());
+		criteria.setFirstResult(args.getFirstResult());
+
 		List list = criteria.list();
-		args.setResult(list);
+		return list;
 	}
 
 	@Override
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 	public boolean userEmailExists(String email) {
 		Query emailExistsQuery = getEntityManager().createNamedQuery(
 				QUERY_EMAIL_EXISTS_KEY);
@@ -83,6 +98,7 @@ public class UserServiceBean extends BaseServiceBean<User, UserSearchDTO>
 	}
 
 	@Override
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 	public User checkLogin(User user) {
 		Query queryLoginUser = getEntityManager().createNamedQuery(
 				QUERY_USER_LOGIN_KEY);
@@ -98,6 +114,7 @@ public class UserServiceBean extends BaseServiceBean<User, UserSearchDTO>
 	}
 
 	@Override
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 	public String hashPassword(String password) {
 		String hash = null;
 		try {

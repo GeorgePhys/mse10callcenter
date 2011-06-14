@@ -1,37 +1,55 @@
 package callcenter.dto;
 
-import java.util.List;
-
 public class BaseDTO<X> {
 
-	private int totalResultsNumber;
+	private Integer totalNumberOfRows;
 
-	private int page;
+	private Integer firstResult;
 
-	private List<X> result;
+	private Integer maxResults;
 
-	public List<X> getResult() {
-		return result;
+	/**
+	 * @return the firstResult
+	 */
+	public Integer getFirstResult() {
+		return firstResult;
 	}
 
-	public void setResult(List<X> result) {
-		this.result = result;
+	/**
+	 * @param firstResult
+	 *            the firstResult to set
+	 */
+	public void setFirstResult(Integer firstResult) {
+		this.firstResult = firstResult;
 	}
 
-	public int getTotalResultsNumber() {
-		return totalResultsNumber;
+	/**
+	 * @return the maxResults
+	 */
+	public Integer getMaxResults() {
+		return maxResults;
 	}
 
-	public void setTotalResultsNumber(int totalResultsNumber) {
-		this.totalResultsNumber = totalResultsNumber;
+	/**
+	 * @param maxResults
+	 *            the maxResults to set
+	 */
+	public void setMaxResults(Integer maxResults) {
+		this.maxResults = maxResults;
 	}
 
-	public int getPage() {
-		return page;
+	/**
+	 * @return the totalNumberOfRows
+	 */
+	public Integer getTotalNumberOfRows() {
+		return totalNumberOfRows;
 	}
 
-	public void setPage(int page) {
-		this.page = page;
+	/**
+	 * @param totalNumberOfRows
+	 *            the totalNumberOfRows to set
+	 */
+	public void setTotalNumberOfRows(Integer totalNumberOfRows) {
+		this.totalNumberOfRows = totalNumberOfRows;
 	}
-
 }

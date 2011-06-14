@@ -24,8 +24,6 @@ public class UserSearchDTO extends BaseDTO<User> {
 
 	private String postCode;
 
-	private String password;
-
 	public String getFullName() {
 		return fullName;
 	}
@@ -80,14 +78,6 @@ public class UserSearchDTO extends BaseDTO<User> {
 
 	public void setPostCode(String postCode) {
 		this.postCode = postCode;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 }
