@@ -39,7 +39,7 @@ public class User extends callcenter.entity.Entity implements Serializable {
 	@Column(columnDefinition = "Varchar(20)")
 	private String phone;
 
-	@Column(columnDefinition = "Varchar(15)")
+	@Column(columnDefinition = "Varchar(100)")
 	private String password;
 
 	@Column(columnDefinition = "Integer")

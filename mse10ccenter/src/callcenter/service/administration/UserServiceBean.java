@@ -110,15 +110,22 @@ public class UserServiceBean extends BaseServiceBean<User, UserSearchDTO> {
 
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 	public User checkLogin(User user) {
-		Query queryLoginUser = getEntityManager().createNamedQuery(
-				QUERY_USER_LOGIN_KEY);
-		queryLoginUser.setParameter("mail", user.getMail());
-		queryLoginUser.setParameter("pass", user.getPassword());
+		try {
+			Query queryLoginUser = getEntityManager().createNamedQuery(
+					QUERY_USER_LOGIN_KEY);
+			queryLoginUser.setParameter("mail", user.getMail());
+			queryLoginUser.setParameter("pass",
+					PasswordHashUtil.getPasswordHash(user.getPassword()));
 
-		@SuppressWarnings("unchecked")
-		List<User> resultList = queryLoginUser.getResultList();
-		if (ObjectUtil.isValid(resultList)) {
-			return resultList.get(0);
+			@SuppressWarnings("unchecked")
+			List<User> resultList = queryLoginUser.getResultList();
+			if (ObjectUtil.isValid(resultList)) {
+				return resultList.get(0);
+			}
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
 		}
 		return null;
 	}
@@ -140,6 +147,7 @@ public class UserServiceBean extends BaseServiceBean<User, UserSearchDTO> {
 		String uuid = CommonUtil.generateUUID();
 
 		user.setConfirmed(Boolean.FALSE);
+		user.setPassword(PasswordHashUtil.getPasswordHash(user.getPassword()));
 		user = saveOrUpdate(user);
 
 		UserRegistrationKey key = new UserRegistrationKey(uuid, user.getId());
