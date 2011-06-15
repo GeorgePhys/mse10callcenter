@@ -17,10 +17,10 @@ import callcenter.entity.Address;
 @RequestScoped
 public class Company extends callcenter.entity.Entity implements Serializable {
 
-	@Column(columnDefinition = "Varchar(20)")
+	@Column(columnDefinition = "Varchar(100)")
 	private String name;
 
-	@Column(columnDefinition = "Varchar(14)")
+	@Column(columnDefinition = "Varchar(12)")
 	private String bulstat;
 
 	@Column(columnDefinition = "Varchar(50)")

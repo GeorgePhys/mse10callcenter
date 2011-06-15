@@ -38,11 +38,11 @@ public class User extends callcenter.entity.Entity implements Serializable {
 	@Column(columnDefinition = "Varchar(20)")
 	private String phone;
 
-	@Column(columnDefinition = "Varchar(200)")
+	@Column(columnDefinition = "Varchar(15)")
 	private String password;
 
 	@Column(columnDefinition = "Integer")
-	private String userType;
+	private Integer userType;
 
 	@Column(columnDefinition = "BOOLEAN")
 	private Boolean confirmed;
@@ -99,14 +99,14 @@ public class User extends callcenter.entity.Entity implements Serializable {
 	 * @param userType
 	 *            the userType to set
 	 */
-	public void setUserType(String userType) {
+	public void setUserType(Integer userType) {
 		this.userType = userType;
 	}
 
 	/**
 	 * @return the userType
 	 */
-	public String getUserType() {
+	public Integer getUserType() {
 		return userType;
 	}
 

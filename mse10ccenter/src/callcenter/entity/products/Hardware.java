@@ -25,11 +25,15 @@ public class Hardware extends callcenter.entity.Entity implements Serializable {
 	@Column(columnDefinition = "Varchar(50)")
 	private String manufacturer;
 
-	@Column
+	@Column(columnDefinition = "Integer()")
 	private Integer warranty;
 
-	@Column
+	@Column(columnDefinition = "Double()")
 	private Double weight;
+
+	@Lob
+	@Column(length = 100000)
+	private byte[] pictureSoft;
 
 	public String getProductName() {
 		return productName;
@@ -96,10 +100,18 @@ public class Hardware extends callcenter.entity.Entity implements Serializable {
 	}
 
 	@Lob
-	@Column(length=100000)
+	@Column(length = 100000)
 	private byte[] picture;
 
 	@Column
 	private Double price;
+
+	public byte[] getPictureSoft() {
+		return pictureSoft;
+	}
+
+	public void setPictureSoft(byte[] pictureSoft) {
+		this.pictureSoft = pictureSoft;
+	}
 
 }
