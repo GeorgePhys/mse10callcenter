@@ -9,18 +9,15 @@ import javax.persistence.PersistenceContext;
 import callcenter.dto.BaseDTO;
 
 @Stateless
-public class BaseServiceBean<E, T extends BaseDTO<E>> implements
-		BaseService<E, T> {
+public class BaseServiceBean<E, T extends BaseDTO<E>> {
 
 	@PersistenceContext(unitName = "ccenter")
 	protected EntityManager entityManager;
 
-	@Override
 	public E saveOrUpdate(E entity) {
 		return getEntityManager().merge(entity);
 	}
 
-	@Override
 	public E find(Class<E> clazz, Object id) {
 		return getEntityManager().find(clazz, id);
 	}
@@ -29,7 +26,6 @@ public class BaseServiceBean<E, T extends BaseDTO<E>> implements
 		return entityManager;
 	}
 
-	@Override
 	public List<E> search(T args, boolean countOnly) {
 		return null;
 	}

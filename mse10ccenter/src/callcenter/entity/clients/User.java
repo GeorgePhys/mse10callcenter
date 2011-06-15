@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -13,14 +14,14 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
 import callcenter.entity.Address;
-import callcenter.service.administration.UserService;
+import callcenter.service.administration.UserServiceBean;
 
 @Entity
 @ManagedBean(name = "user")
 @RequestScoped
 @NamedQueries(value = {
-		@NamedQuery(name = UserService.QUERY_EMAIL_EXISTS_KEY, query = UserService.QUERY_EMAIL_EXISTS),
-		@NamedQuery(name = UserService.QUERY_USER_LOGIN_KEY, query = UserService.QUERY_USER_LOGIN) })
+		@NamedQuery(name = UserServiceBean.QUERY_EMAIL_EXISTS_KEY, query = UserServiceBean.QUERY_EMAIL_EXISTS),
+		@NamedQuery(name = UserServiceBean.QUERY_USER_LOGIN_KEY, query = UserServiceBean.QUERY_USER_LOGIN) })
 public class User extends callcenter.entity.Entity implements Serializable {
 
 	@Column(columnDefinition = "Varchar(50)")
@@ -29,8 +30,8 @@ public class User extends callcenter.entity.Entity implements Serializable {
 	@Column(columnDefinition = "Varchar(100)")
 	private String fullName;
 
-	@OneToOne
-	private Address address;
+	@OneToOne(cascade = CascadeType.ALL)
+	private Address address = new Address();
 
 	@ManyToMany
 	private List<Company> companies;

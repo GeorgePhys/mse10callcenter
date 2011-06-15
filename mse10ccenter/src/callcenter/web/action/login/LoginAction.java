@@ -7,14 +7,14 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import callcenter.entity.clients.User;
-import callcenter.service.administration.UserService;
+import callcenter.service.administration.UserServiceBean;
 
 @ManagedBean(name = "loginAction")
 @SessionScoped
 public class LoginAction {
 
 	@EJB
-	private UserService userService;
+	private UserServiceBean userService;
 
 	public String login(User user) {
 		User checkLogin = userService.checkLogin(user);

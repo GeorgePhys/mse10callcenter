@@ -10,12 +10,12 @@ import org.ajax4jsf.model.Range;
 import org.ajax4jsf.model.SequenceRange;
 
 import callcenter.dto.BaseDTO;
-import callcenter.service.base.BaseService;
+import callcenter.service.base.BaseServiceBean;
 
 @SuppressWarnings("rawtypes")
 public abstract class JPADataModel<T> extends ExtendedDataModel<T> {
 
-	private BaseService service;
+	private BaseServiceBean service;
 
 	private BaseDTO dto;
 
@@ -23,7 +23,8 @@ public abstract class JPADataModel<T> extends ExtendedDataModel<T> {
 
 	private Class<T> entityClass;
 
-	public JPADataModel(BaseService service, BaseDTO dto, Class<T> entityClass) {
+	public JPADataModel(BaseServiceBean service, BaseDTO dto,
+			Class<T> entityClass) {
 		this.service = service;
 		this.entityClass = entityClass;
 		this.dto = dto;

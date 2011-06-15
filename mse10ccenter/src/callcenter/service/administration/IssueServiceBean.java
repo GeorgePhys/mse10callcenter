@@ -1,4 +1,4 @@
-package callcenter.service.administration.impl;
+package callcenter.service.administration;
 
 import java.util.List;
 
@@ -11,13 +11,12 @@ import org.hibernate.criterion.Restrictions;
 
 import callcenter.dto.issue.IssueSearchDTO;
 import callcenter.entity.issue.IssueDetail;
-import callcenter.service.administration.IssuesService;
 import callcenter.service.base.BaseServiceBean;
 import callcenter.util.ObjectUtil;
 
 @Stateless
 public class IssueServiceBean extends
-		BaseServiceBean<IssueDetail, IssueSearchDTO> implements IssuesService {
+		BaseServiceBean<IssueDetail, IssueSearchDTO> {
 
 	@Override
 	public List<IssueDetail> search(IssueSearchDTO args, boolean countOnly) {
