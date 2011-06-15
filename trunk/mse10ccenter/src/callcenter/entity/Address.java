@@ -15,14 +15,14 @@ public class Address extends callcenter.entity.Entity implements Serializable {
 	@Column(columnDefinition = "Varchar(100)")
 	private String country;
 
-	@Column(columnDefinition = "Varchar(100)")
+	@Column(columnDefinition = "Varchar(80)")
 	private String street;
 
 	@Column(columnDefinition = "Varchar(50)")
 	private String city;
 
-	@Column(columnDefinition = "Varchar(20)")
-	private String postCode;
+	@Column(columnDefinition = "Integer")
+	private Integer postCode;
 
 	@Column(columnDefinition = "Varchar(30)")
 	private String municipality;
@@ -51,11 +51,11 @@ public class Address extends callcenter.entity.Entity implements Serializable {
 		this.city = city;
 	}
 
-	public String getPostCode() {
+	public Integer getPostCode() {
 		return postCode;
 	}
 
-	public void setPostCode(String postCode) {
+	public void setPostCode(Integer postCode) {
 		this.postCode = postCode;
 	}
 

@@ -26,8 +26,8 @@ public class Software extends callcenter.entity.Entity implements Serializable {
 	private String version;
 
 	@Lob
-	@Column(length=100000)
-	private byte[] picture;
+	@Column(length = 100000)
+	private byte[] pictureHard;
 
 	@Column
 	private Double price;
@@ -64,19 +64,19 @@ public class Software extends callcenter.entity.Entity implements Serializable {
 		this.version = version;
 	}
 
-	public byte[] getPicture() {
-		return picture;
-	}
-
-	public void setPicture(byte[] picture) {
-		this.picture = picture;
-	}
-
 	public Double getPrice() {
 		return price;
 	}
 
 	public void setPrice(Double price) {
 		this.price = price;
+	}
+
+	public byte[] getPictureHard() {
+		return pictureHard;
+	}
+
+	public void setPictureHard(byte[] pictureHard) {
+		this.pictureHard = pictureHard;
 	}
 }

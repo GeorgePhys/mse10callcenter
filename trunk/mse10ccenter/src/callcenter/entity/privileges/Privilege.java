@@ -12,17 +12,17 @@ import javax.persistence.Entity;
 @RequestScoped
 public class Privilege extends callcenter.entity.Entity implements Serializable {
 
-	@Column(columnDefinition = "Varchar(10)")
-	private String code;
+	@Column(columnDefinition = "Integer(10)")
+	private Integer code;
 
-	@Column(columnDefinition = "Varchar(100)")
+	@Column(columnDefinition = "Varchar(250)")
 	private String description;
 
-	public String getCode() {
+	public Integer getCode() {
 		return code;
 	}
 
-	public void setCode(String code) {
+	public void setCode(Integer code) {
 		this.code = code;
 	}
 
