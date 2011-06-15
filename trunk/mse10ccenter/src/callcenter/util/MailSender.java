@@ -32,7 +32,7 @@ public final class MailSender {
 			String uuid, Date expirationDate) {
 		try {
 			javax.mail.Session session = (javax.mail.Session) CommonUtil
-					.getInitialContext().lookup("java:/GMail");
+					.getInitialContext().lookup("java:/Mail");
 			Message message = new MimeMessage(session);
 
 			InternetAddress to[] = new InternetAddress[1];
