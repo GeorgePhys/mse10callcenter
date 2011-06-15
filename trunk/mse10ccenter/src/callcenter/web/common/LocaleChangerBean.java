@@ -12,7 +12,7 @@ import javax.faces.event.ValueChangeEvent;
 
 @ManagedBean(name = "localeChenger")
 @SessionScoped
-public class LocaleChengerBean implements Serializable {
+public class LocaleChangerBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
