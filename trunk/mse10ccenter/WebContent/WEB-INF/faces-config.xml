@@ -3,19 +3,9 @@
 	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
 	<managed-bean>
-		<managed-bean-name>changeLanguage</managed-bean-name>
-		<managed-bean-class>callcenter.web.ChangeLanguage</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
-	</managed-bean>
-	<managed-bean>
 		<managed-bean-name>registrationController</managed-bean-name>
 		<managed-bean-class>callcenter.web.RegistrationController</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
-	</managed-bean>
-	<managed-bean>
-		<managed-bean-name>address</managed-bean-name>
-		<managed-bean-class>callcenter.entity.Address</managed-bean-class>
-		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
 	<navigation-rule>
 		<display-name>registration</display-name>
@@ -23,6 +13,13 @@
 		<navigation-case>
 			<from-outcome>success</from-outcome>
 			<to-view-id>/pages/completeRegistration.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>userRegistration</from-outcome>
+			<to-view-id>/pages/admin/users/user.jsf</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	<!-- Action managers end navigation rules start -->

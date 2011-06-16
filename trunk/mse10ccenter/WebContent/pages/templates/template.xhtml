@@ -5,7 +5,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
-	<title><ui:insert name="title">Page Title</ui:insert></title>
+	<title><ui:insert name="title">Page Title</ui:insert>
+	</title>
 	<link rel="stylesheet" type="text/css"
 		href="#{facesContext.externalContext.requestContextPath}/css/template.css" />
 	<ui:insert name="head" />
@@ -19,7 +20,7 @@
 			<h1 style="display: inline;">Site name</h1>
 			<div style="float: right;">
 				<h:form>
-					<h:selectOneMenu value="#{localeChenger.localeCode}"
+					<h:selectOneMenu value="#{localeChanger.localeCode}"
 						onchange="submit()"
 						valueChangeListener="#{localeChanger.countryLocaleCodeChanged}">
 						<f:selectItems value="#{localeChanger.countriesInMap}" />
@@ -29,31 +30,24 @@
 		</div>
 		<div id="navigation">
 			<ul>
-				<li><a href="#">Home</a>
-				</li>
-				<li><a href="#">About</a>
-				</li>
-				<li><a href="#">Services</a>
-				</li>
-				<li><a href="#">Contact us</a>
-				</li>
+				<li><a href="#">Home</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Services</a></li>
+				<li><a href="#">Contact us</a></li>
 			</ul>
 		</div>
 		<div id="content-container1">
 			<div id="content-container2">
 				<div id="section-navigation">
 					<ul>
-						<li><a href="#">Section page 1</a>
-						</li>
-						<li><a href="#">Section page 2</a>
-						</li>
-						<li><a href="#">Section page 3</a>
-						</li>
-						<li><a href="#">Section page 4</a>
-						</li>
+						<li><a href="#">Section page 1</a></li>
+						<li><a href="#">Section page 2</a></li>
+						<li><a href="#">Section page 3</a></li>
+						<li><a href="#">Section page 4</a></li>
 					</ul>
 				</div>
 				<div id="content">
+					<h:messages globalOnly="true" />
 					<ui:insert name="body">Page Body</ui:insert>
 				</div>
 			</div>
