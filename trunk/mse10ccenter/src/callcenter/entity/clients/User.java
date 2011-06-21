@@ -45,7 +45,7 @@ public class User extends callcenter.entity.Entity implements Serializable {
 	@Column(columnDefinition = "Integer")
 	private Integer userType;
 
-	@Column(columnDefinition = "BOOLEAN")
+	@Column(columnDefinition = "Boolean")
 	private Boolean confirmed;
 
 	public String getMail() {
