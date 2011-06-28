@@ -30,7 +30,7 @@
 		</div>
 		<div id="navigation">
 			<ul>
-				<li><a href="#">Home</a></li>
+				<li><a href="/mse10ccenter/pages/home.jsf">Home</a></li>
 				<li><a href="#">About</a></li>
 				<li><a href="#">Services</a></li>
 				<li><a href="#">Contact us</a></li>
@@ -40,7 +40,7 @@
 			<div id="content-container2">
 				<div id="section-navigation">
 					<ul>
-						<li><a href="#">Section page 1</a></li>
+						<li><a href="/mse10ccenter/pages/registration.jsf">Registration</a></li>
 						<li><a href="#">Section page 2</a></li>
 						<li><a href="#">Section page 3</a></li>
 						<li><a href="#">Section page 4</a></li>
@@ -49,8 +49,14 @@
 				<div id="content">
 					<h:messages globalOnly="true" />
 					<ui:insert name="body">Page Body</ui:insert>
+					<div name="main">
+						<img src="/images/main.jpg" alt="Call Center" align="center"/>
+					</div>
 				</div>
 			</div>
+		</div>
+		<div id="footer">
+		<ui:include src="/pages/footer.xhtml"/>
 		</div>
 	</div>
 </body>
