@@ -17,7 +17,10 @@
 <body>
 	<div id="container">
 		<div id="header">
-			<h1 style="display: inline;">Site name</h1>
+				<a href="home.jsf">
+					<img src="templates/images/logo.gif" alt="Home" align="top;left" width="70" height="70"/>
+				</a>
+				<h1 style="display: inline;">Call Center</h1>
 			<div style="float: right;">
 				<h:form>
 					<h:selectOneMenu value="#{localeChanger.localeCode}"
@@ -47,10 +50,10 @@
 					</ul>
 				</div>
 				<div id="content">
-					<h:messages globalOnly="true" />
+					<h:messages globalOnly="true"/>
 					<ui:insert name="body">Page Body</ui:insert>
 					<div name="main">
-						<img src="/images/main.jpg" alt="Call Center" align="center"/>
+						<img src="templates/images/main.jpg" alt="Call Center" align="center" height="500" width="500"/>
 					</div>
 				</div>
 			</div>
