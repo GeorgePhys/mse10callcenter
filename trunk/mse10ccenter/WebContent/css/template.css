@@ -82,3 +82,24 @@
 	padding: 20px 0;
 	margin: 0 0 0 2%;
 }
+
+/* Footer */
+
+#footer {
+	clear: both;
+	width: 950px;
+	margin: 0 auto;
+	padding: 30px 0;
+	background: url(/mse10ccenter/pages/templates/images/img11.gif) no-repeat;
+}
+
+#footer p {
+	margin: 0 0 5px 0;
+	text-align: center;
+	line-height: normal;
+	font-size: .9em;
+}
+
+#footer a {
+	text-decoration: none;
+}
