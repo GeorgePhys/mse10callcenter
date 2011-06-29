@@ -1,10 +1,12 @@
 package callcenter.entity.clients;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -20,17 +22,18 @@ public class Company extends callcenter.entity.Entity implements Serializable {
 	@Column(columnDefinition = "Varchar(100)")
 	private String name;
 
-	@Column(columnDefinition = "Varchar(12)")
+	@Column(columnDefinition = "Varchar(13)")
 	private String bulstat;
 
 	@Column(columnDefinition = "Varchar(50)")
 	private String webAddress;
 
-	@OneToOne
-	private Address address;
+	@OneToOne(cascade = CascadeType.ALL)
+	private Address address = new Address();
 
-	@ManyToMany
-	private List<User> representatives;
+	@ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST,
+			CascadeType.REFRESH })
+	private List<User> representatives = new ArrayList<User>();
 
 	@Column(columnDefinition = "Varchar(20)")
 	private String phone;
@@ -92,5 +95,10 @@ public class Company extends callcenter.entity.Entity implements Serializable {
 
 	public void setMail(String mail) {
 		this.mail = mail;
+	}
+
+	@Override
+	public void initializeBibirectional() {
+
 	}
 }

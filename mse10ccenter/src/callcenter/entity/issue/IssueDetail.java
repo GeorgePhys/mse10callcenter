@@ -126,4 +126,10 @@ public class IssueDetail extends callcenter.entity.Entity implements
 		this.desctription = desctription;
 	}
 
+	@Override
+	public void initializeBibirectional() {
+		// TODO Auto-generated method stub
+
+	}
+
 }

@@ -6,12 +6,12 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Lob;
 
 @Entity
 @ManagedBean(name = "hardware")
 @RequestScoped
-public class Hardware extends callcenter.entity.Entity implements Serializable {
+public class Hardware extends callcenter.entity.Entity implements Product,
+		Serializable {
 
 	@Column(columnDefinition = "Varchar(80)")
 	private String productName;
@@ -31,8 +31,11 @@ public class Hardware extends callcenter.entity.Entity implements Serializable {
 	@Column(columnDefinition = "Double")
 	private Double weight;
 
-	@Lob
-	private byte[] pictureSoft;
+	@Column(columnDefinition = "BLOB")
+	private byte[] picture;
+
+	@Column
+	private Double price;
 
 	public String getProductName() {
 		return productName;
@@ -82,10 +85,12 @@ public class Hardware extends callcenter.entity.Entity implements Serializable {
 		this.weight = weight;
 	}
 
+	@Override
 	public byte[] getPicture() {
 		return picture;
 	}
 
+	@Override
 	public void setPicture(byte[] picture) {
 		this.picture = picture;
 	}
@@ -98,19 +103,8 @@ public class Hardware extends callcenter.entity.Entity implements Serializable {
 		this.price = price;
 	}
 
-	@Lob
-	@Column(length = 100000)
-	private byte[] picture;
-
-	@Column
-	private Double price;
-
-	public byte[] getPictureSoft() {
-		return pictureSoft;
-	}
-
-	public void setPictureSoft(byte[] pictureSoft) {
-		this.pictureSoft = pictureSoft;
+	@Override
+	public void initializeBibirectional() {
 	}
 
 }

@@ -10,7 +10,7 @@ import javax.persistence.MappedSuperclass;
 import callcenter.validation.Validatable;
 
 @MappedSuperclass
-public class Entity extends Validatable implements Serializable {
+public abstract class Entity extends Validatable implements Serializable {
 
 	/**
 	 * 
@@ -33,4 +33,5 @@ public class Entity extends Validatable implements Serializable {
 
 	}
 
+	public abstract void initializeBibirectional();
 }

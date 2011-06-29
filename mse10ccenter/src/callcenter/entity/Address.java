@@ -74,4 +74,10 @@ public class Address extends callcenter.entity.Entity implements Serializable {
 		return municipality;
 	}
 
+	@Override
+	public void initializeBibirectional() {
+		// TODO Auto-generated method stub
+
+	}
+
 }

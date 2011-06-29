@@ -33,4 +33,10 @@ public class Privilege extends callcenter.entity.Entity implements Serializable 
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	@Override
+	public void initializeBibirectional() {
+		// TODO Auto-generated method stub
+
+	}
 }
