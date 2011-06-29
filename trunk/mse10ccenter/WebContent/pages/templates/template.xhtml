@@ -18,7 +18,7 @@
 	<div id="container">
 		<div id="header">
 				<a href="home.jsf">
-					<img src="templates/images/logo.gif" alt="Home" align="top;left" width="70" height="70"/>
+					<img src="#{facesContext.externalContext.requestContextPath}/images/logo.gif" alt="Home" align="top;left" width="70" height="70"/>
 				</a>
 				<h1 style="display: inline;">Call Center</h1>
 			<div style="float: right;">
@@ -55,10 +55,6 @@
 				<div id="content">
 					<h:messages globalOnly="true"/>
 					<ui:insert name="body">Page Body</ui:insert>
-					<div name="main">
-						<strong>Spored men taq snimka nema nujda da e v template-a, a v home.jsf, bih q razkaral no nekoi 6te piska posle ...</strong>
-						<img src="templates/images/main.jpg" alt="Call Center" align="center" height="500" width="500"/>
-					</div>
 				</div>
 			</div>
 		</div>
