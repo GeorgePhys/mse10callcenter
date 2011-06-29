@@ -10,5 +10,11 @@
 		<h:outputText value="Welcome back #{loginAction.user.fullName}"
 			rendered="#{loginAction.loggedin}" />
 	</ui:define>
-	<ui:define name="body"/>
+	<ui:define name="body">
+		<div>
+			<img
+				src="#{facesContext.externalContext.requestContextPath}/images/main.jpg"
+				alt="Call Center" height="500" width="500" />
+		</div>
+	</ui:define>
 </ui:composition>
