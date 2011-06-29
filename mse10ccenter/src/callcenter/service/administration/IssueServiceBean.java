@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 import org.apache.commons.lang.StringUtils;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import callcenter.dto.issue.IssueSearchDTO;
@@ -51,7 +52,20 @@ public class IssueServiceBean extends
 			criteria.add(Restrictions.eq("status", args.getStatus()));
 		}
 
-		// select * from issueDetail where assignedTo = 'asdasda'
+		if (countOnly) {
+			criteria.setProjection(Projections.count("id"));
+			Number count = (Number) criteria.list().get(0);
+			if (count == null || count.intValue() == 0) {
+				args.setTotalNumberOfRows(0);
+			} else {
+				args.setTotalNumberOfRows(count.intValue());
+			}
+			return null;
+		}
+
+		criteria.setMaxResults(args.getMaxResults());
+		criteria.setFirstResult(args.getFirstResult());
+
 		List list = criteria.list();
 		return list;
 	}
