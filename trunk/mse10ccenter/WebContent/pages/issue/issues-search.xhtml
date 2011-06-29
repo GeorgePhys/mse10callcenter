@@ -9,33 +9,33 @@
 	</ui:define>
 	<ui:define name="pageHeader">Issue Search</ui:define>
 	<ui:define name="body">
-	
+	<f:loadBundle basename="labels.labels_bg" var="label"/>
 		<fieldset style="width: 800px;">
-			<legend align="left">Търсене</legend>
+			<legend align="left">#{label.search}</legend>
 			<h:form>
 				<table class="search">
 					<tr>
-						<td>Заглавие на задача:</td>
+						<td>#{label.issueTask}:</td>
 						<td><h:inputText value="" />
 						</td>
 					</tr>
 					<tr>
-						<td>Номер:</td>
+						<td>#{label.issueNumber}:</td>
 						<td><h:inputText value="" />
 						</td>
 					</tr>
 					<tr>
-						<td>Създадено от:</td>
+						<td>#{label.issueCreatedFrom}:</td>
 						<td><h:inputText value="" />
 						</td>
 					</tr>
 					<tr>
-						<td>Назначено на:</td>
+						<td>#{label.issueOwnerCreate}:</td>
 						<td><h:inputText value="" />
 						</td>
 					</tr>
 					<tr>
-						<td>Статус:</td>
+						<td>#{label.issueStatus}:</td>
 						<td><h:selectOneMenu id="subscriptions" value="" style=" width : 149px;">
 								<f:selectItem  itemLabel="Избери опция" itemValue="0" />
 								<f:selectItem  itemLabel="Отворен" itemValue="1" />
@@ -47,7 +47,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td>Решение:</td>
+						<td>#{label.issueDecision}:</td>
 						<td><h:selectOneMenu id="subscriptions2" value="" style=" width : 150px;">
 								<f:selectItem  itemLabel="Избери опция" itemValue="0" />
 								<f:selectItem  itemLabel="Установено" itemValue="1" />
@@ -60,7 +60,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td>Приоритет:</td>
+						<td>#{label.issuePriority}</td>
 						<td><h:selectOneMenu id="subscriptions3" value="" style=" width : 149px;">
 								<f:selectItem  itemLabel="Избери опция" itemValue="0" />
 								<f:selectItem  itemLabel="Критичен" itemValue="1" />
@@ -71,7 +71,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td>Дата на създаване:</td>
+						<td>#{label.issueCreateDate}:</td>
 						<td><h:inputText value="" />
 						</td>
 					</tr>
@@ -85,13 +85,13 @@
 						<td></td>
 					</tr>
 					<tr>
-						<td><h:commandButton value="Търсене" />
+						<td><h:commandButton value="#{label.search}" />
 						</td>
-						<td><h:commandButton value="Отказ" />
+						<td><h:commandButton value="#{label.issueCancel}" />
 						</td>
 					</tr>
 					<tr>
-						<td rowspan="1"><h3>Намерен резултат</h3></td>
+						<td rowspan="1"><h3>#{label.issueResult}</h3></td>
 						<td></td>
 					</tr>
 				</table>
