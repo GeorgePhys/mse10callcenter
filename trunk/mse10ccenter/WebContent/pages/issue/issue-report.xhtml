@@ -1,0 +1,80 @@
+<ui:composition template="/pages/templates/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<ui:define name="title">Issue search</ui:define>
+	<ui:define name="head">
+		<link rel="stylesheet" type="text/css" href="../css/template.css" />
+	</ui:define>
+	<ui:define name="pageHeader">Issue Reports</ui:define>
+	<ui:define name="body">
+		<f:loadBundle basename="labels.labels_bg" var="label" />
+		<fieldset style="width: 800px;">
+			<legend align="left">Отчети</legend>
+			<h:form>
+				<table class="search">
+					<tr>
+						<td>#{label.issueTask}</td>
+						<td></td>
+						<td><h:inputText value="" /></td>
+					</tr>
+					<tr>
+						<td>#{label.issueNumber}</td>
+						<td></td>
+						<td><h:inputText value="" /></td>
+					</tr>
+					<tr>
+						<td>#{label.issueCreatedFrom}</td>
+						<td></td>
+						<td><h:inputText value="" /></td>
+
+					</tr>
+					<tr>
+						<td>#{label.issueOwnerCreate}</td>
+						<td></td>
+						<td><h:inputText value="" /></td>
+					</tr>
+					<tr>
+						<td>#{label.issueStatus}</td>
+						<td></td>
+						<td><h:inputText value="" /></td>
+					</tr>
+					<tr>
+						<td>#{label.issueDecision}</td>
+						<td></td>
+						<td><h:inputText value="" /></td>
+					</tr>
+					<tr>
+						<td>#{label.issuePriority}</td>
+						<td></td>
+						<td><h:inputText value="" /></td>
+					</tr>
+
+					<tr>
+						<td>#{label.dateFrom}</td>
+						<td></td>
+						<td><h:inputText value="" /></td>
+					</tr>
+					<tr>
+						<td>#{label.dateTo}</td>
+						<td></td>
+						<td><h:inputText value="" /></td>
+					</tr>
+
+
+					<tr>
+						<td><h:commandButton value="Генерирай" /> <h:commandButton
+								value="Принт" /> <h:commandButton value="Отказ" /></td>
+					</tr>
+
+
+
+				</table>
+
+
+			</h:form>
+		</fieldset>
+	</ui:define>
+
+</ui:composition>
