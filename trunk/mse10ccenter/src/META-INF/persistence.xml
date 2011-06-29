@@ -7,7 +7,11 @@
 		<jta-data-source>java:/ccenter_ds</jta-data-source>
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
-			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+			
+			<!-- DO NOT CHANGE hibernate.hbm2ddl.auto -->
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<!-- DO NOT CHANGE hibernate.hbm2ddl.auto -->
+			
 			<property name="hibernate.show-sql" value="true" />
 			<property name="hibernate.format-sql" value="true" />
 		</properties>
