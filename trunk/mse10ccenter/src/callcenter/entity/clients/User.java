@@ -33,7 +33,7 @@ public class User extends callcenter.entity.Entity implements Serializable {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Address address = new Address();
 
-	@ManyToMany
+	@ManyToMany(mappedBy = "representatives")
 	private List<Company> companies;
 
 	@Column(columnDefinition = "Varchar(20)")
@@ -125,5 +125,11 @@ public class User extends callcenter.entity.Entity implements Serializable {
 
 	public void setConfirmed(Boolean confirmed) {
 		this.confirmed = confirmed;
+	}
+
+	@Override
+	public void initializeBibirectional() {
+		// TODO Auto-generated method stub
+
 	}
 }

@@ -6,12 +6,12 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Lob;
 
 @Entity
 @ManagedBean(name = "software")
 @RequestScoped
-public class Software extends callcenter.entity.Entity implements Serializable {
+public class Software extends callcenter.entity.Entity implements Product,
+		Serializable {
 
 	@Column(columnDefinition = "Varchar(80)")
 	private String productName;
@@ -25,9 +25,8 @@ public class Software extends callcenter.entity.Entity implements Serializable {
 	@Column(columnDefinition = "Varchar(10)")
 	private String version;
 
-	@Lob
-	@Column(length = 100000)
-	private byte[] pictureHard;
+	@Column(columnDefinition = "BLOB")
+	private byte[] picture;
 
 	@Column
 	private Double price;
@@ -72,11 +71,19 @@ public class Software extends callcenter.entity.Entity implements Serializable {
 		this.price = price;
 	}
 
-	public byte[] getPictureHard() {
-		return pictureHard;
+	@Override
+	public byte[] getPicture() {
+		return picture;
 	}
 
-	public void setPictureHard(byte[] pictureHard) {
-		this.pictureHard = pictureHard;
+	@Override
+	public void setPicture(byte[] picture) {
+		this.picture = picture;
+	}
+
+	@Override
+	public void initializeBibirectional() {
+		// TODO Auto-generated method stub
+
 	}
 }

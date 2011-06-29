@@ -29,6 +29,11 @@
 		<url-pattern>*.jsf</url-pattern>
 	</servlet-mapping>
 
+	<context-param>
+		<param-name>javax.faces.FACELETS_LIBRARIES</param-name>
+		<param-value>/WEB-INF/ccenter.taglib.xml</param-value>
+	</context-param>
+
 	<!-- Captcha start -->
 	<servlet>
 		<servlet-name>SimpleCaptcha</servlet-name>

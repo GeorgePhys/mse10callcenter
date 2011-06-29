@@ -47,4 +47,10 @@ public class PrivilegesGroup extends callcenter.entity.Entity implements
 	public void setPrivileges(List<Privilege> privileges) {
 		this.privileges = privileges;
 	}
+
+	@Override
+	public void initializeBibirectional() {
+		// TODO Auto-generated method stub
+
+	}
 }
