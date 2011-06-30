@@ -30,12 +30,12 @@ public class IsUserLoggedInFilter implements Filter {
 
 		String requestURL = servletRequest.getRequestURL().toString();
 
-		if (httpSession.getAttribute("user") == null
-				&& !requestURL.contains("login.jsf")) {
-			servletResponse.sendRedirect("/mse10ccenter/pages/login/login.jsf");
-		} else {
-			chain.doFilter(request, response);
-		}
+		// if (httpSession.getAttribute("user") == null
+		// && !requestURL.contains("login.jsf")) {
+		// servletResponse.sendRedirect("/mse10ccenter/pages/login/login.jsf");
+		// } else {
+		// chain.doFilter(request, response);
+		// }
 	}
 
 	@Override
