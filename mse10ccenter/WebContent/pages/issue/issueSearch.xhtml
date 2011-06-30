@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/pages/templates/template.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<ui:define name="title">#{labels.issueSearch}</ui:define>
+	<ui:define name="head">
+		<link rel="stylesheet" type="text/css"
+			href="#{facesContext.externalContext.requestContextPath}/css/common.css" />
+	</ui:define>
+	<ui:define name="body">
+		<h:form>
+			<rich:dataTable keepSaved="true" id="richTable" var="issueDetail"
+				value="#{issueSearchAction.dataModel}" rows="10">
+				<f:facet name="header">
+					<rich:columnGroup>
+						
+						<h:column>
+							<h:outputText styleClass="headerText" value="Title Issue" />
+							<br />
+							<h:inputText value="#{issueSearch.titleIssue}" />
+						</h:column>
+						<h:column>
+							<h:outputText styleClass="headerText" value="Date Create" />
+							<br />
+							<h:inputText value="#{issueSearch.dateCreate}" />
+						</h:column>
+						<h:column>
+							<h:outputText styleClass="headerText" value="Date Ended" />
+							<br />
+							<h:inputText value="#{issueSearch.dateEnded}" />
+						</h:column>
+						<h:column>
+							<h:outputText styleClass="headerText" value="Created By" />
+							<br />
+							<h:inputText value="#{issueSearch.createdBy}" />
+						</h:column>
+						<h:column>
+							<h:outputText styleClass="headerText" value="Assigned To" />
+							<br />
+							<h:inputText value="#{issueSearch.assignedTo}" />
+						</h:column>
+						<h:column>
+							<h:outputText styleClass="headerText" value="Status" />
+							<br />
+							<h:inputText value="#{issueSearch.status}" />
+						</h:column>
+						<h:column>
+							<h:outputText styleClass="headerText" value="Resolution" />
+							<br />
+							<h:inputText value="#{issueSearch.resolution}" />
+						</h:column>
+						
+						<h:column>
+							<h:commandButton action="#{issueSearchAction.search(issueSearch)}"
+								value="#{labels.search}" />
+						</h:column>
+					</rich:columnGroup>
+				</f:facet>
+				<h:column>
+					<h:outputText value="#{issueDetail.titleIssue}" />
+				</h:column>
+				<h:column>
+					<h:outputText value="#{issueDetail.dateCreate}" />
+				</h:column>
+				<h:column>
+					<h:outputText value="#{issueDetail.dateEnded}" />
+				</h:column>
+				<h:column>
+					<h:outputText value="#{issueDetail.createdBy}" />
+				</h:column>
+				<h:column>
+					<h:outputText value="#{issueDetail.assignedTo}" />
+				</h:column>
+				<h:column>
+					<h:outputText value="#{issueDetail.status}" />
+				</h:column>
+				<h:column>
+					<h:outputText value="#{issueDetail.resolution}" />
+				</h:column>
+				<f:facet name="footer">
+					<rich:dataScroller id="scroller" />
+				</f:facet>
+			</rich:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
