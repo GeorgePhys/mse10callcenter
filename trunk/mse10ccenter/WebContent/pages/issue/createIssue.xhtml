@@ -10,6 +10,7 @@
 		<!-- link rel="stylesheet" type="text/css" href="../css/admin.css" /-->
 	</ui:define>
 	<ui:define name="body">
+	<f:loadBundle basename="labels.labels_bg" var="labels" />
 		<div id="createIssue" align="left">
 			<h:form id="formCreateIssue" name="formCreateIssue" method=""
 				action="">
@@ -121,9 +122,9 @@
 
 								</h:panelGrid>
 							</fieldset></td>
-						<h:commandButton value="#{labels.createIssue}" action=""
+						<h:commandButton action="#{issueCreateAction.create(issueDetail)}"   value="#{labels.createIssue}" 
 							style=" width : 80px;" />
-						<h:commandButton value="#{labels.cancel}" action=""
+						<h:commandButton value="#{labels.cancel}" 
 							style=" width : 80px;" />
 					</div>
 
