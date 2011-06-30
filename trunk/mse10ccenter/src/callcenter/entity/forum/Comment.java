@@ -1,13 +1,9 @@
 package callcenter.entity.forum;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 @Entity
-@RequestScoped
-@ManagedBean(name = "comment")
 public class Comment extends BasePost {
 
 	@ManyToOne
