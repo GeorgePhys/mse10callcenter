@@ -7,28 +7,26 @@
 
 	<ui:define name="title">Login</ui:define>
 	<ui:define name="body">
-		<h:form>
-			<h:commandLink value="#{labels.registration}"
-				action="userRegistration" />
-		</h:form>
 		<h:form id="CaptchaForm">
 			<table>
 				<tr>
-					<td><h:outputText value="#{labels.email}" /></td>
+					<td><h:outputText value="#{labels.email}" />
+					</td>
 					<td><h:inputText id="email" style="width:100%"
-							value="#{user.mail}" required="true" /></td>
+							value="#{user.mail}" required="true" />
+					</td>
 				</tr>
 				<tr>
 					<td colspan="2"><h:message for="email" errorClass="error" />
 					</td>
 				</tr>
 				<tr>
-					<td><h:outputText value="#{labels.password}" /></td>
+					<td><h:outputText value="#{labels.password}" />
+					</td>
 					<td><h:inputSecret id="password" style="width:100%"
 							value="#{user.password}" required="true">
 							<f:validateLength for="password" minimum="6" maximum="20" />
-						</h:inputSecret>
-					</td>
+						</h:inputSecret></td>
 				</tr>
 				<tr>
 					<td colspan="2"><h:message for="password" errorClass="error" />
@@ -37,8 +35,7 @@
 				<tr>
 					<td></td>
 					<td><h:graphicImage id="CaptchaImgID" style="width:100%"
-							value="/simpleCaptcha.png" />
-					</td>
+							value="/simpleCaptcha.png" /></td>
 				</tr>
 				<tr>
 					<td>Captcha</td>
@@ -46,15 +43,21 @@
 							required="true" requiredMessage="Captcha missing"
 							validator="#{captchaValidator.validateCaptcha}"
 							validatorMessage="Captcha does not match" immediate="true">
-						</h:inputText></td>
+						</h:inputText>
+					</td>
 				</tr>
 				<tr>
 					<td colspan="2"><h:message id="CaptchaMsgID" for="CaptchaID"
-							errorClass="error" /></td>
+							errorClass="error" />
+					</td>
 				</tr>
 			</table>
 			<h:commandButton action="#{loginAction.login(user)}"
 				value="#{labels.loginTitle}" />
+		</h:form>
+		<h:form>
+			<h:commandButton value="#{labels.registration}"
+				action="userRegistration" />
 		</h:form>
 	</ui:define>
 </ui:composition>

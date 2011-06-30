@@ -3,27 +3,17 @@
 	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
 	<navigation-rule>
-		<display-name>registration</display-name>
-		<from-view-id>/pages/userRegistration(inprogres).jsf</from-view-id>
-		<navigation-case>
-			<from-outcome>success</from-outcome>
-			<to-view-id>/pages/completeRegistration.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	<navigation-rule>
 		<from-view-id>*</from-view-id>
 		<navigation-case>
 			<from-outcome>userRegistration</from-outcome>
 			<to-view-id>/pages/admin/users/user.jsf</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	<!-- Action managers end navigation rules start -->
 	<navigation-rule>
-		<display-name>registration</display-name>
-		<from-view-id>/pages/registration.xhtml</from-view-id>
+		<from-view-id>*</from-view-id>
 		<navigation-case>
-			<from-outcome>success</from-outcome>
-			<to-view-id>/pages/completeRegistration.xhtml</to-view-id>
+			<from-outcome>loginPage</from-outcome>
+			<to-view-id>/pages/login/login.jsf</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	<navigation-rule>
