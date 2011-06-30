@@ -2,11 +2,15 @@ package callcenter.entity.forum;
 
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
+@RequestScoped
+@ManagedBean(name = "post")
 public class Post extends BasePost {
 
 	@ManyToOne
