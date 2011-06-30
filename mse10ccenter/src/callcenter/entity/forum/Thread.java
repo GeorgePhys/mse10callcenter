@@ -2,15 +2,11 @@ package callcenter.entity.forum;
 
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.persistence.OneToMany;
 
 import callcenter.entity.Entity;
 
 @javax.persistence.Entity
-@RequestScoped
-@ManagedBean(name = "thread")
 public class Thread extends Entity {
 
 	private String title;
