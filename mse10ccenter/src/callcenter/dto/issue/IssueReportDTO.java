@@ -13,6 +13,8 @@ public class IssueReportDTO extends BaseDTO<IssueDetail> {
 
 	private String createdBy;
 
+	private String type;
+
 	private String assignedTo;
 
 	private String status;
@@ -75,5 +77,13 @@ public class IssueReportDTO extends BaseDTO<IssueDetail> {
 
 	public void setDateEnded(Date dateEnded) {
 		this.dateEnded = dateEnded;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 }
