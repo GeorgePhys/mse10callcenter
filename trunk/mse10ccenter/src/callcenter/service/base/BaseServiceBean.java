@@ -18,6 +18,10 @@ public class BaseServiceBean<E, T extends BaseDTO<E>> {
 		return getEntityManager().merge(entity);
 	}
 
+	public void refresh(E e) {
+		getEntityManager().refresh(e);
+	}
+
 	public E find(Class<E> clazz, Object id) {
 		return getEntityManager().find(clazz, id);
 	}

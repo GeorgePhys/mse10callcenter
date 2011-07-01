@@ -4,33 +4,44 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	template="/pages/templates/template.xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:rich="http://richfaces.org/rich" >
+	xmlns:rich="http://richfaces.org/rich">
 
-	<ui:define name="title">User registration</ui:define>
+	<ui:define name="title">Forum</ui:define>
 	<ui:define name="head">
-		<!--link rel="stylesheet" type="text/css"
-			href="#{facesContext.externalContext.requestContextPath}/css/admin.css" /-->
 	</ui:define>
 	<ui:define name="body">
 		<h:form>
-			<rich:dataGrid value="#{forumAction.current.posts}" var="post"
+			<rich:dataGrid value="#{forumAction.thread.posts}" var="post"
 				columns="1" width="600px" border="0">
+				<f:facet name="header">
+					<h:outputText value="#{forumAction.thread.title}" />
+					<h:commandLink value="Post" action="#{forumAction.addPost()}"
+						rendered="#{loginAction.loggedIn}" />
+				</f:facet>
 				<rich:panel bodyClass="pbody">
 					<f:facet name="header">
 						<h:outputText value="#{post.fromUser.fullName}" />
-						<h:commandLink value="Add Comment" action="#{forumAction.addComment(post)}" rendered="#{loginAction.loggedIn}" />
+						<h:commandLink value="Add Comment"
+							action="#{forumAction.addComment(post)}"
+							rendered="#{loginAction.loggedIn}" />
 					</f:facet>
-					<h:outputText value="#{post.text}" />
+					<h:inputTextarea value="#{post.text}" readonly="#{post.id ne null}" />
+					<h:commandButton value="#{labels.save}"
+						action="#{forumAction.saveThread()}" rendered="#{post.id eq null}" />
 					<h:panelGrid columns="1">
-						<rich:list value="#{post.comments}" id="commentId"
-							var="comment" type="definitions">
+						<rich:list value="#{post.comments}" id="commentId" var="comment"
+							type="definitions">
 							<f:facet name="term">
 								<h:panelGroup layout="block">
 									<h:outputText value="#{comment.fromUser.fullName}:"
 										style="font-weight:bold" />
 								</h:panelGroup>
 							</f:facet>
-							<h:outputText value="#{comment.text}" />
+							<h:inputTextarea value="#{comment.text}"
+								readonly="#{comment.id ne null}" />
+							<h:commandButton value="#{labels.save}"
+								action="#{forumAction.saveThread()}"
+								rendered="#{comment.id eq null}" />
 						</rich:list>
 					</h:panelGrid>
 				</rich:panel>

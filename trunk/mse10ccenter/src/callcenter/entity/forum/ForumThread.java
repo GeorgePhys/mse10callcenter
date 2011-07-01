@@ -1,18 +1,25 @@
 package callcenter.entity.forum;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import callcenter.entity.Entity;
+import callcenter.entity.clients.User;
 
 @javax.persistence.Entity
-public class Thread extends Entity {
+public class ForumThread extends Entity {
 
 	private String title;
 
-	@OneToMany(mappedBy = "thread")
-	private List<Post> posts;
+	@OneToMany(mappedBy = "thread", cascade = CascadeType.ALL)
+	private List<Post> posts = new ArrayList<Post>();
+
+	@OneToOne
+	private User createdBy;
 
 	/**
 	 * @return the title
@@ -46,5 +53,23 @@ public class Thread extends Entity {
 
 	@Override
 	public void initializeBibirectional() {
+		for (Post post : posts) {
+			post.setThread(this);
+		}
+	}
+
+	/**
+	 * @return the createdBy
+	 */
+	public User getCreatedBy() {
+		return createdBy;
+	}
+
+	/**
+	 * @param createdBy
+	 *            the createdBy to set
+	 */
+	public void setCreatedBy(User createdBy) {
+		this.createdBy = createdBy;
 	}
 }

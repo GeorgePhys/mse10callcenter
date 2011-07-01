@@ -1,8 +1,11 @@
 package callcenter.entity.forum;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -10,15 +13,15 @@ import javax.persistence.OneToMany;
 public class Post extends BasePost {
 
 	@ManyToOne
-	private Thread thread;
+	private ForumThread thread;
 
-	@OneToMany(mappedBy = "post")
-	private List<Comment> comments;
+	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<Comment> comments = new ArrayList<Comment>();
 
 	/**
 	 * @return the thread
 	 */
-	public Thread getThread() {
+	public ForumThread getThread() {
 		return thread;
 	}
 
@@ -26,7 +29,7 @@ public class Post extends BasePost {
 	 * @param thread
 	 *            the thread to set
 	 */
-	public void setThread(Thread thread) {
+	public void setThread(ForumThread thread) {
 		this.thread = thread;
 	}
 
@@ -45,4 +48,11 @@ public class Post extends BasePost {
 		this.comments = comments;
 	}
 
+	@Override
+	public void initializeBibirectional() {
+		super.initializeBibirectional();
+		for (Comment comment : comments) {
+			comment.setPost(this);
+		}
+	}
 }

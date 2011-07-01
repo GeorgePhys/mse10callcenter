@@ -1,12 +1,14 @@
 package callcenter.entity.forum;
 
 import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToOne;
 
 import callcenter.entity.clients.User;
 
 @MappedSuperclass
 public class BasePost extends callcenter.entity.Entity {
 
+	@OneToOne
 	private User fromUser;
 
 	private String text;
