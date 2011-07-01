@@ -16,6 +16,9 @@ import javax.persistence.TemporalType;
 public class IssueDetail extends callcenter.entity.Entity implements
 		Serializable {
 
+	@Column(columnDefinition = "Varchar(100)")
+	private String titleIssue;
+
 	@Column(columnDefinition = "Varchar(20)")
 	private String type;
 
@@ -45,6 +48,14 @@ public class IssueDetail extends callcenter.entity.Entity implements
 
 	@Column(columnDefinition = "Varchar(200)")
 	private String desctription;
+
+	public String getTitleIssue() {
+		return titleIssue;
+	}
+
+	public void setTitleIssue(String titleIssue) {
+		this.titleIssue = titleIssue;
+	}
 
 	public String getType() {
 		return type;
