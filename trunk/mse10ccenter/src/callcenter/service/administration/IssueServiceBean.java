@@ -3,6 +3,8 @@ package callcenter.service.administration;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 
 import org.apache.commons.lang.StringUtils;
 import org.hibernate.Criteria;
@@ -18,8 +20,14 @@ import callcenter.util.ObjectUtil;
 @Stateless
 public class IssueServiceBean extends
 		BaseServiceBean<IssueDetail, IssueSearchDTO> {
+	
+	
+	
+	
+	
 
 	@Override
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 	public List<IssueDetail> search(IssueSearchDTO args, boolean countOnly) {
 		Session session = (Session) getEntityManager().getDelegate();
 		Criteria criteria = session.createCriteria(IssueDetail.class);

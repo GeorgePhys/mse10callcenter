@@ -3,10 +3,20 @@ package callcenter.dto.issue;
 import java.util.Date;
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+
 import callcenter.dto.BaseDTO;
 import callcenter.entity.issue.IssueDetail;
 
+@ManagedBean(name = "issueReportDto")
+@ViewScoped
+
 public class IssueReportDTO extends BaseDTO<IssueDetail> {
+	private String titleIssue;
+
+	private String desctription;
+
 	private Date dateCreate;
 
 	private Date dateEnded;
@@ -22,6 +32,22 @@ public class IssueReportDTO extends BaseDTO<IssueDetail> {
 	private List<String> resolution;
 
 	private String priority;
+
+	public String getTitleIssue() {
+		return titleIssue;
+	}
+
+	public void setTitleIssue(String titleIssue) {
+		this.titleIssue = titleIssue;
+	}
+
+	public String getDesctription() {
+		return desctription;
+	}
+
+	public void setDesctription(String desctription) {
+		this.desctription = desctription;
+	}
 
 	public Date getDateCreate() {
 		return dateCreate;
