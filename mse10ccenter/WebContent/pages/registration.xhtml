@@ -6,11 +6,13 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 	<ui:define name="title">Registration</ui:define>
 	<ui:define name="body">
+	<f:loadBundle basename="labels.labels" var="labels" />
+	<f:loadBundle basename="messages.messages" var="messages" />
 		<h:form>
 			<h:panelGrid columns="3">
 				<h:outputText value="#{labels.name}" />
 				<h:inputText id="name" required="true"
-					requiredMessage="you must write your name">
+					requiredMessage="You must write your name">
 					<f:validateRegex pattern="^[a-zA-Zа-яА-Я]{3,25}$" />
 				</h:inputText>
 				<h:message for="name" />
@@ -28,7 +30,7 @@
 				<f:validateRegex pattern="^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$"></f:validateRegex>
 				</h:inputText>
 				<h:message for="e-mail" />
-				<h:commandButton action="#{registrationController.register()}"
+				<h:commandButton action="#{RegistrationController.register()}"
 					value="#{labels.registration}" />
 			</h:panelGrid>
 		</h:form>
