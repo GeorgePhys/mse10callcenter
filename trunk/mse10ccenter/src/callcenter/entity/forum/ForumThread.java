@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.OrderBy;
 
 import callcenter.entity.Entity;
 import callcenter.entity.clients.User;
@@ -16,6 +17,7 @@ public class ForumThread extends Entity {
 	private String title;
 
 	@OneToMany(mappedBy = "thread", cascade = CascadeType.ALL)
+	@OrderBy("id")
 	private List<Post> posts = new ArrayList<Post>();
 
 	@OneToOne
@@ -55,6 +57,7 @@ public class ForumThread extends Entity {
 	public void initializeBibirectional() {
 		for (Post post : posts) {
 			post.setThread(this);
+			post.initializeBibirectional();
 		}
 	}
 

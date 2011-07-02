@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 
 @Entity
 public class Post extends BasePost {
@@ -16,6 +17,7 @@ public class Post extends BasePost {
 	private ForumThread thread;
 
 	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OrderBy("id")
 	private List<Comment> comments = new ArrayList<Comment>();
 
 	/**
@@ -53,6 +55,7 @@ public class Post extends BasePost {
 		super.initializeBibirectional();
 		for (Comment comment : comments) {
 			comment.setPost(this);
+			comment.initializeBibirectional();
 		}
 	}
 }
