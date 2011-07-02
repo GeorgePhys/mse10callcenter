@@ -11,14 +11,14 @@ import callcenter.service.administration.IssueServiceBean;
 
 @ViewScoped
 @ManagedBean(name = "issueCreateAction")
-public class IssueCreateAction  implements Serializable {
+public class IssueCreateAction implements Serializable {
 
 	private static final long serialVersionUID = -5533722715840256982L;
 
 	@EJB
 	private IssueServiceBean issueService;
 
-	public String create(IssueDetail issueDetail) throws Exception {
+	public String create(IssueDetail issueDetail) {
 		issueService.saveOrUpdate(issueDetail);
 		return null;
 	}
