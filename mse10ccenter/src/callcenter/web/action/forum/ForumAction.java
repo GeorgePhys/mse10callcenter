@@ -49,13 +49,15 @@ public class ForumAction implements Serializable {
 	public void addComment(Post commentedPost) {
 		User user = (User) FacesContext.getCurrentInstance()
 				.getExternalContext().getSessionMap().get("user");
-		Comment newComment = new Comment();
-		newComment.setFromUser(user);
-		newComment.setPost(commentedPost);
-		commentedPost.getComments().add(newComment);
+		Comment currentComment = new Comment();
+		currentComment.setFromUser(user);
+		currentComment.setPost(commentedPost);
+		commentedPost.getComments().add(currentComment);
+		commentedPost.initializeBibirectional();
 	}
 
 	public void saveThread() {
+		getThread().initializeBibirectional();
 		setThread(serviceBean.saveOrUpdate(getThread()));
 	}
 
@@ -88,4 +90,5 @@ public class ForumAction implements Serializable {
 	public void setPost(Post post) {
 		this.post = post;
 	}
+
 }
