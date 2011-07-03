@@ -37,7 +37,7 @@
 						<h:message for="phone" />
 
 						<h:outputText value="#{labels.userType}" />
-						<h:selectOneMenu value="#{user.userType}" id="userTypes">
+						<h:selectOneMenu value="#{user.userType}" id="userType">
 							<f:selectItem id="typeUser" itemLabel="#{labels.user}" />
 							<f:selectItem id="typeCompany" itemLabel="#{labels.company}" />
 						</h:selectOneMenu>
@@ -75,7 +75,7 @@
 				</rich:tab>
 			</rich:tabPanel>
 			<h:commandButton action="#{userRegistrationAction.register(user)}"
-				value="#{lables.registration}" />
+				value="#{labels.registration}" />
 		</h:form>
 	</ui:define>
 </ui:composition>
