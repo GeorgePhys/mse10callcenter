@@ -9,72 +9,69 @@
 	</ui:define>
 	<ui:define name="pageHeader">Issue Reports</ui:define>
 	<ui:define name="body">
-		<f:loadBundle basename="labels.labels_bg" var="label" />
+		<f:loadBundle basename="labels.labels" var="labels" />
 		<fieldset style="width: 800px;">
 			<legend align="left">Отчети</legend>
 			<h:form>
 				<table class="search">
 					<tr>
-						<td>#{label.issueTask}</td>
+						<td>#{labels.issueTask}</td>
 						<td></td>
 						<td><h:inputText value="" /></td>
 					</tr>
 					<tr>
-						<td>#{label.issueNumber}</td>
+						<td>#{labels.issueNumber}</td>
 						<td></td>
 						<td><h:inputText value="" /></td>
 					</tr>
 					<tr>
-						<td>#{label.issueCreatedFrom}</td>
+						<td>#{labels.issueCreatedFrom}</td>
 						<td></td>
 						<td><h:inputText value="" /></td>
 
 					</tr>
 					<tr>
-						<td>#{label.issueOwnerCreate}</td>
+						<td>#{labels.issueOwnerCreate}</td>
 						<td></td>
 						<td><h:inputText value="" /></td>
 					</tr>
 					<tr>
-						<td>#{label.issueStatus}</td>
+						<td>#{labels.issueStatus}</td>
 						<td></td>
 						<td><h:inputText value="" /></td>
 					</tr>
 					<tr>
-						<td>#{label.issueDecision}</td>
+						<td>#{labels.issueDecision}</td>
 						<td></td>
 						<td><h:inputText value="" /></td>
 					</tr>
 					<tr>
-						<td>#{label.issuePriority}</td>
+						<td>#{labels.issuePriority}</td>
 						<td></td>
 						<td><h:inputText value="" /></td>
 					</tr>
 
 					<tr>
-						<td>#{label.dateFrom}</td>
+						<td>#{labels.dateFrom}</td>
 						<td></td>
 						<td><h:inputText value="" /></td>
 					</tr>
 					<tr>
-						<td>#{label.dateTo}</td>
+						<td>#{labels.dateTo}</td>
 						<td></td>
 						<td><h:inputText value="" /></td>
 					</tr>
 
 
 					<tr>
-						<td><h:commandButton value="Генерирай" /> <h:commandButton
-								value="Принт" /> <h:commandButton value="Отказ" /></td>
+						<td>
+							<h:commandButton value="#{labels.generate}" /> 
+							<h:commandButton value="#{labels.print}" /> 
+							<h:commandButton value="#{labels.cancel}" />
+						</td>
 					</tr>
-
-
-
 				</table>
-
-
 			</h:form>
 		</fieldset>
 	</ui:define>
-
 </ui:composition>
