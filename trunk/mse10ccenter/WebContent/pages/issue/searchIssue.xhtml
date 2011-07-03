@@ -9,29 +9,29 @@
 	</ui:define>
 	<ui:define name="pageHeader">Issue Search</ui:define>
 	<ui:define name="body">
-		<f:loadBundle basename="labels.labels_bg" var="label" />
+		<f:loadBundle basename="labels.labels" var="labels" />
 		<fieldset style="width: 800px;">
-			<legend align="left">#{label.search}</legend>
+			<legend align="left">#{labels.search}</legend>
 			<h:form>
 				<table class="search">
 					<tr>
-						<td>#{label.issueTask}:</td>
+						<td>#{labels.issueTask}:</td>
 						<td><h:inputText value="" /></td>
 					</tr>
 					<tr>
-						<td>#{label.issueNumber}:</td>
+						<td>#{labels.issueNumber}:</td>
 						<td><h:inputText value="" /></td>
 					</tr>
 					<tr>
-						<td>#{label.issueCreatedFrom}:</td>
+						<td>#{labels.issueCreatedFrom}:</td>
 						<td><h:inputText value="" /></td>
 					</tr>
 					<tr>
-						<td>#{label.issueOwnerCreate}:</td>
+						<td>#{labels.issueOwnerCreate}:</td>
 						<td><h:inputText value="" /></td>
 					</tr>
 					<tr>
-						<td>#{label.issueStatus}:</td>
+						<td>#{labels.issueStatus}:</td>
 						<td><h:selectOneMenu id="subscriptions" value=""
 								style=" width : 149px;">
 								<f:selectItem itemLabel="Избери опция" itemValue="0" />
@@ -43,7 +43,7 @@
 							</h:selectOneMenu></td>
 					</tr>
 					<tr>
-						<td>#{label.issueDecision}:</td>
+						<td>#{labels.issueDecision}:</td>
 						<td><h:selectOneMenu id="subscriptions2" value=""
 								style=" width : 150px;">
 								<f:selectItem itemLabel="Избери опция" itemValue="0" />
@@ -55,7 +55,7 @@
 							</h:selectOneMenu></td>
 					</tr>
 					<tr>
-						<td>#{label.issuePriority}</td>
+						<td>#{labels.issuePriority}</td>
 						<td><h:selectOneMenu id="subscriptions3" value=""
 								style=" width : 149px;">
 								<f:selectItem itemLabel="Избери опция" itemValue="0" />
@@ -66,7 +66,7 @@
 							</h:selectOneMenu></td>
 					</tr>
 					<tr>
-						<td>#{label.issueCreateDate}:</td>
+						<td>#{labels.issueCreateDate}:</td>
 						<td><h:inputText value="" /></td>
 					</tr>
 					<tr>
@@ -78,11 +78,11 @@
 						<td></td>
 					</tr>
 					<tr>
-						<td><h:commandButton value="#{label.search}" /></td>
-						<td><h:commandButton value="#{label.issueCancel}" /></td>
+						<td><h:commandButton value="#{labels.search}" /></td>
+						<td><h:commandButton value="#{labels.issueCancel}" /></td>
 					</tr>
 					<tr>
-						<td rowspan="1"><h3>#{label.issueResult}</h3>
+						<td rowspan="1"><h3>#{labels.issueResult}</h3>
 						</td>
 						<td></td>
 					</tr>
