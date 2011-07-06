@@ -132,15 +132,15 @@
 										<h:panelGrid columns="3">
 											<h:outputText value="#{labels.dateCreated}:" />
 
+											<h:outputText value="#{issueDetail.dateCreated}" />
 
-
-											<h:message for="dateCreated" styleClass="issueError" />
+											<h:message id="dateCreated_messages" styleClass="issueError" />
 
 											<h:outputText value="#{labels.dateEnded}:" />
 
 
 
-
+											<h:outputText value="#{issueDetail.dateEnded}" />
 											<h:message for="dateEnded" styleClass="issueError" />
 
 										</h:panelGrid>

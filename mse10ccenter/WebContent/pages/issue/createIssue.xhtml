@@ -104,7 +104,7 @@
 
 								<div align="left" style="width: 443px;">
 
-									<fieldset styleClass="containerSt">
+									<fieldset id="containerSt">
 										<legend align="left">
 											<h:outputText value="#{labels.staff}" />
 										</legend>
@@ -123,7 +123,7 @@
 										</h:panelGrid>
 									</fieldset>
 
-									<fieldset styleClass="containerSt">
+									<fieldset id="containerSt">
 										<legend align="left">
 											<h:outputText value="#{labels.date}" />
 										</legend>
@@ -167,8 +167,8 @@
 					</table>
 				</fieldset>
 				<h:commandButton action="#{issueCreateAction.create(issueDetail)}"
-					value="#{labels.createIssue}" style=" width : 80px;" />
-				<h:commandButton value="#{labels.cancel}" style="margin-left: 20px" />
+					value="#{labels.save}" style=" width : 80px; margin-left: 400px" />
+				<h:commandButton value="#{labels.cancel}" style="width : 80px; margin-left: 15px" />
 
 			</h:form>
 
