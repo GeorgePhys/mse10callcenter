@@ -9,10 +9,12 @@
 	<ui:define name="title">Create Issue</ui:define>
 	<ui:define name="head">
 		<link rel="stylesheet" type="text/css"
-			href="#{facesContext.externalContext.requestContextPath}/css/admin.css" />
+			href="#{facesContext.externalContext.requestContextPath}/css/issue.css" />
 	</ui:define>
 	<ui:define name="body">
-		<f:loadBundle basename="labels.labels_bg" var="labels" />
+		<f:loadBundle basename="labels.labels" var="labels" />
+
+		<f:loadBundle basename="messages.messages" var="messages" />
 		<div id="createIssue" align="left">
 			<h:form id="formCreateIssue" name="formCreateIssue">
 
@@ -23,64 +25,75 @@
 					<table>
 						<tr>
 							<td><h:panelGrid columns="3">
-									<h:outputText value="#{labels.email}:" />
-									<h:inputText value="#{user.mail}" required="true" id="mail"
-										style=" width : 180px;" />
-									<h:message for="mail" />
+									<h:outputText value="#{labels.email}:"
+										styleClass="issueFieldPos" />
+									<h:inputText value="#{user.mail}" required="true" id="email"
+										styleClass="issueField" />
+									<h:message for="email" />
 
-									<h:outputText value="#{labels.titleIssue}:" />
+									<h:outputText value="#{labels.titleIssue}:"
+										styleClass="issueFieldPos" />
 									<h:inputText value="#{issueDetail.titleIssue}" required="true"
-										id="titleIssue" style=" width : 180px;" />
+										id="titleIssue" styleClass="issueField" />
 									<h:message for="titleIssue" />
 
 
-									<h:outputText value="#{labels.type}:" />
+									<h:outputText value="#{labels.type}:"
+										styleClass="issueFieldPos" />
 									<h:selectOneMenu value="#{issueDetail.type}" id="type"
-										style=" width : 180px;">
-										<f:selectItem itemLabel="#{labels.bug}" />
-										<f:selectItem itemLabel="#{labels.improvement}" />
-										<f:selectItem itemLabel="#{labels.newFeature}" />
-										<f:selectItem itemLabel="#{labels.task}" />
-										<f:selectItem itemLabel="#{labels.customIssue}" />
+										styleClass="issueField">
+										<f:selectItem itemLabel="#{labels.choiceOption}" itemValue="0" />
+										<f:selectItem itemLabel="#{labels.bug}" itemValue="1" />
+										<f:selectItem itemLabel="#{labels.improvement}" itemValue="2" />
+										<f:selectItem itemLabel="#{labels.newFeature}" itemValue="3" />
+										<f:selectItem itemLabel="#{labels.task}" itemValue="4" />
+										<f:selectItem itemLabel="#{labels.customIssue}" itemValue="5" />
 
 									</h:selectOneMenu>
 
 									<h:message for="type" />
 
-									<h:outputText value="#{labels.priority}:" />
+									<h:outputText value="#{labels.priority}:"
+										styleClass="issueFieldPos" />
 									<h:selectOneMenu value="#{issueDetail.priority}" id="priority"
-										style=" width : 180px;">
-										<f:selectItem itemLabel="#{labels.critical}" />
-										<f:selectItem itemLabel="#{labels.major}" />
-										<f:selectItem itemLabel="#{labels.minor}" />
-										<f:selectItem itemLabel="#{labels.trivial}" />
+										styleClass="issueField">
+										<f:selectItem itemLabel="#{labels.choiceOption}" itemValue="0" />
+										<f:selectItem itemLabel="#{labels.critical}" itemValue="1" />
+										<f:selectItem itemLabel="#{labels.major}" itemValue="2" />
+										<f:selectItem itemLabel="#{labels.minor}" itemValue="3" />
+										<f:selectItem itemLabel="#{labels.trivial}" itemValue="4" />
 									</h:selectOneMenu>
 
 									<h:message for="priority" />
 
-									<h:outputText value="#{labels.status}:" />
+									<h:outputText value="#{labels.status}:"
+										styleClass="issueFieldPos" />
 									<h:selectOneMenu value="#{issueDetail.status}" id="status"
-										style=" width : 180px;">
-										<f:selectItem itemLabel="#{labels.open}" />
-										<f:selectItem itemLabel="#{labels.inProgress}" />
-										<f:selectItem itemLabel="#{labels.resolved}" />
-										<f:selectItem itemLabel="#{labels.reopened}" />
-										<f:selectItem itemLabel="#{labels.closed}" />
+										styleClass="issueField">
+										<f:selectItem itemLabel="#{labels.choiceOption}" itemValue="0" />
+										<f:selectItem itemLabel="#{labels.open}" itemValue="1" />
+										<f:selectItem itemLabel="#{labels.inProgress}" itemValue="2" />
+										<f:selectItem itemLabel="#{labels.resolved}" itemValue="3" />
+										<f:selectItem itemLabel="#{labels.reopened}" itemValue="4" />
+										<f:selectItem itemLabel="#{labels.closed}" itemValue="5" />
 									</h:selectOneMenu>
 
-									<h:message for="status" />
+									<h:message for="status" styleClass="issueError" />
 
-									<h:outputText value="#{labels.resolution}:" />
+									<h:outputText value="#{labels.resolution}:"
+										styleClass="issueFieldPos" />
 									<h:selectOneMenu value="#{issueDetail.resolution}"
-										id="resolution" style=" width : 180px;">
-										<f:selectItem itemLabel="#{labels.fixed}" />
-										<f:selectItem itemLabel="#{labels.woNotFix}" />
-										<f:selectItem itemLabel="#{labels.duplicate}" />
-										<f:selectItem itemLabel="#{labels.incomplete}" />
-										<f:selectItem itemLabel="#{labels.cannotReproduce}" />
+										id="resolution" styleClass="issueField">
+										<f:selectItem itemLabel="#{labels.choiceOption}" itemValue="0" />
+										<f:selectItem itemLabel="#{labels.fixed}" itemValue="1" />
+										<f:selectItem itemLabel="#{labels.woNotFix}" itemValue="2" />
+										<f:selectItem itemLabel="#{labels.duplicate}" itemValue="3" />
+										<f:selectItem itemLabel="#{labels.incomplete}" itemValue="4" />
+										<f:selectItem itemLabel="#{labels.cannotReproduce}"
+											itemValue="5" />
 									</h:selectOneMenu>
 
-									<h:message for="resolution" />
+									<h:message for="resolution" styleClass="issueError" />
 
 
 
@@ -89,47 +102,48 @@
 							</td>
 							<td>
 
-								<div id="createIssue" align="left" style="width: 443px;">
+								<div align="left" style="width: 443px;">
 
-									<fieldset style="height: 153px;">
+									<fieldset styleClass="containerSt">
 										<legend align="left">
 											<h:outputText value="#{labels.staff}" />
 										</legend>
 										<h:panelGrid columns="3">
-											<h:outputText value="#{labels.reporter}:" />
+											<h:outputText value="#{labels.reporter}:" styleClass="issueFieldPos" />
 											<h:inputText value="#{issueDetail.reporter}" required="true"
-												id="reporter" style=" width : 180px;" />
-											<h:message for="reporter" />
+												id="reporter" styleClass="issueField"/>
+											<h:message for="reporter" styleClass="issueError" />
 
-											<h:outputText value="#{labels.assignee}:" />
+											<h:outputText value="#{labels.assignee}:"
+												styleClass="issueFieldPos" />
 											<h:inputText value="#{issueDetail.assignee}" required="true"
-												id="assignee" style=" width : 180px;" />
-											<h:message for="assignee" />
+												id="assignee" styleClass="issueField"/>
+											<h:message for="assignee" styleClass="issueError" />
 
 										</h:panelGrid>
 									</fieldset>
 
-									<fieldset style="height: 153px;">
+									<fieldset styleClass="containerSt">
 										<legend align="left">
 											<h:outputText value="#{labels.date}" />
 										</legend>
 										<h:panelGrid columns="3">
 											<h:outputText value="#{labels.dateCreated}:" />
-											<!--<h:inputText value="#{issueDetail.dateCreated}" id="dateCreated" style=" width : 180px;" />-->
+
 
 											<rich:calendar value="#{issueDetail.dateCreated}"
-												locale="en/US" popup="true" datePattern="d/M/yy HH:mm"
+												locale="en/US" popup="true" datePattern="d/M/yy"
 												showApplyButton="false" />
-											<h:message for="dateCreated" />
+											<h:message for="dateCreated" styleClass="issueError" />
 
 											<h:outputText value="#{labels.dateEnded}:" />
 
 											<rich:calendar value="#{issueDetail.dateEnded}"
-												locale="en/US" popup="true" datePattern="d/M/yy HH:mm"
+												locale="en/US" popup="true" datePattern="d/M/yy"
 												showApplyButton="false" />
 
 
-											<h:message for="dateEnded" />
+											<h:message for="dateEnded" styleClass="issueError" />
 
 										</h:panelGrid>
 
@@ -146,7 +160,7 @@
 						</tr>
 						<tr>
 							<td><h:inputTextarea value="#{issueDetail.desctription}"
-									required="true" style=" width : 180px;" /> <h:message
+									required="true" styleClass="issueDescription" /> <h:message
 									for="desctription" />
 							</td>
 						</tr>
@@ -154,7 +168,7 @@
 				</fieldset>
 				<h:commandButton action="#{issueCreateAction.create(issueDetail)}"
 					value="#{labels.createIssue}" style=" width : 80px;" />
-				<h:commandButton value="#{labels.cancel}" style=" width : 80px;" />
+				<h:commandButton value="#{labels.cancel}" style="margin-left: 20px" />
 
 			</h:form>
 

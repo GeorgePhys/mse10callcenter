@@ -20,6 +20,6 @@ public class IssueCreateAction implements Serializable {
 
 	public String create(IssueDetail issueDetail) {
 		issueService.saveOrUpdate(issueDetail);
-		return null;
+		return "successCreateIssue";
 	}
 }
