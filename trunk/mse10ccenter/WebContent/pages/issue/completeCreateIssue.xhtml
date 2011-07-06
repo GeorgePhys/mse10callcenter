@@ -4,7 +4,170 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	template="/pages/templates/template.xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<ui:define name="title">Created Issue</ui:define>
+	<ui:define name="head">
+		<link rel="stylesheet" type="text/css"
+			href="#{facesContext.externalContext.requestContextPath}/css/issue.css" />
+	</ui:define>
 	<ui:define name="body">
-	<h:outputText value="#{messages.completeRegistration}" />
+		<h:outputText value="#{messages.completeCreateIssue}"
+			styleClass="completeMess" />
+
+		<f:loadBundle basename="labels.labels" var="labels" />
+
+		<f:loadBundle basename="messages.messages" var="messages" />
+		<div id="createIssue" align="left">
+			<h:form id="formCreateIssue" name="formCreateIssue">
+
+				<fieldset>
+					<legend align="left">
+						<h:outputText value="#{labels.issueDetail}" />
+					</legend>
+					<table>
+						<tr>
+							<td><h:panelGrid columns="3">
+									<h:outputText value="#{labels.email}:"
+										styleClass="issueFieldPos" />
+									<h:outputText value="#{user.mail}" id="email"
+										styleClass="issueField" />
+									<h:message id="email_message" />
+
+									<h:outputText value="#{labels.titleIssue}:"
+										styleClass="issueFieldPos" />
+									<h:outputText value="#{issueDetail.titleIssue}" id="titleIssue"
+										styleClass="issueField" />
+									<h:message id="titleIssue_message" />
+
+
+									<h:outputText value="#{labels.type}:"
+										styleClass="issueFieldPos" />
+									<h:selectOneMenu value="#{issueDetail.type}" id="type"
+										disabled="true" styleClass="issueField">
+										<f:selectItem itemLabel="#{labels.choiceOption}" itemValue="0" />
+										<f:selectItem itemLabel="#{labels.bug}" itemValue="1" />
+										<f:selectItem itemLabel="#{labels.improvement}" itemValue="2" />
+										<f:selectItem itemLabel="#{labels.newFeature}" itemValue="3" />
+										<f:selectItem itemLabel="#{labels.task}" itemValue="4" />
+										<f:selectItem itemLabel="#{labels.customIssue}" itemValue="5" />
+
+									</h:selectOneMenu>
+
+									<h:message for="type" />
+
+									<h:outputText value="#{labels.priority}:"
+										styleClass="issueFieldPos" />
+									<h:selectOneMenu value="#{issueDetail.priority}" id="priority"
+										disabled="true" styleClass="issueField">
+										<f:selectItem itemLabel="#{labels.choiceOption}" itemValue="0" />
+										<f:selectItem itemLabel="#{labels.critical}" itemValue="1" />
+										<f:selectItem itemLabel="#{labels.major}" itemValue="2" />
+										<f:selectItem itemLabel="#{labels.minor}" itemValue="3" />
+										<f:selectItem itemLabel="#{labels.trivial}" itemValue="4" />
+									</h:selectOneMenu>
+
+									<h:message for="priority" />
+
+									<h:outputText value="#{labels.status}:"
+										styleClass="issueFieldPos" />
+									<h:selectOneMenu value="#{issueDetail.status}" id="status"
+										disabled="true" styleClass="issueField">
+										<f:selectItem itemLabel="#{labels.choiceOption}" itemValue="0" />
+										<f:selectItem itemLabel="#{labels.open}" itemValue="1" />
+										<f:selectItem itemLabel="#{labels.inProgress}" itemValue="2" />
+										<f:selectItem itemLabel="#{labels.resolved}" itemValue="3" />
+										<f:selectItem itemLabel="#{labels.reopened}" itemValue="4" />
+										<f:selectItem itemLabel="#{labels.closed}" itemValue="5" />
+									</h:selectOneMenu>
+
+									<h:message for="status" styleClass="issueError" />
+
+									<h:outputText value="#{labels.resolution}:"
+										styleClass="issueFieldPos" />
+									<h:selectOneMenu value="#{issueDetail.resolution}"
+										id="resolution" disabled="true" styleClass="issueField">
+										<f:selectItem itemLabel="#{labels.choiceOption}" itemValue="0" />
+										<f:selectItem itemLabel="#{labels.fixed}" itemValue="1" />
+										<f:selectItem itemLabel="#{labels.woNotFix}" itemValue="2" />
+										<f:selectItem itemLabel="#{labels.duplicate}" itemValue="3" />
+										<f:selectItem itemLabel="#{labels.incomplete}" itemValue="4" />
+										<f:selectItem itemLabel="#{labels.cannotReproduce}"
+											itemValue="5" />
+									</h:selectOneMenu>
+
+									<h:message for="resolution" styleClass="issueError" />
+
+
+
+
+								</h:panelGrid></td>
+							<td>
+
+								<div align="left" style="width: 443px;">
+
+									<fieldset styleClass="containerSt">
+										<legend align="left">
+											<h:outputText value="#{labels.staff}" />
+										</legend>
+										<h:panelGrid columns="3">
+											<h:outputText value="#{labels.reporter}:"
+												styleClass="issueFieldPos" />
+											<h:inputText value="#{issueDetail.reporter}" required="true"
+												id="reporter" styleClass="issueField" />
+											<h:message for="reporter" styleClass="issueError" />
+
+											<h:outputText value="#{labels.assignee}:"
+												styleClass="issueFieldPos" />
+											<h:inputText value="#{issueDetail.assignee}" required="true"
+												id="assignee" styleClass="issueField" />
+											<h:message for="assignee" styleClass="issueError" />
+
+										</h:panelGrid>
+									</fieldset>
+
+									<fieldset>
+										<legend align="left">
+											<h:outputText value="#{labels.date}" />
+										</legend>
+										<h:panelGrid columns="3">
+											<h:outputText value="#{labels.dateCreated}:" />
+
+
+											
+											<h:message for="dateCreated" styleClass="issueError" />
+
+											<h:outputText value="#{labels.dateEnded}:" />
+
+											
+
+
+											<h:message for="dateEnded" styleClass="issueError" />
+
+										</h:panelGrid>
+
+									</fieldset>
+
+
+								</div></td>
+						</tr>
+						<tr>
+							<td colspan="1"><h:outputText value="#{labels.description}:" />
+							</td>
+
+						</tr>
+						<tr>
+							<td><h:inputTextarea value="#{issueDetail.desctription}"
+									required="true" styleClass="issueDescription" /> <h:message
+									for="desctription" /></td>
+						</tr>
+					</table>
+				</fieldset>
+
+			</h:form>
+
+
+
+
+		</div>
+
 	</ui:define>
 </ui:composition>
