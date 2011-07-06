@@ -79,7 +79,7 @@
 										<f:selectItem itemLabel="#{labels.closed}" itemValue="5" />
 									</h:selectOneMenu>
 
-									<h:message for="status" styleClass="issueError" />
+									<h:message id="status_message" styleClass="issueError" />
 
 									<h:outputText value="#{labels.resolution}:"
 										styleClass="issueFieldPos" />
@@ -94,32 +94,33 @@
 											itemValue="5" />
 									</h:selectOneMenu>
 
-									<h:message for="resolution" styleClass="issueError" />
+									<h:message id="resolution_message" styleClass="issueError" />
 
 
 
 
-								</h:panelGrid></td>
+								</h:panelGrid>
+							</td>
 							<td>
 
 								<div align="left" style="width: 443px;">
 
-									<fieldset styleClass="containerSt">
+									<fieldset>
 										<legend align="left">
 											<h:outputText value="#{labels.staff}" />
 										</legend>
 										<h:panelGrid columns="3">
 											<h:outputText value="#{labels.reporter}:"
 												styleClass="issueFieldPos" />
-											<h:inputText value="#{issueDetail.reporter}" required="true"
-												id="reporter" styleClass="issueField" />
-											<h:message for="reporter" styleClass="issueError" />
+											<h:outputText value="#{issueDetail.reporter}" id="reporter"
+												styleClass="issueField" />
+											<h:message id="reporter_message" styleClass="issueError" />
 
 											<h:outputText value="#{labels.assignee}:"
 												styleClass="issueFieldPos" />
-											<h:inputText value="#{issueDetail.assignee}" required="true"
-												id="assignee" styleClass="issueField" />
-											<h:message for="assignee" styleClass="issueError" />
+											<h:outputText value="#{issueDetail.assignee}" id="assignee"
+												styleClass="issueField" />
+											<h:message id="assignee_message" styleClass="issueError" />
 
 										</h:panelGrid>
 									</fieldset>
@@ -132,12 +133,12 @@
 											<h:outputText value="#{labels.dateCreated}:" />
 
 
-											
+
 											<h:message for="dateCreated" styleClass="issueError" />
 
 											<h:outputText value="#{labels.dateEnded}:" />
 
-											
+
 
 
 											<h:message for="dateEnded" styleClass="issueError" />
@@ -147,7 +148,8 @@
 									</fieldset>
 
 
-								</div></td>
+								</div>
+							</td>
 						</tr>
 						<tr>
 							<td colspan="1"><h:outputText value="#{labels.description}:" />
@@ -155,9 +157,10 @@
 
 						</tr>
 						<tr>
-							<td><h:inputTextarea value="#{issueDetail.desctription}"
-									required="true" styleClass="issueDescription" /> <h:message
-									for="desctription" /></td>
+							<td><h:outputText value="#{issueDetail.desctription}"
+									styleClass="issueDescription" /> <h:message
+									id="desctription_messages" />
+							</td>
 						</tr>
 					</table>
 				</fieldset>
