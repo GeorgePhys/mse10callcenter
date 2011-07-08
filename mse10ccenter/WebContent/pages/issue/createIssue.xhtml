@@ -18,10 +18,11 @@
 		<div id="createIssue" align="left">
 			<h:form id="formCreateIssue" name="formCreateIssue">
 
-				<fieldset>
-					<legend align="left">
+				<rich:panel>
+					<f:facet name="header">
 						<h:outputText value="#{labels.issueDetail}" />
-					</legend>
+					</f:facet>
+
 					<table>
 						<tr>
 							<td><h:panelGrid columns="3">
@@ -104,29 +105,33 @@
 
 								<div align="left" style="width: 443px;">
 
-									<fieldset id="containerSt">
-										<legend align="left">
+									<rich:panel>
+										<f:facet name="header">
 											<h:outputText value="#{labels.staff}" />
-										</legend>
+										</f:facet>
+
 										<h:panelGrid columns="3">
-											<h:outputText value="#{labels.reporter}:" styleClass="issueFieldPos" />
+											<h:outputText value="#{labels.reporter}:"
+												styleClass="issueFieldPos" />
 											<h:inputText value="#{issueDetail.reporter}" required="true"
-												id="reporter" styleClass="issueField"/>
+												id="reporter" styleClass="issueField" />
 											<h:message for="reporter" styleClass="issueError" />
 
 											<h:outputText value="#{labels.assignee}:"
 												styleClass="issueFieldPos" />
 											<h:inputText value="#{issueDetail.assignee}" required="true"
-												id="assignee" styleClass="issueField"/>
+												id="assignee" styleClass="issueField" />
 											<h:message for="assignee" styleClass="issueError" />
 
 										</h:panelGrid>
-									</fieldset>
+									</rich:panel>
 
-									<fieldset id="containerSt">
-										<legend align="left">
+									<rich:panel>
+										<f:facet name="header">
 											<h:outputText value="#{labels.date}" />
-										</legend>
+										</f:facet>
+
+
 										<h:panelGrid columns="3">
 											<h:outputText value="#{labels.dateCreated}:" />
 
@@ -136,7 +141,9 @@
 												showApplyButton="false" />
 											<h:message for="dateCreated" styleClass="issueError" />
 
+
 											<h:outputText value="#{labels.dateEnded}:" />
+
 
 											<rich:calendar value="#{issueDetail.dateEnded}"
 												locale="en/US" popup="true" datePattern="d/M/yy"
@@ -147,28 +154,29 @@
 
 										</h:panelGrid>
 
-									</fieldset>
+									</rich:panel>
 
 
 								</div>
 							</td>
 						</tr>
 						<tr>
-							<td colspan="1"><h:outputText value="#{labels.description}:" />
-							</td>
+
+							<h:panelGrid columns="3" columnClasses="wfcol1,wfcol2,wfcol3">
+								<h:outputText value="#{labels.description}:" />
+								<h:inputTextarea id="description"
+									value="#{issueDetail.desctription}" required="true"
+									style=" width : 260px;" />
+								<h:message for="description" styleClass="issueError" />
+							</h:panelGrid>
 
 						</tr>
-						<tr>
-							<td><h:inputTextarea value="#{issueDetail.desctription}"
-									required="true" styleClass="issueDescription" /> <h:message
-									for="desctription" />
-							</td>
-						</tr>
 					</table>
-				</fieldset>
+				</rich:panel>
 				<h:commandButton action="#{issueCreateAction.create(issueDetail)}"
 					value="#{labels.save}" style=" width : 80px; margin-left: 400px" />
-				<h:commandButton value="#{labels.cancel}" style="width : 80px; margin-left: 15px" />
+				<h:commandButton value="#{labels.cancel}"
+					style="width : 80px; margin-left: 15px" />
 
 			</h:form>
 

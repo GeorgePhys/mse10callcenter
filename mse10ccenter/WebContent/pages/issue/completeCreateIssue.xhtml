@@ -3,7 +3,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	template="/pages/templates/template.xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich">
 	<ui:define name="title">Created Issue</ui:define>
 	<ui:define name="head">
 		<link rel="stylesheet" type="text/css"
@@ -19,10 +20,10 @@
 		<div id="createIssue" align="left">
 			<h:form id="formCreateIssue" name="formCreateIssue">
 
-				<fieldset>
-					<legend align="left">
+				<rich:panel>
+					<f:facet name="header">
 						<h:outputText value="#{labels.issueDetail}" />
-					</legend>
+					</f:facet>
 					<table>
 						<tr>
 							<td><h:panelGrid columns="3">
@@ -105,10 +106,10 @@
 
 								<div align="left" style="width: 443px;">
 
-									<fieldset>
-										<legend align="left">
+									<rich:panel>
+										<f:facet name="header">
 											<h:outputText value="#{labels.staff}" />
-										</legend>
+										</f:facet>
 										<h:panelGrid columns="3">
 											<h:outputText value="#{labels.reporter}:"
 												styleClass="issueFieldPos" />
@@ -123,12 +124,12 @@
 											<h:message id="assignee_message" styleClass="issueError" />
 
 										</h:panelGrid>
-									</fieldset>
+									</rich:panel>
 
-									<fieldset>
-										<legend align="left">
+									<rich:panel>
+										<f:facet name="header">
 											<h:outputText value="#{labels.date}" />
-										</legend>
+										</f:facet>
 										<h:panelGrid columns="3">
 											<h:outputText value="#{labels.dateCreated}:" />
 
@@ -145,27 +146,29 @@
 
 										</h:panelGrid>
 
-									</fieldset>
+									</rich:panel>
 
 
 								</div>
 							</td>
 						</tr>
 						<tr>
-							<td colspan="1"><h:outputText value="#{labels.description}:" />
-							</td>
 
-						</tr>
-						<tr>
-							<td><h:outputText value="#{issueDetail.desctription}"
-									styleClass="issueDescription" /> <h:message
-									id="desctription_messages" />
-							</td>
+							<h:panelGrid columns="3" columnClasses="wfcol1,wfcol2,wfcol3">
+								<h:outputText value="#{labels.description}:" />
+								<h:outputText id="description"
+									value="#{issueDetail.desctription}" required="true"
+									style=" width : 260px;" />
+								<h:message for="desctription" styleClass="issueError" />
+							</h:panelGrid>
 						</tr>
 					</table>
-				</fieldset>
+				</rich:panel>
 
 			</h:form>
+			
+			
+			<h:commandButton action="#{issueEditAction.edit(issueDetail)}" value="#{labels.edit}" style=" width : 100px; margin-left: 400px" />
 
 
 
