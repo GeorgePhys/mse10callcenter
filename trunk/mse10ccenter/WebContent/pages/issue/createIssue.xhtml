@@ -30,13 +30,13 @@
 										styleClass="issueFieldPos" />
 									<h:inputText value="#{user.mail}" required="true" id="email"
 										styleClass="issueField" />
-									<h:message for="email" />
+									<h:message for="email" styleClass="issueError"/>
 
 									<h:outputText value="#{labels.titleIssue}:"
 										styleClass="issueFieldPos" />
 									<h:inputText value="#{issueDetail.titleIssue}" required="true"
 										id="titleIssue" styleClass="issueField" />
-									<h:message for="titleIssue" />
+									<h:message for="titleIssue" styleClass="issueError"/>
 
 
 									<h:outputText value="#{labels.type}:"
@@ -52,7 +52,7 @@
 
 									</h:selectOneMenu>
 
-									<h:message for="type" />
+									<h:message for="type" styleClass="issueError"/>
 
 									<h:outputText value="#{labels.priority}:"
 										styleClass="issueFieldPos" />
@@ -137,8 +137,8 @@
 
 
 											<rich:calendar value="#{issueDetail.dateCreated}"
-												locale="en/US" popup="true" datePattern="d/M/yy"
-												showApplyButton="false" />
+												locale="bg" popup="true" datePattern="d/M/yy" showApplyButton="false"
+												 />
 											<h:message for="dateCreated" styleClass="issueError" />
 
 
@@ -146,7 +146,7 @@
 
 
 											<rich:calendar value="#{issueDetail.dateEnded}"
-												locale="en/US" popup="true" datePattern="d/M/yy"
+												locale="bg" popup="true" datePattern="d/M/yy"
 												showApplyButton="false" />
 
 
