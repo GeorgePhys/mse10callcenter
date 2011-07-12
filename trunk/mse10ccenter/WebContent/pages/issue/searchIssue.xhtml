@@ -2,38 +2,42 @@
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich">
 	<ui:define name="title">Issue search</ui:define>
 	<ui:define name="head">
 		<link rel="stylesheet" type="text/css" href="../css/template.css" />
 	</ui:define>
 	<ui:define name="pageHeader">Issue Search</ui:define>
 	<ui:define name="body">
-		<f:loadBundle basename="labels.labels" var="labels" />
-		<fieldset style="width: 800px;">
-			<legend align="left">#{labels.search}</legend>
+		<f:loadBundle basename="labels.labels_bg" var="label" />
+
+			
 			<h:form>
+			<rich:panel>
+					<f:facet name="header">
+						<h:outputText value="#{labels.search}" />
+					</f:facet>
+				
+			
+			
 				<table class="search">
 					<tr>
-						<td>#{labels.issueTask}:</td>
-						<td><h:inputText value="" /></td>
+						<td>#{label.issueTask}</td>
+						<td><h:inputText value="#{issueSearch.titleIssue}" /></td>
 					</tr>
 					<tr>
-						<td>#{labels.issueNumber}:</td>
-						<td><h:inputText value="" /></td>
+						<td>#{label.issueCreatedFrom}</td>
+						<td><h:inputText value="#{issueSearch.createdBy}" /></td>
 					</tr>
 					<tr>
-						<td>#{labels.issueCreatedFrom}:</td>
-						<td><h:inputText value="" /></td>
+						<td>#{label.issueOwnerCreate}</td>
+						<td><h:inputText value="#{issueSearch.assignedTo}" /></td>
 					</tr>
 					<tr>
-						<td>#{labels.issueOwnerCreate}:</td>
-						<td><h:inputText value="" /></td>
-					</tr>
-					<tr>
-						<td>#{labels.issueStatus}:</td>
-						<td><h:selectOneMenu id="subscriptions" value=""
-								style=" width : 149px;">
+						<td>#{label.issueStatus}</td>
+						<td><h:selectOneMenu id="subscriptions"
+								value="#{issueSearch.status}" style=" width : 149px;">
 								<f:selectItem itemLabel="Избери опция" itemValue="0" />
 								<f:selectItem itemLabel="Отворен" itemValue="1" />
 								<f:selectItem itemLabel="В прогрес" itemValue="2" />
@@ -43,9 +47,9 @@
 							</h:selectOneMenu></td>
 					</tr>
 					<tr>
-						<td>#{labels.issueDecision}:</td>
-						<td><h:selectOneMenu id="subscriptions2" value=""
-								style=" width : 150px;">
+						<td>#{label.issueDecision}</td>
+						<td><h:selectOneMenu id="subscriptions2"
+								value="#{issueSearch.resolution}" style=" width : 150px;">
 								<f:selectItem itemLabel="Избери опция" itemValue="0" />
 								<f:selectItem itemLabel="Установено" itemValue="1" />
 								<f:selectItem itemLabel="Няма решение" itemValue="2" />
@@ -55,9 +59,9 @@
 							</h:selectOneMenu></td>
 					</tr>
 					<tr>
-						<td>#{labels.issuePriority}</td>
-						<td><h:selectOneMenu id="subscriptions3" value=""
-								style=" width : 149px;">
+						<td>#{label.issuePriority}</td>
+						<td><h:selectOneMenu id="subscriptions3"
+								value="#{issueSearch.priority}" style=" width : 149px;">
 								<f:selectItem itemLabel="Избери опция" itemValue="0" />
 								<f:selectItem itemLabel="Критичен" itemValue="1" />
 								<f:selectItem itemLabel="Важен" itemValue="2" />
@@ -66,31 +70,92 @@
 							</h:selectOneMenu></td>
 					</tr>
 					<tr>
-						<td>#{labels.issueCreateDate}:</td>
-						<td><h:inputText value="" /></td>
+						<td>#{label.issueCreateDate}</td>
+						<td><rich:calendar value="#{issueSearch.dateCreate}"
+								id="calendar" 
+								showApplyButton="false" cellWidth="24px"
+								cellHeight="22px" style="width:200px" datePattern="dd/MM/yyyy"></rich:calendar></td>
 					</tr>
+
 					<tr>
 						<td></td>
-						<td><h:inputText value="" /></td>
-					</tr>
-					<tr>
-						<td></td>
 						<td></td>
 					</tr>
 					<tr>
-						<td><h:commandButton value="#{labels.search}" /></td>
-						<td><h:commandButton value="#{labels.issueCancel}" /></td>
+						<td><h:commandButton value="#{label.search}"
+								action="#{issueSearchAction.search(issueSearch)}" /></td>
+						<td><h:commandButton value="#{label.issueCancel}" /></td>
 					</tr>
 					<tr>
-						<td rowspan="1"><h3>#{labels.issueResult}</h3>
+						<td rowspan="1"><h3>#{label.issueResult}</h3>
 						</td>
 						<td></td>
 					</tr>
-				</table>
-				<h:inputTextarea value="" style="width : 415px; height : 197px;" />
+				</table>	
 
+				<rich:dataTable keepSaved="true" id="richTable" var="issueDetail"
+					value="#{issueSearchAction.dataModel}" rows="10" rendered="#{issueSearchAction.dataModel ne null}" >
+					<f:facet name="header">
+						<rich:columnGroup>
+
+							<h:column>
+								<h:outputText styleClass="headerText" value="Title Issue" />
+								<br />
+							</h:column>
+							<h:column>
+								<h:outputText styleClass="headerText" value="Date Create" />
+								<br />
+							</h:column>
+							<h:column>
+								<h:outputText styleClass="headerText" value="Date Ended" />
+								<br />
+							</h:column>
+							<h:column>
+								<h:outputText styleClass="headerText" value="Created By" />
+								<br />
+							</h:column>
+							<h:column>
+								<h:outputText styleClass="headerText" value="Assigned To" />
+								<br />
+							</h:column>
+							<h:column>
+								<h:outputText styleClass="headerText" value="Status" />
+								<br />
+							</h:column>
+							<h:column>
+								<h:outputText styleClass="headerText" value="Resolution" />
+								<br />
+							</h:column>
+
+						</rich:columnGroup>
+					</f:facet>
+					<h:column>
+						<h:outputText value="#{issueDetail.titleIssue}" />
+					</h:column>
+					<h:column>
+						<h:outputText value="#{issueDetail.dateCreate}" />
+					</h:column>
+					<h:column>
+						<h:outputText value="#{issueDetail.dateEnded}" />
+					</h:column>
+					<h:column>
+						<h:outputText value="#{issueDetail.createdBy}" />
+					</h:column>
+					<h:column>
+						<h:outputText value="#{issueDetail.assignedTo}" />
+					</h:column>
+					<h:column>
+						<h:outputText value="#{issueDetail.status}" />
+					</h:column>
+					<h:column>
+						<h:outputText value="#{issueDetail.resolution}" />
+					</h:column>
+					<f:facet name="footer">
+						<rich:dataScroller id="scroller" />
+					</f:facet>
+				</rich:dataTable>
+	</rich:panel>
 			</h:form>
-		</fieldset>
 	</ui:define>
 
 </ui:composition>
