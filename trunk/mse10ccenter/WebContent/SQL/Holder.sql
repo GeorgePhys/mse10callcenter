@@ -8,5 +8,5 @@ INSERT INTO `Holder` (`id`, `lastModifiedDate`, `code`, `descriptionBg`, `descri
 (NULL, '2011-07-08 09:08:32', '4', 'Привилегии', 'Privileges'),
 (NULL, '2011-07-08 09:08:32', '5', 'Тип на потребителите', 'Type of users'),
 (NULL, '2011-07-08 09:08:32', '6', 'Статус на потребители/фирми', 'Status of users / companies'),
-(NULL, '2011-07-08 09:08:32', '7', 'Статуси на поръчка', 'Status of order');
+(NULL, '2011-07-08 09:08:32', '7', 'Статуси на поръчка', 'Status of order'),
 (NULL, '2011-07-08 09:08:32', '8', 'Тип на продукта', 'Type of product');
