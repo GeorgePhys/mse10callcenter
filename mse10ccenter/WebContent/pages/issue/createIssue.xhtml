@@ -29,20 +29,23 @@
 									<h:outputText value="#{labels.email}:"
 										styleClass="issueFieldPos" />
 									<h:inputText value="#{user.mail}" required="true" id="email"
-										styleClass="issueField" />
-									<h:message for="email" styleClass="issueError"/>
+										styleClass="issueField"
+										readonly="#{issueCreateAction.readonly}" />
+									<h:message for="email" styleClass="issueError" />
 
 									<h:outputText value="#{labels.titleIssue}:"
 										styleClass="issueFieldPos" />
-									<h:inputText value="#{issueDetail.titleIssue}" required="true"
-										id="titleIssue" styleClass="issueField" />
-									<h:message for="titleIssue" styleClass="issueError"/>
+									<h:inputText value="#{issueCreateAction.issue.titleIssue}"
+										required="true" id="titleIssue" styleClass="issueField"
+										readonly="#{issueCreateAction.readonly}" />
+									<h:message for="titleIssue" styleClass="issueError" />
 
 
 									<h:outputText value="#{labels.type}:"
-										styleClass="issueFieldPos" />
-									<h:selectOneMenu value="#{issueDetail.type}" id="type"
-										styleClass="issueField">
+										styleClass="issueFieldPos"
+										readonly="#{issueCreateAction.readonly}" />
+									<h:selectOneMenu value="#{issueCreateAction.issue.type}"
+										id="type" styleClass="issueField">
 										<f:selectItem itemLabel="#{labels.choiceOption}" itemValue="0" />
 										<f:selectItem itemLabel="#{labels.bug}" itemValue="1" />
 										<f:selectItem itemLabel="#{labels.improvement}" itemValue="2" />
@@ -52,12 +55,13 @@
 
 									</h:selectOneMenu>
 
-									<h:message for="type" styleClass="issueError"/>
+									<h:message for="type" styleClass="issueError" />
 
 									<h:outputText value="#{labels.priority}:"
-										styleClass="issueFieldPos" />
-									<h:selectOneMenu value="#{issueDetail.priority}" id="priority"
-										styleClass="issueField">
+										styleClass="issueFieldPos"
+										readonly="#{issueCreateAction.readonly}" />
+									<h:selectOneMenu value="#{issueCreateAction.issue.priority}"
+										id="priority" styleClass="issueField">
 										<f:selectItem itemLabel="#{labels.choiceOption}" itemValue="0" />
 										<f:selectItem itemLabel="#{labels.critical}" itemValue="1" />
 										<f:selectItem itemLabel="#{labels.major}" itemValue="2" />
@@ -68,9 +72,10 @@
 									<h:message for="priority" />
 
 									<h:outputText value="#{labels.status}:"
-										styleClass="issueFieldPos" />
-									<h:selectOneMenu value="#{issueDetail.status}" id="status"
-										styleClass="issueField">
+										styleClass="issueFieldPos"
+										readonly="#{issueCreateAction.readonly}" />
+									<h:selectOneMenu value="#{issueCreateAction.issue.status}"
+										id="status" styleClass="issueField">
 										<f:selectItem itemLabel="#{labels.choiceOption}" itemValue="0" />
 										<f:selectItem itemLabel="#{labels.open}" itemValue="1" />
 										<f:selectItem itemLabel="#{labels.inProgress}" itemValue="2" />
@@ -82,8 +87,9 @@
 									<h:message for="status" styleClass="issueError" />
 
 									<h:outputText value="#{labels.resolution}:"
-										styleClass="issueFieldPos" />
-									<h:selectOneMenu value="#{issueDetail.resolution}"
+										styleClass="issueFieldPos"
+										readonly="#{issueCreateAction.readonly}" />
+									<h:selectOneMenu value="#{issueCreateAction.issue.resolution}"
 										id="resolution" styleClass="issueField">
 										<f:selectItem itemLabel="#{labels.choiceOption}" itemValue="0" />
 										<f:selectItem itemLabel="#{labels.fixed}" itemValue="1" />
@@ -99,8 +105,7 @@
 
 
 
-								</h:panelGrid>
-							</td>
+								</h:panelGrid></td>
 							<td>
 
 								<div align="left" style="width: 443px;">
@@ -113,14 +118,16 @@
 										<h:panelGrid columns="3">
 											<h:outputText value="#{labels.reporter}:"
 												styleClass="issueFieldPos" />
-											<h:inputText value="#{issueDetail.reporter}" required="true"
-												id="reporter" styleClass="issueField" />
+											<h:inputText value="#{issueCreateAction.issue.reporter}"
+												required="true" id="reporter" styleClass="issueField"
+												readonly="#{issueCreateAction.readonly}" />
 											<h:message for="reporter" styleClass="issueError" />
 
 											<h:outputText value="#{labels.assignee}:"
 												styleClass="issueFieldPos" />
-											<h:inputText value="#{issueDetail.assignee}" required="true"
-												id="assignee" styleClass="issueField" />
+											<h:inputText value="#{issueCreateAction.issue.assignee}"
+												required="true" id="assignee" styleClass="issueField"
+												readonly="#{issueCreateAction.readonly}" />
 											<h:message for="assignee" styleClass="issueError" />
 
 										</h:panelGrid>
@@ -133,21 +140,24 @@
 
 
 										<h:panelGrid columns="3">
-											<h:outputText value="#{labels.dateCreated}:" />
+											<h:outputText value="#{labels.dateCreated}:"
+												readonly="#{issueCreateAction.readonly}" />
 
 
-											<rich:calendar value="#{issueDetail.dateCreated}"
-												locale="bg" popup="true" datePattern="d/M/yy" showApplyButton="false"
-												 />
+											<rich:calendar value="#{issueCreateAction.issue.dateCreated}"
+												locale="bg" popup="true" datePattern="d/M/yy"
+												showApplyButton="false"
+												readonly="#{issueCreateAction.readonly}" />
 											<h:message for="dateCreated" styleClass="issueError" />
 
 
 											<h:outputText value="#{labels.dateEnded}:" />
 
 
-											<rich:calendar value="#{issueDetail.dateEnded}"
+											<rich:calendar value="#{issueCreateAction.issue.dateEnded}"
 												locale="bg" popup="true" datePattern="d/M/yy"
-												showApplyButton="false" />
+												showApplyButton="false"
+												readonly="#{issueCreateAction.readonly}" />
 
 
 											<h:message for="dateEnded" styleClass="issueError" />
@@ -157,16 +167,16 @@
 									</rich:panel>
 
 
-								</div>
-							</td>
+								</div></td>
 						</tr>
 						<tr>
 
 							<h:panelGrid columns="3" columnClasses="wfcol1,wfcol2,wfcol3">
 								<h:outputText value="#{labels.description}:" />
 								<h:inputTextarea id="description"
-									value="#{issueDetail.desctription}" required="true"
-									style=" width : 260px;" />
+									value="#{issueCreateAction.issue.desctription}" required="true"
+									style=" width : 260px;"
+									readonly="#{issueCreateAction.readonly}" />
 								<h:message for="description" styleClass="issueError" />
 							</h:panelGrid>
 
@@ -174,9 +184,9 @@
 					</table>
 				</rich:panel>
 				<h:commandButton action="#{issueCreateAction.create(issueDetail)}"
-					value="#{labels.save}" style=" width : 80px; margin-left: 400px" />
-				<h:commandButton value="#{labels.cancel}"
-					style="width : 80px; margin-left: 15px" />
+					value="#{labels.save}" style="margin-left: 400px; width : 85px;" />
+				<h:commandButton action="#{issueCreateAction.edit(issue)}"
+					value="#{labels.edit}" style="margin-left: 15px; width : 90px;" />
 
 			</h:form>
 
