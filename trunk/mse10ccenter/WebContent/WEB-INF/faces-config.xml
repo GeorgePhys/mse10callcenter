@@ -40,7 +40,7 @@
  <navigation-rule>
   <from-view-id>*</from-view-id>
   <navigation-case>
-   <from-outcome>successCreateIssue</from-outcome>
+   <from-outcome>createNewIssue</from-outcome>
    <to-view-id>/pages/issue/createIssue.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>

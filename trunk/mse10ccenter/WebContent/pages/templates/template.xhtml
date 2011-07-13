@@ -35,11 +35,12 @@
 			<h:form>
 				<ul>
 					<li><a href="/mse10ccenter/pages/home.jsf">Home</a></li>
-					
+
 					<li><a
 						href="#{facesContext.externalContext.requestContextPath}/pages/forum/thread.jsf">Forum</a>
 					</li>
-					<li><h:commandLink value="FAQ" action="#{faqAction.loadAndNavigateToFAQ()}" /></li>
+					<li><h:commandLink value="FAQ"
+							action="#{faqAction.loadAndNavigateToFAQ()}" /></li>
 					<li><a href="#">E-shop</a></li>
 					<li><a href="#">Contact us</a></li>
 				</ul>
@@ -53,19 +54,21 @@
 		</div>
 		<div id="content-container1">
 			<div id="content-container2">
-			<h:form>
-				<div id="section-navigation">
-					<ul>
-						<li><a href="/mse10ccenter/pages/admin/users/user.jsf">Registration</a>
-						</li>
-						<li><a href="/mse10ccenter/pages/issue/createIssue.jsf">Issue</a></li> 
-						<li><a href="/mse10ccenter/pages/issue/searchIssue.jsf">Issue
-								Search</a></li>
-						<li><a href="/mse10ccenter/pages/issue/reportIssue.jsf">Issue
-								Report</a></li>
-						<li><a href="#">E-shop</a></li>
-					</ul>
-				</div>
+				<h:form>
+					<div id="section-navigation">
+						<ul>
+							<li><a href="/mse10ccenter/pages/admin/users/user.jsf">Registration</a>
+							</li>
+							<li><h:commandLink value="#{labels.issueCreate}"
+									action="#{issueCreateAction.createNewIssue()}" />
+							</li>
+							<li><a href="/mse10ccenter/pages/issue/searchIssue.jsf">Issue
+									Search</a></li>
+							<li><a href="/mse10ccenter/pages/issue/reportIssue.jsf">Issue
+									Report</a></li>
+							<li><a href="#">E-shop</a></li>
+						</ul>
+					</div>
 				</h:form>
 				<div id="content">
 					<h:messages globalOnly="true" />
