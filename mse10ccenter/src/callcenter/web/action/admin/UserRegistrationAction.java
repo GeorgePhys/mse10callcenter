@@ -20,6 +20,6 @@ public class UserRegistrationAction implements Serializable {
 
 	public String register(User user) throws Exception {
 		userService.registerUser(user);
-		return null;
+		return "successRegister";
 	}
 }
