@@ -44,7 +44,14 @@
    <to-view-id>/pages/issue/createIssue.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
-  <!-- navigation rules end -->
+ <navigation-rule>
+  <from-view-id>*</from-view-id>
+  <navigation-case>
+   <from-outcome>successRegister</from-outcome>
+   <to-view-id>/pages/completeRegistration.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <!-- navigation rules end -->
  <application>
   <locale-config>
    <default-locale>bg</default-locale>
