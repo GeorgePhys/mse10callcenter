@@ -15,7 +15,7 @@ public class IssueCreateAction implements Serializable {
 
 	private static final long serialVersionUID = -5533722715840256982L;
 	private boolean readonly;
-	
+
 	private IssueDetail issue;
 
 	@EJB
@@ -32,10 +32,11 @@ public class IssueCreateAction implements Serializable {
 
 	}
 
-	
-
-	// metod 1) nova instaciq na issue(new IssueDetail) i da setna flaga na
-	// false
+	public String createNewIssue() {
+		setReadonly(false);
+		issue = new IssueDetail();
+		return "createNewIssue";
+	}
 
 	public boolean getReadonly() {
 		return readonly;
@@ -45,7 +46,6 @@ public class IssueCreateAction implements Serializable {
 		this.readonly = readonly;
 	}
 
-	
 	public IssueDetail getIssue() {
 		if (issue == null)
 			issue = new IssueDetail();
