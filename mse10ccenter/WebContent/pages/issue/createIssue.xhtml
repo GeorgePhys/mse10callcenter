@@ -42,10 +42,9 @@
 
 
 									<h:outputText value="#{labels.type}:"
-										styleClass="issueFieldPos"
-										readonly="#{issueCreateAction.readonly}" />
+										styleClass="issueFieldPos" />
 									<h:selectOneMenu value="#{issueCreateAction.issue.type}"
-										id="type" styleClass="issueField">
+										id="type" styleClass="issueField" disabled="#{issueCreateAction.readonly}">
 										<f:selectItem itemLabel="#{labels.choiceOption}" itemValue="0" />
 										<f:selectItem itemLabel="#{labels.bug}" itemValue="1" />
 										<f:selectItem itemLabel="#{labels.improvement}" itemValue="2" />
@@ -59,9 +58,9 @@
 
 									<h:outputText value="#{labels.priority}:"
 										styleClass="issueFieldPos"
-										readonly="#{issueCreateAction.readonly}" />
+										 />
 									<h:selectOneMenu value="#{issueCreateAction.issue.priority}"
-										id="priority" styleClass="issueField">
+										id="priority" styleClass="issueField" disabled="#{issueCreateAction.readonly}">
 										<f:selectItem itemLabel="#{labels.choiceOption}" itemValue="0" />
 										<f:selectItem itemLabel="#{labels.critical}" itemValue="1" />
 										<f:selectItem itemLabel="#{labels.major}" itemValue="2" />
@@ -73,9 +72,9 @@
 
 									<h:outputText value="#{labels.status}:"
 										styleClass="issueFieldPos"
-										readonly="#{issueCreateAction.readonly}" />
+										 />
 									<h:selectOneMenu value="#{issueCreateAction.issue.status}"
-										id="status" styleClass="issueField">
+										id="status" styleClass="issueField" disabled="#{issueCreateAction.readonly}">
 										<f:selectItem itemLabel="#{labels.choiceOption}" itemValue="0" />
 										<f:selectItem itemLabel="#{labels.open}" itemValue="1" />
 										<f:selectItem itemLabel="#{labels.inProgress}" itemValue="2" />
@@ -88,9 +87,9 @@
 
 									<h:outputText value="#{labels.resolution}:"
 										styleClass="issueFieldPos"
-										readonly="#{issueCreateAction.readonly}" />
+										 />
 									<h:selectOneMenu value="#{issueCreateAction.issue.resolution}"
-										id="resolution" styleClass="issueField">
+										id="resolution" styleClass="issueField" disabled="#{issueCreateAction.readonly}">
 										<f:selectItem itemLabel="#{labels.choiceOption}" itemValue="0" />
 										<f:selectItem itemLabel="#{labels.fixed}" itemValue="1" />
 										<f:selectItem itemLabel="#{labels.woNotFix}" itemValue="2" />
@@ -147,7 +146,7 @@
 											<rich:calendar value="#{issueCreateAction.issue.dateCreated}"
 												locale="bg" popup="true" datePattern="d/M/yy"
 												showApplyButton="false"
-												readonly="#{issueCreateAction.readonly}" />
+												disabled ="#{issueCreateAction.readonly}" />
 											<h:message for="dateCreated" styleClass="issueError" />
 
 
@@ -157,7 +156,7 @@
 											<rich:calendar value="#{issueCreateAction.issue.dateEnded}"
 												locale="bg" popup="true" datePattern="d/M/yy"
 												showApplyButton="false"
-												readonly="#{issueCreateAction.readonly}" />
+												disabled="#{issueCreateAction.readonly}" />
 
 
 											<h:message for="dateEnded" styleClass="issueError" />
@@ -183,7 +182,7 @@
 						</tr>
 					</table>
 				</rich:panel>
-				<h:commandButton action="#{issueCreateAction.create(issueDetail)}"
+				<h:commandButton action="#{issueCreateAction.create()}"
 					value="#{labels.save}" style="margin-left: 400px; width : 85px;" />
 				<h:commandButton action="#{issueCreateAction.edit(issue)}"
 					value="#{labels.edit}" style="margin-left: 15px; width : 90px;" />
