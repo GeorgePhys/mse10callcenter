@@ -21,7 +21,7 @@ public class LoginAction {
 		User checkLogin = userService.checkLogin(user);
 		if (checkLogin == null) {
 			FacesMessage message = new FacesMessage(
-					FacesMessage.SEVERITY_ERROR, "asdkjash", "asdasda");
+					FacesMessage.SEVERITY_ERROR, "This user dont exist", "asdasda");
 			FacesContext.getCurrentInstance().addMessage(null, message);
 			return null;
 		}
