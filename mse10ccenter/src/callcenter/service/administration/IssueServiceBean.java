@@ -20,17 +20,16 @@ import callcenter.util.ObjectUtil;
 @Stateless
 public class IssueServiceBean extends
 		BaseServiceBean<IssueDetail, IssueSearchDTO> {
-	
-	
-	
-	
-	
 
 	@Override
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 	public List<IssueDetail> search(IssueSearchDTO args, boolean countOnly) {
 		Session session = (Session) getEntityManager().getDelegate();
 		Criteria criteria = session.createCriteria(IssueDetail.class);
+
+		if (StringUtils.isNotEmpty(args.getAssignedTo())) {
+			criteria.add(Restrictions.eq("titleIssue", args.getTitleIssue()));
+		}
 
 		if (StringUtils.isNotEmpty(args.getAssignedTo())) {
 			criteria.add(Restrictions.eq("assignee", args.getAssignedTo()));
@@ -50,10 +49,6 @@ public class IssueServiceBean extends
 
 		if (StringUtils.isNotEmpty(args.getPriority())) {
 			criteria.add(Restrictions.eq("priority", args.getPriority()));
-		}
-
-		if (ObjectUtil.isValid(args.getResolution())) {
-			criteria.add(Restrictions.in("resolution", args.getResolution()));
 		}
 
 		if (StringUtils.isNotEmpty(args.getStatus())) {
