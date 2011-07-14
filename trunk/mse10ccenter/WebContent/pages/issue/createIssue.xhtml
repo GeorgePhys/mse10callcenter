@@ -10,11 +10,13 @@
 	<ui:define name="head">
 		<link rel="stylesheet" type="text/css"
 			href="#{facesContext.externalContext.requestContextPath}/css/issue.css" />
-	</ui:define>
-	<ui:define name="body">
 		<f:loadBundle basename="labels.labels" var="labels" />
 
 		<f:loadBundle basename="messages.messages" var="messages" />
+	</ui:define>
+
+	<ui:define name="body">
+
 		<div id="createIssue" align="left">
 			<h:form id="formCreateIssue" name="formCreateIssue">
 
@@ -99,7 +101,8 @@
 
 
 
-								</h:panelGrid></td>
+								</h:panelGrid>
+							</td>
 							<td>
 
 								<div align="left" style="width: 443px;">
@@ -161,7 +164,8 @@
 									</rich:panel>
 
 
-								</div></td>
+								</div>
+							</td>
 						</tr>
 						<tr>
 
