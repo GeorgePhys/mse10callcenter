@@ -25,65 +25,60 @@
 					<tr>
 						<td>#{label.issueTask}</td>
 						<td><h:inputText value="#{issueSearch.titleIssue}" id="title"
-								required="true" /> <h:message for="title"
-								styleClass="issueError" />
-						</td>
+								/> <h:message for="title"
+								styleClass="issueError" /></td>
 					</tr>
 					<tr>
 						<td>#{label.issueCreatedFrom}</td>
-						<td><h:inputText value="#{issueSearch.createdBy}" />
-						</td>
+						<td><h:inputText value="#{issueSearch.createdBy}" /></td>
 					</tr>
 					<tr>
 						<td>#{label.issueOwnerCreate}</td>
-						<td><h:inputText value="#{issueSearch.assignedTo}" />
-						</td>
+						<td><h:inputText value="#{issueSearch.assignedTo}" /></td>
 					</tr>
 					<tr>
 						<td>#{label.issueStatus}</td>
 						<td><h:selectOneMenu id="subscriptions"
-								value="#{issueSearch.status}" style=" width : 149px;">
-								<f:selectItem itemLabel="Избери опция" itemValue="0" />
+								value="#{issueSearch.status}" style=" width : 149px;" >
+								<f:selectItem itemLabel="Избери опция"/>
 								<f:selectItem itemLabel="Отворен" itemValue="1" />
 								<f:selectItem itemLabel="В прогрес" itemValue="2" />
 								<f:selectItem itemLabel="Решен" itemValue="3" />
 								<f:selectItem itemLabel="Подновен" itemValue="4" />
 								<f:selectItem itemLabel="Затворен" itemValue="5" />
-							</h:selectOneMenu>
-						</td>
+							</h:selectOneMenu>  <h:message for="subscriptions"
+								styleClass="issueError" /></td>
 					</tr>
 					<tr>
 						<td>#{label.issueDecision}</td>
 						<td><h:selectOneMenu id="subscriptions2"
 								value="#{issueSearch.resolution}" style=" width : 150px;">
-								<f:selectItem itemLabel="Избери опция" itemValue="0" />
+								<f:selectItem itemLabel="Избери опция"  />
 								<f:selectItem itemLabel="Установено" itemValue="1" />
 								<f:selectItem itemLabel="Няма решение" itemValue="2" />
 								<f:selectItem itemLabel="Повторение" itemValue="3" />
 								<f:selectItem itemLabel="Незавършен" itemValue="4" />
 								<f:selectItem itemLabel="Невъзпроизводим" itemValue="5" />
-							</h:selectOneMenu>
-						</td>
+							</h:selectOneMenu></td>
 					</tr>
 					<tr>
 						<td>#{label.issuePriority}</td>
 						<td><h:selectOneMenu id="subscriptions3"
 								value="#{issueSearch.priority}" style=" width : 149px;">
-								<f:selectItem itemLabel="Избери опция" itemValue="0" />
+								<f:selectItem itemLabel="Избери опция"  />
 								<f:selectItem itemLabel="Критичен" itemValue="1" />
 								<f:selectItem itemLabel="Важен" itemValue="2" />
 								<f:selectItem itemLabel="Маловажен" itemValue="3" />
 								<f:selectItem itemLabel="Незначителен" itemValue="4" />
-							</h:selectOneMenu>
-						</td>
+							</h:selectOneMenu> </td>
 					</tr>
 					<tr>
 						<td>#{label.issueCreateDate}</td>
 						<td><rich:calendar value="#{issueSearch.dateCreate}"
 								id="calendar" showApplyButton="false" cellWidth="24px"
-								cellHeight="22px" style="width:200px" datePattern="dd/MM/yyyy" rendered="true"></rich:calendar>
-								<h:message for="calendar" styleClass="issueError" />
-						</td>
+								cellHeight="22px" style="width:200px" datePattern="d/M/yy"
+								rendered="true"></rich:calendar> <h:message for="calendar"
+								styleClass="issueError" /></td>
 					</tr>
 
 					<tr>
@@ -92,13 +87,12 @@
 					</tr>
 					<tr>
 						<td><h:commandButton value="#{label.search}"
-								action="#{issueSearchAction.search(issueSearch)}" />
-						</td>
-						<td><h:commandButton value="#{label.issueCancel}" />
-						</td>
+								action="#{issueSearchAction.search(issueSearch)}" /></td>
+						<td><h:commandButton value="#{label.issueCancel}" /></td>
 					</tr>
 					<tr>
-						<td rowspan="1"><h3>#{label.issueResult}</h3></td>
+						<td rowspan="1"><h3>#{label.issueResult}</h3>
+						</td>
 						<td></td>
 					</tr>
 				</table>
@@ -144,16 +138,16 @@
 						<h:outputText value="#{issueDetail.titleIssue}" />
 					</h:column>
 					<h:column>
-						<h:outputText value="#{issueDetail.dateCreate}" />
+						<h:outputText value="#{issueDetail.dateCreated}" />
 					</h:column>
 					<h:column>
 						<h:outputText value="#{issueDetail.dateEnded}" />
 					</h:column>
 					<h:column>
-						<h:outputText value="#{issueDetail.createdBy}" />
+						<h:outputText value="#{issueDetail.user}" />
 					</h:column>
 					<h:column>
-						<h:outputText value="#{issueDetail.assignedTo}" />
+						<h:outputText value="#{issueDetail.assignee}" />
 					</h:column>
 					<h:column>
 						<h:outputText value="#{issueDetail.status}" />
