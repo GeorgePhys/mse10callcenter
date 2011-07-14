@@ -12,27 +12,32 @@
 	<ui:define name="body">
 		<f:loadBundle basename="labels.labels_bg" var="label" />
 
-			
-			<h:form>
+
+		<h:form>
 			<rich:panel>
-					<f:facet name="header">
-						<h:outputText value="#{labels.search}" />
-					</f:facet>
-				
-			
-			
+				<f:facet name="header">
+					<h:outputText value="#{labels.search}" />
+				</f:facet>
+
+
+
 				<table class="search">
 					<tr>
 						<td>#{label.issueTask}</td>
-						<td><h:inputText value="#{issueSearch.titleIssue}" /></td>
+						<td><h:inputText value="#{issueSearch.titleIssue}" id="title"
+								required="true" /> <h:message for="title"
+								styleClass="issueError" />
+						</td>
 					</tr>
 					<tr>
 						<td>#{label.issueCreatedFrom}</td>
-						<td><h:inputText value="#{issueSearch.createdBy}" /></td>
+						<td><h:inputText value="#{issueSearch.createdBy}" />
+						</td>
 					</tr>
 					<tr>
 						<td>#{label.issueOwnerCreate}</td>
-						<td><h:inputText value="#{issueSearch.assignedTo}" /></td>
+						<td><h:inputText value="#{issueSearch.assignedTo}" />
+						</td>
 					</tr>
 					<tr>
 						<td>#{label.issueStatus}</td>
@@ -44,7 +49,8 @@
 								<f:selectItem itemLabel="Решен" itemValue="3" />
 								<f:selectItem itemLabel="Подновен" itemValue="4" />
 								<f:selectItem itemLabel="Затворен" itemValue="5" />
-							</h:selectOneMenu></td>
+							</h:selectOneMenu>
+						</td>
 					</tr>
 					<tr>
 						<td>#{label.issueDecision}</td>
@@ -56,7 +62,8 @@
 								<f:selectItem itemLabel="Повторение" itemValue="3" />
 								<f:selectItem itemLabel="Незавършен" itemValue="4" />
 								<f:selectItem itemLabel="Невъзпроизводим" itemValue="5" />
-							</h:selectOneMenu></td>
+							</h:selectOneMenu>
+						</td>
 					</tr>
 					<tr>
 						<td>#{label.issuePriority}</td>
@@ -67,14 +74,16 @@
 								<f:selectItem itemLabel="Важен" itemValue="2" />
 								<f:selectItem itemLabel="Маловажен" itemValue="3" />
 								<f:selectItem itemLabel="Незначителен" itemValue="4" />
-							</h:selectOneMenu></td>
+							</h:selectOneMenu>
+						</td>
 					</tr>
 					<tr>
 						<td>#{label.issueCreateDate}</td>
 						<td><rich:calendar value="#{issueSearch.dateCreate}"
-								id="calendar" 
-								showApplyButton="false" cellWidth="24px"
-								cellHeight="22px" style="width:200px" datePattern="dd/MM/yyyy"></rich:calendar></td>
+								id="calendar" showApplyButton="false" cellWidth="24px"
+								cellHeight="22px" style="width:200px" datePattern="dd/MM/yyyy" rendered="true"></rich:calendar>
+								<h:message for="calendar" styleClass="issueError" />
+						</td>
 					</tr>
 
 					<tr>
@@ -83,18 +92,20 @@
 					</tr>
 					<tr>
 						<td><h:commandButton value="#{label.search}"
-								action="#{issueSearchAction.search(issueSearch)}" /></td>
-						<td><h:commandButton value="#{label.issueCancel}" /></td>
+								action="#{issueSearchAction.search(issueSearch)}" />
+						</td>
+						<td><h:commandButton value="#{label.issueCancel}" />
+						</td>
 					</tr>
 					<tr>
-						<td rowspan="1"><h3>#{label.issueResult}</h3>
-						</td>
+						<td rowspan="1"><h3>#{label.issueResult}</h3></td>
 						<td></td>
 					</tr>
-				</table>	
+				</table>
 
 				<rich:dataTable keepSaved="true" id="richTable" var="issueDetail"
-					value="#{issueSearchAction.dataModel}" rows="10" rendered="#{issueSearchAction.dataModel ne null}" >
+					value="#{issueSearchAction.dataModel}" rows="10"
+					rendered="#{issueSearchAction.dataModel ne null}">
 					<f:facet name="header">
 						<rich:columnGroup>
 
@@ -154,8 +165,8 @@
 						<rich:dataScroller id="scroller" />
 					</f:facet>
 				</rich:dataTable>
-	</rich:panel>
-			</h:form>
+			</rich:panel>
+		</h:form>
 	</ui:define>
 
 </ui:composition>
