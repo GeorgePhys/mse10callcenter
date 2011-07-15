@@ -7,6 +7,7 @@
 	<ui:define name="title">Issue search</ui:define>
 	<ui:define name="head">
 		<link rel="stylesheet" type="text/css" href="../css/template.css" />
+		<link rel="stylesheet" type="text/css" href="../css/issue.css" />
 	</ui:define>
 	<ui:define name="pageHeader">Issue Search</ui:define>
 	<ui:define name="body">
@@ -88,7 +89,7 @@
 					<tr>
 						<td><h:commandButton value="#{label.search}"
 								action="#{issueSearchAction.search(issueSearch)}" /></td>
-						<td><h:commandButton value="#{label.issueCancel}" /></td>
+						<td><h:commandButton value="#{label.issueCancel}" action="#{issueSearchAction.clearSearch(issueSearch)}" /></td>
 					</tr>
 					<tr>
 						<td rowspan="1"><h3>#{label.issueResult}</h3>
@@ -97,12 +98,12 @@
 					</tr>
 				</table>
 
-				<rich:dataTable keepSaved="true" id="richTable" var="issueDetail"
+				<rich:dataTable keepSaved="true" id="richTableOut" var="issueDetail"
 					value="#{issueSearchAction.dataModel}" rows="10"
 					rendered="#{issueSearchAction.dataModel ne null}">
 					<f:facet name="header">
 						<rich:columnGroup>
-
+							
 							<h:column>
 								<h:outputText styleClass="headerText" value="Title Issue" />
 								<br />

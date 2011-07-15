@@ -7,12 +7,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import callcenter.dto.BaseDTO;
-import callcenter.dto.issue.IssueReportDTO;
 import callcenter.dto.issue.IssueSearchDTO;
 import callcenter.entity.issue.IssueDetail;
 import callcenter.service.administration.IssueServiceBean;
 import callcenter.service.base.BaseServiceBean;
-
 import callcenter.web.action.search.datamodel.JPADataModel;
 
 @SessionScoped
@@ -49,5 +47,9 @@ public class IssueSearchAction implements Serializable {
 
 	public void setDataModel(IssueDataModel dataModel) {
 		this.dataModel = dataModel;
+	}
+
+	public void clearSearch() {
+		this.dataModel = null;
 	}
 }
