@@ -9,6 +9,10 @@
 	padding: 20px;
 }
 
+a:hover{
+	color:orange;
+}
+
 #header h1 {
 	margin: 0;
 }
@@ -108,4 +112,20 @@
 	display: inline;
 	float: right;
 	padding: 5px 10px;
+}
+.icons{
+	width:23px; height:23px;
+	float:left;
+	padding-right:4px;
+}
+#info{
+	padding-top:10px;
+	font-size:13px;
+	text-align:justify;
+	font-family: serif;
+	font-style: italic;
+}
+#info h3{ text-align:center;}
+#info p{
+	color:gray;
 }
