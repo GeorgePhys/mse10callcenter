@@ -48,8 +48,4 @@ public class IssueSearchAction implements Serializable {
 	public void setDataModel(IssueDataModel dataModel) {
 		this.dataModel = dataModel;
 	}
-
-	public void clearSearch() {
-		this.dataModel = null;
-	}
 }
