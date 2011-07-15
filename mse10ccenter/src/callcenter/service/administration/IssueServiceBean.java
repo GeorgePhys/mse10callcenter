@@ -27,7 +27,7 @@ public class IssueServiceBean extends
 		Session session = (Session) getEntityManager().getDelegate();
 		Criteria criteria = session.createCriteria(IssueDetail.class);
 
-		if (StringUtils.isNotEmpty(args.getAssignedTo())) {
+		if (StringUtils.isNotEmpty(args.getTitleIssue())) {
 			criteria.add(Restrictions.eq("titleIssue", args.getTitleIssue()));
 		}
 
