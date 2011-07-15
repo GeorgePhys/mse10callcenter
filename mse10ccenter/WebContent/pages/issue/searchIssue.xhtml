@@ -6,14 +6,11 @@
 	xmlns:rich="http://richfaces.org/rich">
 	<ui:define name="title">Issue search</ui:define>
 	<ui:define name="head">
-		<link rel="stylesheet" type="text/css" href="../css/template.css" />
-		<link rel="stylesheet" type="text/css" href="../css/issue.css" />
+		<link rel="stylesheet" type="text/css"
+			href="#{facesContext.externalContext.requestContextPath}/css/issue.css" />
 	</ui:define>
-	<ui:define name="pageHeader">Issue Search</ui:define>
+	<ui:define name="title">Issue Search</ui:define>
 	<ui:define name="body">
-		<f:loadBundle basename="labels.labels_bg" var="label" />
-
-
 		<h:form>
 			<rich:panel>
 				<f:facet name="header">
@@ -24,112 +21,127 @@
 
 				<table class="search">
 					<tr>
-						<td>#{label.issueTask}</td>
+						<td>#{labels.issueTask}</td>
 						<td><h:inputText value="#{issueSearch.titleIssue}" id="title"
-								/> <h:message for="title"
-								styleClass="issueError" /></td>
+								required="true" /></td>
+						<td><h:message for="title" styleClass="issueError" />
+						</td>
 					</tr>
 					<tr>
-						<td>#{label.issueCreatedFrom}</td>
+						<td>#{labels.issueCreatedFrom}</td>
 						<td><h:inputText value="#{issueSearch.createdBy}" /></td>
 					</tr>
 					<tr>
-						<td>#{label.issueOwnerCreate}</td>
+						<td>#{labels.issueOwnerCreate}</td>
 						<td><h:inputText value="#{issueSearch.assignedTo}" /></td>
 					</tr>
 					<tr>
-						<td>#{label.issueStatus}</td>
+						<td>#{labels.issueStatus}</td>
 						<td><h:selectOneMenu id="subscriptions"
-								value="#{issueSearch.status}" style=" width : 149px;" >
-								<f:selectItem itemLabel="Избери опция"/>
-								<f:selectItem itemLabel="Отворен" itemValue="1" />
-								<f:selectItem itemLabel="В прогрес" itemValue="2" />
-								<f:selectItem itemLabel="Решен" itemValue="3" />
-								<f:selectItem itemLabel="Подновен" itemValue="4" />
-								<f:selectItem itemLabel="Затворен" itemValue="5" />
-							</h:selectOneMenu>  <h:message for="subscriptions"
-								styleClass="issueError" /></td>
+								value="#{issueSearch.status}" style=" width : 149px;">
+								<f:selectItem itemLabel="#{labels.choiceOption}" />
+								<f:selectItem itemLabel="#{labels.open}" itemValue="1" />
+								<f:selectItem itemLabel="#{labels.inProgress}" itemValue="2" />
+								<f:selectItem itemLabel="#{labels.resolved}" itemValue="3" />
+								<f:selectItem itemLabel="#{labels.reopened}" itemValue="4" />
+								<f:selectItem itemLabel="#{labels.closed}" itemValue="5" />
+							</h:selectOneMenu> <h:message for="subscriptions" styleClass="issueError" /></td>
 					</tr>
 					<tr>
-						<td>#{label.issueDecision}</td>
+						<td>#{labels.issueDecision}</td>
 						<td><h:selectOneMenu id="subscriptions2"
 								value="#{issueSearch.resolution}" style=" width : 150px;">
-								<f:selectItem itemLabel="Избери опция"  />
-								<f:selectItem itemLabel="Установено" itemValue="1" />
-								<f:selectItem itemLabel="Няма решение" itemValue="2" />
-								<f:selectItem itemLabel="Повторение" itemValue="3" />
-								<f:selectItem itemLabel="Незавършен" itemValue="4" />
-								<f:selectItem itemLabel="Невъзпроизводим" itemValue="5" />
+								<f:selectItem itemLabel="#{labels.choiceOption}" />
+								<f:selectItem itemLabel="#{labels.fixed}" itemValue="1" />
+								<f:selectItem itemLabel="#{labels.woNotFix}" itemValue="2" />
+								<f:selectItem itemLabel="#{labels.duplicate}" itemValue="3" />
+								<f:selectItem itemLabel="#{labels.incomplete}" itemValue="4" />
 							</h:selectOneMenu></td>
 					</tr>
 					<tr>
-						<td>#{label.issuePriority}</td>
+						<td>#{labels.issuePriority}</td>
 						<td><h:selectOneMenu id="subscriptions3"
 								value="#{issueSearch.priority}" style=" width : 149px;">
-								<f:selectItem itemLabel="Избери опция"  />
-								<f:selectItem itemLabel="Критичен" itemValue="1" />
-								<f:selectItem itemLabel="Важен" itemValue="2" />
-								<f:selectItem itemLabel="Маловажен" itemValue="3" />
-								<f:selectItem itemLabel="Незначителен" itemValue="4" />
-							</h:selectOneMenu> </td>
-					</tr>
-					<tr>
-						<td>#{label.issueCreateDate}</td>
-						<td><rich:calendar value="#{issueSearch.dateCreate}"
-								id="calendar" showApplyButton="false" cellWidth="24px"
-								cellHeight="22px" style="width:200px" datePattern="d/M/yy"
-								rendered="true"></rich:calendar> <h:message for="calendar"
-								styleClass="issueError" /></td>
-					</tr>
-
-					<tr>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td><h:commandButton value="#{label.search}"
-								action="#{issueSearchAction.search(issueSearch)}" /></td>
-						<td><h:commandButton value="#{label.issueCancel}" action="#{issueSearchAction.clearSearch(issueSearch)}" /></td>
-					</tr>
-					<tr>
-						<td rowspan="1"><h3>#{label.issueResult}</h3>
+								<f:selectItem itemLabel="#{labels.choiceOption}" />
+								<f:selectItem itemLabel="#{labels.critical}" itemValue="1" />
+								<f:selectItem itemLabel="#{labels.major}" itemValue="2" />
+								<f:selectItem itemLabel="#{labels.minor}" itemValue="3" />
+								<f:selectItem itemLabel="#{labels.trivial}" itemValue="4" />
+							</h:selectOneMenu>
 						</td>
+					</tr>
+					<tr>
+						<td>#{labels.issueCreateDate}</td>
+						<td><rich:calendar value="#{issueSearch.dateCreate}"
+								id="calendar" showApplyButton="false" required="true"
+								cellWidth="24px" cellHeight="22px" style="width:200px"
+								datePattern="d/M/yy" rendered="true"></rich:calendar></td>
+						<td><h:message for="calendar" styleClass="issueError" />
+						</td>
+					</tr>
+					<tr>
+						<td></td>
 						<td></td>
 					</tr>
-				</table>
+					<tr>
+						<td><h:commandButton value="#{labels.search}"
+								action="#{issueSearchAction.search(issueSearch)}" /></td>
 
-				<rich:dataTable keepSaved="true" id="richTableOut" var="issueDetail"
+					</tr>
+
+				</table>
+				<br />
+
+				<rich:dataTable style="margin-left:auto; margin-right:auto;"
+					keepSaved="true" id="richTableOut" var="issueDetail"
 					value="#{issueSearchAction.dataModel}" rows="10"
 					rendered="#{issueSearchAction.dataModel ne null}">
 					<f:facet name="header">
+						<h3>#{labels.issueResult}</h3>
 						<rich:columnGroup>
-							
 							<h:column>
-								<h:outputText styleClass="headerText" value="Title Issue" />
+								<h:outputText styleClass="headerText"
+									value="#{labels.titleIssue}" />
 								<br />
 							</h:column>
 							<h:column>
-								<h:outputText styleClass="headerText" value="Date Create" />
+								<h:outputText styleClass="headerText"
+									value="#{labels.issueOwnerCreate}" />
 								<br />
 							</h:column>
 							<h:column>
-								<h:outputText styleClass="headerText" value="Date Ended" />
+								<h:outputText styleClass="headerText"
+									value="#{labels.issueCreatedFrom}" />
 								<br />
 							</h:column>
 							<h:column>
-								<h:outputText styleClass="headerText" value="Created By" />
+								<h:outputText styleClass="headerText"
+									value="#{labels.issueCreateDate}" />
 								<br />
 							</h:column>
 							<h:column>
-								<h:outputText styleClass="headerText" value="Assigned To" />
+								<h:outputText styleClass="headerText"
+									value="#{labels.dateEnded}" />
 								<br />
 							</h:column>
 							<h:column>
-								<h:outputText styleClass="headerText" value="Status" />
+								<h:outputText styleClass="headerText"
+									value="#{labels.issueStatus}" />
 								<br />
 							</h:column>
 							<h:column>
-								<h:outputText styleClass="headerText" value="Resolution" />
+								<h:outputText styleClass="headerText"
+									value="#{labels.issuePriority}" />
+								<br />
+							</h:column>
+							<h:column>
+								<h:outputText styleClass="headerText"
+									value="#{labels.resolution}" />
+								<br />
+							</h:column>
+							<h:column>
+								<h:outputText styleClass="headerText"
+									value="#{labels.issueDetail}" />
 								<br />
 							</h:column>
 
@@ -139,22 +151,28 @@
 						<h:outputText value="#{issueDetail.titleIssue}" />
 					</h:column>
 					<h:column>
+						<h:outputText value="#{issueDetail.reporter}" />
+					</h:column>
+					<h:column>
+						<h:outputText value="#{issueDetail.assignee}" />
+					</h:column>
+					<h:column>
 						<h:outputText value="#{issueDetail.dateCreated}" />
 					</h:column>
 					<h:column>
 						<h:outputText value="#{issueDetail.dateEnded}" />
 					</h:column>
 					<h:column>
-						<h:outputText value="#{issueDetail.user}" />
-					</h:column>
-					<h:column>
-						<h:outputText value="#{issueDetail.assignee}" />
-					</h:column>
-					<h:column>
 						<h:outputText value="#{issueDetail.status}" />
 					</h:column>
 					<h:column>
+						<h:outputText value="#{issueDetail.priority}" />
+					</h:column>
+					<h:column>
 						<h:outputText value="#{issueDetail.resolution}" />
+					</h:column>
+					<h:column>
+						<h:outputText value="#{issueDetail.desctription}" />
 					</h:column>
 					<f:facet name="footer">
 						<rich:dataScroller id="scroller" />
