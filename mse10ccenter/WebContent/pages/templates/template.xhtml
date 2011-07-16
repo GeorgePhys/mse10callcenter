@@ -34,22 +34,31 @@
 		<div id="navigation">
 			<h:form>
 				<ul>
-					<li><a href="/mse10ccenter/pages/home.jsf">Home</a></li>
-
-					<li><a
-						href="#{facesContext.externalContext.requestContextPath}/pages/forum/thread.jsf">Forum</a>
+					<li>
+						<a href="/mse10ccenter/pages/home.jsf">Home</a>
 					</li>
-					<li><h:commandLink value="FAQ"
-							action="#{faqAction.loadAndNavigateToFAQ()}" /></li>
-					<li><a href="#">E-shop</a></li>
-					<li><a href="#">Contact us</a></li>
+					<li>
+						<a href="#{facesContext.externalContext.requestContextPath}/pages/forum/thread.jsf">Forum</a>
+					</li>
+					<li>
+						<h:commandLink value="FAQ" action="#{faqAction.loadAndNavigateToFAQ()}" />
+					</li>
+					<li>
+						<a href="#">E-shop</a>
+					</li>
+					<li>
+						<a href="#">Contact us</a>
+					</li>
+					<div id="loginLogoutDiv">
+					<li>
+							<h:commandLink action="loginPage" value="Login" rendered="#{not loginAction.loggedIn}" />
+							<h:commandLink action="#{loginAction.logout()}" value="Logout" rendered="#{loginAction.loggedIn}" />
+					</li>
+					<li>
+							<h:commandLink action="#{userProfileAction.profile()}" value="Profile" rendered="#{loginAction.loggedIn}" />
+					</li>
+					</div>
 				</ul>
-				<div id="loginLogoutDiv">
-					<h:commandLink action="loginPage" value="Login"
-						rendered="#{not loginAction.loggedIn}" />
-					<h:commandLink action="#{loginAction.logout()}" value="Logout"
-						rendered="#{loginAction.loggedIn}" />
-				</div>
 			</h:form>
 		</div>
 		<div id="content-container1">
