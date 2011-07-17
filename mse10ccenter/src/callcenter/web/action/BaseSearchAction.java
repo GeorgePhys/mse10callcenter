@@ -5,8 +5,7 @@ import callcenter.entity.Entity;
 import callcenter.service.base.BaseServiceBean;
 import callcenter.web.action.search.datamodel.JPADataModel;
 
-public abstract class BaseSearchAction<E extends Entity, T extends BaseDTO<E>>
-		extends BaseAction {
+public abstract class BaseSearchAction<E extends Entity, T extends BaseDTO<E>> {
 
 	private JPADataModel<E> dataModel;
 

@@ -59,25 +59,25 @@
 					</rich:columnGroup>
 				</f:facet>
 				<h:column>
-					<h:outputText value="#{user.fullName}" />
+					<h:commandLink action="#{userSearchAction.previewSearchResult(user)}" value="#{user.fullName}" />
 				</h:column>
 				<h:column>
-					<h:outputText value="#{user.mail}" />
+					<h:commandLink action="#{userSearchAction.previewSearchResult(user)}" value="#{user.mail}" />
 				</h:column>
 				<h:column>
-					<h:outputText value="#{user.address.country}" />
+					<h:commandLink action="#{userSearchAction.previewSearchResult(user)}" value="#{user.address.country}" />
 				</h:column>
 				<h:column>
-					<h:outputText value="#{user.address.city}" />
+					<h:commandLink action="#{userSearchAction.previewSearchResult(user)}" value="#{user.address.city}" />
 				</h:column>
 				<h:column>
-					<h:outputText value="#{user.address.street}" />
+					<h:commandLink action="#{userSearchAction.previewSearchResult(user)}" value="#{user.address.street}" />
 				</h:column>
 				<h:column>
-					<h:outputText value="#{user.address.postCode}" />
+					<h:commandLink action="#{userSearchAction.previewSearchResult(user)}" value="#{user.address.postCode}" />
 				</h:column>
 				<h:column>
-					<h:outputText value="#{user.phone}" />
+					<h:commandLink action="#{userSearchAction.previewSearchResult(user)}" value="#{user.phone}" />
 				</h:column>
 				<f:facet name="footer">
 					<rich:dataScroller id="scroller" />

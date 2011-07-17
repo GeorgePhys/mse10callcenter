@@ -8,10 +8,12 @@ import javax.faces.bean.ViewScoped;
 
 import callcenter.entity.clients.User;
 import callcenter.service.administration.UserServiceBean;
+import callcenter.web.action.BaseAction;
 
 @ViewScoped
 @ManagedBean(name = "userRegistrationAction")
-public class UserRegistrationAction implements Serializable {
+public class UserRegistrationAction extends BaseAction<User> implements
+		Serializable {
 
 	private static final long serialVersionUID = -5533722715840256982L;
 
@@ -19,7 +21,9 @@ public class UserRegistrationAction implements Serializable {
 	private UserServiceBean userService;
 
 	public String register(User user) throws Exception {
-		userService.registerUser(user);
+		User registerUser = userService.registerUser(user);
+		setTargetEntity(registerUser);
 		return "successRegister";
 	}
+
 }
