@@ -6,48 +6,34 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import callcenter.dto.BaseDTO;
 import callcenter.dto.user.UserSearchDTO;
 import callcenter.entity.clients.User;
 import callcenter.service.administration.UserServiceBean;
-import callcenter.service.base.BaseServiceBean;
-import callcenter.web.action.search.datamodel.JPADataModel;
+import callcenter.web.action.BaseSearchAction;
 
 @SessionScoped
 @ManagedBean(name = "userSearchAction")
-@SuppressWarnings("rawtypes")
-public class UserSearchAction implements Serializable {
+public class UserSearchAction extends BaseSearchAction<User, UserSearchDTO>
+		implements Serializable {
 
 	private static final long serialVersionUID = -5156711102367948040L;
 
 	@EJB
 	private UserServiceBean service;
 
-	private UserDataModel dataModel;
-
-	private static final class UserDataModel extends JPADataModel<User> {
-
-		private UserDataModel(BaseServiceBean service, BaseDTO dto) {
-			super(service, dto, User.class);
-		}
-
-		@Override
-		protected Object getId(User t) {
-			return t.getId();
-		}
-	}
-
-	public String search(UserSearchDTO dto) {
-		service.search(dto, true);
-		setDataModel(new UserDataModel(service, dto));
+	@Override
+	public String previewSearchResult(User result) {
 		return null;
 	}
 
-	public Object getDataModel() {
-		return dataModel;
+	@Override
+	public UserServiceBean getService() {
+		return service;
 	}
 
-	public void setDataModel(UserDataModel dataModel) {
-		this.dataModel = dataModel;
+	@Override
+	public Class<User> getEntityClass() {
+		return User.class;
 	}
+
 }

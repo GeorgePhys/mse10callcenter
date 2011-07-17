@@ -10,10 +10,11 @@ import org.ajax4jsf.model.Range;
 import org.ajax4jsf.model.SequenceRange;
 
 import callcenter.dto.BaseDTO;
+import callcenter.entity.Entity;
 import callcenter.service.base.BaseServiceBean;
 
 @SuppressWarnings("rawtypes")
-public abstract class JPADataModel<T> extends ExtendedDataModel<T> {
+public class JPADataModel<T extends Entity> extends ExtendedDataModel<T> {
 
 	private BaseServiceBean service;
 
@@ -88,6 +89,7 @@ public abstract class JPADataModel<T> extends ExtendedDataModel<T> {
 		throw new UnsupportedOperationException();
 	}
 
-	// TODO - implement using metadata
-	protected abstract Object getId(T t);
+	protected Object getId(T t) {
+		return t.getId();
+	}
 }

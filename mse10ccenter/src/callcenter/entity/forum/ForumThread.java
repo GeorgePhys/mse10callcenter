@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.OrderBy;
@@ -16,7 +17,7 @@ public class ForumThread extends Entity {
 
 	private String title;
 
-	@OneToMany(mappedBy = "thread", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "thread", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@OrderBy("id")
 	private List<Post> posts = new ArrayList<Post>();
 

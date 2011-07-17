@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -44,6 +45,9 @@ public class IssueDetail extends callcenter.entity.Entity implements
 
 	@Column(columnDefinition = "Varchar(200)")
 	private String desctription;
+
+	@ManyToOne
+	private Project project;
 
 	public String getTitleIssue() {
 		return titleIssue;
@@ -131,6 +135,21 @@ public class IssueDetail extends callcenter.entity.Entity implements
 
 	public void setDesctription(String desctription) {
 		this.desctription = desctription;
+	}
+
+	/**
+	 * @return the project
+	 */
+	public Project getProject() {
+		return project;
+	}
+
+	/**
+	 * @param project
+	 *            the project to set
+	 */
+	public void setProject(Project project) {
+		this.project = project;
 	}
 
 	@Override

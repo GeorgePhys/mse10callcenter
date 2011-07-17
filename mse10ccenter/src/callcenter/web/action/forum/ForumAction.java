@@ -26,6 +26,25 @@ public class ForumAction implements Serializable {
 
 	private Post post = new Post();
 
+	private String comment;
+
+	private boolean newComment;
+
+	/**
+	 * @return the comment
+	 */
+	public String getComment() {
+		return comment;
+	}
+
+	/**
+	 * @param comment
+	 *            the comment to set
+	 */
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
 	public String createThread() {
 		User user = (User) FacesContext.getCurrentInstance()
 				.getExternalContext().getSessionMap().get("user");
@@ -33,7 +52,7 @@ public class ForumAction implements Serializable {
 		post.setFromUser(user);
 		thread.getPosts().add(post);
 		thread.initializeBibirectional();
-		thread = serviceBean.saveOrUpdate(thread);
+		thread = serviceBean.save(thread);
 		return "threadPage";
 	}
 
@@ -46,19 +65,30 @@ public class ForumAction implements Serializable {
 		getThread().getPosts().add(newPost);
 	}
 
-	public void addComment(Post commentedPost) {
-		User user = (User) FacesContext.getCurrentInstance()
-				.getExternalContext().getSessionMap().get("user");
-		Comment currentComment = new Comment();
-		currentComment.setFromUser(user);
-		currentComment.setPost(commentedPost);
-		commentedPost.getComments().add(currentComment);
-		commentedPost.initializeBibirectional();
+	public void addComment() {
+		setNewComment(true);
 	}
 
 	public void saveThread() {
 		getThread().initializeBibirectional();
-		setThread(serviceBean.saveOrUpdate(getThread()));
+		setThread(serviceBean.save(getThread()));
+		getThread().initializeBibirectional();
+	}
+
+	public void saveComment(Post post) {
+		User user = (User) FacesContext.getCurrentInstance()
+				.getExternalContext().getSessionMap().get("user");
+		Comment currentComment = new Comment();
+		currentComment.setText(getComment());
+		currentComment.setFromUser(user);
+		currentComment.setPost(post);
+		post.getComments().add(currentComment);
+		post.initializeBibirectional();
+		serviceBean.save(post);
+		setThread(serviceBean.find(ForumThread.class, getThread().getId()));
+		getThread().initializeBibirectional();
+		setNewComment(false);
+		setComment(null);
 	}
 
 	/**
@@ -89,6 +119,21 @@ public class ForumAction implements Serializable {
 	 */
 	public void setPost(Post post) {
 		this.post = post;
+	}
+
+	/**
+	 * @return the newComment
+	 */
+	public boolean isNewComment() {
+		return newComment;
+	}
+
+	/**
+	 * @param newComment
+	 *            the newComment to set
+	 */
+	public void setNewComment(boolean newComment) {
+		this.newComment = newComment;
 	}
 
 }

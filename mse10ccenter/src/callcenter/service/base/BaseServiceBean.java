@@ -15,7 +15,11 @@ public class BaseServiceBean<E, T extends BaseDTO<E>> {
 	protected EntityManager entityManager;
 
 	public E saveOrUpdate(E entity) {
-		return getEntityManager().merge(entity);
+		return save(entity);
+	}
+
+	public <C> C save(C c) {
+		return getEntityManager().merge(c);
 	}
 
 	public void refresh(E e) {
