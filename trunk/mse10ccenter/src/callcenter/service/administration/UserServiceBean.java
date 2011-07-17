@@ -143,7 +143,7 @@ public class UserServiceBean extends BaseServiceBean<User, UserSearchDTO> {
 		return hash;
 	}
 
-	public void registerUser(User user) throws Exception {
+	public User registerUser(User user) throws Exception {
 		String uuid = CommonUtil.generateUUID();
 
 		user.setConfirmed(Boolean.FALSE);
@@ -166,6 +166,7 @@ public class UserServiceBean extends BaseServiceBean<User, UserSearchDTO> {
 		UserRegistrationTimer registrationTimer = CommonUtil
 				.lookupSessionBean(UserRegistrationTimer.class);
 		registrationTimer.scheduleUserRegistrationCheck(key, expirationDate);
+		return user;
 	}
 
 	public void confirmUserRegistration(UserRegistrationKey key)
