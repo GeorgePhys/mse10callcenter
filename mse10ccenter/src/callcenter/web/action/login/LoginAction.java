@@ -9,10 +9,11 @@ import javax.servlet.http.HttpSession;
 
 import callcenter.entity.clients.User;
 import callcenter.service.administration.UserServiceBean;
+import callcenter.web.action.BaseAction;
 
 @SessionScoped
 @ManagedBean(name = "loginAction")
-public class LoginAction {
+public class LoginAction extends BaseAction {
 
 	@EJB
 	private UserServiceBean userService;
@@ -21,7 +22,8 @@ public class LoginAction {
 		User checkLogin = userService.checkLogin(user);
 		if (checkLogin == null) {
 			FacesMessage message = new FacesMessage(
-					FacesMessage.SEVERITY_ERROR, "This user dont exist", "asdasda");
+					FacesMessage.SEVERITY_ERROR, "This user dont exist",
+					"asdasda");
 			FacesContext.getCurrentInstance().addMessage(null, message);
 			return null;
 		}
@@ -36,19 +38,4 @@ public class LoginAction {
 		session.invalidate();
 		return "loginPage";
 	}
-
-	public boolean getLoggedIn() {
-		return getUser() != null;
-	}
-
-	public User getUser() {
-		return (User) FacesContext.getCurrentInstance().getExternalContext()
-				.getSessionMap().get("user");
-	}
-
-	public void setUser(User user) {
-		FacesContext.getCurrentInstance().getExternalContext().getSessionMap()
-				.put("user", user);
-	}
-
 }
