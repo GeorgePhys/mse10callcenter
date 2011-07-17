@@ -1,21 +1,27 @@
 package callcenter.service.forum;
 
-import java.util.List;
-
 import javax.ejb.LocalBean;
-import javax.ejb.Stateless;
-
-import callcenter.dto.forum.ThreadDTO;
-import callcenter.entity.forum.ForumThread;
-import callcenter.service.base.BaseServiceBean;
+import javax.ejb.Stateful;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 
 @LocalBean
-@Stateless
-public class ForumServiceBean extends
-		BaseServiceBean<callcenter.entity.forum.ForumThread, ThreadDTO> {
+@Stateful
+public class ForumServiceBean {
 
-	@Override
-	public List<ForumThread> search(ThreadDTO args, boolean countOnly) {
-		return super.search(args, countOnly);
+	@PersistenceContext(type = PersistenceContextType.EXTENDED)
+	private EntityManager entityManager;
+
+	public <E> E save(E e) {
+		return getEntityManager().merge(e);
+	}
+
+	public <E> E find(Class<E> clazz, Object id) {
+		return getEntityManager().find(clazz, id);
+	}
+
+	protected EntityManager getEntityManager() {
+		return entityManager;
 	}
 }

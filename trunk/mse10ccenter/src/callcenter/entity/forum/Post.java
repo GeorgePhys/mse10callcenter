@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
@@ -16,7 +15,7 @@ public class Post extends BasePost {
 	@ManyToOne
 	private ForumThread thread;
 
-	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
 	@OrderBy("id")
 	private List<Comment> comments = new ArrayList<Comment>();
 
