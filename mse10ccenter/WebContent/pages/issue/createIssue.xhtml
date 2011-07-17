@@ -4,7 +4,8 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	template="/pages/templates/template.xhtml"
-	xmlns:rich="http://richfaces.org/rich">
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j" >
 
 	<ui:define name="title">Create Issue</ui:define>
 	<ui:define name="head">
@@ -101,8 +102,7 @@
 
 
 
-								</h:panelGrid>
-							</td>
+								</h:panelGrid></td>
 							<td>
 
 								<div align="left" style="width: 443px;">
@@ -164,19 +164,20 @@
 									</rich:panel>
 
 
-								</div>
-							</td>
+								</div></td>
 						</tr>
 						<tr>
 
-							<h:panelGrid columns="3" columnClasses="wfcol1,wfcol2,wfcol3">
+						<h:panelGrid columns="3" columnClasses="wfcol1,wfcol2,wfcol3">
 								<h:outputText value="#{labels.description}:" />
 								<h:inputTextarea id="description"
 									value="#{issueCreateAction.issue.desctription}" required="true"
 									style=" width : 260px;"
 									readonly="#{issueCreateAction.readonly}" />
 								<h:message for="description" styleClass="issueError" />
+
 							</h:panelGrid>
+
 
 						</tr>
 					</table>
