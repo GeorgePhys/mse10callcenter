@@ -22,7 +22,7 @@
 					<f:facet name="header">
 						<h:outputText value="#{post.fromUser.fullName}" />
 						<h:commandLink value="Add Comment"
-							action="#{forumAction.addComment(post)}"
+							action="#{forumAction.addComment()}"
 							rendered="#{loginAction.loggedIn}" />
 					</f:facet>
 					<h:inputTextarea value="#{post.text}" readonly="#{post.id ne null}" />
@@ -37,12 +37,13 @@
 										style="font-weight:bold" />
 								</h:panelGroup>
 							</f:facet>
-							<h:inputTextarea value="#{comment.text}"
-								readonly="#{comment.id ne null}" />
-							<h:commandButton value="#{labels.save}"
-								action="#{forumAction.saveThread()}"
-								rendered="#{comment.id eq null}" />
+							<h:inputTextarea value="#{comment.text}" />
 						</rich:list>
+						<h:inputTextarea value="#{forumAction.comment}"
+							rendered="#{forumAction.newComment}" />
+						<h:commandButton value="#{labels.save}"
+							action="#{forumAction.saveComment(post)}"
+							rendered="#{forumAction.newComment}" />
 					</h:panelGrid>
 				</rich:panel>
 			</rich:dataGrid>
