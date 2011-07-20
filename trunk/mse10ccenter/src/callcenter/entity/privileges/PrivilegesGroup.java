@@ -10,8 +10,6 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 
 @Entity
-@ManagedBean(name = "privilegesGroup")
-@RequestScoped
 public class PrivilegesGroup extends callcenter.entity.Entity implements
 		Serializable {
 
