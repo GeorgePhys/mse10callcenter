@@ -27,10 +27,12 @@
 						<td><h:message for="title" styleClass="issueError" />
 						</td>
 					</tr>
+					
 					<tr>
 						<td>#{labels.issueCreatedFrom}</td>
 						<td><h:inputText value="#{issueSearch.createdBy}" /></td>
 					</tr>
+					
 					<tr>
 						<td>#{labels.issueOwnerCreate}</td>
 						<td><h:inputText value="#{issueSearch.assignedTo}" /></td>
@@ -150,6 +152,7 @@
 					<h:column>
 						<h:outputText value="#{issueDetail.titleIssue}" />
 					</h:column>
+				
 					<h:column>
 						<h:outputText value="#{issueDetail.reporter}" />
 					</h:column>

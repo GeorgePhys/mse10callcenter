@@ -47,6 +47,13 @@
  <navigation-rule>
   <from-view-id>*</from-view-id>
   <navigation-case>
+   <from-outcome>startNewSearch</from-outcome>
+   <to-view-id>/pages/issue/searchIssue.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>*</from-view-id>
+  <navigation-case>
    <from-outcome>successRegister</from-outcome>
    <to-view-id>/pages/completeRegistration.xhtml</to-view-id>
   </navigation-case>
