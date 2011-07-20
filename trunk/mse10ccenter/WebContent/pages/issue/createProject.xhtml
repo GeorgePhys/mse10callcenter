@@ -5,7 +5,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	template="/pages/templates/template.xhtml"
 	xmlns:rich="http://richfaces.org/rich"
-	xmlns:a4j="http://richfaces.org/a4j" >
+	xmlns:a4j="http://richfaces.org/a4j">
 
 	<ui:define name="title">Create Issue</ui:define>
 	<ui:define name="head">
@@ -29,50 +29,40 @@
 					<table>
 						<tr>
 							<td><h:panelGrid columns="3">
-							<h:outputText value="#{labels.projectName}:"
-										styleClass="issueFieldPos" />
-									<h:inputText value="#{project.name}"
-										required="true" id="projectName" styleClass="issueField"
-										 />
+									<h:outputText value="#{labels.projectName}:"
+										styleClass="issueFieldPos" rendered="#{projectCreateAction.visible}"/>
+									<h:inputText value="#{projectCreateAction.project.name}"
+										required="true" id="projectName" styleClass="issueField" rendered="#{projectCreateAction.visible}" />
 									<h:message for="projectName" styleClass="issueError" />
 
 									<h:outputText value="#{labels.titleIssue}:"
-										styleClass="issueFieldPos" />
-									<h:inputText value="#{project.shortName}"
-										required="true" id="shortName" styleClass="issueField"
-										 />
+										styleClass="issueFieldPos" rendered="#{projectCreateAction.visible}"/>
+									<h:inputText value="#{projectCreateAction.project.shortName}"
+										required="true" id="shortName" styleClass="issueField" rendered="#{projectCreateAction.visible}"/>
 									<h:message for="shortName" styleClass="issueError" />
 
 
+								</h:panelGrid>
+							</td>
 
-									
-									
-
-
-
-								</h:panelGrid></td>
-							
 						</tr>
 						<tr>
 
-						<h:panelGrid columns="3" columnClasses="wfcol1,wfcol2,wfcol3">
-								<h:outputText value="#{labels.description}:" />
+							<h:panelGrid columns="3" columnClasses="wfcol1,wfcol2,wfcol3">
+								<h:outputText value="#{labels.description}:" rendered="#{projectCreateAction.visible}"/>
 								<h:inputTextarea id="description"
-									value="#{project.desctription}" required="true"
-									style=" width : 260px;"
-									readonly="#{issueCreateAction.readonly}" />
+									value="#{projectCreateAction.project.description}"
+									required="true" style=" width : 260px;" rendered="#{projectCreateAction.visible}" />
 								<h:message for="description" styleClass="issueError" />
-
+								<h:outputText value="Проектът е създаден!" rendered="#{not projectCreateAction.visible}"/>
 							</h:panelGrid>
 
 
 						</tr>
 					</table>
 				</rich:panel>
-				<h:commandButton action="#{issueCreateAction.createProject(project)}"
-					value="#{labels.save}" style="margin-left: 400px; width : 85px;" />
-				<h:commandButton action="#{issueCreateAction.edit(issue)}"
-					value="#{labels.edit}" style="margin-left: 15px; width : 90px;" />
+				<h:commandButton action="#{projectCreateAction.createProject()}"
+					value="#{labels.save}" style="margin-left: 400px; width : 85px;" rendered="#{projectCreateAction.visible}" />
 
 			</h:form>
 
