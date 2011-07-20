@@ -43,7 +43,7 @@ public class IssueDetail extends callcenter.entity.Entity implements
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateEnded;
 
-	@Column(columnDefinition = "Varchar(200)")
+	@Column(columnDefinition = "Varchar(300)")
 	private String desctription;
 
 	@ManyToOne
