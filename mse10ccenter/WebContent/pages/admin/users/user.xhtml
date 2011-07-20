@@ -17,25 +17,25 @@
 				<rich:tab header="General information">
 					<h:panelGrid columns="3">
 						<h:outputText value="#{labels.email}" />
-						<h:inputText value="#{baseAction.targetEntity.mail}" required="true" id="mail" />
+						<h:inputText value="#{userAction.targetEntity.mail}" required="true" id="mail" />
 						<h:message for="mail" />
 
 						<h:outputText value="#{labels.password}" />
-						<h:inputSecret value="#{baseAction.targetEntity.password}" required="true"
+						<h:inputSecret value="#{userAction.targetEntity.password}" required="true"
 							id="password" />
 						<h:message for="password" />
 
 						<h:outputText value="#{labels.fullName}" />
-						<h:inputText value="#{baseAction.targetEntity.fullName}" id="fullName"
+						<h:inputText value="#{userAction.targetEntity.fullName}" id="fullName"
 							required="true" />
 						<h:message for="fullName" />
 
 						<h:outputText value="#{labels.phone}" />
-						<h:inputText value="#{baseAction.targetEntity.phone}" id="phone" />
+						<h:inputText value="#{userAction.targetEntity.phone}" id="phone" />
 						<h:message for="phone" />
 
 						<h:outputText value="#{labels.userType}" />
-						<h:selectOneMenu value="#{baseAction.targetEntity.userType}" id="userType">
+						<h:selectOneMenu value="#{userAction.targetEntity.userType}" id="userType">
 							<f:selectItem id="typeUser" itemLabel="#{labels.user}" />
 							<f:selectItem id="typeCompany" itemLabel="#{labels.company}" />
 						</h:selectOneMenu>
@@ -46,33 +46,33 @@
 				<rich:tab header="Address">
 					<h:panelGrid columns="3">
 						<h:outputText value="#{labels.country}" />
-						<h:inputText value="#{baseAction.targetEntity.address.country}" required="true"
+						<h:inputText value="#{userAction.targetEntity.address.country}" required="true"
 							id="country" />
 						<h:message for="country" />
 
 						<h:outputText value="#{labels.municipality}" />
-						<h:inputText value="#{baseAction.targetEntity.address.municipality}" required="true"
+						<h:inputText value="#{userAction.targetEntity.address.municipality}" required="true"
 							id="municipality" />
 						<h:message for="municipality" />
 
 						<h:outputText value="#{labels.city}" />
-						<h:inputText value="#{baseAction.targetEntity.address.city}" required="true"
+						<h:inputText value="#{userAction.targetEntity.address.city}" required="true"
 							id="city" />
 						<h:message for="city" />
 
 						<h:outputText value="#{labels.street}" />
-						<h:inputText value="#{baseAction.targetEntity.address.street}" required="true"
+						<h:inputText value="#{userAction.targetEntity.address.street}" required="true"
 							id="street" />
 						<h:message for="street" />
 
 						<h:outputText value="#{labels.postCode}" />
-						<h:inputText value="#{baseAction.targetEntity.address.postCode}" required="true"
+						<h:inputText value="#{userAction.targetEntity.address.postCode}" required="true"
 							id="postCode" />
 						<h:message for="postCode" />
 					</h:panelGrid>
 				</rich:tab>
 			</rich:tabPanel>
-			<h:commandButton action="#{userRegistrationAction.register(user)}"
+			<h:commandButton action="#{userAction.register()}"
 				value="#{labels.registration}" />
 		</h:form>
 	</ui:define>

@@ -62,6 +62,7 @@
 					
 					<li>
 							<h:commandLink action="loginPage" value="Login" rendered="#{not loginAction.loggedIn}" />
+							
 							<h:commandLink action="#{loginAction.logout}" value="Logout" rendered="#{loginAction.loggedIn}" />
 					</li>
 					<li>
@@ -79,7 +80,8 @@
 							<li>
 								<h:outputLink> 
 							 		<h:graphicImage class="icons" value="/images/icon1.JPG" />
-							 		<h:outputText value="#{labels.registration}" />
+							 		<h:commandLink value="#{labels.registration}"
+									action="#{userAction.newRegistration}" />
 							 	</h:outputLink>
 							</li>
 							<li>
