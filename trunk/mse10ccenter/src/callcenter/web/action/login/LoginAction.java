@@ -13,13 +13,18 @@ import callcenter.web.action.BaseAction;
 
 @SessionScoped
 @ManagedBean(name = "loginAction")
-public class LoginAction extends BaseAction {
+public class LoginAction extends BaseAction<User> {
 
 	@EJB
 	private UserServiceBean userService;
 
-	public String login(User user) {
-		User checkLogin = userService.checkLogin(user);
+	public String initLogin() {
+		setTargetEntity(new User());
+		return "loginPage";
+	}
+
+	public String login() {
+		User checkLogin = userService.checkLogin(getTargetEntity());
 		if (checkLogin == null) {
 			FacesMessage message = new FacesMessage(
 					FacesMessage.SEVERITY_ERROR, "This user dont exist",
@@ -27,6 +32,7 @@ public class LoginAction extends BaseAction {
 			FacesContext.getCurrentInstance().addMessage(null, message);
 			return null;
 		}
+		setTargetEntity(null);
 		setUser(checkLogin);
 		return "loginSuccessful";
 	}

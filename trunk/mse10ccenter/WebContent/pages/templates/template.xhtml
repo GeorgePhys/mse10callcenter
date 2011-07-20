@@ -51,7 +51,7 @@
 					</li>
 					<div id="loginLogoutDiv">
 					<li>
-							<h:commandLink action="loginPage" value="Login" rendered="#{not loginAction.loggedIn}" />
+							<h:commandLink action="#{loginAction.initLogin()}" value="Login" rendered="#{not loginAction.loggedIn}" />
 							<h:commandLink action="#{loginAction.logout()}" value="Logout" rendered="#{loginAction.loggedIn}" />
 					</li>
 					<li>

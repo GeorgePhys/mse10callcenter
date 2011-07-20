@@ -15,7 +15,7 @@
 					<td><h:outputText value="#{labels.email}" />
 					</td>
 					<td><h:inputText id="email" style="width:100%"
-							value="#{user.mail}" required="true" />
+							value="#{loginAction.targetEntity.mail}" required="true" />
 					</td>
 				</tr>
 				<tr>
@@ -26,7 +26,7 @@
 					<td><h:outputText value="#{labels.password}" />
 					</td>
 					<td><h:inputSecret id="password" style="width:100%"
-							value="#{user.password}" required="true">
+							value="#{loginAction.targetEntity.password}" required="true">
 							<f:validateLength for="password" minimum="6" maximum="20" />
 						</h:inputSecret></td>
 				</tr>
@@ -54,7 +54,7 @@
 					</td>
 				</tr>
 			</table>
-			<h:commandButton action="#{loginAction.login(user)}"
+			<h:commandButton action="#{loginAction.login()}"
 				value="#{labels.loginTitle}" />
 		</h:form>
 		<h:form>
