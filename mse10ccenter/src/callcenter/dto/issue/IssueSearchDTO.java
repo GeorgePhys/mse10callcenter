@@ -9,6 +9,18 @@ public class IssueSearchDTO extends IssueReportDTO {
 	private Long id;
 
 	private String titleIssue;
+	
+	private String project;
+
+	
+
+	public String getProject() {
+		return project;
+	}
+
+	public void setProject(String project) {
+		this.project = project;
+	}
 
 	public String getTitleIssue() {
 		return titleIssue;

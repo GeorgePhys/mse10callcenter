@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import callcenter.entity.issue.IssueDetail;
+import callcenter.entity.issue.Project;
 import callcenter.service.administration.IssueServiceBean;
 
 @ViewScoped
@@ -30,6 +31,13 @@ public class IssueCreateAction implements Serializable {
 	public void edit(IssueDetail issue) {
 		setReadonly(false);
 
+	}
+	
+	public String createProject(Project project){
+		
+		issueService.saveOrUpdate(issue);
+		
+		return null;
 	}
 
 	public String createNewIssue() {
