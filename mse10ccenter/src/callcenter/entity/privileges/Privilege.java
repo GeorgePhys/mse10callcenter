@@ -8,8 +8,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity
-@ManagedBean(name = "privilege")
-@RequestScoped
 public class Privilege extends callcenter.entity.Entity implements Serializable {
 
 	@Column(columnDefinition = "Integer(10)")
