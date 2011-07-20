@@ -59,7 +59,9 @@
 							<h:outputText value="#{labels.contactUs}" />
 						</h:outputLink>
 					</li>
-					
+					</ul>
+			<div style="position: absolute; right: 0">
+				<ul>	
 					<li>
 							<h:commandLink action="loginPage" value="Login" rendered="#{not loginAction.loggedIn}" />
 							
@@ -68,8 +70,8 @@
 					<li>
 							<h:commandLink action="#{userProfileAction.profile}" value="Profile" rendered="#{loginAction.loggedIn}" />
 					</li>
-					
-				</ul>
+				</ul>	
+			</div>
 			</h:form>
 		</div>
 		<div id="content-container1">
