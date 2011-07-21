@@ -29,5 +29,10 @@ public class UserAction extends BaseAction<User> implements Serializable {
 		setTargetEntity(registerUser);
 		return "successRegister";
 	}
+	
+	public String loadProfile() {
+		User loadProfileUser = userService.loadUser(getTargetEntity());
+		return "userProfile";
+	}
 
 }

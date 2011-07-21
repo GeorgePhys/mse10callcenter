@@ -179,4 +179,9 @@ public class UserServiceBean extends BaseServiceBean<User, UserSearchDTO> {
 		saveOrUpdate(find);
 		registrationTimer.cancelTimer(key.getId(), key.getUuid());
 	}
+	
+	public User loadUser(User user) {
+		//I have to think how to catch user ID and to return it...
+		return user;
+	}
 }
