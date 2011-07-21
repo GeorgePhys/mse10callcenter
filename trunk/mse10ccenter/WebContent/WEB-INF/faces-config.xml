@@ -62,7 +62,7 @@
   <from-view-id>*</from-view-id>
   <navigation-case>
    <from-outcome>userProfile</from-outcome>
-   <to-view-id>/pages/admin/users/user.jsf</to-view-id>
+   <to-view-id>/pages/admin/users/profile.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
  <!-- navigation rules end -->

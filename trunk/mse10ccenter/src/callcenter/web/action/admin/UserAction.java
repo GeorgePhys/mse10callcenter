@@ -31,8 +31,13 @@ public class UserAction extends BaseAction<User> implements Serializable {
 	}
 	
 	public String loadProfile() {
-		User loadProfileUser = userService.loadUser(getTargetEntity());
+		User loadProfileUser = getUser();
 		return "userProfile";
+	}
+	
+	public String saveProfile() {
+		 User saveUserProfile = userService.saveOrUpdate(getTargetEntity());
+		return "saveUserProfile";
 	}
 
 }
