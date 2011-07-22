@@ -31,12 +31,14 @@ public class UserAction extends BaseAction<User> implements Serializable {
 	}
 	
 	public String loadProfile() {
-		User loadProfileUser = getUser();
+		setTargetEntity(getUser());
 		return "userProfile";
 	}
 	
 	public String saveProfile() {
 		 User saveUserProfile = userService.saveOrUpdate(getTargetEntity());
+		 setTargetEntity(saveUserProfile);
+		 setUser(saveUserProfile);
 		return "saveUserProfile";
 	}
 
