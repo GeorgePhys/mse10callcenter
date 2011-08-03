@@ -16,7 +16,7 @@ import callcenter.service.administration.IssueServiceBean;
 import callcenter.service.project.ProjectServiceBean;
 
 @ViewScoped
-@ManagedBean(name = "issueCreateAction")
+@ManagedBean(name = "issueCreateAction2222222")
 public class IssueCreateAction2 implements Serializable {
 
 	private static final long serialVersionUID = -5533722715840256982L;
@@ -41,12 +41,13 @@ public class IssueCreateAction2 implements Serializable {
 
 	}
 	
-	public List<Project> searchProject() {
-		List<String> projectNames=new ArrayList<String>();
-		return projectList.search(dto, false);
-		
-		
-	}
+	public List<String> getSearchProject() {
+		  List<String> projectNames=new ArrayList<String>();
+		  for(int i=0;0<projectList.search(dto, false).size();i++){
+		   projectNames.add(projectList.search(dto, false).get(i).getName());
+		  }
+		  return projectNames;
+		 }
 	
 
 	public String createNewIssue() {
