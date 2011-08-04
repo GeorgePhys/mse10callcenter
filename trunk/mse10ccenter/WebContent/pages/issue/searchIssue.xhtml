@@ -29,14 +29,12 @@
 
 					<tr>
 						<td>#{labels.issueCreatedFrom}</td>
-						<td><h:inputText value="#{issueSearch.createdBy}" />
-						</td>
+						<td><h:inputText value="#{issueSearch.createdBy}" /></td>
 					</tr>
 
 					<tr>
 						<td>#{labels.issueOwnerCreate}</td>
-						<td><h:inputText value="#{issueSearch.assignedTo}" />
-						</td>
+						<td><h:inputText value="#{issueSearch.assignedTo}" /></td>
 					</tr>
 					<tr>
 						<td>#{labels.issueStatus}</td>
@@ -48,8 +46,7 @@
 								<f:selectItem itemLabel="#{labels.resolved}" itemValue="3" />
 								<f:selectItem itemLabel="#{labels.reopened}" itemValue="4" />
 								<f:selectItem itemLabel="#{labels.closed}" itemValue="5" />
-							</h:selectOneMenu> <h:message for="subscriptions" styleClass="issueError" />
-						</td>
+							</h:selectOneMenu> <h:message for="subscriptions" styleClass="issueError" /></td>
 					</tr>
 					<tr>
 						<td>#{labels.issueDecision}</td>
@@ -60,8 +57,7 @@
 								<f:selectItem itemLabel="#{labels.woNotFix}" itemValue="2" />
 								<f:selectItem itemLabel="#{labels.duplicate}" itemValue="3" />
 								<f:selectItem itemLabel="#{labels.incomplete}" itemValue="4" />
-							</h:selectOneMenu>
-						</td>
+							</h:selectOneMenu></td>
 					</tr>
 					<tr>
 						<td>#{labels.issuePriority}</td>
@@ -72,16 +68,17 @@
 								<f:selectItem itemLabel="#{labels.major}" itemValue="2" />
 								<f:selectItem itemLabel="#{labels.minor}" itemValue="3" />
 								<f:selectItem itemLabel="#{labels.trivial}" itemValue="4" />
-							</h:selectOneMenu></td>
+							</h:selectOneMenu>
+						</td>
 					</tr>
 					<tr>
 						<td>#{labels.issueCreateDate}</td>
 						<td><rich:calendar value="#{issueSearch.dateCreate}"
 								id="calendar" showApplyButton="false" required="true"
 								cellWidth="24px" cellHeight="22px" style="width:200px"
-								datePattern="d/M/yy" rendered="true"></rich:calendar>
+								datePattern="d/M/yy" rendered="true"></rich:calendar></td>
+						<td><h:message for="calendar" styleClass="issueError" />
 						</td>
-						<td><h:message for="calendar" styleClass="issueError" /></td>
 					</tr>
 					<tr>
 						<td></td>
@@ -89,8 +86,7 @@
 					</tr>
 					<tr>
 						<td><h:commandButton value="#{labels.search}"
-								action="#{issueSearchAction.search(issueSearch)}" />
-						</td>
+								action="#{issueSearchAction.search(issueSearch)}" /></td>
 
 					</tr>
 
@@ -153,7 +149,7 @@
 						</rich:columnGroup>
 					</f:facet>
 					<h:column>
-						<h:outputText value="#{issueDetail.titleIssue}" />
+						<h:commandLink value="#{issueDetail.titleIssue}" action="#{issueCreateAction.open(issueDetail)}" /> 
 					</h:column>
 
 					<h:column>
@@ -180,6 +176,7 @@
 					<h:column>
 						<h:outputText value="#{issueDetail.desctription}" />
 					</h:column>
+					
 					<f:facet name="footer">
 						<rich:dataScroller id="scroller" />
 					</f:facet>

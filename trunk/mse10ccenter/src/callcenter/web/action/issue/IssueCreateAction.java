@@ -4,12 +4,12 @@ import java.io.Serializable;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 
 import callcenter.entity.issue.IssueDetail;
 import callcenter.service.administration.IssueServiceBean;
 
-@ViewScoped
+@SessionScoped
 @ManagedBean(name = "issueCreateAction")
 public class IssueCreateAction implements Serializable {
 
@@ -29,6 +29,14 @@ public class IssueCreateAction implements Serializable {
 
 	public void edit(IssueDetail issue) {
 		setReadonly(false);
+
+	}
+
+	public String open(IssueDetail is) {
+		this.issue = is;
+		setReadonly(true);
+
+		return "createNewIssue";
 
 	}
 
