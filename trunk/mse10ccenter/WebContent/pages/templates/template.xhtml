@@ -5,8 +5,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
-	<title><ui:insert name="title">Page Title</ui:insert>
-	</title>
+	<title><ui:insert name="title">Page Title</ui:insert></title>
 	<link rel="stylesheet" type="text/css"
 		href="#{facesContext.externalContext.requestContextPath}/css/template.css" />
 	<ui:insert name="head" />
@@ -17,8 +16,10 @@
 <body>
 	<div id="container">
 		<div id="header">
-			<a href="#{facesContext.externalContext.requestContextPath}/pages/home.jsf"> 
-			<img src="#{facesContext.externalContext.requestContextPath}/images/logo.gif"
+			<a
+				href="#{facesContext.externalContext.requestContextPath}/pages/home.jsf">
+				<img
+				src="#{facesContext.externalContext.requestContextPath}/images/logo.gif"
 				alt="Home" align="left" width="70" height="70" /> </a>
 			<h1 style="display: inline;">Call Center</h1>
 			<div style="float: right;">
@@ -34,91 +35,73 @@
 		<div id="navigation">
 			<h:form>
 				<ul>
-					<li>
-					<h:outputLink value="#{facesContext.externalContext.requestContextPath}/pages/home.jsf"> 
-						<h:outputText value="#{labels.home}" />
-					</h:outputLink>
-					</li>
-					<li>
-						
-						<h:outputLink value="#{facesContext.externalContext.requestContextPath}/pages/forum/thread.jsf"> 
-								<h:outputText value="#{labels.forum}" />
-						</h:outputLink>
-					</li>
-					<li>
-						<h:commandLink value="#{labels.FAQ}" action="#{faqAction.loadAndNavigateToFAQ}" />
-					</li>
-					<li>
-						<h:outputLink value="#{facesContext.externalContext.requestContextPath}/pages/e-shop.jsf"> 
+					<li><h:outputLink
+							value="#{facesContext.externalContext.requestContextPath}/pages/home.jsf">
+							<h:outputText value="#{labels.home}" />
+						</h:outputLink></li>
+					<li><h:outputLink
+							value="#{facesContext.externalContext.requestContextPath}/pages/forum/thread.jsf">
+							<h:outputText value="#{labels.forum}" />
+						</h:outputLink></li>
+					<li><h:commandLink value="#{labels.FAQ}"
+							action="#{faqAction.loadAndNavigateToFAQ}" /></li>
+					<li><h:outputLink
+							value="#{facesContext.externalContext.requestContextPath}/pages/e-shop.jsf">
 							<h:outputText value="#{labels.shop}" />
-						</h:outputLink>
-						
-					</li>
-					<li>
-						<h:outputLink value="#{facesContext.externalContext.requestContextPath}/pages/contactUs.jsf"> 
+						</h:outputLink></li>
+					<li><h:outputLink
+							value="#{facesContext.externalContext.requestContextPath}/pages/contactUs.jsf">
 							<h:outputText value="#{labels.contactUs}" />
-						</h:outputLink>
-					</li>
+						</h:outputLink></li>
+				</ul>
+				<div style="position: absolute; right: 0">
+					<ul>
+						<li><h:commandLink action="#{loginAction.initLogin}"
+								value="Login" rendered="#{not loginAction.loggedIn}" /> <h:commandLink
+								action="#{loginAction.logout}" value="Logout"
+								rendered="#{loginAction.loggedIn}" /></li>
+						<li><h:commandLink action="#{userAction.loadProfile}"
+								value="Profile" rendered="#{loginAction.loggedIn}" /></li>
 					</ul>
-			<div style="position: absolute; right: 0">
-				<ul>	
-					<li>
-							<h:commandLink action="#{loginAction.initLogin}" value="Login" rendered="#{not loginAction.loggedIn}" />
-							
-							<h:commandLink action="#{loginAction.logout}" value="Logout" rendered="#{loginAction.loggedIn}" />
-					</li>
-					<li>
-							<h:commandLink action="#{userAction.loadProfile}" value="Profile" rendered="#{loginAction.loggedIn}" />
-					</li>
-				</ul>	
-			</div>
+				</div>
 			</h:form>
 		</div>
 		<div id="content-container1">
 			<div id="content-container2">
 				<h:form>
 					<div id="section-navigation">
-						<ul >
-							<li>
-								<h:outputLink> 
-							 		<h:graphicImage class="icons" value="/images/icon1.JPG" />
-							 		<h:commandLink value="#{labels.registration}"
-									action="#{userAction.newRegistration}" />
-							 	</h:outputLink>
-							</li>
-							<li>
-								<h:outputLink>
-							 		<h:graphicImage class="icons" value="/images/icon2.jpg" />
-							 		<h:commandLink value="#{labels.issueCreate}"
-									action="#{issueCreateAction.createNewIssue}" />
-							 	</h:outputLink>
-							</li>
-							<li>
-								
-							 	<h:graphicImage class="icons" value="/images/icon3.JPG" />
-							 	<h:commandLink action="#{issueSearchAction.startSearch()}" value="#{labels.issueSearch}" />
-							</li>
-							<li>
-								<h:outputLink value="/mse10ccenter/pages/issue/reportIssue.jsf">
-							 		<h:graphicImage  class="icons" value="/images/icon4.JPG" />
-							 		<h:outputText value="#{labels.issueReport}" />
-							 	</h:outputLink>
-							</li>
-							<li>
-							<h:outputLink value="#{facesContext.externalContext.requestContextPath}/pages/e-shop.jsf">
-								<h:graphicImage class="icons" value="/images/icon5.JPG" />
-							<h:outputText value="#{labels.shop}" />
-							</h:outputLink>
-							</li>
+						<ul>
+							<li><h:outputLink>
+									<h:graphicImage class="icons" value="/images/icon1.JPG" />
+									<h:commandLink value="#{labels.registration}"
+										action="#{userAction.newRegistration}" />
+								</h:outputLink></li>
+							<li><h:outputLink>
+									<h:graphicImage class="icons" value="/images/icon2.jpg" />
+									<h:commandLink value="#{labels.issueCreate}"
+										action="#{issueCreateAction.createNewIssue}" />
+								</h:outputLink></li>
+							<li><h:graphicImage class="icons" value="/images/icon3.JPG" />
+								<h:commandLink action="#{issueSearchAction.startSearch()}"
+									value="#{labels.issueSearch}" /></li>
+							<li><h:outputLink
+									value="/mse10ccenter/pages/issue/reportIssue.jsf">
+									<h:graphicImage class="icons" value="/images/icon4.JPG" />
+									<h:outputText value="#{labels.issueReport}" />
+								</h:outputLink></li>
+							<li><h:outputLink
+									value="#{facesContext.externalContext.requestContextPath}/pages/e_shop/products.jsf">
+									<h:graphicImage class="icons" value="/images/icon5.JPG" />
+									<h:outputText value="#{labels.shop}" />
+								</h:outputLink></li>
 						</ul>
 						<div id="info">
-						<h3>OUR HISTORY</h3>
-						<h:graphicImage value="/images/info.jpg" style="width:80%;" />
-						<p>
-						Serving the sourcing needs of our clients since October 
-						of 2010, our mission has </p><p>always been to create value by 
-						providing our clients and call centers with the best fit 
-						possible. </p>
+							<h3>OUR HISTORY</h3>
+							<h:graphicImage value="/images/info.jpg" style="width:80%;" />
+							<p>Serving the sourcing needs of our clients since October of
+								2010, our mission has</p>
+							<p>always been to create value by providing our clients and
+								call centers with the best fit possible.</p>
 						</div>
 					</div>
 				</h:form>
