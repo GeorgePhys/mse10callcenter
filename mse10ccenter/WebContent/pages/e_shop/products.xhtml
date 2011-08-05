@@ -1,0 +1,60 @@
+<ui:composition template="/pages/templates/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich">
+	<ui:define name="title">E-SHOP</ui:define>
+	<ui:define name="head">
+		<link rel="stylesheet" type="text/css"
+			href="#{facesContext.externalContext.requestContextPath}/css/issue.css" />
+	</ui:define>
+	<ui:define name="title">e_shop</ui:define>
+	<ui:define name="body">
+
+		<rich:panel>
+			<f:facet name="header">
+				<h:outputText value="Software and Hardware products"></h:outputText>
+			</f:facet>
+			<h:form>
+				<rich:dataGrid value="products" var="sh" columns="1" elements="9"
+					width="600px">
+					<rich:panel bodyClass="pbody">
+						<f:facet name="header">
+							<h:outputText value="Ffdshow"></h:outputText>
+						</f:facet>
+						<h:panelGrid columns="3">
+							<h:column>
+								<h:graphicImage value="/images/main.jpg" height="100px;" />
+							</h:column>
+							<h:column>
+
+								<h:outputText
+									value="FFDShow is a DirectShow decoding filter for decompressing DivX, XviD, H.264, FLV1, WMV, MPEG-1 and MPEG-2, MPEG-4 movies. It uses libavcodec from ffmpeg project for video decompression, postprocessing code from mplayer to enhance visual quality of low bitrate movies, and is based on original DirectShow filter from XviD, which is GPL'ed educational implementation of MPEG4 encoder." />
+
+							</h:column>
+							<h:column>
+								<h:outputText value="Price: $23" />
+								<h:commandButton value="Buy" />
+							</h:column>
+						</h:panelGrid>
+					</rich:panel>
+					<rich:panel bodyClass="pbody">
+						<f:facet name="header">
+							<h:outputText value="Ffdshow"></h:outputText>
+						</f:facet>
+						<h:panelGrid columns="3">
+							<h:graphicImage value="/images/main.jpg" height="100px;" />
+							<h:outputText
+								value="FFDShow is a DirectShow decoding filter for decompressing DivX, XviD, H.264, FLV1, WMV, MPEG-1 and MPEG-2, MPEG-4 movies. It uses libavcodec from ffmpeg project for video decompression, postprocessing code from mplayer to enhance visual quality of low bitrate movies, and is based on original DirectShow filter from XviD, which is GPL'ed educational implementation of MPEG4 encoder." />
+							<h:commandButton value="Buy" />
+						</h:panelGrid>
+					</rich:panel>
+
+				</rich:dataGrid>
+			</h:form>
+		</rich:panel>
+
+	</ui:define>
+
+</ui:composition>
