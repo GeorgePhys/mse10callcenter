@@ -9,10 +9,8 @@ public class IssueSearchDTO extends IssueReportDTO {
 	private Long id;
 
 	private String titleIssue;
-	
-	private String project;
 
-	
+	private String project;
 
 	public String getProject() {
 		return project;

@@ -3,9 +3,14 @@ package callcenter.entity.issue;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
+import callcenter.service.project.ProjectServiceBean;
+
 @Entity
+@NamedQueries(value = { @NamedQuery(name = ProjectServiceBean.QUERY_ALL_PROJECT_NAMES_KEY, query = ProjectServiceBean.QUERY_ALL_PROJECT_NAMES) })
 public class Project extends callcenter.entity.Entity {
 
 	private String name;

@@ -29,16 +29,16 @@ public class UserAction extends BaseAction<User> implements Serializable {
 		setTargetEntity(registerUser);
 		return "successRegister";
 	}
-	
+
 	public String loadProfile() {
 		setTargetEntity(getUser());
 		return "userProfile";
 	}
-	
+
 	public String saveProfile() {
-		 User saveUserProfile = userService.saveOrUpdate(getTargetEntity());
-		 setTargetEntity(saveUserProfile);
-		 setUser(saveUserProfile);
+		User saveUserProfile = userService.saveOrUpdate(getTargetEntity());
+		setTargetEntity(saveUserProfile);
+		setUser(saveUserProfile);
 		return "saveUserProfile";
 	}
 

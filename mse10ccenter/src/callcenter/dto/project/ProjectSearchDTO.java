@@ -4,8 +4,8 @@ import callcenter.dto.BaseDTO;
 import callcenter.entity.issue.IssueDetail;
 import callcenter.entity.issue.Project;
 
-public class ProjectSearchDTO extends BaseDTO<Project>{
-	
+public class ProjectSearchDTO extends BaseDTO<Project> {
+
 	private String projectName;
 
 	public String getProjectName() {
@@ -15,7 +15,5 @@ public class ProjectSearchDTO extends BaseDTO<Project>{
 	public void setProjectName(String projectName) {
 		this.projectName = projectName;
 	}
-	
-	
 
 }

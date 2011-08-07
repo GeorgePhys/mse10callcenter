@@ -27,25 +27,10 @@
 					<table>
 						<tr>
 							<td><h:panelGrid columns="3">
-									<!--<h:outputText value="#{labels.projectName}:"
-										styleClass="issueFieldPos" />
-
-
-									<h:selectOneMenu id="gender" value="#{issueCreateAction.issue.project}">
-										<f:selectItems value="#{issueCreateAction.searchProject()}" />
-									</h:selectOneMenu>
-
-
-
-
-									 <h:inputText value="#{issueCreateAction.issue.project}"
-										required="true" id="projectName" styleClass="issueField"
-										readonly="#{issueCreateAction.readonly}" />
-									<h:message for="projectName" styleClass="issueError" />-->
 
 									<h:outputText value="#{labels.titleIssue}:"
 										styleClass="issueFieldPos" />
-									<h:inputText value="#{issueCreateAction.issue.titleIssue}"
+									<h:inputText value="#{issueCreateAction.targetEntity.titleIssue}"
 										required="true" id="titleIssue" styleClass="issueField"
 										readonly="#{issueCreateAction.readonly}" />
 									<h:message for="titleIssue" styleClass="issueError" />
@@ -54,7 +39,7 @@
 
 									<h:outputText value="#{labels.type}:"
 										styleClass="issueFieldPos" />
-									<h:selectOneMenu value="#{issueCreateAction.issue.type}"
+									<h:selectOneMenu value="#{issueCreateAction.targetEntity.type}"
 										id="type" styleClass="issueField"
 										disabled="#{issueCreateAction.readonly}">
 										<f:selectItem itemLabel="#{labels.choiceOption}" itemValue="0" />
@@ -70,7 +55,7 @@
 
 									<h:outputText value="#{labels.priority}:"
 										styleClass="issueFieldPos" />
-									<h:selectOneMenu value="#{issueCreateAction.issue.priority}"
+									<h:selectOneMenu value="#{issueCreateAction.targetEntity.priority}"
 										id="priority" styleClass="issueField"
 										disabled="#{issueCreateAction.readonly}">
 										<f:selectItem itemLabel="#{labels.choiceOption}" itemValue="0" />
@@ -84,7 +69,7 @@
 
 									<h:outputText value="#{labels.status}:"
 										styleClass="issueFieldPos" />
-									<h:selectOneMenu value="#{issueCreateAction.issue.status}"
+									<h:selectOneMenu value="#{issueCreateAction.targetEntity.status}"
 										id="status" styleClass="issueField"
 										disabled="#{issueCreateAction.readonly}">
 										<f:selectItem itemLabel="#{labels.choiceOption}" itemValue="0" />
@@ -99,7 +84,7 @@
 
 									<h:outputText value="#{labels.resolution}:"
 										styleClass="issueFieldPos" />
-									<h:selectOneMenu value="#{issueCreateAction.issue.resolution}"
+									<h:selectOneMenu value="#{issueCreateAction.targetEntity.resolution}"
 										id="resolution" styleClass="issueField"
 										disabled="#{issueCreateAction.readonly}">
 										<f:selectItem itemLabel="#{labels.choiceOption}" itemValue="0" />
@@ -112,14 +97,9 @@
 									</h:selectOneMenu>
 
 									<h:message for="resolution" styleClass="issueError" />
-
-
-
-
 								</h:panelGrid>
 							</td>
 							<td>
-
 								<div align="left" style="width: 443px;">
 
 									<rich:panel>
@@ -130,14 +110,14 @@
 										<h:panelGrid columns="3">
 											<h:outputText value="#{labels.reporter}:"
 												styleClass="issueFieldPos" />
-											<h:inputText value="#{issueCreateAction.issue.reporter}"
+											<h:inputText value="#{issueCreateAction.targetEntity.reporter}"
 												required="true" id="reporter" styleClass="issueField"
 												readonly="#{issueCreateAction.readonly}" />
 											<h:message for="reporter" styleClass="issueError" />
 
 											<h:outputText value="#{labels.assignee}:"
 												styleClass="issueFieldPos" />
-											<h:inputText value="#{issueCreateAction.issue.assignee}"
+											<h:inputText value="#{issueCreateAction.targetEntity.assignee}"
 												required="true" id="assignee" styleClass="issueField"
 												readonly="#{issueCreateAction.readonly}" />
 											<h:message for="assignee" styleClass="issueError" />
@@ -149,14 +129,12 @@
 										<f:facet name="header">
 											<h:outputText value="#{labels.date}" />
 										</f:facet>
-
-
 										<h:panelGrid columns="3">
 											<h:outputText value="#{labels.dateCreated}:"
 												readonly="#{issueCreateAction.readonly}" />
 
 
-											<rich:calendar value="#{issueCreateAction.issue.dateCreated}"
+											<rich:calendar value="#{issueCreateAction.targetEntity.dateCreated}"
 												locale="bg" popup="true" datePattern="d/M/yy"
 												showApplyButton="false"
 												disabled="#{issueCreateAction.readonly}" />
@@ -166,49 +144,33 @@
 											<h:outputText value="#{labels.dateEnded}:" />
 
 
-											<rich:calendar value="#{issueCreateAction.issue.dateEnded}"
+											<rich:calendar value="#{issueCreateAction.targetEntity.dateEnded}"
 												locale="bg" popup="true" datePattern="d/M/yy"
 												showApplyButton="false"
 												disabled="#{issueCreateAction.readonly}" />
-
-
 											<h:message for="dateEnded" styleClass="issueError" />
-
 										</h:panelGrid>
-
 									</rich:panel>
-
-
 								</div>
 							</td>
 						</tr>
 						<tr>
-
 							<h:panelGrid columns="3" columnClasses="wfcol1,wfcol2,wfcol3">
 								<h:outputText value="#{labels.description}:" />
 								<h:inputTextarea id="description"
-									value="#{issueCreateAction.issue.desctription}" required="true"
+									value="#{issueCreateAction.targetEntity.desctription}" required="true"
 									style=" width : 260px;"
 									readonly="#{issueCreateAction.readonly}" />
 								<h:message for="description" styleClass="issueError" />
-
 							</h:panelGrid>
-
-
 						</tr>
 					</table>
 				</rich:panel>
 				<h:commandButton action="#{issueCreateAction.create()}"
 					value="#{labels.save}" style="margin-left: 400px; width : 85px;" />
-				<h:commandButton action="#{issueCreateAction.edit(issue)}"
+				<h:commandButton action="#{issueCreateAction.edit(issueCreateAction.targetEntity)}"
 					value="#{labels.edit}" style="margin-left: 15px; width : 90px;" />
-
 			</h:form>
-
-
-
-
 		</div>
-
 	</ui:define>
 </ui:composition>

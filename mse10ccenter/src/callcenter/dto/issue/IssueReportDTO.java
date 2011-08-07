@@ -11,7 +11,6 @@ import callcenter.entity.issue.IssueDetail;
 
 @ManagedBean(name = "issueReportDto")
 @ViewScoped
-
 public class IssueReportDTO extends BaseDTO<IssueDetail> {
 	private String titleIssue;
 

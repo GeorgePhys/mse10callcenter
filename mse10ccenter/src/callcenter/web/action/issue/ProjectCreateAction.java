@@ -15,7 +15,7 @@ public class ProjectCreateAction implements Serializable {
 
 	private static final long serialVersionUID = -5533722715840256982L;
 
-	private boolean visible=true;
+	private boolean visible = true;
 
 	private Project project;
 
