@@ -12,8 +12,8 @@
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<!-- DO NOT CHANGE hibernate.hbm2ddl.auto -->
 			
-			<property name="hibernate.show-sql" value="true" />
-			<property name="hibernate.format-sql" value="true" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
 		</properties>
 	</persistence-unit>
 </persistence> 	

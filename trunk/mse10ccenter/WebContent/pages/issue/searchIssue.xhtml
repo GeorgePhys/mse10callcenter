@@ -16,22 +16,16 @@
 				<f:facet name="header">
 					<h:outputText value="#{labels.search}" />
 				</f:facet>
-
-
-
 				<table class="search">
 					<tr>
 						<td>#{labels.issueTask}</td>
 						<td><h:inputText value="#{issueSearch.titleIssue}" id="title" />
 						</td>
-
 					</tr>
-
 					<tr>
 						<td>#{labels.issueCreatedFrom}</td>
 						<td><h:inputText value="#{issueSearch.createdBy}" /></td>
 					</tr>
-
 					<tr>
 						<td>#{labels.issueOwnerCreate}</td>
 						<td><h:inputText value="#{issueSearch.assignedTo}" /></td>
@@ -74,7 +68,7 @@
 					<tr>
 						<td>#{labels.issueCreateDate}</td>
 						<td><rich:calendar value="#{issueSearch.dateCreate}"
-								id="calendar" showApplyButton="false" required="true"
+								id="calendar" showApplyButton="false"
 								cellWidth="24px" cellHeight="22px" style="width:200px"
 								datePattern="d/M/yy" rendered="true"></rich:calendar></td>
 						<td><h:message for="calendar" styleClass="issueError" />
@@ -87,12 +81,9 @@
 					<tr>
 						<td><h:commandButton value="#{labels.search}"
 								action="#{issueSearchAction.search(issueSearch)}" /></td>
-
 					</tr>
-
 				</table>
 				<br />
-
 				<rich:dataTable style="margin-left:auto; margin-right:auto;"
 					keepSaved="true" id="richTableOut" var="issueDetail"
 					value="#{issueSearchAction.dataModel}" rows="10"

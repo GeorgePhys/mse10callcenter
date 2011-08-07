@@ -26,7 +26,7 @@ public class IssueServiceBean extends
 	public List<IssueDetail> search(IssueSearchDTO args, boolean countOnly) {
 		Session session = (Session) getEntityManager().getDelegate();
 		Criteria criteria = session.createCriteria(IssueDetail.class);
-		
+
 		if (StringUtils.isNotEmpty(args.getProject())) {
 			criteria.add(Restrictions.eq("projectName", args.getProject()));
 		}

@@ -1,4 +1,5 @@
 package callcenter.web.action.issue;
+
 import java.io.Serializable;
 
 import javax.ejb.EJB;
@@ -13,6 +14,7 @@ import callcenter.service.administration.IssueServiceBean;
 import callcenter.service.base.BaseServiceBean;
 
 import callcenter.web.action.search.datamodel.JPADataModel;
+
 @SessionScoped
 @ManagedBean(name = "projectSearchAction")
 @SuppressWarnings("rawtypes")

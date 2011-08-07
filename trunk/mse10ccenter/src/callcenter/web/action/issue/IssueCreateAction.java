@@ -1,35 +1,31 @@
 package callcenter.web.action.issue;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import callcenter.dto.project.ProjectSearchDTO;
 import callcenter.entity.issue.IssueDetail;
 import callcenter.service.administration.IssueServiceBean;
 import callcenter.service.project.ProjectServiceBean;
+import callcenter.web.action.BaseAction;
 
 @SessionScoped
 @ManagedBean(name = "issueCreateAction")
-public class IssueCreateAction implements Serializable {
+public class IssueCreateAction extends BaseAction<IssueDetail> implements Serializable {
 
 	private static final long serialVersionUID = -5533722715840256982L;
-	private boolean readonly;
 
-	private IssueDetail issue;
 	@EJB
-	private ProjectServiceBean projectList;
-	private ProjectSearchDTO dto;
+	private ProjectServiceBean projectService;
 
 	@EJB
 	private IssueServiceBean issueService;
 
 	public String create() {
-		issueService.saveOrUpdate(issue);
+		issueService.saveOrUpdate(getTargetEntity());
 		setReadonly(true);
 		return null;
 	}
@@ -38,48 +34,21 @@ public class IssueCreateAction implements Serializable {
 		setReadonly(false);
 
 	}
-	
+
 	public List<String> getSearchProject() {
-		  List<String> projectNames=new ArrayList<String>();
-		  for(int i=0;0<projectList.search(dto, false).size();i++){
-		   projectNames.add(projectList.search(dto, false).get(i).getName());
-		  }
-		  return projectNames;
-		 }
-	
+		return projectService.listAllProjectNames();
+	}
 
 	public String open(IssueDetail is) {
-		this.issue = is;
+		setTargetEntity(is);
 		setReadonly(true);
-
 		return "createNewIssue";
 
 	}
 
 	public String createNewIssue() {
 		setReadonly(false);
-		issue = new IssueDetail();
+		setTargetEntity(new IssueDetail());
 		return "createNewIssue";
 	}
-
-	public boolean getReadonly() {
-		return readonly;
-	}
-
-	public void setReadonly(boolean readonly) {
-		this.readonly = readonly;
-	}
-
-	public IssueDetail getIssue() {
-		if (issue == null)
-			issue = new IssueDetail();
-		return issue;
-	}
-
-	public void setIssue(IssueDetail issue) {
-		this.issue = issue;
-	}
-
-	
-
 }
