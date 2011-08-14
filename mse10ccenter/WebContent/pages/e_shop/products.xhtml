@@ -11,6 +11,7 @@
 	</ui:define>
 	<ui:define name="title">e_shop</ui:define>
 	<ui:define name="body">
+
 		<h:panelGrid columns="2"
 			style="position:absolute; top:200px; left:300px;">
 			<h:panelGroup style="padding-right:20px;">
@@ -24,6 +25,14 @@
 						<f:selectItem itemLabel="- select -" />
 					</h:selectOneMenu>
 				</h:column>
+				<!-- temp  -->
+				<rich:dataTable id="richTableOut"
+					value="#{softwareProducts.soft}" var="software" rows="10">
+					<h:column>
+						<h:outputText value="#{software.productName}" />
+					</h:column>
+				</rich:dataTable>
+				<!-- temp  -->
 			</h:panelGroup>
 			<h:panelGroup>
 				<h:column>
@@ -62,7 +71,8 @@
 						<h:graphicImage style="width:100px;" value="/images/images.jpg" />
 					</h:column>
 					<h:column>
-						<h:commandLink value="Example title link" />
+						<h:commandLink value="#{software.productName}" />
+						<h:outputText value="#{softwareDto.productName}" />
 						<br />First of all, the FFDSHOW consumes way less CPU power than original DivX codecs, even with maximum post-processing. At the same time the post-processing seems to give excellent quality results and allows more configuring than the original DivX codec.</h:column>
 					<h:column style="width:60px;">
 						<h:outputLabel value="Price: 50BGN" />
@@ -102,9 +112,9 @@
 						<br />
 						<h:commandButton value="Buy" />
 					</h:column>
-					
+
 				</h:panelGrid>
-				
+
 			</rich:panel>
 		</h:form>
 	</ui:define>

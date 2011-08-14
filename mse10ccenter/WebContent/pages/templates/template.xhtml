@@ -89,11 +89,9 @@
 									<h:graphicImage class="icons" value="/images/icon4.JPG" />
 									<h:outputText value="#{labels.issueReport}" />
 								</h:outputLink></li>
-							<li><h:outputLink
-									value="#{facesContext.externalContext.requestContextPath}/pages/e_shop/products.jsf">
-									<h:graphicImage class="icons" value="/images/icon5.JPG" />
-									<h:outputText value="#{labels.shop}" />
-								</h:outputLink></li>
+							<li><h:graphicImage class="icons" value="/images/icon5.JPG" />
+							<h:commandLink action="#{softwareProducts.allSoftware()}"
+									value="Products" /></li>
 						</ul>
 						<div id="info">
 							<h3>OUR HISTORY</h3>
