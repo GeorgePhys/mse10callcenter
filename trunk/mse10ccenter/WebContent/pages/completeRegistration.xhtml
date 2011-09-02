@@ -12,6 +12,8 @@
 			href="#{facesContext.externalContext.requestContextPath}/css/admin.css" />
 	</ui:define>
 	<ui:define name="body">
-		Registration done, e-mail for verification sent.
+	<h:form id="completeRegistration" >
+		<h:outputText value="#{lables.completeRegistration}" />
+	</h:form>
 	</ui:define>
 </ui:composition>
