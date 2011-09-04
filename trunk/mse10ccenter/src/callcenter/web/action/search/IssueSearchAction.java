@@ -18,6 +18,11 @@ import callcenter.web.action.search.datamodel.JPADataModel;
 @SuppressWarnings("rawtypes")
 public class IssueSearchAction implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@EJB
 	private IssueServiceBean service;
 
@@ -53,4 +58,5 @@ public class IssueSearchAction implements Serializable {
 		this.dataModel = null;
 		return "startNewSearch";
 	}
+
 }
