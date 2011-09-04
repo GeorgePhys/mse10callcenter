@@ -11,112 +11,17 @@
 	</ui:define>
 	<ui:define name="title">e_shop</ui:define>
 	<ui:define name="body">
-
-		<h:panelGrid columns="2"
-			style="position:absolute; top:200px; left:300px;">
-			<h:panelGroup style="padding-right:20px;">
-				<h:column>
-					<h:outputLabel value="Sort by price" for="sortprice" />
-				</h:column>
-				<h:column>
-					<h:selectOneMenu id="sortprice">
-						<f:selectItem itemLabel="Higher" />
-						<f:selectItem itemLabel="Lower" />
-						<f:selectItem itemLabel="- select -" />
-					</h:selectOneMenu>
-				</h:column>
 				<!-- temp  -->
 				<rich:dataTable id="richTableOut"
 					value="#{softwareProducts.soft}" var="software" rows="10">
+					<f:facet name="header">
+					<h:outputText styleClass="headerText" value="dhsd" />
+					</f:facet>
 					<h:column>
 						<h:outputText value="#{software.productName}" />
 					</h:column>
 				</rich:dataTable>
 				<!-- temp  -->
-			</h:panelGroup>
-			<h:panelGroup>
-				<h:column>
-					<h:outputLabel value="Sort by product" for="sortproduct" />
-				</h:column>
-				<h:column>
-					<h:selectOneMenu id="sortproduct">
-						<f:selectItem itemLabel="Software" />
-						<f:selectItem itemLabel="Hardware" />
-						<f:selectItem itemLabel="- select -" />
-					</h:selectOneMenu>
-				</h:column>
-			</h:panelGroup>
-		</h:panelGrid>
-		<rich:panel style="width:200px; float:right;">
-			<f:facet name="header">
-				<h:outputText value="Shopping Cart"></h:outputText>
-			</f:facet>
-			<h:panelGrid>
-				<h:column>
-					<h:outputText value="Items number: 0" />
-				</h:column>
-				<h:column>
-					<h:outputText value="Price: 0.00 BGN" />
-				</h:column>
-			</h:panelGrid>
-		</rich:panel>
-		<h:form>
-			<rich:panel style="margin-top:100px;">
-				<f:facet name="header">
-					<h:outputText value="Software and Hardware products"></h:outputText>
-				</f:facet>
-				<h:panelGrid columns="3" style=" text-align:justify;"
-					cellpadding="2">
-					<h:column>
-						<h:graphicImage style="width:100px;" value="/images/images.jpg" />
-					</h:column>
-					<h:column>
-						<h:commandLink value="#{software.productName}" />
-						<h:outputText value="#{softwareDto.productName}" />
-						<br />First of all, the FFDSHOW consumes way less CPU power than original DivX codecs, even with maximum post-processing. At the same time the post-processing seems to give excellent quality results and allows more configuring than the original DivX codec.</h:column>
-					<h:column style="width:60px;">
-						<h:outputLabel value="Price: 50BGN" />
-						<br />
-						<h:commandButton value="Buy" />
-					</h:column>
-					<h:column>
-						<h:graphicImage style="width:100px;" value="/images/images.jpg" />
-					</h:column>
-					<h:column>
-						<h:commandLink value="Example title link" />
-						<br />First of all, the FFDSHOW consumes way less CPU power than original DivX codecs, even with maximum post-processing. At the same time the post-processing seems to give excellent quality results and allows more configuring than the original DivX codec.</h:column>
-					<h:column style="width:60px;">
-						<h:outputLabel value="Price: 50BGN" />
-						<br />
-						<h:commandButton value="Buy" />
-					</h:column>
-					<h:column>
-						<h:graphicImage style="width:100px;" value="/images/images.jpg" />
-					</h:column>
-					<h:column>
-						<h:commandLink value="Example title link" />
-						<br />First of all, the FFDSHOW consumes way less CPU power than original DivX codecs, even with maximum post-processing. At the same time the post-processing seems to give excellent quality results and allows more configuring than the original DivX codec.</h:column>
-					<h:column style="width:60px;">
-						<h:outputLabel value="Price: 50BGN" />
-						<br />
-						<h:commandButton value="Buy" />
-					</h:column>
-					<h:column>
-						<h:graphicImage style="width:100px;" value="/images/images.jpg" />
-					</h:column>
-					<h:column>
-						<h:commandLink value="Example title link" />
-						<br />First of all, the FFDSHOW consumes way less CPU power than original DivX codecs, even with maximum post-processing. At the same time the post-processing seems to give excellent quality results and allows more configuring than the original DivX codec.</h:column>
-					<h:column style="width:60px;">
-						<h:outputLabel value="Price: 50BGN" />
-						<br />
-						<h:commandButton value="Buy" />
-					</h:column>
-
-				</h:panelGrid>
-
-			</rich:panel>
-		</h:form>
 	</ui:define>
 
 </ui:composition>

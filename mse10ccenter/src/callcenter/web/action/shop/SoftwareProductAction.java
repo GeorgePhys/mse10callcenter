@@ -25,7 +25,7 @@ public class SoftwareProductAction implements Serializable {
 	@EJB
 	private SoftwareServiceBean service;
 
-	private List<String> soft;
+	private List<Software> soft;
 
 	private SoftwareDataModel dataModel;
 
@@ -41,11 +41,6 @@ public class SoftwareProductAction implements Serializable {
 		}
 	}
 
-	public List<String> getSoftwareProducts() {
-		soft = service.listAllProjectNames();
-		return soft;
-	}
-
 	public Object getDataModel() {
 		return dataModel;
 	}
@@ -54,11 +49,12 @@ public class SoftwareProductAction implements Serializable {
 		this.dataModel = dataModel;
 	}
 
-	public List<String> getSoft() {
+	public List<Software> getSoft() {
+		soft = service.listAllProjectNames();
 		return soft;
 	}
 
-	public void setSoft(List<String> soft) {
+	public void setSoft(List<Software> soft) {
 		this.soft = soft;
 	}
 }
