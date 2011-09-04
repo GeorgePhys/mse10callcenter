@@ -26,11 +26,10 @@ public class SoftwareProductAction implements Serializable {
 	private SoftwareServiceBean service;
 
 	private List<Software> soft;
-
+	private List<Software> specific;
 	private SoftwareDataModel dataModel;
-	private int buyedItems = 0;
+	private int brItems = 0;
 	private double amount = 0.0;
-	private boolean chartClier;
 
 	private static final class SoftwareDataModel extends JPADataModel<Software> {
 
@@ -42,6 +41,11 @@ public class SoftwareProductAction implements Serializable {
 		protected Object getId(Software t) {
 			return t.getId();
 		}
+	}
+
+	public String openSlectedProduct(Software s) {
+		this.specific = service.findByName(s.getProductName());
+		return "reviewSoftwareProduct";
 	}
 
 	public Object getDataModel() {
@@ -57,19 +61,18 @@ public class SoftwareProductAction implements Serializable {
 		return soft;
 	}
 
-	// public String clearChart() {
-	// this.amount = 0;
-	// this.buyedItems = 0;
-	// this.chartClier = true;
-	// return "cleared";
-	// }
-	//
-	// public boolean disable() {
-	// if (this.chartClier == true) {
-	// return true;
-	// }
-	// return false;
-	// }
+	/**
+	 * TEMP
+	 * 
+	 * @return key for walk index - > products
+	 */
+	public String allSoftware() {
+		return "AllSoftware";
+	}
+
+	public void setSoft(List<Software> soft) {
+		this.soft = soft;
+	}
 
 	/**
 	 * Buy a product
@@ -80,13 +83,22 @@ public class SoftwareProductAction implements Serializable {
 	 */
 	public double buy(Software software) {
 		// increase number of products that are buying
-		this.buyedItems++;
+		this.brItems++;
 		this.amount = this.amount + software.getPrice();
 		return this.amount;
 	}
 
-	public void setSoft(List<Software> soft) {
-		this.soft = soft;
+	public void clearChart() {
+		this.amount = 0.0;
+		this.brItems = 0;
+	}
+
+	public int getBrItems() {
+		return brItems;
+	}
+
+	public void setBrItems(int brItems) {
+		this.brItems = brItems;
 	}
 
 	public double getAmount() {
@@ -97,19 +109,12 @@ public class SoftwareProductAction implements Serializable {
 		this.amount = amount;
 	}
 
-	public int getBuyedItems() {
-		return buyedItems;
+	public List<Software> getSpecific() {
+		return specific;
 	}
 
-	public void setBuyedItems(int buyedItems) {
-		this.buyedItems = buyedItems;
+	public void setSpecific(List<Software> specific) {
+		this.specific = specific;
 	}
 
-	public boolean isChartClier() {
-		return chartClier;
-	}
-
-	public void setChartClier(boolean chartClier) {
-		this.chartClier = chartClier;
-	}
 }
