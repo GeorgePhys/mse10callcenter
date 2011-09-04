@@ -28,6 +28,9 @@ public class SoftwareProductAction implements Serializable {
 	private List<Software> soft;
 
 	private SoftwareDataModel dataModel;
+	private int buyedItems = 0;
+	private double amount = 0.0;
+	private boolean chartClier;
 
 	private static final class SoftwareDataModel extends JPADataModel<Software> {
 
@@ -54,7 +57,59 @@ public class SoftwareProductAction implements Serializable {
 		return soft;
 	}
 
+	// public String clearChart() {
+	// this.amount = 0;
+	// this.buyedItems = 0;
+	// this.chartClier = true;
+	// return "cleared";
+	// }
+	//
+	// public boolean disable() {
+	// if (this.chartClier == true) {
+	// return true;
+	// }
+	// return false;
+	// }
+
+	/**
+	 * Buy a product
+	 * 
+	 * @param software
+	 *            product for buying
+	 * @return price of the product
+	 */
+	public double buy(Software software) {
+		// increase number of products that are buying
+		this.buyedItems++;
+		this.amount = this.amount + software.getPrice();
+		return this.amount;
+	}
+
 	public void setSoft(List<Software> soft) {
 		this.soft = soft;
+	}
+
+	public double getAmount() {
+		return amount;
+	}
+
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+
+	public int getBuyedItems() {
+		return buyedItems;
+	}
+
+	public void setBuyedItems(int buyedItems) {
+		this.buyedItems = buyedItems;
+	}
+
+	public boolean isChartClier() {
+		return chartClier;
+	}
+
+	public void setChartClier(boolean chartClier) {
+		this.chartClier = chartClier;
 	}
 }
