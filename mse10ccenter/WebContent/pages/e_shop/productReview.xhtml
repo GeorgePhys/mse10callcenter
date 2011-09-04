@@ -1,0 +1,66 @@
+<ui:composition template="/pages/templates/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich">
+	<ui:define name="title">E-SHOP</ui:define>
+	<ui:define name="head">
+		<link rel="stylesheet" type="text/css"
+			href="#{facesContext.externalContext.requestContextPath}/css/issue.css" />
+	</ui:define>
+	<ui:define name="title">e_shop</ui:define>
+	<ui:define name="body">
+
+
+		<rich:panel style="width:200px; float:right;">
+			<f:facet name="header">
+				<h:outputText value="Shopping Cart"></h:outputText>
+			</f:facet>
+			<h:form>
+				<h:panelGrid>
+					<h:column>
+						<h:outputText value="Items number: " />
+						<h:outputText value="#{softwareProducts.brItems}" />
+					</h:column>
+					<h:column>
+						<h:outputText value="Total sum: " />
+						<h:outputText value="#{softwareProducts.amount}" />
+						<h:outputText value=" BGN" />
+					</h:column>
+					<h:column>
+						<h:commandLink value="Clean"
+							action="#{softwareProducts.clearChart}" />
+					</h:column>
+				</h:panelGrid>
+			</h:form>
+		</rich:panel>
+		<rich:panel header="Panel with default Look-n-feel"
+			style="margin-top:100px;">
+			<h:panelGrid style="float:left;">
+				<h:column>
+					<h:outputText style="font-size:16px; padding-left:10px;"
+						value="#{softwareProducts.specific.productName}" />
+				</h:column>
+				<h:column>
+					<h:graphicImage style="width:200px;padding:2px;"
+						value="/images/images.jpg" />
+				</h:column>
+			</h:panelGrid>
+			<h:panelGrid>
+				<h:column>
+        RichFaces is a component library for JSF and an advanced framework for 
+        easily integrating AJAX capabilities into business applications.
+        <ul> <li>100+ AJAX enabled components in two libraries</li>
+					<li>a4j: page centric AJAX controls</li> <li>rich: self
+					contained, ready to use components</li> <li>Whole set of JSF
+					benefits while working with AJAX</li> <li>Skinnability mechanism</li> <li>Component
+					Development Kit (CDK)</li> <li>Dynamic resources handling</li> <li>Testing
+					facilities for components, actions, listeners, and pages</li> <li>Broad
+					cross-browser support</li> <li>Large and active community</li> </ul>
+				</h:column>
+			</h:panelGrid>
+		</rich:panel>
+	</ui:define>
+
+</ui:composition>
