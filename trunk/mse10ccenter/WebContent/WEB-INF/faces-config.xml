@@ -69,7 +69,7 @@
   <from-view-id>*</from-view-id>
   <navigation-case>
    <from-outcome>successRegister</from-outcome>
-   <to-view-id>/pages/completeRegistration.xhtml</to-view-id>
+   <to-view-id>/pages/admin/users/completeRegistration.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
