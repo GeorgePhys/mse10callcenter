@@ -19,7 +19,7 @@ public class Software extends callcenter.entity.Entity implements Product,
 	@Column(columnDefinition = "Varchar(15)")
 	private String serialNumber;
 
-	@Column(columnDefinition = "Varchar(250)")
+	@Column(columnDefinition = "Text")
 	private String description;
 
 	@Column(columnDefinition = "Varchar(10)")

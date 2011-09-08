@@ -13,54 +13,73 @@
 	<ui:define name="body">
 
 
-		<rich:panel style="width:200px; float:right;">
+		<rich:panel style="width:220px; float:right; margin-top:-17px;">
 			<f:facet name="header">
 				<h:outputText value="Shopping Cart"></h:outputText>
 			</f:facet>
 			<h:form>
-				<h:panelGrid>
+
+				<h:panelGrid columns="2">
 					<h:column>
-						<h:outputText value="Items number: " />
-						<h:outputText value="#{softwareProducts.brItems}" />
+						<h:graphicImage style="width:40px; float:left;"
+							value="/images/shoppingChart.jpg" />
 					</h:column>
-					<h:column>
-						<h:outputText value="Total sum: " />
-						<h:outputText value="#{softwareProducts.amount}" />
-						<h:outputText value=" BGN" />
-					</h:column>
-					<h:column>
-						<h:commandLink value="Clean"
-							action="#{softwareProducts.clearChart}" />
-					</h:column>
+					<h:panelGroup>
+						<h:column>
+							<h:outputText value="Items number: " />
+							<h:outputText value="#{softwareProducts.brItems}" />
+						</h:column>
+						<br />
+						<h:column>
+							<h:outputText value="Total sum: " />
+							<h:outputText value="#{softwareProducts.amount}" />
+							<h:outputText value=" BGN" />
+						</h:column>
+						<br />
+						<h:column>
+							<h:commandLink value="Clean"
+								action="#{softwareProducts.clearChart}" />
+						</h:column>
+					</h:panelGroup>
 				</h:panelGrid>
 			</h:form>
 		</rich:panel>
-		<rich:panel header="Panel with default Look-n-feel"
-			style="margin-top:100px;">
-			<h:panelGrid style="float:left;">
-				<h:column>
-					<h:outputText style="font-size:16px; padding-left:10px;"
-						value="#{softwareProducts.specific.productName}" />
-				</h:column>
-				<h:column>
-					<h:graphicImage style="width:200px;padding:2px;"
-						value="/images/images.jpg" />
-				</h:column>
-			</h:panelGrid>
-			<h:panelGrid>
-				<h:column>
-        RichFaces is a component library for JSF and an advanced framework for 
-        easily integrating AJAX capabilities into business applications.
-        <ul> <li>100+ AJAX enabled components in two libraries</li>
-					<li>a4j: page centric AJAX controls</li> <li>rich: self
-					contained, ready to use components</li> <li>Whole set of JSF
-					benefits while working with AJAX</li> <li>Skinnability mechanism</li> <li>Component
-					Development Kit (CDK)</li> <li>Dynamic resources handling</li> <li>Testing
-					facilities for components, actions, listeners, and pages</li> <li>Broad
-					cross-browser support</li> <li>Large and active community</li> </ul>
-				</h:column>
+
+
+		<rich:panel style="margin-top:80px; height:270px;">
+
+			<f:facet name="header">
+				<h:outputText value="Software products"></h:outputText>
+			</f:facet>
+			<h:panelGrid columns="2">
+				<h:panelGroup>
+					<h:column>
+						<h:outputText
+							style="font-size:17px; color:black;"
+							value="#{softwareProducts.targetEntity.productName}" />
+						<br />
+						<h:graphicImage style="width:200px;padding:10px;"
+							value="/images/images.jpg" />
+					</h:column>
+				</h:panelGroup>
+
+				<h:panelGroup>
+					<h:column>
+						<h:outputText style="text-align:justify;font-size:12px; line-height:20px; color:gray;" value="#{softwareProducts.targetEntity.description}" />
+						<br />
+					</h:column>
+					<h:panelGroup style="float:right; padding:30px 10px 10px 10px;">
+						<h:column>
+							<h:outputText value="Price: " />
+							<h:outputText value="#{softwareProducts.targetEntity.price}" />
+							<h:commandButton action="#{softwareProducts.buy(software)}"
+								value="Buy" disabled="#{softwareProducts.disable[software.id]}" />
+						</h:column>
+					</h:panelGroup>
+				</h:panelGroup>
 			</h:panelGrid>
 		</rich:panel>
+
 	</ui:define>
 
 </ui:composition>
