@@ -19,36 +19,40 @@
 				<h:outputText value="Shopping Cart"></h:outputText>
 			</f:facet>
 			<h:form>
-			
-				<h:panelGrid columns="2" >
+
+				<h:panelGrid columns="2">
 					<h:column>
 						<h:graphicImage style="width:40px; float:left;"
 							value="/images/shoppingChart.jpg" />
 					</h:column>
 					<h:panelGroup>
-					<h:column>
-						<h:outputText value="Items number: " />
-						<h:outputText value="#{softwareProducts.brItems}" />
-					</h:column><br />
-					<h:column>
-						<h:outputText value="Total sum: " />
-						<h:outputText value="#{softwareProducts.amount}" />
-						<h:outputText value=" BGN" />
-					</h:column><br />
-					<h:column>
-						<h:commandLink value="Clean"
-							action="#{softwareProducts.clearChart}" />
-					</h:column>
+						<h:column>
+							<h:outputText value="Items number: " />
+							<h:outputText value="#{softwareProducts.brItems}" />
+						</h:column>
+						<br />
+						<h:column>
+							<h:outputText value="Total sum: " />
+							<h:outputText value="#{softwareProducts.amount}" />
+							<h:outputText value=" BGN" />
+						</h:column>
+						<br />
+						<h:column>
+							<h:commandLink value="Clean"
+								action="#{softwareProducts.clearChart}" />
+						</h:column>
 					</h:panelGroup>
 				</h:panelGrid>
 			</h:form>
 		</rich:panel>
 		<h:form>
 			<rich:tabPanel style="margin-top:80px;">
+
 				<rich:tab value="Software">
 					<f:facet name="header">
 						<h:outputText value="Software products"></h:outputText>
 					</f:facet>
+
 					<rich:dataTable id="richTableOut" style="text-align:justify; "
 						value="#{softwareProducts.soft}" var="software" rows="10">
 						<f:facet name="header">
@@ -72,7 +76,8 @@
 								value="/images/images.jpg" />
 						</h:column>
 						<h:column>
-							<h:commandLink style="font-size:17px;" value="#{software.productName}"
+							<h:commandLink style="font-size:17px;"
+								value="#{software.productName}"
 								action="#{softwareProducts.openSlectedProduct(software)}" />
 							<br />
 							<h:outputText value="#{software.description}"
@@ -82,19 +87,64 @@
 							<h:outputText value="#{software.price}" />
 							<br />
 							<h:commandButton action="#{softwareProducts.buy(software)}"
-								value="Buy" disabled="#{softwareProducts.disable[software.id]}" />
+								value="Buy"
+								disabled="#{softwareProducts.disable[software.productName]}" />
 
 						</h:column>
 					</rich:dataTable>
+
+					<!-- hardware -->
 				</rich:tab>
+
+
 				<rich:tab value="Hardware">
 					<f:facet name="header">
 						<h:outputText value="Hardware products"></h:outputText>
 					</f:facet>
-				</rich:tab>
-			</rich:tabPanel>
+					<rich:dataTable id="richTableOut2" style="text-align:justify; "
+						value="#{hardwareProducts.hardware}" var="hardware" rows="10">
+						<f:facet name="header">
+							<rich:columnGroup>
+								<h:column>
 
+									<h:outputText styleClass="headerText" value="Hardware screen"></h:outputText>
+								</h:column>
+								<h:column>
+									<h:outputText styleClass="headerText"
+										value="Name and description"></h:outputText>
+								</h:column>
+								<h:column>
+									<h:outputText styleClass="headerText" value="Price"></h:outputText>
+								</h:column>
+
+							</rich:columnGroup>
+						</f:facet>
+						<h:column>
+							<h:graphicImage style="width:160px;padding:2px;"
+								value="/images/images.jpg" />
+						</h:column>
+						<h:column>
+							<h:commandLink style="font-size:17px;"
+								value="#{hardware.productName}"
+								action="#{hardwareProducts.openSlectedHardware(hardware)}" />
+							<br />
+							<h:outputText value="#{hardware.description}"
+								style="text-align:justify;font-size:12px; line-height:20px; color:gray;" />
+						</h:column>
+						<h:column>
+							<h:outputText value="#{hardware.price}" />
+							<br />
+							<h:commandButton action="#{softwareProducts.buyHardware(hardware)}"
+								value="Buy"
+								disabled="#{softwareProducts.disable[hardware.productName]}" />
+
+						</h:column>
+					</rich:dataTable>
+				</rich:tab>
+
+			</rich:tabPanel>
 		</h:form>
+
 	</ui:define>
 
 </ui:composition>

@@ -1,16 +1,14 @@
 package callcenter.dto.products;
 
-import java.io.Serializable;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-import callcenter.entity.products.Product;
+import callcenter.dto.BaseDTO;
+import callcenter.entity.products.Hardware;
 
 @ManagedBean(name = "hardwareDto")
 @ViewScoped
-public class HardwareDTO extends callcenter.entity.Entity implements Product,
-		Serializable {
+public class HardwareDTO extends BaseDTO<Hardware> {
 
 	/**
 	 * 
@@ -89,17 +87,14 @@ public class HardwareDTO extends callcenter.entity.Entity implements Product,
 		this.price = price;
 	}
 
-	@Override
 	public byte[] getPicture() {
 		return picture;
 	}
 
-	@Override
 	public void setPicture(byte[] picture) {
 		this.picture = picture;
 	}
 
-	@Override
 	public void initializeBibirectional() {
 		// TODO Auto-generated method stub
 
