@@ -10,6 +10,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import callcenter.dto.BaseDTO;
+import callcenter.entity.products.Hardware;
 import callcenter.entity.products.Software;
 import callcenter.service.administration.SoftwareServiceBean;
 import callcenter.service.base.BaseServiceBean;
@@ -33,7 +34,7 @@ public class SoftwareProductAction extends BaseAction implements Serializable {
 	private SoftwareDataModel dataModel;
 	private int brItems = 0;
 	private double amount = 0.0;
-	private Map<Long, Boolean> disable = new HashMap<Long, Boolean>();
+	private Map<String, Boolean> disable = new HashMap<String, Boolean>();
 
 	private static final class SoftwareDataModel extends JPADataModel<Software> {
 
@@ -92,11 +93,21 @@ public class SoftwareProductAction extends BaseAction implements Serializable {
 	 * @return
 	 */
 	public double buy(Software software) {
-		if (!this.disable.containsKey(software.getId())) {
+		if (!this.disable.containsKey(software.getProductName())) {
 			// increase number of products that are buying
 			this.brItems++;
 			this.amount = this.amount + software.getPrice();
-			this.disable.put(software.getId(), Boolean.TRUE);
+			this.disable.put(software.getProductName(), Boolean.TRUE);
+		}
+		return this.amount;
+	}
+
+	public double buyHardware(Hardware hardware) {
+		if (!this.disable.containsKey(hardware.getProductName())) {
+			// increase number of products that are buying
+			this.brItems++;
+			this.amount = this.amount + hardware.getPrice();
+			this.disable.put(hardware.getProductName(), Boolean.TRUE);
 		}
 		return this.amount;
 	}
@@ -131,11 +142,11 @@ public class SoftwareProductAction extends BaseAction implements Serializable {
 		this.specific = specific;
 	}
 
-	public Map<Long, Boolean> getDisable() {
+	public Map<String, Boolean> getDisable() {
 		return disable;
 	}
 
-	public void setDisable(Map<Long, Boolean> disable) {
+	public void setDisable(Map<String, Boolean> disable) {
 		this.disable = disable;
 	}
 

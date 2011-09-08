@@ -47,7 +47,7 @@
 
 
 		<rich:panel style="margin-top:80px; height:270px;">
-
+			<h:form>
 			<f:facet name="header">
 				<h:outputText value="Software products"></h:outputText>
 			</f:facet>
@@ -72,12 +72,13 @@
 						<h:column>
 							<h:outputText value="Price: " />
 							<h:outputText value="#{softwareProducts.targetEntity.price}" />
-							<h:commandButton action="#{softwareProducts.buy(software)}"
-								value="Buy" disabled="#{softwareProducts.disable[software.id]}" />
+							<h:commandButton action="#{softwareProducts.buy(softwareProducts.targetEntity)}"
+								value="Buy" disabled="#{softwareProducts.disable[softwareProducts.targetEntity.productName]}" />
 						</h:column>
 					</h:panelGroup>
 				</h:panelGroup>
 			</h:panelGrid>
+			</h:form>
 		</rich:panel>
 
 	</ui:define>
