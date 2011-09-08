@@ -78,6 +78,7 @@ public class SoftwareProductAction extends BaseAction implements Serializable {
 	 * @return key for walk index - > products
 	 */
 	public String allSoftware() {
+		this.soft = service.listAllProjectNames();
 		return "AllSoftware";
 	}
 
