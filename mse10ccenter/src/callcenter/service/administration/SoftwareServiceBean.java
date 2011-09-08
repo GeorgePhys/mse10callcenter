@@ -23,12 +23,4 @@ public class SoftwareServiceBean extends BaseServiceBean<Software, SoftwareDTO> 
 		return getEntityManager().createQuery("from Software").getResultList();
 	}
 
-	@SuppressWarnings("unchecked")
-	public List<Software> findByName(String i) {
-		// Query query = getEntityManager().createNamedQuery(
-		// QUERY_LOAD_ALL_SOFTWARE_KEY);
-		// return query.getResultList();
-		return getEntityManager().createQuery(
-				"from software where productName=" + i).getResultList();
-	}
 }

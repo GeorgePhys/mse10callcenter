@@ -1,7 +1,9 @@
 package callcenter.web.action.shop;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -11,12 +13,13 @@ import callcenter.dto.BaseDTO;
 import callcenter.entity.products.Software;
 import callcenter.service.administration.SoftwareServiceBean;
 import callcenter.service.base.BaseServiceBean;
+import callcenter.web.action.BaseAction;
 import callcenter.web.action.search.datamodel.JPADataModel;
 
 @SessionScoped
 @ManagedBean(name = "softwareProducts")
 @SuppressWarnings("rawtypes")
-public class SoftwareProductAction implements Serializable {
+public class SoftwareProductAction extends BaseAction implements Serializable {
 	/**
 	 * 
 	 */
@@ -30,6 +33,7 @@ public class SoftwareProductAction implements Serializable {
 	private SoftwareDataModel dataModel;
 	private int brItems = 0;
 	private double amount = 0.0;
+	private Map<Long, Boolean> disable = new HashMap<Long, Boolean>();
 
 	private static final class SoftwareDataModel extends JPADataModel<Software> {
 
@@ -43,8 +47,15 @@ public class SoftwareProductAction implements Serializable {
 		}
 	}
 
+	/**
+	 * 
+	 * @param s
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
 	public String openSlectedProduct(Software s) {
-		this.specific = service.findByName(s.getProductName());
+		setTargetEntity(s);
+
 		return "reviewSoftwareProduct";
 	}
 
@@ -75,22 +86,24 @@ public class SoftwareProductAction implements Serializable {
 	}
 
 	/**
-	 * Buy a product
 	 * 
 	 * @param software
-	 *            product for buying
-	 * @return price of the product
+	 * @return
 	 */
 	public double buy(Software software) {
-		// increase number of products that are buying
-		this.brItems++;
-		this.amount = this.amount + software.getPrice();
+		if (!this.disable.containsKey(software.getId())) {
+			// increase number of products that are buying
+			this.brItems++;
+			this.amount = this.amount + software.getPrice();
+			this.disable.put(software.getId(), Boolean.TRUE);
+		}
 		return this.amount;
 	}
 
 	public void clearChart() {
 		this.amount = 0.0;
 		this.brItems = 0;
+		this.disable.clear();
 	}
 
 	public int getBrItems() {
@@ -115,6 +128,14 @@ public class SoftwareProductAction implements Serializable {
 
 	public void setSpecific(List<Software> specific) {
 		this.specific = specific;
+	}
+
+	public Map<Long, Boolean> getDisable() {
+		return disable;
+	}
+
+	public void setDisable(Map<Long, Boolean> disable) {
+		this.disable = disable;
 	}
 
 }
