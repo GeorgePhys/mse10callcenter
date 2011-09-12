@@ -41,5 +41,4 @@ public class UserAction extends BaseAction<User> implements Serializable {
 		setUser(saveUserProfile);
 		return "saveUserProfile";
 	}
-
 }

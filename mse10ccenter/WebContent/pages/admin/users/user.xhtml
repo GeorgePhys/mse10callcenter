@@ -18,7 +18,9 @@
 				<rich:tab header="General information">
 					<h:panelGrid columns="3">
 						<h:outputText value="#{labels.email}" />
-						<h:inputText value="#{userAction.targetEntity.mail}" required="true" id="mail" />
+						<h:inputText value="#{userAction.targetEntity.mail}" required="true" id="mail">
+						<f:validator validatorId="checkEmail" />
+						</h:inputText>
 						<h:message for="mail" />
 
 						<h:outputText value="#{labels.password}" />
