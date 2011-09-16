@@ -28,10 +28,10 @@ public class IssueDetail extends callcenter.entity.Entity implements
 	@Column(columnDefinition = "Varchar(20)")
 	private String resolution;
 
-	@Column(columnDefinition = "Varchar(20)")
+	@Column(columnDefinition = "Varchar(100)")
 	private String reporter;
 
-	@Column(columnDefinition = "Varchar(20)")
+	@Column(columnDefinition = "Varchar(100)")
 	private String assignee;
 
 	@Column(columnDefinition = "Varchar(100)")
@@ -43,7 +43,7 @@ public class IssueDetail extends callcenter.entity.Entity implements
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateEnded;
 
-	@Column(columnDefinition = "Varchar(300)")
+	@Column(columnDefinition = "Varchar(400)")
 	private String desctription;
 
 	@ManyToOne
