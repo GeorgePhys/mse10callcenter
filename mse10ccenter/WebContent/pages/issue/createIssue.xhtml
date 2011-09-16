@@ -11,7 +11,7 @@
 	<ui:define name="head">
 		<link rel="stylesheet" type="text/css"
 			href="#{facesContext.externalContext.requestContextPath}/css/issue.css" />
-		
+
 	</ui:define>
 
 	<ui:define name="body">
@@ -30,7 +30,8 @@
 
 									<h:outputText value="#{labels.titleIssue}:"
 										styleClass="issueFieldPos" />
-									<h:inputText value="#{issueCreateAction.targetEntity.titleIssue}"
+									<h:inputText
+										value="#{issueCreateAction.targetEntity.titleIssue}"
 										required="true" id="titleIssue" styleClass="issueField"
 										readonly="#{issueCreateAction.readonly}" />
 									<h:message for="titleIssue" styleClass="issueError" />
@@ -55,7 +56,8 @@
 
 									<h:outputText value="#{labels.priority}:"
 										styleClass="issueFieldPos" />
-									<h:selectOneMenu value="#{issueCreateAction.targetEntity.priority}"
+									<h:selectOneMenu
+										value="#{issueCreateAction.targetEntity.priority}"
 										id="priority" styleClass="issueField"
 										disabled="#{issueCreateAction.readonly}">
 										<f:selectItem itemLabel="#{labels.choiceOption}" itemValue="0" />
@@ -69,8 +71,9 @@
 
 									<h:outputText value="#{labels.status}:"
 										styleClass="issueFieldPos" />
-									<h:selectOneMenu value="#{issueCreateAction.targetEntity.status}"
-										id="status" styleClass="issueField"
+									<h:selectOneMenu
+										value="#{issueCreateAction.targetEntity.status}" id="status"
+										styleClass="issueField"
 										disabled="#{issueCreateAction.readonly}">
 										<f:selectItem itemLabel="#{labels.choiceOption}" itemValue="0" />
 										<f:selectItem itemLabel="#{labels.open}" itemValue="1" />
@@ -84,7 +87,8 @@
 
 									<h:outputText value="#{labels.resolution}:"
 										styleClass="issueFieldPos" />
-									<h:selectOneMenu value="#{issueCreateAction.targetEntity.resolution}"
+									<h:selectOneMenu
+										value="#{issueCreateAction.targetEntity.resolution}"
 										id="resolution" styleClass="issueField"
 										disabled="#{issueCreateAction.readonly}">
 										<f:selectItem itemLabel="#{labels.choiceOption}" itemValue="0" />
@@ -110,14 +114,16 @@
 										<h:panelGrid columns="3">
 											<h:outputText value="#{labels.reporter}:"
 												styleClass="issueFieldPos" />
-											<h:inputText value="#{issueCreateAction.targetEntity.reporter}"
+											<h:inputText
+												value="#{issueCreateAction.targetEntity.reporter}"
 												required="true" id="reporter" styleClass="issueField"
 												readonly="#{issueCreateAction.readonly}" />
 											<h:message for="reporter" styleClass="issueError" />
 
 											<h:outputText value="#{labels.assignee}:"
 												styleClass="issueFieldPos" />
-											<h:inputText value="#{issueCreateAction.targetEntity.assignee}"
+											<h:inputText
+												value="#{issueCreateAction.targetEntity.assignee}"
 												required="true" id="assignee" styleClass="issueField"
 												readonly="#{issueCreateAction.readonly}" />
 											<h:message for="assignee" styleClass="issueError" />
@@ -134,19 +140,23 @@
 												readonly="#{issueCreateAction.readonly}" />
 
 
-											<rich:calendar value="#{issueCreateAction.targetEntity.dateCreated}"
-												locale="bg" popup="true" datePattern="d/M/yy"
-												showApplyButton="false"
+											<rich:calendar
+												value="#{issueCreateAction.targetEntity.dateCreated}"
+												required="true" locale="bg" popup="true"
+												datePattern="d/M/yy" showApplyButton="false"
 												disabled="#{issueCreateAction.readonly}" />
+
+
 											<h:message for="dateCreated" styleClass="issueError" />
 
 
 											<h:outputText value="#{labels.dateEnded}:" />
 
 
-											<rich:calendar value="#{issueCreateAction.targetEntity.dateEnded}"
-												locale="bg" popup="true" datePattern="d/M/yy"
-												showApplyButton="false"
+											<rich:calendar
+												value="#{issueCreateAction.targetEntity.dateEnded}"
+												required="true" locale="bg" popup="true"
+												datePattern="d/M/yy" showApplyButton="false"
 												disabled="#{issueCreateAction.readonly}" />
 											<h:message for="dateEnded" styleClass="issueError" />
 										</h:panelGrid>
@@ -158,8 +168,8 @@
 							<h:panelGrid columns="3" columnClasses="wfcol1,wfcol2,wfcol3">
 								<h:outputText value="#{labels.description}:" />
 								<h:inputTextarea id="description"
-									value="#{issueCreateAction.targetEntity.desctription}" required="true"
-									style=" width : 260px;"
+									value="#{issueCreateAction.targetEntity.desctription}"
+									required="true" style=" width : 260px;"
 									readonly="#{issueCreateAction.readonly}" />
 								<h:message for="description" styleClass="issueError" />
 							</h:panelGrid>
@@ -168,7 +178,8 @@
 				</rich:panel>
 				<h:commandButton action="#{issueCreateAction.create()}"
 					value="#{labels.save}" style="margin-left: 400px; width : 85px;" />
-				<h:commandButton action="#{issueCreateAction.edit(issueCreateAction.targetEntity)}"
+				<h:commandButton
+					action="#{issueCreateAction.edit(issueCreateAction.targetEntity)}"
 					value="#{labels.edit}" style="margin-left: 15px; width : 90px;" />
 			</h:form>
 		</div>
