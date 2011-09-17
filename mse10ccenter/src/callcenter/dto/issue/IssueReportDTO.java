@@ -1,7 +1,6 @@
 package callcenter.dto.issue;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -28,7 +27,7 @@ public class IssueReportDTO extends BaseDTO<IssueDetail> {
 
 	private String status;
 
-	private List<String> resolution;
+	private String resolution;
 
 	private String priority;
 
@@ -80,11 +79,11 @@ public class IssueReportDTO extends BaseDTO<IssueDetail> {
 		this.status = status;
 	}
 
-	public List<String> getResolution() {
+	public String getResolution() {
 		return resolution;
 	}
 
-	public void setResolution(List<String> resolution) {
+	public void setResolution(String resolution) {
 		this.resolution = resolution;
 	}
 
