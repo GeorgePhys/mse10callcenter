@@ -13,6 +13,11 @@ import javax.persistence.TemporalType;
 public class IssueDetail extends callcenter.entity.Entity implements
 		Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Column(columnDefinition = "Varchar(100)")
 	private String titleIssue;
 

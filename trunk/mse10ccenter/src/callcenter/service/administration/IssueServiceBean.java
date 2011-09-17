@@ -54,6 +54,9 @@ public class IssueServiceBean extends
 		if (StringUtils.isNotEmpty(args.getPriority())) {
 			criteria.add(Restrictions.eq("priority", args.getPriority()));
 		}
+		if (StringUtils.isNotEmpty(args.getResolution())) {
+			criteria.add(Restrictions.eq("resolution", args.getResolution()));
+		}
 
 		if (StringUtils.isNotEmpty(args.getStatus())) {
 			criteria.add(Restrictions.eq("status", args.getStatus()));
