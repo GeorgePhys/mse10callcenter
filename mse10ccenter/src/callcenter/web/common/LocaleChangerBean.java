@@ -16,13 +16,14 @@ public class LocaleChangerBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private String localeCode;
+	private String localeCode = FacesContext.getCurrentInstance().getViewRoot()
+			.getLocale().toString();
 
 	private static Map<String, Object> countries;
 	static {
 		countries = new LinkedHashMap<String, Object>();
 		countries.put("English", Locale.ENGLISH); // label, value
-		countries.put("Bulgarian", new Locale("bg", "BG"));
+		countries.put("Bulgarian", new Locale("BG", "bg"));
 	}
 
 	public Map<String, Object> getCountriesInMap() {
@@ -49,7 +50,7 @@ public class LocaleChangerBean implements Serializable {
 
 				FacesContext.getCurrentInstance().getViewRoot()
 						.setLocale((Locale) entry.getValue());
-
+				localeCode = newLocaleValue;
 			}
 		}
 	}
