@@ -93,8 +93,13 @@
    <supported-locale>en</supported-locale>
    <supported-locale>bg</supported-locale>
   </locale-config>
-  <message-bundle>labels.labels_bg</message-bundle>
-  <message-bundle>labels.labels_en</message-bundle>
-  <message-bundle>messages.messages</message-bundle>
+   <resource-bundle>
+   <base-name>messages.messages</base-name>
+   <var>messages</var>
+  </resource-bundle>
+  <resource-bundle>
+   <base-name>labels.labels</base-name>
+   <var>labels</var>
+  </resource-bundle>
  </application>
 </faces-config>
