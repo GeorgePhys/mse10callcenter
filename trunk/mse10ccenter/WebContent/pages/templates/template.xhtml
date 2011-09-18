@@ -3,14 +3,13 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-
+<f:view locale="#{localeChanger.localeCode}">
 <h:head>
 	<title><ui:insert name="title">Page Title</ui:insert></title>
 	<link rel="stylesheet" type="text/css"
 		href="#{facesContext.externalContext.requestContextPath}/css/template.css" />
 	<ui:insert name="head" />
-	<f:loadBundle basename="labels.labels" var="labels" />
-	<f:loadBundle basename="messages.messages" var="messages" />
+	
 </h:head>
 
 <body>
@@ -81,16 +80,20 @@
 									<h:commandLink value="#{labels.issueCreate}"
 										action="#{issueCreateAction.createNewIssue}" />
 								</h:outputLink></li>
-							<li><h:graphicImage class="icons" value="/images/icon3.JPG" />
-								<h:commandLink action="#{issueSearchAction.startSearch()}"
-									value="#{labels.issueSearch}" /></li>
+							<li>
+								<h:outputLink>
+									<h:graphicImage class="icons" value="/images/icon3.JPG" />
+									<h:commandLink action="#{issueSearchAction.startSearch}"
+									value="#{labels.issueSearch}" />
+								</h:outputLink>
+							</li>
 							<li><h:outputLink
 									value="/mse10ccenter/pages/issue/reportIssue.jsf">
 									<h:graphicImage class="icons" value="/images/icon4.JPG" />
 									<h:outputText value="#{labels.issueReport}" />
 								</h:outputLink></li>
 							<li><h:graphicImage class="icons" value="/images/icon5.JPG" />
-							<h:commandLink action="#{softwareProducts.allSoftware()}"
+							<h:commandLink action="#{softwareProducts.allSoftware}"
 									value="Products" /></li>
 						</ul>
 						<div id="info">
@@ -114,4 +117,5 @@
 		</div>
 	</div>
 </body>
+</f:view>
 </html>
