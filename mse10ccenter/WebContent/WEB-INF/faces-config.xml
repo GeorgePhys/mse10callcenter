@@ -58,7 +58,7 @@
    <to-view-id>/pages/e_shop/softwareReview.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
-  <navigation-rule>
+ <navigation-rule>
   <from-view-id>*</from-view-id>
   <navigation-case>
    <from-outcome>reviewHardwareProduct</from-outcome>
@@ -86,6 +86,14 @@
    <to-view-id>/pages/admin/users/profile.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
+ <validator>
+  <validator-id>notAfterToday</validator-id>
+  <validator-class>callcenter.web.validators.NotAfterTodayValidator</validator-class>
+  <attribute>
+   <attribute-name>compareTo</attribute-name>
+   <attribute-class>java.util.Date</attribute-class>
+  </attribute>
+ </validator>
  <!-- navigation rules end -->
  <application>
   <locale-config>
@@ -93,7 +101,7 @@
    <supported-locale>en</supported-locale>
    <supported-locale>bg</supported-locale>
   </locale-config>
-   <resource-bundle>
+  <resource-bundle>
    <base-name>messages.messages</base-name>
    <var>messages</var>
   </resource-bundle>
