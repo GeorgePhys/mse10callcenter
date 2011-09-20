@@ -19,6 +19,7 @@
 		<div id="createIssue" align="left">
 			<h:form id="formCreateIssue" name="formCreateIssue">
 
+
 				<rich:panel>
 					<f:facet name="header">
 						<h:outputText value="#{labels.issueDetail}" />
@@ -27,6 +28,28 @@
 					<table>
 						<tr>
 							<td><h:panelGrid columns="3">
+									<h:outputText value="#{labels.projectName}:"
+										styleClass="issueFieldPos" />
+									<h:commandButton value="Serch Project">
+										<rich:componentControl target="popup" operation="show" />
+									</h:commandButton>
+									<rich:popupPanel id="popup" modal="true" resizeable="true"
+										onmaskclick="#{rich:component('popup')}.hide()">
+										<f:facet name="header">
+											<h:outputText value="Simple popup panel" />
+										</f:facet>
+										<f:facet name="controls">
+											<h:outputLink value="#"
+												onclick="#{rich:component('popup')}.hide(); return false;">
+                    X
+                </h:outputLink>
+										</f:facet>
+										<p>You can also check and trigger events if the use clicks
+											outside of the panel.</p>
+										<p>In this example clicking outside closes the panel.</p>
+									</rich:popupPanel>
+
+
 
 									<h:outputText value="#{labels.titleIssue}:"
 										styleClass="issueFieldPos" />
@@ -117,7 +140,9 @@
 											<h:inputText
 												value="#{issueCreateAction.targetEntity.reporter}"
 												required="true" id="reporter" styleClass="issueField"
-												readonly="#{issueCreateAction.readonly}" />
+												readonly="#{issueCreateAction.readonly}">
+												<f:validateLength minimum="5" maximum="100" />
+											</h:inputText>
 											<h:message for="reporter" styleClass="issueError" />
 
 											<h:outputText value="#{labels.assignee}:"
@@ -125,7 +150,9 @@
 											<h:inputText
 												value="#{issueCreateAction.targetEntity.assignee}"
 												required="true" id="assignee" styleClass="issueField"
-												readonly="#{issueCreateAction.readonly}" />
+												readonly="#{issueCreateAction.readonly}">
+												<f:validateLength minimum="5" maximum="100" />
+											</h:inputText>
 											<h:message for="assignee" styleClass="issueError" />
 
 										</h:panelGrid>
@@ -140,11 +167,15 @@
 												readonly="#{issueCreateAction.readonly}" />
 
 
-											<rich:calendar
+											<rich:calendar id="dateCreated"
 												value="#{issueCreateAction.targetEntity.dateCreated}"
 												required="true" locale="bg" popup="true"
 												datePattern="d/M/yy" showApplyButton="false"
-												disabled="#{issueCreateAction.readonly}" />
+												disabled="#{issueCreateAction.readonly}">
+												<f:validator validatorId="notAfterToday" />
+												<f:attribute name="compareTo"
+													value="#{issueCreateAction.targetEntity.dateEnded}" />
+											</rich:calendar>
 
 
 											<h:message for="dateCreated" styleClass="issueError" />
@@ -153,11 +184,13 @@
 											<h:outputText value="#{labels.dateEnded}:" />
 
 
-											<rich:calendar
+											<rich:calendar id="dateEnded"
 												value="#{issueCreateAction.targetEntity.dateEnded}"
 												required="true" locale="bg" popup="true"
 												datePattern="d/M/yy" showApplyButton="false"
-												disabled="#{issueCreateAction.readonly}" />
+												disabled="#{issueCreateAction.readonly}">
+
+											</rich:calendar>
 											<h:message for="dateEnded" styleClass="issueError" />
 										</h:panelGrid>
 									</rich:panel>
