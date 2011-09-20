@@ -28,12 +28,7 @@ public class IssueCreateAction extends BaseAction<IssueDetail> implements
 	private IssueServiceBean issueService;
 
 	public String create() {
-		if (getTargetEntity().getDateCreated().after(
-				getTargetEntity().getDateEnded())) {
 
-			String message = "Date may not be later than today.";
-			throw new ValidatorException(new FacesMessage(message));
-		}
 		issueService.saveOrUpdate(getTargetEntity());
 		setReadonly(true);
 		return null;
