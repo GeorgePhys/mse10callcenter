@@ -172,9 +172,8 @@
 												required="true" locale="bg" popup="true"
 												datePattern="d/M/yy" showApplyButton="false"
 												disabled="#{issueCreateAction.readonly}">
-												<f:validator validatorId="notAfterToday" />
-												<f:attribute name="compareTo"
-													value="#{issueCreateAction.targetEntity.dateEnded}" />
+												<f:validator validatorId="notAfterDateValidator" />
+											<f:attribute name="compareTo" value="#{dateEnded}" />
 											</rich:calendar>
 
 
@@ -184,7 +183,7 @@
 											<h:outputText value="#{labels.dateEnded}:" />
 
 
-											<rich:calendar id="dateEnded"
+											<rich:calendar id="dateEnded" binding="#{dateEnded}"
 												value="#{issueCreateAction.targetEntity.dateEnded}"
 												required="true" locale="bg" popup="true"
 												datePattern="d/M/yy" showApplyButton="false"
