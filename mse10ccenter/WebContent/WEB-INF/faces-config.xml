@@ -86,14 +86,7 @@
    <to-view-id>/pages/admin/users/profile.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
- <validator>
-  <validator-id>notAfterToday</validator-id>
-  <validator-class>callcenter.web.validators.NotAfterTodayValidator</validator-class>
-  <attribute>
-   <attribute-name>compareTo</attribute-name>
-   <attribute-class>java.util.Date</attribute-class>
-  </attribute>
- </validator>
+  
  <!-- navigation rules end -->
  <application>
   <locale-config>
