@@ -17,42 +17,42 @@ import callcenter.web.action.BaseAction;
 @SessionScoped
 @ManagedBean(name = "issueCreateAction")
 public class IssueCreateAction extends BaseAction<IssueDetail> implements
-		Serializable {
+	Serializable {
 
-	private static final long serialVersionUID = -5533722715840256982L;
+    private static final long serialVersionUID = -5533722715840256982L;
 
-	@EJB
-	private ProjectServiceBean projectService;
+    @EJB
+    private ProjectServiceBean projectService;
 
-	@EJB
-	private IssueServiceBean issueService;
+    @EJB
+    private IssueServiceBean issueService;
 
-	public String create() {
+    public String create() {
 
-		issueService.saveOrUpdate(getTargetEntity());
-		setReadonly(true);
-		return null;
-	}
+	issueService.saveOrUpdate(getTargetEntity());
+	setReadonly(true);
+	return null;
+    }
 
-	public void edit(IssueDetail issue) {
-		setReadonly(false);
+    public void edit(IssueDetail issue) {
+	setReadonly(false);
 
-	}
+    }
 
-	public List<String> getSearchProject() {
-		return projectService.listAllProjectNames();
-	}
+    public List<String> getSearchProject() {
+	return projectService.listAllProjectNames();
+    }
 
-	public String open(IssueDetail is) {
-		setTargetEntity(is);
-		setReadonly(true);
-		return "createNewIssue";
+    public String open(IssueDetail is) {
+	setTargetEntity(is);
+	setReadonly(true);
+	return "createNewIssue";
 
-	}
+    }
 
-	public String createNewIssue() {
-		setReadonly(false);
-		setTargetEntity(new IssueDetail());
-		return "createNewIssue";
-	}
+    public String createNewIssue() {
+	setReadonly(false);
+	setTargetEntity(new IssueDetail());
+	return "createNewIssue";
+    }
 }

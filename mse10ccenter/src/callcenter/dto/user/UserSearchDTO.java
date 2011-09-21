@@ -10,74 +10,74 @@ import callcenter.entity.clients.User;
 @ViewScoped
 public class UserSearchDTO extends BaseDTO<User> {
 
-	private String fullName;
+    private String fullName;
 
-	private String mail;
+    private String mail;
 
-	private String phone;
+    private String phone;
 
-	private String country;
+    private String country;
 
-	private String city;
+    private String city;
 
-	private String street;
+    private String street;
 
-	private String postCode;
+    private String postCode;
 
-	public String getFullName() {
-		return fullName;
-	}
+    public String getFullName() {
+	return fullName;
+    }
 
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
-	}
+    public void setFullName(String fullName) {
+	this.fullName = fullName;
+    }
 
-	public String getMail() {
-		return mail;
-	}
+    public String getMail() {
+	return mail;
+    }
 
-	public void setMail(String mail) {
-		this.mail = mail;
-	}
+    public void setMail(String mail) {
+	this.mail = mail;
+    }
 
-	public String getPhone() {
-		return phone;
-	}
+    public String getPhone() {
+	return phone;
+    }
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+    public void setPhone(String phone) {
+	this.phone = phone;
+    }
 
-	public String getCountry() {
-		return country;
-	}
+    public String getCountry() {
+	return country;
+    }
 
-	public void setCountry(String country) {
-		this.country = country;
-	}
+    public void setCountry(String country) {
+	this.country = country;
+    }
 
-	public String getCity() {
-		return city;
-	}
+    public String getCity() {
+	return city;
+    }
 
-	public void setCity(String city) {
-		this.city = city;
-	}
+    public void setCity(String city) {
+	this.city = city;
+    }
 
-	public String getStreet() {
-		return street;
-	}
+    public String getStreet() {
+	return street;
+    }
 
-	public void setStreet(String street) {
-		this.street = street;
-	}
+    public void setStreet(String street) {
+	this.street = street;
+    }
 
-	public String getPostCode() {
-		return postCode;
-	}
+    public String getPostCode() {
+	return postCode;
+    }
 
-	public void setPostCode(String postCode) {
-		this.postCode = postCode;
-	}
+    public void setPostCode(String postCode) {
+	this.postCode = postCode;
+    }
 
 }

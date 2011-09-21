@@ -25,60 +25,60 @@ import javax.servlet.http.HttpServletRequest;
 @WebFilter(urlPatterns = { "/*" }, initParams = { @WebInitParam(name = "location", value = "/upload") })
 public class MultipartFilter implements Filter {
 
-	// Constants
-	// ----------------------------------------------------------------------------------
+    // Constants
+    // ----------------------------------------------------------------------------------
 
-	private static final String INIT_PARAM_LOCATION = "location";
-	private static final String REQUEST_METHOD_POST = "POST";
-	private static final String CONTENT_TYPE_MULTIPART = "multipart/";
+    private static final String INIT_PARAM_LOCATION = "location";
+    private static final String REQUEST_METHOD_POST = "POST";
+    private static final String CONTENT_TYPE_MULTIPART = "multipart/";
 
-	// Vars
-	// --------------------------------------------------------------------------------------
+    // Vars
+    // --------------------------------------------------------------------------------------
 
-	private String location;
+    private String location;
 
-	// Actions
-	// ------------------------------------------------------------------------------------
+    // Actions
+    // ------------------------------------------------------------------------------------
 
-	@Override
-	public void init(FilterConfig config) throws ServletException {
-		this.location = config.getInitParameter(INIT_PARAM_LOCATION);
+    @Override
+    public void init(FilterConfig config) throws ServletException {
+	this.location = config.getInitParameter(INIT_PARAM_LOCATION);
+    }
+
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response,
+	    FilterChain chain) throws IOException, ServletException {
+	HttpServletRequest httpRequest = (HttpServletRequest) request;
+	File file = new File(location);
+	if (!file.exists()) {
+	    file.mkdir();
 	}
-
-	@Override
-	public void doFilter(ServletRequest request, ServletResponse response,
-			FilterChain chain) throws IOException, ServletException {
-		HttpServletRequest httpRequest = (HttpServletRequest) request;
-		File file = new File(location);
-		if (!file.exists()) {
-			file.mkdir();
-		}
-		if (isMultipartRequest(httpRequest)) {
-			request = new MultipartRequest(httpRequest, location);
-		}
-		chain.doFilter(request, response);
+	if (isMultipartRequest(httpRequest)) {
+	    request = new MultipartRequest(httpRequest, location);
 	}
+	chain.doFilter(request, response);
+    }
 
-	@Override
-	public void destroy() {
-		// NOOP.
-	}
+    @Override
+    public void destroy() {
+	// NOOP.
+    }
 
-	// Helpers
-	// ------------------------------------------------------------------------------------
+    // Helpers
+    // ------------------------------------------------------------------------------------
 
-	/**
-	 * Returns true if the given request is a multipart request.
-	 * 
-	 * @param request
-	 *            The request to be checked.
-	 * @return True if the given request is a multipart request.
-	 */
-	public static final boolean isMultipartRequest(HttpServletRequest request) {
-		return REQUEST_METHOD_POST.equalsIgnoreCase(request.getMethod())
-				&& request.getContentType() != null
-				&& request.getContentType().toLowerCase()
-						.startsWith(CONTENT_TYPE_MULTIPART);
-	}
+    /**
+     * Returns true if the given request is a multipart request.
+     * 
+     * @param request
+     *            The request to be checked.
+     * @return True if the given request is a multipart request.
+     */
+    public static final boolean isMultipartRequest(HttpServletRequest request) {
+	return REQUEST_METHOD_POST.equalsIgnoreCase(request.getMethod())
+		&& request.getContentType() != null
+		&& request.getContentType().toLowerCase()
+			.startsWith(CONTENT_TYPE_MULTIPART);
+    }
 
 }

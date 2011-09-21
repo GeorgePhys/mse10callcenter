@@ -19,47 +19,47 @@ import callcenter.util.ObjectUtil;
 
 @Stateless
 public class CompanyServiceBean extends
-		BaseServiceBean<Company, CompanySearchDTO> {
+	BaseServiceBean<Company, CompanySearchDTO> {
 
-	@Override
-	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-	public List<Company> search(CompanySearchDTO args, boolean countOnly) {
-		Session session = (Session) getEntityManager().getDelegate();
-		Criteria criteria = session.createCriteria(Company.class);
+    @Override
+    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+    public List<Company> search(CompanySearchDTO args, boolean countOnly) {
+	Session session = (Session) getEntityManager().getDelegate();
+	Criteria criteria = session.createCriteria(Company.class);
 
-		if (ObjectUtil.isValid(args.getName())) {
-			criteria.add(Restrictions.like("name", args.getName(),
-					MatchMode.ANYWHERE).ignoreCase());
-		}
-		if (ObjectUtil.isValid(args.getBulstat())) {
-			criteria.add(Restrictions.eq("bulstat", args.getBulstat()));
-		}
-		if (args.hasAddressCriteria()) {
-			Criteria addressCriteria = criteria.createCriteria("address");
-			if (ObjectUtil.isValid(args.getCountry())) {
-				addressCriteria.add(Restrictions.eq("country",
-						args.getCountry()));
-			}
-			if (ObjectUtil.isValid(args.getCity())) {
-				addressCriteria.add(Restrictions.eq("city", args.getCity()));
-			}
-		}
-
-		if (countOnly) {
-			criteria.setProjection(Projections.count("id"));
-			Number count = (Number) criteria.list().get(0);
-			if (count == null || count.intValue() == 0) {
-				args.setTotalNumberOfRows(0);
-			} else {
-				args.setTotalNumberOfRows(count.intValue());
-			}
-			return null;
-		}
-
-		criteria.setMaxResults(args.getMaxResults());
-		criteria.setFirstResult(args.getFirstResult());
-
-		List list = criteria.list();
-		return list;
+	if (ObjectUtil.isValid(args.getName())) {
+	    criteria.add(Restrictions.like("name", args.getName(),
+		    MatchMode.ANYWHERE).ignoreCase());
 	}
+	if (ObjectUtil.isValid(args.getBulstat())) {
+	    criteria.add(Restrictions.eq("bulstat", args.getBulstat()));
+	}
+	if (args.hasAddressCriteria()) {
+	    Criteria addressCriteria = criteria.createCriteria("address");
+	    if (ObjectUtil.isValid(args.getCountry())) {
+		addressCriteria.add(Restrictions.eq("country",
+			args.getCountry()));
+	    }
+	    if (ObjectUtil.isValid(args.getCity())) {
+		addressCriteria.add(Restrictions.eq("city", args.getCity()));
+	    }
+	}
+
+	if (countOnly) {
+	    criteria.setProjection(Projections.count("id"));
+	    Number count = (Number) criteria.list().get(0);
+	    if (count == null || count.intValue() == 0) {
+		args.setTotalNumberOfRows(0);
+	    } else {
+		args.setTotalNumberOfRows(count.intValue());
+	    }
+	    return null;
+	}
+
+	criteria.setMaxResults(args.getMaxResults());
+	criteria.setFirstResult(args.getFirstResult());
+
+	List list = criteria.list();
+	return list;
+    }
 }

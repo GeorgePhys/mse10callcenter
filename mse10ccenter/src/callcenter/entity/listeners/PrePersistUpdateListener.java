@@ -8,15 +8,15 @@ import callcenter.entity.products.Software;
 
 public class PrePersistUpdateListener {
 
-	@PrePersist
-	@PreUpdate
-	public void updatePicture(Software software) {
+    @PrePersist
+    @PreUpdate
+    public void updatePicture(Software software) {
 
-	}
+    }
 
-	@PrePersist
-	@PreUpdate
-	public void updatePicture(Hardware hardware) {
+    @PrePersist
+    @PreUpdate
+    public void updatePicture(Hardware hardware) {
 
-	}
+    }
 }

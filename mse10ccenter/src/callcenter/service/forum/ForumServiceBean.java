@@ -10,18 +10,18 @@ import javax.persistence.PersistenceContextType;
 @Stateful
 public class ForumServiceBean {
 
-	@PersistenceContext(type = PersistenceContextType.EXTENDED)
-	private EntityManager entityManager;
+    @PersistenceContext(type = PersistenceContextType.EXTENDED)
+    private EntityManager entityManager;
 
-	public <E> E save(E e) {
-		return getEntityManager().merge(e);
-	}
+    public <E> E save(E e) {
+	return getEntityManager().merge(e);
+    }
 
-	public <E> E find(Class<E> clazz, Object id) {
-		return getEntityManager().find(clazz, id);
-	}
+    public <E> E find(Class<E> clazz, Object id) {
+	return getEntityManager().find(clazz, id);
+    }
 
-	protected EntityManager getEntityManager() {
-		return entityManager;
-	}
+    protected EntityManager getEntityManager() {
+	return entityManager;
+    }
 }

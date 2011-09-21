@@ -6,14 +6,14 @@ import callcenter.entity.issue.Project;
 
 public class ProjectSearchDTO extends BaseDTO<Project> {
 
-	private String projectName;
+    private String projectName;
 
-	public String getProjectName() {
-		return projectName;
-	}
+    public String getProjectName() {
+	return projectName;
+    }
 
-	public void setProjectName(String projectName) {
-		this.projectName = projectName;
-	}
+    public void setProjectName(String projectName) {
+	this.projectName = projectName;
+    }
 
 }

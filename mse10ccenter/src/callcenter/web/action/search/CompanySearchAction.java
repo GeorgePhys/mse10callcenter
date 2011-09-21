@@ -18,36 +18,36 @@ import callcenter.web.action.search.datamodel.JPADataModel;
 @SuppressWarnings("rawtypes")
 public class CompanySearchAction implements Serializable {
 
-	private static final long serialVersionUID = -3589498718510276193L;
+    private static final long serialVersionUID = -3589498718510276193L;
 
-	@EJB
-	private CompanyServiceBean service;
+    @EJB
+    private CompanyServiceBean service;
 
-	private CompanyDataModel dataModel;
+    private CompanyDataModel dataModel;
 
-	private static final class CompanyDataModel extends JPADataModel<Company> {
+    private static final class CompanyDataModel extends JPADataModel<Company> {
 
-		private CompanyDataModel(BaseServiceBean service, BaseDTO dto) {
-			super(service, dto, Company.class);
-		}
-
-		@Override
-		protected Object getId(Company t) {
-			return t.getId();
-		}
+	private CompanyDataModel(BaseServiceBean service, BaseDTO dto) {
+	    super(service, dto, Company.class);
 	}
 
-	public String search(CompanySearchDTO dto) {
-		service.search(dto, true);
-		setDataModel(new CompanyDataModel(service, dto));
-		return null;
+	@Override
+	protected Object getId(Company t) {
+	    return t.getId();
 	}
+    }
 
-	public Object getDataModel() {
-		return dataModel;
-	}
+    public String search(CompanySearchDTO dto) {
+	service.search(dto, true);
+	setDataModel(new CompanyDataModel(service, dto));
+	return null;
+    }
 
-	public void setDataModel(CompanyDataModel dataModel) {
-		this.dataModel = dataModel;
-	}
+    public Object getDataModel() {
+	return dataModel;
+    }
+
+    public void setDataModel(CompanyDataModel dataModel) {
+	this.dataModel = dataModel;
+    }
 }

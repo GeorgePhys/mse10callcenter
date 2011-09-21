@@ -14,31 +14,31 @@ import callcenter.web.action.BaseAction;
 @ManagedBean(name = "userAction")
 public class UserAction extends BaseAction<User> implements Serializable {
 
-	private static final long serialVersionUID = -5533722715840256982L;
+    private static final long serialVersionUID = -5533722715840256982L;
 
-	@EJB
-	private UserServiceBean userService;
+    @EJB
+    private UserServiceBean userService;
 
-	public String newRegistration() {
-		setTargetEntity(new User());
-		return "userRegistration";
-	}
+    public String newRegistration() {
+	setTargetEntity(new User());
+	return "userRegistration";
+    }
 
-	public String register() throws Exception {
-		User registerUser = userService.registerUser(getTargetEntity());
-		setTargetEntity(registerUser);
-		return "successRegister";
-	}
+    public String register() throws Exception {
+	User registerUser = userService.registerUser(getTargetEntity());
+	setTargetEntity(registerUser);
+	return "successRegister";
+    }
 
-	public String loadProfile() {
-		setTargetEntity(getUser());
-		return "userProfile";
-	}
+    public String loadProfile() {
+	setTargetEntity(getUser());
+	return "userProfile";
+    }
 
-	public String saveProfile() {
-		User saveUserProfile = userService.saveOrUpdate(getTargetEntity());
-		setTargetEntity(saveUserProfile);
-		setUser(saveUserProfile);
-		return "saveUserProfile";
-	}
+    public String saveProfile() {
+	User saveUserProfile = userService.saveOrUpdate(getTargetEntity());
+	setTargetEntity(saveUserProfile);
+	setUser(saveUserProfile);
+	return "saveUserProfile";
+    }
 }

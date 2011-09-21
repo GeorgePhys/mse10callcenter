@@ -11,31 +11,31 @@ import callcenter.dto.BaseDTO;
 @Stateless
 public class BaseServiceBean<E, T extends BaseDTO<E>> {
 
-	@PersistenceContext(unitName = "ccenter")
-	protected EntityManager entityManager;
+    @PersistenceContext(unitName = "ccenter")
+    protected EntityManager entityManager;
 
-	public E saveOrUpdate(E entity) {
-		return save(entity);
-	}
+    public E saveOrUpdate(E entity) {
+	return save(entity);
+    }
 
-	public <C> C save(C c) {
-		return getEntityManager().merge(c);
-	}
+    public <C> C save(C c) {
+	return getEntityManager().merge(c);
+    }
 
-	public void refresh(E e) {
-		getEntityManager().refresh(e);
-	}
+    public void refresh(E e) {
+	getEntityManager().refresh(e);
+    }
 
-	public E find(Class<E> clazz, Object id) {
-		return getEntityManager().find(clazz, id);
-	}
+    public E find(Class<E> clazz, Object id) {
+	return getEntityManager().find(clazz, id);
+    }
 
-	protected EntityManager getEntityManager() {
-		return entityManager;
-	}
+    protected EntityManager getEntityManager() {
+	return entityManager;
+    }
 
-	public List<E> search(T args, boolean countOnly) {
-		return null;
-	}
+    public List<E> search(T args, boolean countOnly) {
+	return null;
+    }
 
 }

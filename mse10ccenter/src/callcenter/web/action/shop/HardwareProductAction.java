@@ -21,80 +21,80 @@ import callcenter.web.action.search.datamodel.JPADataModel;
 @SuppressWarnings("rawtypes")
 public class HardwareProductAction extends BaseAction implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@EJB
-	private HardwareServiceBean service;
+    @EJB
+    private HardwareServiceBean service;
 
-	private List<Hardware> hardware;
-	private HardwareDataModel dataModel;
+    private List<Hardware> hardware;
+    private HardwareDataModel dataModel;
 
-	private Map<Long, Boolean> disable = new HashMap<Long, Boolean>();
+    private Map<Long, Boolean> disable = new HashMap<Long, Boolean>();
 
-	private static final class HardwareDataModel extends JPADataModel<Hardware> {
+    private static final class HardwareDataModel extends JPADataModel<Hardware> {
 
-		private HardwareDataModel(BaseServiceBean service, BaseDTO dto) {
-			super(service, dto, Hardware.class);
-		}
-
-		@Override
-		protected Object getId(Hardware t) {
-			return t.getId();
-		}
+	private HardwareDataModel(BaseServiceBean service, BaseDTO dto) {
+	    super(service, dto, Hardware.class);
 	}
 
-	/**
-	 * 
-	 * @param s
-	 * @return
-	 */
-	@SuppressWarnings("unchecked")
-	public String openSlectedProduct(Hardware s) {
-		setTargetEntity(s);
-
-		return "reviewHardwareProduct";
+	@Override
+	protected Object getId(Hardware t) {
+	    return t.getId();
 	}
+    }
 
-	public String allSoftware() {
-		this.hardware = service.listAllProjectNames();
-		return "AllSoftware";
-	}
+    /**
+     * 
+     * @param s
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+    public String openSlectedProduct(Hardware s) {
+	setTargetEntity(s);
 
-	/**
-	 * 
-	 * @param s
-	 * @return
-	 */
-	@SuppressWarnings("unchecked")
-	public String openSlectedHardware(Hardware s) {
-		setTargetEntity(s);
+	return "reviewHardwareProduct";
+    }
 
-		return "reviewHardwareProduct";
-	}
+    public String allSoftware() {
+	this.hardware = service.listAllProjectNames();
+	return "AllSoftware";
+    }
 
-	public Object getDataModel() {
-		return dataModel;
-	}
+    /**
+     * 
+     * @param s
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+    public String openSlectedHardware(Hardware s) {
+	setTargetEntity(s);
 
-	public void setDataModel(HardwareDataModel dataModel) {
-		this.dataModel = dataModel;
-	}
+	return "reviewHardwareProduct";
+    }
 
-	public Map<Long, Boolean> getDisable() {
-		return disable;
-	}
+    public Object getDataModel() {
+	return dataModel;
+    }
 
-	public void setDisable(Map<Long, Boolean> disable) {
-		this.disable = disable;
-	}
+    public void setDataModel(HardwareDataModel dataModel) {
+	this.dataModel = dataModel;
+    }
 
-	public List<Hardware> getHardware() {
-		hardware = service.listAllProjectNames();
-		return hardware;
-	}
+    public Map<Long, Boolean> getDisable() {
+	return disable;
+    }
 
-	public void setHardware(List<Hardware> hardware) {
-		this.hardware = hardware;
-	}
+    public void setDisable(Map<Long, Boolean> disable) {
+	this.disable = disable;
+    }
+
+    public List<Hardware> getHardware() {
+	hardware = service.listAllProjectNames();
+	return hardware;
+    }
+
+    public void setHardware(List<Hardware> hardware) {
+	this.hardware = hardware;
+    }
 
 }

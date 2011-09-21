@@ -11,156 +11,156 @@ import javax.persistence.TemporalType;
 
 @Entity
 public class IssueDetail extends callcenter.entity.Entity implements
-		Serializable {
+	Serializable {
 
-	/**
+    /**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Column(columnDefinition = "Varchar(100)")
-	private String titleIssue;
+    @Column(columnDefinition = "Varchar(100)")
+    private String titleIssue;
 
-	@Column(columnDefinition = "Varchar(20)")
-	private String type;
+    @Column(columnDefinition = "Varchar(20)")
+    private String type;
 
-	@Column(columnDefinition = "Varchar(20)")
-	private String priority;
+    @Column(columnDefinition = "Varchar(20)")
+    private String priority;
 
-	@Column(columnDefinition = "Varchar(20)")
-	private String status;
+    @Column(columnDefinition = "Varchar(20)")
+    private String status;
 
-	@Column(columnDefinition = "Varchar(20)")
-	private String resolution;
+    @Column(columnDefinition = "Varchar(20)")
+    private String resolution;
 
-	@Column(columnDefinition = "Varchar(100)")
-	private String reporter;
+    @Column(columnDefinition = "Varchar(100)")
+    private String reporter;
 
-	@Column(columnDefinition = "Varchar(100)")
-	private String assignee;
+    @Column(columnDefinition = "Varchar(100)")
+    private String assignee;
 
-	@Column(columnDefinition = "Varchar(100)")
-	private String user;
+    @Column(columnDefinition = "Varchar(100)")
+    private String user;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date dateCreated;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateCreated;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date dateEnded;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateEnded;
 
-	@Column(columnDefinition = "Varchar(400)")
-	private String desctription;
+    @Column(columnDefinition = "Varchar(400)")
+    private String desctription;
 
-	@ManyToOne
-	private Project project;
+    @ManyToOne
+    private Project project;
 
-	public String getTitleIssue() {
-		return titleIssue;
-	}
+    public String getTitleIssue() {
+	return titleIssue;
+    }
 
-	public void setTitleIssue(String titleIssue) {
-		this.titleIssue = titleIssue;
-	}
+    public void setTitleIssue(String titleIssue) {
+	this.titleIssue = titleIssue;
+    }
 
-	public String getType() {
-		return type;
-	}
+    public String getType() {
+	return type;
+    }
 
-	public void setType(String type) {
-		this.type = type;
-	}
+    public void setType(String type) {
+	this.type = type;
+    }
 
-	public String getPriority() {
-		return priority;
-	}
+    public String getPriority() {
+	return priority;
+    }
 
-	public void setPriority(String priority) {
-		this.priority = priority;
-	}
+    public void setPriority(String priority) {
+	this.priority = priority;
+    }
 
-	public String getStatus() {
-		return status;
-	}
+    public String getStatus() {
+	return status;
+    }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+    public void setStatus(String status) {
+	this.status = status;
+    }
 
-	public String getResolution() {
-		return resolution;
-	}
+    public String getResolution() {
+	return resolution;
+    }
 
-	public void setResolution(String resolution) {
-		this.resolution = resolution;
-	}
+    public void setResolution(String resolution) {
+	this.resolution = resolution;
+    }
 
-	public String getReporter() {
-		return reporter;
-	}
+    public String getReporter() {
+	return reporter;
+    }
 
-	public void setReporter(String reporter) {
-		this.reporter = reporter;
-	}
+    public void setReporter(String reporter) {
+	this.reporter = reporter;
+    }
 
-	public String getAssignee() {
-		return assignee;
-	}
+    public String getAssignee() {
+	return assignee;
+    }
 
-	public void setAssignee(String assignee) {
-		this.assignee = assignee;
-	}
+    public void setAssignee(String assignee) {
+	this.assignee = assignee;
+    }
 
-	public String getUser() {
-		return user;
-	}
+    public String getUser() {
+	return user;
+    }
 
-	public void setUser(String user) {
-		this.user = user;
-	}
+    public void setUser(String user) {
+	this.user = user;
+    }
 
-	public Date getDateCreated() {
-		return dateCreated;
-	}
+    public Date getDateCreated() {
+	return dateCreated;
+    }
 
-	public void setDateCreated(Date dateCreated) {
-		this.dateCreated = dateCreated;
-	}
+    public void setDateCreated(Date dateCreated) {
+	this.dateCreated = dateCreated;
+    }
 
-	public Date getDateEnded() {
-		return dateEnded;
-	}
+    public Date getDateEnded() {
+	return dateEnded;
+    }
 
-	public void setDateEnded(Date dateEnded) {
-		this.dateEnded = dateEnded;
-	}
+    public void setDateEnded(Date dateEnded) {
+	this.dateEnded = dateEnded;
+    }
 
-	public String getDesctription() {
-		return desctription;
-	}
+    public String getDesctription() {
+	return desctription;
+    }
 
-	public void setDesctription(String desctription) {
-		this.desctription = desctription;
-	}
+    public void setDesctription(String desctription) {
+	this.desctription = desctription;
+    }
 
-	/**
-	 * @return the project
-	 */
-	public Project getProject() {
-		return project;
-	}
+    /**
+     * @return the project
+     */
+    public Project getProject() {
+	return project;
+    }
 
-	/**
-	 * @param project
-	 *            the project to set
-	 */
-	public void setProject(Project project) {
-		this.project = project;
-	}
+    /**
+     * @param project
+     *            the project to set
+     */
+    public void setProject(Project project) {
+	this.project = project;
+    }
 
-	@Override
-	public void initializeBibirectional() {
-		// TODO Auto-generated method stub
+    @Override
+    public void initializeBibirectional() {
+	// TODO Auto-generated method stub
 
-	}
+    }
 
 }
