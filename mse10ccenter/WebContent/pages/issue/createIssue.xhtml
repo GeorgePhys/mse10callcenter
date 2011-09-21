@@ -11,20 +11,15 @@
 	<ui:define name="head">
 		<link rel="stylesheet" type="text/css"
 			href="#{facesContext.externalContext.requestContextPath}/css/issue.css" />
-
 	</ui:define>
-
 	<ui:define name="body">
 
 		<div id="createIssue" align="left">
 			<h:form id="formCreateIssue" name="formCreateIssue">
-
-
 				<rich:panel>
 					<f:facet name="header">
 						<h:outputText value="#{labels.issueDetail}" />
 					</f:facet>
-
 					<table>
 						<tr>
 							<td><h:panelGrid columns="3">
@@ -39,17 +34,14 @@
 											<h:outputText value="Simple popup panel" />
 										</f:facet>
 										<f:facet name="controls">
-											<h:outputLink value="#"
-												onclick="#{rich:component('popup')}.hide(); return false;">
-                    X
-                </h:outputLink>
+											<h:outputLink value="#" onclick="#{rich:component('popup')}.hide(); return false;">
+                   								 X
+                							</h:outputLink>
 										</f:facet>
 										<p>You can also check and trigger events if the use clicks
 											outside of the panel.</p>
 										<p>In this example clicking outside closes the panel.</p>
 									</rich:popupPanel>
-
-
 
 									<h:outputText value="#{labels.titleIssue}:"
 										styleClass="issueFieldPos" />
@@ -124,8 +116,7 @@
 									</h:selectOneMenu>
 
 									<h:message for="resolution" styleClass="issueError" />
-								</h:panelGrid>
-							</td>
+								</h:panelGrid></td>
 							<td>
 								<div align="left" style="width: 443px;">
 
@@ -166,35 +157,29 @@
 											<h:outputText value="#{labels.dateCreated}:"
 												readonly="#{issueCreateAction.readonly}" />
 
-
-											<rich:calendar id="dateCreated"
+											<rich:calendar id="dateCreated" binding="#{dateCreated}"
 												value="#{issueCreateAction.targetEntity.dateCreated}"
 												required="true" locale="bg" popup="true"
 												datePattern="d/M/yy" showApplyButton="false"
 												disabled="#{issueCreateAction.readonly}">
-												<f:validator validatorId="notAfterDateValidator" />
-											<f:attribute name="compareTo" value="#{dateEnded}" />
 											</rich:calendar>
-
 
 											<h:message for="dateCreated" styleClass="issueError" />
 
-
 											<h:outputText value="#{labels.dateEnded}:" />
 
-
-											<rich:calendar id="dateEnded" binding="#{dateEnded}"
+											<rich:calendar id="dateEnded"
 												value="#{issueCreateAction.targetEntity.dateEnded}"
 												required="true" locale="bg" popup="true"
 												datePattern="d/M/yy" showApplyButton="false"
 												disabled="#{issueCreateAction.readonly}">
-
+												<f:validator validatorId="notAfterDateValidator" />
+												<f:attribute name="compareTo" value="#{dateCreated}" />
 											</rich:calendar>
 											<h:message for="dateEnded" styleClass="issueError" />
 										</h:panelGrid>
 									</rich:panel>
-								</div>
-							</td>
+								</div></td>
 						</tr>
 						<tr>
 							<h:panelGrid columns="3" columnClasses="wfcol1,wfcol2,wfcol3">
