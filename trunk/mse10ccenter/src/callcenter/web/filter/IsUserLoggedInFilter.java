@@ -16,31 +16,31 @@ import javax.servlet.http.HttpSession;
 @WebFilter(urlPatterns = "*.jsf")
 public class IsUserLoggedInFilter implements Filter {
 
-	@Override
-	public void destroy() {
+    @Override
+    public void destroy() {
 
+    }
+
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response,
+	    FilterChain chain) throws IOException, ServletException {
+	HttpServletRequest servletRequest = (HttpServletRequest) request;
+	HttpServletResponse servletResponse = (HttpServletResponse) response;
+	HttpSession httpSession = servletRequest.getSession(true);
+
+	String requestURL = servletRequest.getRequestURL().toString();
+
+	if (httpSession.getAttribute("user") == null
+		&& !requestURL.contains("login.jsf")) {
+	    servletResponse.sendRedirect("/mse10ccenter/pages/login/login.jsf");
+	} else {
+	    chain.doFilter(request, response);
 	}
+    }
 
-	@Override
-	public void doFilter(ServletRequest request, ServletResponse response,
-			FilterChain chain) throws IOException, ServletException {
-		HttpServletRequest servletRequest = (HttpServletRequest) request;
-		HttpServletResponse servletResponse = (HttpServletResponse) response;
-		HttpSession httpSession = servletRequest.getSession(true);
+    @Override
+    public void init(FilterConfig arg0) throws ServletException {
 
-		String requestURL = servletRequest.getRequestURL().toString();
-
-		if (httpSession.getAttribute("user") == null
-				&& !requestURL.contains("login.jsf")) {
-			servletResponse.sendRedirect("/mse10ccenter/pages/login/login.jsf");
-		} else {
-			chain.doFilter(request, response);
-		}
-	}
-
-	@Override
-	public void init(FilterConfig arg0) throws ServletException {
-
-	}
+    }
 
 }

@@ -20,39 +20,39 @@ import callcenter.web.action.search.datamodel.JPADataModel;
 @SuppressWarnings("rawtypes")
 public class ProjectSearchAction implements Serializable {
 
-	@EJB
-	private IssueServiceBean service;
+    @EJB
+    private IssueServiceBean service;
 
-	private ProjectDataModel dataModel;
+    private ProjectDataModel dataModel;
 
-	private static final class ProjectDataModel extends JPADataModel<Project> {
+    private static final class ProjectDataModel extends JPADataModel<Project> {
 
-		private ProjectDataModel(BaseServiceBean service, BaseDTO dto) {
-			super(service, dto, Project.class);
-		}
-
-		@Override
-		protected Object getId(Project t) {
-			return t.getId();
-		}
+	private ProjectDataModel(BaseServiceBean service, BaseDTO dto) {
+	    super(service, dto, Project.class);
 	}
 
-	public String search(IssueSearchDTO dto) {
-		service.search(dto, true);
-		setDataModel(new ProjectDataModel(service, dto));
-		return null;
+	@Override
+	protected Object getId(Project t) {
+	    return t.getId();
 	}
+    }
 
-	public Object getDataModel() {
-		return dataModel;
-	}
+    public String search(IssueSearchDTO dto) {
+	service.search(dto, true);
+	setDataModel(new ProjectDataModel(service, dto));
+	return null;
+    }
 
-	public void setDataModel(ProjectDataModel dataModel) {
-		this.dataModel = dataModel;
-	}
+    public Object getDataModel() {
+	return dataModel;
+    }
 
-	public String startSearch() {
-		this.dataModel = null;
-		return "startNewSearch";
-	}
+    public void setDataModel(ProjectDataModel dataModel) {
+	this.dataModel = dataModel;
+    }
+
+    public String startSearch() {
+	this.dataModel = null;
+	return "startNewSearch";
+    }
 }

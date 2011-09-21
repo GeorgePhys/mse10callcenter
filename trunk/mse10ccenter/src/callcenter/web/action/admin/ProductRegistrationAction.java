@@ -15,51 +15,51 @@ import callcenter.service.administration.SoftwareServiceBean;
 @ManagedBean(name = "productRegistrationAction")
 public class ProductRegistrationAction implements Serializable {
 
-	private static final long serialVersionUID = -6421783327502433744L;
+    private static final long serialVersionUID = -6421783327502433744L;
 
-	private byte[] pictureBytes;
+    private byte[] pictureBytes;
 
-	@EJB
-	private SoftwareServiceBean service;
+    @EJB
+    private SoftwareServiceBean service;
 
-	private String text;
-	private File file;
-	private String[] check;
+    private String text;
+    private File file;
+    private String[] check;
 
-	public String register(Software software) {
-		software.setPicture(pictureBytes);
-		service.saveOrUpdate(software);
-		return null;
-	}
+    public String register(Software software) {
+	software.setPicture(pictureBytes);
+	service.saveOrUpdate(software);
+	return null;
+    }
 
-	public void submit() {
-		// Now do your thing with the obtained input.
-		System.out.println("Text: " + text);
-		System.out.println("File: " + file);
-		System.out.println("Check: " + Arrays.toString(check));
-	}
+    public void submit() {
+	// Now do your thing with the obtained input.
+	System.out.println("Text: " + text);
+	System.out.println("File: " + file);
+	System.out.println("Check: " + Arrays.toString(check));
+    }
 
-	public String getText() {
-		return text;
-	}
+    public String getText() {
+	return text;
+    }
 
-	public File getFile() {
-		return file;
-	}
+    public File getFile() {
+	return file;
+    }
 
-	public String[] getCheck() {
-		return check;
-	}
+    public String[] getCheck() {
+	return check;
+    }
 
-	public void setText(String text) {
-		this.text = text;
-	}
+    public void setText(String text) {
+	this.text = text;
+    }
 
-	public void setFile(File file) {
-		this.file = file;
-	}
+    public void setFile(File file) {
+	this.file = file;
+    }
 
-	public void setCheck(String[] check) {
-		this.check = check;
-	}
+    public void setCheck(String[] check) {
+	this.check = check;
+    }
 }

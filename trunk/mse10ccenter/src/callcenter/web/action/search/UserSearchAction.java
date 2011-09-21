@@ -14,28 +14,28 @@ import callcenter.web.action.BaseSearchAction;
 @SessionScoped
 @ManagedBean(name = "userSearchAction")
 public class UserSearchAction extends BaseSearchAction<User, UserSearchDTO>
-		implements Serializable {
+	implements Serializable {
 
-	private static final long serialVersionUID = -5156711102367948040L;
+    private static final long serialVersionUID = -5156711102367948040L;
 
-	@EJB
-	private UserServiceBean service;
+    @EJB
+    private UserServiceBean service;
 
-	@Override
-	public String previewSearchResult(User result) {
-		getBaseAction().setTargetEntity(result);
-		getBaseAction().setReadonly(true);
-		return "userRegistration";
-	}
+    @Override
+    public String previewSearchResult(User result) {
+	getBaseAction().setTargetEntity(result);
+	getBaseAction().setReadonly(true);
+	return "userRegistration";
+    }
 
-	@Override
-	public UserServiceBean getService() {
-		return service;
-	}
+    @Override
+    public UserServiceBean getService() {
+	return service;
+    }
 
-	@Override
-	public Class<User> getEntityClass() {
-		return User.class;
-	}
+    @Override
+    public Class<User> getEntityClass() {
+	return User.class;
+    }
 
 }

@@ -15,47 +15,47 @@ import callcenter.service.forum.FaqServiceBean;
 @ManagedBean(name = "faqAction")
 public class FAQAction implements Serializable {
 
-	private List<FAQEntry> entries;
+    private List<FAQEntry> entries;
 
-	@EJB
-	private FaqServiceBean serviceBean;
+    @EJB
+    private FaqServiceBean serviceBean;
 
-	public String loadAndNavigateToFAQ() {
-		List<FAQEntry> all = serviceBean.loadAll();
-		entries = new ArrayList<FAQEntry>(all);
-		return "faqPage";
+    public String loadAndNavigateToFAQ() {
+	List<FAQEntry> all = serviceBean.loadAll();
+	entries = new ArrayList<FAQEntry>(all);
+	return "faqPage";
+    }
+
+    public void addNew() {
+	entries.add(0, new FAQEntry());
+    }
+
+    public void save() {
+	List<FAQEntry> refreshed = new ArrayList<FAQEntry>();
+	for (FAQEntry faqEntry : getEntries()) {
+	    if (faqEntry.getId() == null) {
+		FAQEntry saveOrUpdate = serviceBean.saveOrUpdate(faqEntry);
+		refreshed.add(saveOrUpdate);
+	    } else {
+		refreshed.add(faqEntry);
+	    }
 	}
+	entries.clear();
+	entries.addAll(refreshed);
+    }
 
-	public void addNew() {
-		entries.add(0, new FAQEntry());
-	}
+    /**
+     * @return the entries
+     */
+    public List<FAQEntry> getEntries() {
+	return entries;
+    }
 
-	public void save() {
-		List<FAQEntry> refreshed = new ArrayList<FAQEntry>();
-		for (FAQEntry faqEntry : getEntries()) {
-			if (faqEntry.getId() == null) {
-				FAQEntry saveOrUpdate = serviceBean.saveOrUpdate(faqEntry);
-				refreshed.add(saveOrUpdate);
-			} else {
-				refreshed.add(faqEntry);
-			}
-		}
-		entries.clear();
-		entries.addAll(refreshed);
-	}
-
-	/**
-	 * @return the entries
-	 */
-	public List<FAQEntry> getEntries() {
-		return entries;
-	}
-
-	/**
-	 * @param entries
-	 *            the entries to set
-	 */
-	public void setEntries(List<FAQEntry> entries) {
-		this.entries = entries;
-	}
+    /**
+     * @param entries
+     *            the entries to set
+     */
+    public void setEntries(List<FAQEntry> entries) {
+	this.entries = entries;
+    }
 }

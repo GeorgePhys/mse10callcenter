@@ -2,7 +2,7 @@ package callcenter.entity.products;
 
 public interface Product {
 
-	byte[] getPicture();
+    byte[] getPicture();
 
-	void setPicture(byte[] b);
+    void setPicture(byte[] b);
 }

@@ -15,33 +15,33 @@ import callcenter.web.action.BaseAction;
 @ManagedBean(name = "loginAction")
 public class LoginAction extends BaseAction<User> {
 
-	@EJB
-	private UserServiceBean userService;
+    @EJB
+    private UserServiceBean userService;
 
-	public String initLogin() {
-		setTargetEntity(new User());
-		return "loginPage";
-	}
+    public String initLogin() {
+	setTargetEntity(new User());
+	return "loginPage";
+    }
 
-	public String login() {
-		User checkLogin = userService.checkLogin(getTargetEntity());
-		if (checkLogin == null) {
-			FacesMessage message = new FacesMessage(
-					FacesMessage.SEVERITY_ERROR, "This user dont exist",
-					"asdasda");
-			FacesContext.getCurrentInstance().addMessage(null, message);
-			return null;
-		}
-		setTargetEntity(null);
-		setUser(checkLogin);
-		return "loginSuccessful";
+    public String login() {
+	User checkLogin = userService.checkLogin(getTargetEntity());
+	if (checkLogin == null) {
+	    FacesMessage message = new FacesMessage(
+		    FacesMessage.SEVERITY_ERROR, "This user dont exist",
+		    "asdasda");
+	    FacesContext.getCurrentInstance().addMessage(null, message);
+	    return null;
 	}
+	setTargetEntity(null);
+	setUser(checkLogin);
+	return "loginSuccessful";
+    }
 
-	public String logout() {
-		setUser(null);
-		HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
-				.getExternalContext().getSession(false);
-		session.invalidate();
-		return "loginPage";
-	}
+    public String logout() {
+	setUser(null);
+	HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+		.getExternalContext().getSession(false);
+	session.invalidate();
+	return "loginPage";
+    }
 }

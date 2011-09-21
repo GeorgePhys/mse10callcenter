@@ -11,79 +11,79 @@ import javax.persistence.Entity;
 @ManagedBean(name = "software")
 @RequestScoped
 public class Software extends callcenter.entity.Entity implements Product,
-		Serializable {
+	Serializable {
 
-	@Column(columnDefinition = "Varchar(80)")
-	private String productName;
+    @Column(columnDefinition = "Varchar(80)")
+    private String productName;
 
-	@Column(columnDefinition = "Varchar(15)")
-	private String serialNumber;
+    @Column(columnDefinition = "Varchar(15)")
+    private String serialNumber;
 
-	@Column(columnDefinition = "Text")
-	private String description;
+    @Column(columnDefinition = "Text")
+    private String description;
 
-	@Column(columnDefinition = "Varchar(10)")
-	private String version;
+    @Column(columnDefinition = "Varchar(10)")
+    private String version;
 
-	@Column(columnDefinition = "BLOB")
-	private byte[] picture;
+    @Column(columnDefinition = "BLOB")
+    private byte[] picture;
 
-	@Column
-	private Double price;
+    @Column
+    private Double price;
 
-	public String getProductName() {
-		return productName;
-	}
+    public String getProductName() {
+	return productName;
+    }
 
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
+    public void setProductName(String productName) {
+	this.productName = productName;
+    }
 
-	public String getSerialNumber() {
-		return serialNumber;
-	}
+    public String getSerialNumber() {
+	return serialNumber;
+    }
 
-	public void setSerialNumber(String serialNumber) {
-		this.serialNumber = serialNumber;
-	}
+    public void setSerialNumber(String serialNumber) {
+	this.serialNumber = serialNumber;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public String getDescription() {
+	return description;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public void setDescription(String description) {
+	this.description = description;
+    }
 
-	public String getVersion() {
-		return version;
-	}
+    public String getVersion() {
+	return version;
+    }
 
-	public void setVersion(String version) {
-		this.version = version;
-	}
+    public void setVersion(String version) {
+	this.version = version;
+    }
 
-	public Double getPrice() {
-		return price;
-	}
+    public Double getPrice() {
+	return price;
+    }
 
-	public void setPrice(Double price) {
-		this.price = price;
-	}
+    public void setPrice(Double price) {
+	this.price = price;
+    }
 
-	@Override
-	public byte[] getPicture() {
-		return picture;
-	}
+    @Override
+    public byte[] getPicture() {
+	return picture;
+    }
 
-	@Override
-	public void setPicture(byte[] picture) {
-		this.picture = picture;
-	}
+    @Override
+    public void setPicture(byte[] picture) {
+	this.picture = picture;
+    }
 
-	@Override
-	public void initializeBibirectional() {
-		// TODO Auto-generated method stub
+    @Override
+    public void initializeBibirectional() {
+	// TODO Auto-generated method stub
 
-	}
+    }
 }

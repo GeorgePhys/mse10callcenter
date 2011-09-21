@@ -17,34 +17,34 @@ import callcenter.service.administration.UsersPendingConfirmationBean;
 @WebServlet(name = "confirmation", urlPatterns = "/confirmation")
 public class UserRegistrationConfirmationServlet extends HttpServlet {
 
-	private static final long serialVersionUID = 4244354868391430055L;
+    private static final long serialVersionUID = 4244354868391430055L;
 
-	@EJB
-	private UserServiceBean userServiceBean;
+    @EJB
+    private UserServiceBean userServiceBean;
 
-	@EJB
-	private UsersPendingConfirmationBean pendingConfirmationBean;
+    @EJB
+    private UsersPendingConfirmationBean pendingConfirmationBean;
 
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-		doPost(req, resp);
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+	    throws ServletException, IOException {
+	doPost(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+	    throws ServletException, IOException {
+	String uuid = req.getParameter("id");
+	if (!pendingConfirmationBean.exists(uuid)) {
+	    return;
 	}
-
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-		String uuid = req.getParameter("id");
-		if (!pendingConfirmationBean.exists(uuid)) {
-			return;
-		}
-		UserRegistrationKey key = pendingConfirmationBean.getAndRemove(uuid);
-		try {
-			userServiceBean.confirmUserRegistration(key);
-		} catch (NamingException e) {
-			e.printStackTrace();
-		}
-		resp.sendRedirect(resp
-				.encodeRedirectURL("/mse10ccenter/pages/login/login.jsf"));
+	UserRegistrationKey key = pendingConfirmationBean.getAndRemove(uuid);
+	try {
+	    userServiceBean.confirmUserRegistration(key);
+	} catch (NamingException e) {
+	    e.printStackTrace();
 	}
+	resp.sendRedirect(resp
+		.encodeRedirectURL("/mse10ccenter/pages/login/login.jsf"));
+    }
 }

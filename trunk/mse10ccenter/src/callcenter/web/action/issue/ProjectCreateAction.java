@@ -13,38 +13,38 @@ import callcenter.service.administration.IssueServiceBean;
 @ManagedBean(name = "projectCreateAction")
 public class ProjectCreateAction implements Serializable {
 
-	private static final long serialVersionUID = -5533722715840256982L;
+    private static final long serialVersionUID = -5533722715840256982L;
 
-	private boolean visible = true;
+    private boolean visible = true;
 
-	private Project project;
+    private Project project;
 
-	@EJB
-	private IssueServiceBean issueService;
+    @EJB
+    private IssueServiceBean issueService;
 
-	public String createProject() {
+    public String createProject() {
 
-		issueService.save(project);
-		visible = false;
-		return null;
-	}
+	issueService.save(project);
+	visible = false;
+	return null;
+    }
 
-	public Project getProject() {
-		if (project == null)
-			project = new Project();
-		return project;
-	}
+    public Project getProject() {
+	if (project == null)
+	    project = new Project();
+	return project;
+    }
 
-	public void setProject(Project project) {
-		this.project = project;
-	}
+    public void setProject(Project project) {
+	this.project = project;
+    }
 
-	public boolean getVisible() {
-		return visible;
-	}
+    public boolean getVisible() {
+	return visible;
+    }
 
-	public void setVisible(boolean visible) {
-		this.visible = visible;
-	}
+    public void setVisible(boolean visible) {
+	this.visible = visible;
+    }
 
 }

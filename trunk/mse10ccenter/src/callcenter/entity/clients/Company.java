@@ -19,86 +19,86 @@ import callcenter.entity.Address;
 @RequestScoped
 public class Company extends callcenter.entity.Entity implements Serializable {
 
-	@Column(columnDefinition = "Varchar(100)")
-	private String name;
+    @Column(columnDefinition = "Varchar(100)")
+    private String name;
 
-	@Column(columnDefinition = "Varchar(13)")
-	private String bulstat;
+    @Column(columnDefinition = "Varchar(13)")
+    private String bulstat;
 
-	@Column(columnDefinition = "Varchar(50)")
-	private String webAddress;
+    @Column(columnDefinition = "Varchar(50)")
+    private String webAddress;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	private Address address = new Address();
+    @OneToOne(cascade = CascadeType.ALL)
+    private Address address = new Address();
 
-	@ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST,
-			CascadeType.REFRESH })
-	private List<User> representatives = new ArrayList<User>();
+    @ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST,
+	    CascadeType.REFRESH })
+    private List<User> representatives = new ArrayList<User>();
 
-	@Column(columnDefinition = "Varchar(20)")
-	private String phone;
+    @Column(columnDefinition = "Varchar(20)")
+    private String phone;
 
-	@Column(columnDefinition = "Varchar(50)")
-	private String mail;
+    @Column(columnDefinition = "Varchar(50)")
+    private String mail;
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+	return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+	this.name = name;
+    }
 
-	public String getBulstat() {
-		return bulstat;
-	}
+    public String getBulstat() {
+	return bulstat;
+    }
 
-	public void setBulstat(String bulstat) {
-		this.bulstat = bulstat;
-	}
+    public void setBulstat(String bulstat) {
+	this.bulstat = bulstat;
+    }
 
-	public String getWebAddress() {
-		return webAddress;
-	}
+    public String getWebAddress() {
+	return webAddress;
+    }
 
-	public void setWebAddress(String webAddress) {
-		this.webAddress = webAddress;
-	}
+    public void setWebAddress(String webAddress) {
+	this.webAddress = webAddress;
+    }
 
-	public Address getAddress() {
-		return address;
-	}
+    public Address getAddress() {
+	return address;
+    }
 
-	public void setAddress(Address address) {
-		this.address = address;
-	}
+    public void setAddress(Address address) {
+	this.address = address;
+    }
 
-	public List<User> getRepresentatives() {
-		return representatives;
-	}
+    public List<User> getRepresentatives() {
+	return representatives;
+    }
 
-	public void setRepresentatives(List<User> representatives) {
-		this.representatives = representatives;
-	}
+    public void setRepresentatives(List<User> representatives) {
+	this.representatives = representatives;
+    }
 
-	public String getPhone() {
-		return phone;
-	}
+    public String getPhone() {
+	return phone;
+    }
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+    public void setPhone(String phone) {
+	this.phone = phone;
+    }
 
-	public String getMail() {
-		return mail;
-	}
+    public String getMail() {
+	return mail;
+    }
 
-	public void setMail(String mail) {
-		this.mail = mail;
-	}
+    public void setMail(String mail) {
+	this.mail = mail;
+    }
 
-	@Override
-	public void initializeBibirectional() {
+    @Override
+    public void initializeBibirectional() {
 
-	}
+    }
 }

@@ -21,133 +21,133 @@ import callcenter.web.action.search.datamodel.JPADataModel;
 @ManagedBean(name = "softwareProducts")
 @SuppressWarnings("rawtypes")
 public class SoftwareProductAction extends BaseAction implements Serializable {
-	/**
+    /**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@EJB
-	private SoftwareServiceBean service;
+    @EJB
+    private SoftwareServiceBean service;
 
-	private List<Software> soft;
-	private List<Software> specific;
-	private SoftwareDataModel dataModel;
-	private int brItems = 0;
-	private double amount = 0.0;
-	private Map<String, Boolean> disable = new HashMap<String, Boolean>();
+    private List<Software> soft;
+    private List<Software> specific;
+    private SoftwareDataModel dataModel;
+    private int brItems = 0;
+    private double amount = 0.0;
+    private Map<String, Boolean> disable = new HashMap<String, Boolean>();
 
-	private static final class SoftwareDataModel extends JPADataModel<Software> {
+    private static final class SoftwareDataModel extends JPADataModel<Software> {
 
-		private SoftwareDataModel(BaseServiceBean service, BaseDTO dto) {
-			super(service, dto, Software.class);
-		}
-
-		@Override
-		protected Object getId(Software t) {
-			return t.getId();
-		}
+	private SoftwareDataModel(BaseServiceBean service, BaseDTO dto) {
+	    super(service, dto, Software.class);
 	}
 
-	/**
-	 * 
-	 * @param s
-	 * @return
-	 */
-	@SuppressWarnings("unchecked")
-	public String openSlectedProduct(Software s) {
-		setTargetEntity(s);
-
-		return "reviewSoftwareProduct";
+	@Override
+	protected Object getId(Software t) {
+	    return t.getId();
 	}
+    }
 
-	public Object getDataModel() {
-		return dataModel;
-	}
+    /**
+     * 
+     * @param s
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+    public String openSlectedProduct(Software s) {
+	setTargetEntity(s);
 
-	public void setDataModel(SoftwareDataModel dataModel) {
-		this.dataModel = dataModel;
-	}
+	return "reviewSoftwareProduct";
+    }
 
-	public List<Software> getSoft() {
-		soft = service.listAllProjectNames();
-		return soft;
-	}
+    public Object getDataModel() {
+	return dataModel;
+    }
 
-	/**
-	 * TEMP
-	 * 
-	 * @return key for walk index - > products
-	 */
-	public String allSoftware() {
-		this.soft = service.listAllProjectNames();
-		return "AllSoftware";
-	}
+    public void setDataModel(SoftwareDataModel dataModel) {
+	this.dataModel = dataModel;
+    }
 
-	public void setSoft(List<Software> soft) {
-		this.soft = soft;
-	}
+    public List<Software> getSoft() {
+	soft = service.listAllProjectNames();
+	return soft;
+    }
 
-	/**
-	 * 
-	 * @param software
-	 * @return
-	 */
-	public double buy(Software software) {
-		if (!this.disable.containsKey(software.getProductName())) {
-			// increase number of products that are buying
-			this.brItems++;
-			this.amount = this.amount + software.getPrice();
-			this.disable.put(software.getProductName(), Boolean.TRUE);
-		}
-		return this.amount;
-	}
+    /**
+     * TEMP
+     * 
+     * @return key for walk index - > products
+     */
+    public String allSoftware() {
+	this.soft = service.listAllProjectNames();
+	return "AllSoftware";
+    }
 
-	public double buyHardware(Hardware hardware) {
-		if (!this.disable.containsKey(hardware.getProductName())) {
-			// increase number of products that are buying
-			this.brItems++;
-			this.amount = this.amount + hardware.getPrice();
-			this.disable.put(hardware.getProductName(), Boolean.TRUE);
-		}
-		return this.amount;
-	}
+    public void setSoft(List<Software> soft) {
+	this.soft = soft;
+    }
 
-	public void clearChart() {
-		this.amount = 0.0;
-		this.brItems = 0;
-		this.disable.clear();
+    /**
+     * 
+     * @param software
+     * @return
+     */
+    public double buy(Software software) {
+	if (!this.disable.containsKey(software.getProductName())) {
+	    // increase number of products that are buying
+	    this.brItems++;
+	    this.amount = this.amount + software.getPrice();
+	    this.disable.put(software.getProductName(), Boolean.TRUE);
 	}
+	return this.amount;
+    }
 
-	public int getBrItems() {
-		return brItems;
+    public double buyHardware(Hardware hardware) {
+	if (!this.disable.containsKey(hardware.getProductName())) {
+	    // increase number of products that are buying
+	    this.brItems++;
+	    this.amount = this.amount + hardware.getPrice();
+	    this.disable.put(hardware.getProductName(), Boolean.TRUE);
 	}
+	return this.amount;
+    }
 
-	public void setBrItems(int brItems) {
-		this.brItems = brItems;
-	}
+    public void clearChart() {
+	this.amount = 0.0;
+	this.brItems = 0;
+	this.disable.clear();
+    }
 
-	public double getAmount() {
-		return amount;
-	}
+    public int getBrItems() {
+	return brItems;
+    }
 
-	public void setAmount(double amount) {
-		this.amount = amount;
-	}
+    public void setBrItems(int brItems) {
+	this.brItems = brItems;
+    }
 
-	public List<Software> getSpecific() {
-		return specific;
-	}
+    public double getAmount() {
+	return amount;
+    }
 
-	public void setSpecific(List<Software> specific) {
-		this.specific = specific;
-	}
+    public void setAmount(double amount) {
+	this.amount = amount;
+    }
 
-	public Map<String, Boolean> getDisable() {
-		return disable;
-	}
+    public List<Software> getSpecific() {
+	return specific;
+    }
 
-	public void setDisable(Map<String, Boolean> disable) {
-		this.disable = disable;
-	}
+    public void setSpecific(List<Software> specific) {
+	this.specific = specific;
+    }
+
+    public Map<String, Boolean> getDisable() {
+	return disable;
+    }
+
+    public void setDisable(Map<String, Boolean> disable) {
+	this.disable = disable;
+    }
 
 }

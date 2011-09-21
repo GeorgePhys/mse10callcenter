@@ -11,76 +11,76 @@ import callcenter.util.ObjectUtil;
 @ViewScoped
 public class CompanySearchDTO extends BaseDTO<Company> {
 
-	private String name;
+    private String name;
 
-	private String bulstat;
+    private String bulstat;
 
-	private String country;
+    private String country;
 
-	private String city;
+    private String city;
 
-	/**
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
+    /**
+     * @return the name
+     */
+    public String getName() {
+	return name;
+    }
 
-	/**
-	 * @param name
-	 *            the name to set
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
+    /**
+     * @param name
+     *            the name to set
+     */
+    public void setName(String name) {
+	this.name = name;
+    }
 
-	/**
-	 * @return the bulstat
-	 */
-	public String getBulstat() {
-		return bulstat;
-	}
+    /**
+     * @return the bulstat
+     */
+    public String getBulstat() {
+	return bulstat;
+    }
 
-	/**
-	 * @param bulstat
-	 *            the bulstat to set
-	 */
-	public void setBulstat(String bulstat) {
-		this.bulstat = bulstat;
-	}
+    /**
+     * @param bulstat
+     *            the bulstat to set
+     */
+    public void setBulstat(String bulstat) {
+	this.bulstat = bulstat;
+    }
 
-	/**
-	 * @return the country
-	 */
-	public String getCountry() {
-		return country;
-	}
+    /**
+     * @return the country
+     */
+    public String getCountry() {
+	return country;
+    }
 
-	/**
-	 * @param country
-	 *            the country to set
-	 */
-	public void setCountry(String country) {
-		this.country = country;
-	}
+    /**
+     * @param country
+     *            the country to set
+     */
+    public void setCountry(String country) {
+	this.country = country;
+    }
 
-	/**
-	 * @return the city
-	 */
-	public String getCity() {
-		return city;
-	}
+    /**
+     * @return the city
+     */
+    public String getCity() {
+	return city;
+    }
 
-	/**
-	 * @param city
-	 *            the city to set
-	 */
-	public void setCity(String city) {
-		this.city = city;
-	}
+    /**
+     * @param city
+     *            the city to set
+     */
+    public void setCity(String city) {
+	this.city = city;
+    }
 
-	public boolean hasAddressCriteria() {
-		return ObjectUtil.isValid(getCity())
-				|| ObjectUtil.isValid(getCountry());
-	}
+    public boolean hasAddressCriteria() {
+	return ObjectUtil.isValid(getCity())
+		|| ObjectUtil.isValid(getCountry());
+    }
 }

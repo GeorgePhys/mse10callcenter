@@ -25,42 +25,42 @@ import callcenter.util.ObjectUtil;
 @Singleton
 public class UserRegistrationTimer {
 
-	@Resource
-	private SessionContext context;
+    @Resource
+    private SessionContext context;
 
-	@PersistenceContext
-	private EntityManager entityManager;
+    @PersistenceContext
+    private EntityManager entityManager;
 
-	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-	public void scheduleUserRegistrationCheck(UserRegistrationKey key,
-			Date expirationDate) {
-		TimerService timerService = context.getTimerService();
-		TimerConfig config = new TimerConfig(key, true);
-		timerService.createSingleActionTimer(expirationDate, config);
-	}
+    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+    public void scheduleUserRegistrationCheck(UserRegistrationKey key,
+	    Date expirationDate) {
+	TimerService timerService = context.getTimerService();
+	TimerConfig config = new TimerConfig(key, true);
+	timerService.createSingleActionTimer(expirationDate, config);
+    }
 
-	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-	public void cancelTimer(Long id, String uuid) {
-		Collection<Timer> timers = context.getTimerService().getTimers();
-		if (ObjectUtil.isValid(timers)) {
-			for (Timer timer : timers) {
-				Serializable info = timer.getInfo();
-				if (info instanceof UserRegistrationKey) {
-					UserRegistrationKey key = (UserRegistrationKey) info;
-					if (id.equals(key.getId()) && uuid.equals(key.getUuid())) {
-						timer.cancel();
-						break;
-					}
-				}
-			}
+    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+    public void cancelTimer(Long id, String uuid) {
+	Collection<Timer> timers = context.getTimerService().getTimers();
+	if (ObjectUtil.isValid(timers)) {
+	    for (Timer timer : timers) {
+		Serializable info = timer.getInfo();
+		if (info instanceof UserRegistrationKey) {
+		    UserRegistrationKey key = (UserRegistrationKey) info;
+		    if (id.equals(key.getId()) && uuid.equals(key.getUuid())) {
+			timer.cancel();
+			break;
+		    }
 		}
+	    }
 	}
+    }
 
-	@Timeout
-	public void timerTimeout(Timer timer) {
-		Long userId = ((UserRegistrationKey) timer.getInfo()).getId();
-		System.out.println("deleting user " + userId);
-		User user = entityManager.find(User.class, userId);
-		entityManager.remove(user);
-	}
+    @Timeout
+    public void timerTimeout(Timer timer) {
+	Long userId = ((UserRegistrationKey) timer.getInfo()).getId();
+	System.out.println("deleting user " + userId);
+	User user = entityManager.find(User.class, userId);
+	entityManager.remove(user);
+    }
 }

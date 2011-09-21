@@ -18,45 +18,45 @@ import callcenter.web.action.search.datamodel.JPADataModel;
 @SuppressWarnings("rawtypes")
 public class IssueSearchAction implements Serializable {
 
-	/**
+    /**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@EJB
-	private IssueServiceBean service;
+    @EJB
+    private IssueServiceBean service;
 
-	private IssueDataModel dataModel;
+    private IssueDataModel dataModel;
 
-	private static final class IssueDataModel extends JPADataModel<IssueDetail> {
+    private static final class IssueDataModel extends JPADataModel<IssueDetail> {
 
-		private IssueDataModel(BaseServiceBean service, BaseDTO dto) {
-			super(service, dto, IssueDetail.class);
-		}
-
-		@Override
-		protected Object getId(IssueDetail t) {
-			return t.getId();
-		}
+	private IssueDataModel(BaseServiceBean service, BaseDTO dto) {
+	    super(service, dto, IssueDetail.class);
 	}
 
-	public String search(IssueSearchDTO dto) {
-		service.search(dto, true);
-		setDataModel(new IssueDataModel(service, dto));
-		return null;
+	@Override
+	protected Object getId(IssueDetail t) {
+	    return t.getId();
 	}
+    }
 
-	public Object getDataModel() {
-		return dataModel;
-	}
+    public String search(IssueSearchDTO dto) {
+	service.search(dto, true);
+	setDataModel(new IssueDataModel(service, dto));
+	return null;
+    }
 
-	public void setDataModel(IssueDataModel dataModel) {
-		this.dataModel = dataModel;
-	}
+    public Object getDataModel() {
+	return dataModel;
+    }
 
-	public String startSearch() {
-		this.dataModel = null;
-		return "startNewSearch";
-	}
+    public void setDataModel(IssueDataModel dataModel) {
+	this.dataModel = dataModel;
+    }
+
+    public String startSearch() {
+	this.dataModel = null;
+	return "startNewSearch";
+    }
 
 }

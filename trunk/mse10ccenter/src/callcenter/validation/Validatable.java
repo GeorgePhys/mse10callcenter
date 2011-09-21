@@ -2,7 +2,7 @@ package callcenter.validation;
 
 public abstract class Validatable {
 
-	protected ValidationResult vResult;
+    protected ValidationResult vResult;
 
-	public abstract void validate();
+    public abstract void validate();
 }

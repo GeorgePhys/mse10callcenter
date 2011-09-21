@@ -13,13 +13,13 @@ import callcenter.service.administration.CompanyServiceBean;
 @ManagedBean(name = "companyRegistrationAction")
 public class CompanyRegistrationAction implements Serializable {
 
-	private static final long serialVersionUID = -4532970582110020222L;
+    private static final long serialVersionUID = -4532970582110020222L;
 
-	@EJB
-	private CompanyServiceBean companyServiceBean;
+    @EJB
+    private CompanyServiceBean companyServiceBean;
 
-	public String register(Company company) {
-		companyServiceBean.saveOrUpdate(company);
-		return null;
-	}
+    public String register(Company company) {
+	companyServiceBean.saveOrUpdate(company);
+	return null;
+    }
 }

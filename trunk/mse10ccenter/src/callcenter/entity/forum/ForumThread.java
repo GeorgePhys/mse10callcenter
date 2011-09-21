@@ -15,65 +15,65 @@ import callcenter.entity.clients.User;
 @javax.persistence.Entity
 public class ForumThread extends Entity {
 
-	private String title;
+    private String title;
 
-	@OneToMany(mappedBy = "thread", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@OrderBy("id")
-	private List<Post> posts = new ArrayList<Post>();
+    @OneToMany(mappedBy = "thread", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OrderBy("id")
+    private List<Post> posts = new ArrayList<Post>();
 
-	@OneToOne
-	private User createdBy;
+    @OneToOne
+    private User createdBy;
 
-	/**
-	 * @return the title
-	 */
-	public String getTitle() {
-		return title;
+    /**
+     * @return the title
+     */
+    public String getTitle() {
+	return title;
+    }
+
+    /**
+     * @param title
+     *            the title to set
+     */
+    public void setTitle(String title) {
+	this.title = title;
+    }
+
+    /**
+     * @return the posts
+     */
+    public List<Post> getPosts() {
+	return posts;
+    }
+
+    /**
+     * @param posts
+     *            the posts to set
+     */
+    public void setPosts(List<Post> posts) {
+	this.posts = posts;
+    }
+
+    @Override
+    public void initializeBibirectional() {
+	for (Post post : posts) {
+	    post.setThread(this);
+	    post.initializeBibirectional();
 	}
+    }
 
-	/**
-	 * @param title
-	 *            the title to set
-	 */
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    /**
+     * @return the createdBy
+     */
+    public User getCreatedBy() {
+	return createdBy;
+    }
 
-	/**
-	 * @return the posts
-	 */
-	public List<Post> getPosts() {
-		return posts;
-	}
-
-	/**
-	 * @param posts
-	 *            the posts to set
-	 */
-	public void setPosts(List<Post> posts) {
-		this.posts = posts;
-	}
-
-	@Override
-	public void initializeBibirectional() {
-		for (Post post : posts) {
-			post.setThread(this);
-			post.initializeBibirectional();
-		}
-	}
-
-	/**
-	 * @return the createdBy
-	 */
-	public User getCreatedBy() {
-		return createdBy;
-	}
-
-	/**
-	 * @param createdBy
-	 *            the createdBy to set
-	 */
-	public void setCreatedBy(User createdBy) {
-		this.createdBy = createdBy;
-	}
+    /**
+     * @param createdBy
+     *            the createdBy to set
+     */
+    public void setCreatedBy(User createdBy) {
+	this.createdBy = createdBy;
+    }
 }
