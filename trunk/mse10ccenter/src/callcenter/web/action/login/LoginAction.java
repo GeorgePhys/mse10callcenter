@@ -44,4 +44,17 @@ public class LoginAction extends BaseAction<User> {
 	session.invalidate();
 	return "loginPage";
     }
+
+    @Override
+    public User getTargetEntity() {
+	// issue #78 - This is needed because login page may be called from
+	// filter
+	// redirection and thence targetEntity will be null
+	User user = super.getTargetEntity();
+	if (user == null) {
+	    user = new User();
+	    setTargetEntity(user);
+	}
+	return user;
+    }
 }
