@@ -50,11 +50,11 @@
 
 
 						<h:outputText value="#{labels.role}"
-							rendered="#{user.role=='Admin'}" />
+							rendered="#{user.role.label=='Admin'}" />
 						<h:selectOneMenu id="role" value="#{user.role}"
 							rendered="#{user.role.label=='Admin'}">
 							<!-- use property name not method name -->
-							<f:selectItems value="#{user.roles}"
+							<f:selectItems value="#{userAction.roles}"
 								rendered="#{user.role.label=='Admin'}" />
 						</h:selectOneMenu>
 						<h:message for="role" rendered="#{user.role.label=='Admin'}" />
