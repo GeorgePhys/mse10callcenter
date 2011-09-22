@@ -47,6 +47,13 @@
  <navigation-rule>
   <from-view-id>*</from-view-id>
   <navigation-case>
+   <from-outcome>createNewProject</from-outcome>
+   <to-view-id>/pages/issue/createProject.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>*</from-view-id>
+  <navigation-case>
    <from-outcome>startNewSearch</from-outcome>
    <to-view-id>/pages/issue/searchIssue.xhtml</to-view-id>
   </navigation-case>
