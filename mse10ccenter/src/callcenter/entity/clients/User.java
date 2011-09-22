@@ -19,7 +19,10 @@ import callcenter.service.administration.UserServiceBean;
 	@NamedQuery(name = UserServiceBean.QUERY_EMAIL_EXISTS_KEY, query = UserServiceBean.QUERY_EMAIL_EXISTS),
 	@NamedQuery(name = UserServiceBean.QUERY_USER_LOGIN_KEY, query = UserServiceBean.QUERY_USER_LOGIN) })
 public class User extends callcenter.entity.Entity implements Serializable {
-
+	
+	
+	private Role role; 
+	
     @Column(columnDefinition = "Varchar(50)")
     private String mail;
 
@@ -128,4 +131,19 @@ public class User extends callcenter.entity.Entity implements Serializable {
 	// TODO Auto-generated method stub
 
     }
+
+	/**
+	 * @return the role
+	 */
+	public Role getRole() {
+		
+		return role;
+	}
+
+	/**
+	 * @param role the role to set
+	 */
+	public void setRole(Role role) {
+		this.role = role;
+	}
 }
