@@ -6,6 +6,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import callcenter.entity.clients.Role;
 import callcenter.entity.clients.User;
 import callcenter.service.administration.UserServiceBean;
 import callcenter.web.action.BaseAction;
@@ -41,4 +42,13 @@ public class UserAction extends BaseAction<User> implements Serializable {
 	setUser(saveUserProfile);
 	return "saveUserProfile";
     }
+    
+    public String[] getRoles() {
+		String[] roles = new String[Role.values().length];
+		int i = 0;
+		for (Role role : Role.values()) {
+			roles[i++] = new String(role.getLabel());
+		}
+		return roles;
+	}
 }
