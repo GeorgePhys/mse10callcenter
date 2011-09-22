@@ -15,7 +15,7 @@
 		<h:form id="userRegistrationForm">
 			<h:outputText value="#{labels.alert}" />
 			<rich:tabPanel switchType="client">
-				<rich:tab header="General information">
+				<rich:tab header="#{labels.generalInformation}">
 					<h:panelGrid columns="3">
 						<h:outputText value="#{labels.email}" />
 						<h:inputText value="#{userAction.targetEntity.mail}" required="true" id="mail">
@@ -44,9 +44,18 @@
 						</h:selectOneMenu>
 
 						<h:message for="userType" />
+						
+						<h:outputText value="#{user.role}"/>
+						
+						<h:outputText value="#{labels.role}" rendered="#{user.role=='Admin'}"/>
+						<h:selectOneMenu id="role" value="#{user.role}" rendered="#{user.role=='Admin'}">
+  						<!-- use property name not method name -->
+ 							 <f:selectItems value="#{role.roles}" rendered="#{user.role=='Admin'}"/>
+						</h:selectOneMenu>
+						<h:message for="role" rendered="#{user.role=='Admin'}"/>
 					</h:panelGrid>
 				</rich:tab>
-				<rich:tab header="Address">
+				<rich:tab header="#{labels.address}">
 					<h:panelGrid columns="3">
 						<h:outputText value="#{labels.country}" />
 						<h:inputText value="#{userAction.targetEntity.address.country}" required="true"
@@ -75,7 +84,7 @@
 					</h:panelGrid>
 				</rich:tab>
 			</rich:tabPanel>
-			<h:commandButton action="#{userAction.register()}"
+			<h:commandButton action="#{userAction.register}"
 				value="#{labels.registration}" />
 		</h:form>
 	</ui:define>
