@@ -9,7 +9,7 @@ package callcenter.entity.clients;
  * @author Stepan Bahdikyan
  */
 public enum Role {
-	USER("User"), ADMIN("Admin"), CLIENT("Client");
+	USER("User"), ADMIN("Admin"), CLIENT("Client"), EMPLOYEE("Employee");
 
 	private final String label;
 
