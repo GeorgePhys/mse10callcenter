@@ -56,11 +56,11 @@
 				<div style="position: absolute; right: 0">
 					<ul>
 						<li><h:commandLink action="#{loginAction.initLogin}"
-								value="Login" rendered="#{not loginAction.loggedIn}" /> <h:commandLink
-								action="#{loginAction.logout}" value="Logout"
+								value="#{labels.login}" rendered="#{not loginAction.loggedIn}" /> <h:commandLink
+								action="#{loginAction.logout}" value="#{labels.logout}"
 								rendered="#{loginAction.loggedIn}" /></li>
 						<li><h:commandLink action="#{userAction.loadProfile}"
-								value="Profile" rendered="#{loginAction.loggedIn}" /></li>
+								value="#{labels.profile}" rendered="#{loginAction.loggedIn}" /></li>
 					</ul>
 				</div>
 			</h:form>
@@ -99,7 +99,7 @@
 								</h:outputLink></li>
 							<li><h:graphicImage class="icons" value="/images/icon5.JPG" />
 							<h:commandLink action="#{softwareProducts.allSoftware}"
-									value="Products" /></li>
+									value="#{labels.products}" /></li>
 						</ul>
 						<div id="info">
 							<h3>OUR HISTORY</h3>
