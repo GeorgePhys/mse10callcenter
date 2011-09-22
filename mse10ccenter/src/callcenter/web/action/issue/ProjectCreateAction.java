@@ -30,7 +30,7 @@ public class ProjectCreateAction implements Serializable {
     public String createProject() {
 
 	issueService.save(project);
-	visible = false;
+	setVisible(false);
 	return null;
     }
 
