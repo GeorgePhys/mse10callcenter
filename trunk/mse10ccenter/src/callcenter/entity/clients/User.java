@@ -16,132 +16,132 @@ import callcenter.service.administration.UserServiceBean;
 
 @Entity
 @NamedQueries(value = {
-	@NamedQuery(name = UserServiceBean.QUERY_EMAIL_EXISTS_KEY, query = UserServiceBean.QUERY_EMAIL_EXISTS),
-	@NamedQuery(name = UserServiceBean.QUERY_USER_LOGIN_KEY, query = UserServiceBean.QUERY_USER_LOGIN) })
+		@NamedQuery(name = UserServiceBean.QUERY_EMAIL_EXISTS_KEY, query = UserServiceBean.QUERY_EMAIL_EXISTS),
+		@NamedQuery(name = UserServiceBean.QUERY_USER_LOGIN_KEY, query = UserServiceBean.QUERY_USER_LOGIN) })
 public class User extends callcenter.entity.Entity implements Serializable {
-	
-	
-	private Role role; 
-	
-    @Column(columnDefinition = "Varchar(50)")
-    private String mail;
 
-    @Column(columnDefinition = "Varchar(100)")
-    private String fullName;
+	private Role role = Role.USER;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private Address address = new Address();
+	@Column(columnDefinition = "Varchar(50)")
+	private String mail;
 
-    @ManyToMany(mappedBy = "representatives")
-    private List<Company> companies;
+	@Column(columnDefinition = "Varchar(100)")
+	private String fullName;
 
-    @Column(columnDefinition = "Varchar(20)")
-    private String phone;
+	@OneToOne(cascade = CascadeType.ALL)
+	private Address address = new Address();
 
-    @Column(columnDefinition = "Varchar(100)")
-    private String password;
+	@ManyToMany(mappedBy = "representatives")
+	private List<Company> companies;
 
-    @Column(columnDefinition = "Integer")
-    private Integer userType;
+	@Column(columnDefinition = "Varchar(20)")
+	private String phone;
 
-    @Column(columnDefinition = "Boolean")
-    private Boolean confirmed;
+	@Column(columnDefinition = "Varchar(100)")
+	private String password;
 
-    public String getMail() {
-	return mail;
-    }
+	@Column(columnDefinition = "Integer")
+	private Integer userType;
 
-    public void setMail(String mail) {
-	this.mail = mail;
-    }
+	@Column(columnDefinition = "Boolean")
+	private Boolean confirmed;
 
-    public String getFullName() {
-	return fullName;
-    }
+	public String getMail() {
+		return mail;
+	}
 
-    public void setFullName(String fullName) {
-	this.fullName = fullName;
-    }
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
 
-    public Address getAddress() {
-	return address;
-    }
+	public String getFullName() {
+		return fullName;
+	}
 
-    public void setAddress(Address address) {
-	this.address = address;
-    }
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
 
-    public String getPhone() {
-	return phone;
-    }
+	public Address getAddress() {
+		return address;
+	}
 
-    public void setPhone(String phone) {
-	this.phone = phone;
-    }
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 
-    public List<Company> getCompanies() {
-	return companies;
-    }
+	public String getPhone() {
+		return phone;
+	}
 
-    public void setCompanies(List<Company> companies) {
-	this.companies = companies;
-    }
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 
-    public String getPassword() {
-	return password;
-    }
+	public List<Company> getCompanies() {
+		return companies;
+	}
 
-    public void setPassword(String password) {
-	this.password = password;
-    }
+	public void setCompanies(List<Company> companies) {
+		this.companies = companies;
+	}
 
-    /**
-     * @param userType
-     *            the userType to set
-     */
-    public void setUserType(Integer userType) {
-	this.userType = userType;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    /**
-     * @return the userType
-     */
-    public Integer getUserType() {
-	return userType;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    /**
-     * Validation for the required data
-     */
-    @Override
-    public void validate() {
-	super.validate();
-    }
+	/**
+	 * @param userType
+	 *            the userType to set
+	 */
+	public void setUserType(Integer userType) {
+		this.userType = userType;
+	}
 
-    public Boolean getConfirmed() {
-	return confirmed;
-    }
+	/**
+	 * @return the userType
+	 */
+	public Integer getUserType() {
+		return userType;
+	}
 
-    public void setConfirmed(Boolean confirmed) {
-	this.confirmed = confirmed;
-    }
+	/**
+	 * Validation for the required data
+	 */
+	@Override
+	public void validate() {
+		super.validate();
+	}
 
-    @Override
-    public void initializeBibirectional() {
-	// TODO Auto-generated method stub
+	public Boolean getConfirmed() {
+		return confirmed;
+	}
 
-    }
+	public void setConfirmed(Boolean confirmed) {
+		this.confirmed = confirmed;
+	}
+
+	@Override
+	public void initializeBibirectional() {
+		// TODO Auto-generated method stub
+
+	}
 
 	/**
 	 * @return the role
 	 */
 	public Role getRole() {
-		
+
 		return role;
 	}
 
 	/**
-	 * @param role the role to set
+	 * @param role
+	 *            the role to set
 	 */
 	public void setRole(Role role) {
 		this.role = role;
