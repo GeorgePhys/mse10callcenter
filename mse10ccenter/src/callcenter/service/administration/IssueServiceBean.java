@@ -28,7 +28,8 @@ public class IssueServiceBean extends
 	Criteria criteria = session.createCriteria(IssueDetail.class);
 
 	if (StringUtils.isNotEmpty(args.getProject())) {
-	    criteria.add(Restrictions.eq("projectName", args.getProject()));
+	    criteria.createAlias("project", "p");
+	    criteria.add(Restrictions.eq("p.name", args.getProject()));
 	}
 
 	if (StringUtils.isNotEmpty(args.getTitleIssue())) {

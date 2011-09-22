@@ -18,6 +18,11 @@
 				</f:facet>
 				<table class="search">
 					<tr>
+						<td>#{labels.projectName}</td>
+						<td><h:inputText value="#{issueSearch.project}" />
+						</td>
+					</tr>
+					<tr>
 						<td>#{labels.issueTask}</td>
 						<td><h:inputText value="#{issueSearch.titleIssue}" id="title" />
 						</td>
@@ -93,6 +98,11 @@
 					<f:facet name="header">
 						<h3>#{labels.issueResult}</h3>
 						<rich:columnGroup>
+						<h:column>
+								<h:outputText styleClass="headerText"
+									value="#{labels.projectName}" />
+								<br />
+							</h:column>
 							<h:column>
 								<h:outputText styleClass="headerText"
 									value="#{labels.titleIssue}" />
@@ -141,6 +151,9 @@
 
 						</rich:columnGroup>
 					</f:facet>
+					<h:column>
+						<h:outputText value="#{issueDetail.project.name}" />
+					</h:column>
 					<h:column>
 						<h:commandLink value="#{issueDetail.titleIssue}"
 							action="#{issueCreateAction.open(issueDetail)}" />
