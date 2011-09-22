@@ -14,7 +14,7 @@
 	<ui:define name="body">
 		<h:form id="userRegistrationForm">
 			<rich:tabPanel switchType="client">
-				<rich:tab header="General information">
+				<rich:tab header="#{labels.generalInformation}">
 					<h:panelGrid columns="3">
 						<h:outputText value="#{labels.email}" />
 						<h:inputText value="#{userAction.targetEntity.mail}" required="true" id="mail" />
@@ -43,7 +43,7 @@
 						<h:message for="userType" />
 					</h:panelGrid>
 				</rich:tab>
-				<rich:tab header="Address">
+				<rich:tab header="#{labels.address}">
 					<h:panelGrid columns="3">
 						<h:outputText value="#{labels.country}" />
 						<h:inputText value="#{userAction.targetEntity.address.country}" required="true"
@@ -72,7 +72,7 @@
 					</h:panelGrid>
 				</rich:tab>
 			</rich:tabPanel>
-			<h:commandButton action="#{userAction.saveProfile()}"
+			<h:commandButton action="#{userAction.saveProfile}"
 				value="#{labels.save}" />
 		</h:form>
 	</ui:define>
