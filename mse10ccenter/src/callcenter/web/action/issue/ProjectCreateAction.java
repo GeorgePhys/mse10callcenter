@@ -22,6 +22,11 @@ public class ProjectCreateAction implements Serializable {
     @EJB
     private IssueServiceBean issueService;
 
+    public String createNewProject() {
+
+	return "createNewProject";
+    }
+
     public String createProject() {
 
 	issueService.save(project);
