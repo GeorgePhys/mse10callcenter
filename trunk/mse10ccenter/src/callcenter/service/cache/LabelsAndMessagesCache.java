@@ -30,6 +30,9 @@ public class LabelsAndMessagesCache {
     private Map<String, String> messagesBg = Collections
 	    .unmodifiableMap(new HashMap<String, String>());
 
+    /**
+     * Initializes the cache right after the bean has been instantiated.
+     */
     @PostConstruct
     public void init() {
 	Query messagesEnQuery = entityManager
@@ -47,5 +50,39 @@ public class LabelsAndMessagesCache {
 	for (Object[] objects : messagesBgResult) {
 	    messagesBg.put((String) objects[0], (String) objects[1]);
 	}
+    }
+
+    /**
+     * Retrieves the English version of a message from the cache by the
+     * specified key.
+     * 
+     * @param key
+     *            Message key.
+     * @return the corresponding message or empty string if no message for that
+     *         key exists.
+     */
+    public String getMessageEn(String key) {
+	String message = messagesEn.get(key);
+	if (message == null) {
+	    return "";
+	}
+	return message;
+    }
+
+    /**
+     * Retrieves the Bulgarian version of a message from the cache by the
+     * specified key.
+     * 
+     * @param key
+     *            Message key.
+     * @return the corresponding message or empty string if no message for that
+     *         key exists.
+     */
+    public String getMessageBg(String key) {
+	String message = messagesBg.get(key);
+	if (message == null) {
+	    return "";
+	}
+	return message;
     }
 }
