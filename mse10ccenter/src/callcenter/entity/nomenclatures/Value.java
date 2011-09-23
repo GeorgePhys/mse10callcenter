@@ -21,7 +21,7 @@ import callcenter.service.cache.MessagesCache;
 	@NamedQuery(name = LabelsCache.QUERY_LOAD_ALL_LABELS_EN_KEY, query = LabelsCache.QUERY_LOAD_ALL_LABELS_EN) })
 public class Value extends callcenter.entity.Entity implements Serializable {
 
-    @Column(columnDefinition = "Varchar(10)")
+    @Column(columnDefinition = "Varchar(100)")
     private String valueCode;
 
     @Column(columnDefinition = "Varchar(100)")
