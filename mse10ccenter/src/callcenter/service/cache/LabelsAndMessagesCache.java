@@ -10,11 +10,11 @@ import javax.persistence.PersistenceContext;
 @Singleton
 public class LabelsAndMessagesCache {
 
-	@PersistenceContext
-	private EntityManager entityManager;
+    @PersistenceContext
+    private EntityManager entityManager;
 
-	@PostConstruct
-	public void init() {
+    @PostConstruct
+    public void init() {
 
-	}
+    }
 }
