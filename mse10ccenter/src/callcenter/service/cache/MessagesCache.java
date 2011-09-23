@@ -12,9 +12,15 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+/**
+ * Cache for all messages from the database.
+ * 
+ * @author yasko
+ * 
+ */
 @Startup
 @Singleton
-public class LabelsAndMessagesCache {
+public class MessagesCache {
 
     public static final String QUERY_LOAD_ALL_MESSAGES_EN_KEY = "QUERY_LOAD_ALL_MESSAGES_EN_KEY";
     public static final String QUERY_LOAD_ALL_MESSAGES_EN = "select v.valueCode, v.valueEn from Value v inner join v.holder h where h.code = 1000";

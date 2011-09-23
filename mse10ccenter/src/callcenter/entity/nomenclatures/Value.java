@@ -10,12 +10,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
-import callcenter.service.cache.LabelsAndMessagesCache;
+import callcenter.service.cache.LabelsCache;
+import callcenter.service.cache.MessagesCache;
 
 @Entity
 @NamedQueries(value = {
-	@NamedQuery(name = LabelsAndMessagesCache.QUERY_LOAD_ALL_MESSAGES_BG_KEY, query = LabelsAndMessagesCache.QUERY_LOAD_ALL_MESSAGES_BG),
-	@NamedQuery(name = LabelsAndMessagesCache.QUERY_LOAD_ALL_MESSAGES_EN_KEY, query = LabelsAndMessagesCache.QUERY_LOAD_ALL_MESSAGES_EN) })
+	@NamedQuery(name = MessagesCache.QUERY_LOAD_ALL_MESSAGES_BG_KEY, query = MessagesCache.QUERY_LOAD_ALL_MESSAGES_BG),
+	@NamedQuery(name = MessagesCache.QUERY_LOAD_ALL_MESSAGES_EN_KEY, query = MessagesCache.QUERY_LOAD_ALL_MESSAGES_EN),
+	@NamedQuery(name = LabelsCache.QUERY_LOAD_ALL_LABELS_BG_KEY, query = LabelsCache.QUERY_LOAD_ALL_LABELS_BG),
+	@NamedQuery(name = LabelsCache.QUERY_LOAD_ALL_LABELS_EN_KEY, query = LabelsCache.QUERY_LOAD_ALL_LABELS_EN) })
 public class Value extends callcenter.entity.Entity implements Serializable {
 
     @Column(columnDefinition = "Varchar(10)")
