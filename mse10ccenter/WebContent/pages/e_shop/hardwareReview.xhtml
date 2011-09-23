@@ -15,7 +15,7 @@
 
 		<rich:panel style="width:220px; float:right; margin-top:-17px;">
 			<f:facet name="header">
-				<h:outputText value="Shopping Cart"></h:outputText>
+				<h:outputText value="#{labels.shopCart}"></h:outputText>
 			</f:facet>
 			<h:form>
 
@@ -26,18 +26,18 @@
 					</h:column>
 					<h:panelGroup>
 						<h:column>
-							<h:outputText value="Items number: " />
+							<h:outputText value="#{labels.shopItemNumber}: " />
 							<h:outputText value="#{softwareProducts.brItems}" />
 						</h:column>
 						<br />
 						<h:column>
-							<h:outputText value="Total sum: " />
+							<h:outputText value="#{labels.shopTotalPrice}: " />
 							<h:outputText value="#{softwareProducts.amount}" />
 							<h:outputText value=" BGN" />
 						</h:column>
 						<br />
 						<h:column>
-							<h:commandLink value="Clean"
+							<h:commandLink value="#{labels.shopClear}"
 								action="#{softwareProducts.clearChart}" />
 						</h:column>
 					</h:panelGroup>
@@ -49,7 +49,7 @@
 		<rich:panel style="margin-top:80px; height:270px;">
 
 			<f:facet name="header">
-				<h:outputText value="Hardware products"></h:outputText>
+				<h:outputText value="#{labels.shopHardwareProducts}"></h:outputText>
 			</f:facet>
 			<h:panelGrid columns="2">
 				<h:panelGroup>
@@ -71,10 +71,10 @@
 					</h:column>
 					<h:panelGroup style="float:right; padding:30px 10px 10px 10px;">
 						<h:column>
-							<h:outputText value="Price: " />
+							<h:outputText value="#{labels.price}: " />
 							<h:outputText value="#{hardwareProducts.targetEntity.price}" />
 							<h:commandButton action="#{softwareProducts.buyHardware(hardwareProduct.targetEntity)}"
-								value="Buy" disabled="#{softwareProducts.disable[hardwareProducts.targetEntity.productName]}" />
+								value="#{labels.shopBuy}" disabled="#{softwareProducts.disable[hardwareProducts.targetEntity.productName]}" />
 						</h:column>
 					</h:panelGroup>
 					</h:form>
