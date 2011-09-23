@@ -16,11 +16,11 @@ import javax.persistence.Query;
 @Singleton
 public class LabelsAndMessagesCache {
 
-    public static final String QUERY_LOAD_ALL_MESSAGES_EN_KEY = "QUERY_LOAD_ALL_MESSAGES_KEY";
-    public static final String QUERY_LOAD_ALL_MESSAGES_EN = "select v.value, v.descriptionEn from Value v inner join v.holder h where h.code = 1000";
+    public static final String QUERY_LOAD_ALL_MESSAGES_EN_KEY = "QUERY_LOAD_ALL_MESSAGES_EN_KEY";
+    public static final String QUERY_LOAD_ALL_MESSAGES_EN = "select v.valueCode, v.valueEn from Value v inner join v.holder h where h.code = 1000";
 
     public static final String QUERY_LOAD_ALL_MESSAGES_BG_KEY = "QUERY_LOAD_ALL_MESSAGES_BG_KEY";
-    public static final String QUERY_LOAD_ALL_MESSAGES_BG = "select v.value, v.descriptionBg from Value v inner join v.holder h where h.code = 1000";
+    public static final String QUERY_LOAD_ALL_MESSAGES_BG = "select v.valueCode, v.valueBg from Value v inner join v.holder h where h.code = 1000";
 
     @PersistenceContext
     private EntityManager entityManager;
