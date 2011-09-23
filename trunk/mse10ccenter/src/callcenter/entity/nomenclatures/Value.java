@@ -2,17 +2,20 @@ package callcenter.entity.nomenclatures;
 
 import java.io.Serializable;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+
+import callcenter.service.cache.LabelsAndMessagesCache;
 
 @Entity
-@ManagedBean(name = "value")
-@RequestScoped
+@NamedQueries(value = {
+	@NamedQuery(name = LabelsAndMessagesCache.QUERY_LOAD_ALL_MESSAGES_BG_KEY, query = LabelsAndMessagesCache.QUERY_LOAD_ALL_MESSAGES_BG),
+	@NamedQuery(name = LabelsAndMessagesCache.QUERY_LOAD_ALL_MESSAGES_EN_KEY, query = LabelsAndMessagesCache.QUERY_LOAD_ALL_MESSAGES_EN) })
 public class Value extends callcenter.entity.Entity implements Serializable {
 
     @Column(columnDefinition = "Varchar(10)")
