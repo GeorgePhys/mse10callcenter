@@ -21,6 +21,9 @@ import callcenter.util.ObjectUtil;
 public class IssueServiceBean extends
 	BaseServiceBean<IssueDetail, IssueSearchDTO> {
 
+    /**
+     * Represent search by parameters
+     */
     @Override
     @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
     public List<IssueDetail> search(IssueSearchDTO args, boolean countOnly) {
