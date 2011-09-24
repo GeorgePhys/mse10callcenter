@@ -18,9 +18,6 @@ import callcenter.web.action.search.datamodel.JPADataModel;
 @SuppressWarnings("rawtypes")
 public class IssueSearchAction implements Serializable {
 
-    /**
-	 * 
-	 */
     private static final long serialVersionUID = 1L;
 
     @EJB
@@ -28,6 +25,9 @@ public class IssueSearchAction implements Serializable {
 
     private IssueDataModel dataModel;
 
+    /**
+     * Represent issue data model
+     */
     private static final class IssueDataModel extends JPADataModel<IssueDetail> {
 
 	private IssueDataModel(BaseServiceBean service, BaseDTO dto) {
@@ -40,20 +40,43 @@ public class IssueSearchAction implements Serializable {
 	}
     }
 
+    /**
+     * Search for issues
+     * 
+     * @param dto
+     *            Data Transfer Object
+     * @return null
+     */
     public String search(IssueSearchDTO dto) {
 	service.search(dto, true);
 	setDataModel(new IssueDataModel(service, dto));
 	return null;
     }
 
+    /**
+     * Get data model
+     * 
+     * @return data model
+     */
     public Object getDataModel() {
 	return dataModel;
     }
 
+    /**
+     * Set data model
+     * 
+     * @param dataModel
+     *            issue data model
+     */
     public void setDataModel(IssueDataModel dataModel) {
 	this.dataModel = dataModel;
     }
 
+    /**
+     * Clean data model from records
+     * 
+     * @return navigation text
+     */
     public String startSearch() {
 	this.dataModel = null;
 	return "startNewSearch";

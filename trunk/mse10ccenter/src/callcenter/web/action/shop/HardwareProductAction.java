@@ -31,6 +31,9 @@ public class HardwareProductAction extends BaseAction implements Serializable {
 
     private Map<Long, Boolean> disable = new HashMap<Long, Boolean>();
 
+    /**
+     * Represent hardware data model
+     */
     private static final class HardwareDataModel extends JPADataModel<Hardware> {
 
 	private HardwareDataModel(BaseServiceBean service, BaseDTO dto) {
@@ -44,17 +47,23 @@ public class HardwareProductAction extends BaseAction implements Serializable {
     }
 
     /**
+     * Transfer current product object
      * 
      * @param s
-     * @return
+     *            instance of type hardware
+     * @return navigation text
      */
     @SuppressWarnings("unchecked")
     public String openSlectedProduct(Hardware s) {
 	setTargetEntity(s);
-
 	return "reviewHardwareProduct";
     }
 
+    /**
+     * Generate list of all software products
+     * 
+     * @return list
+     */
     public String allSoftware() {
 	this.hardware = service.listAllProjectNames();
 	return "AllSoftware";
@@ -72,27 +81,60 @@ public class HardwareProductAction extends BaseAction implements Serializable {
 	return "reviewHardwareProduct";
     }
 
+    /**
+     * Get data model
+     * 
+     * @return hardware data model
+     */
     public Object getDataModel() {
 	return dataModel;
     }
 
+    /**
+     * Set data model
+     * 
+     * @param dataModel
+     *            hardware data model
+     */
     public void setDataModel(HardwareDataModel dataModel) {
 	this.dataModel = dataModel;
     }
 
+    /**
+     * Get buttons disable status
+     * 
+     * @return map of button history
+     */
     public Map<Long, Boolean> getDisable() {
 	return disable;
     }
 
+    /**
+     * Set buttons disable status
+     * 
+     * @param disable
+     *            map of buttons status
+     */
     public void setDisable(Map<Long, Boolean> disable) {
 	this.disable = disable;
     }
 
+    /**
+     * Get list of hardwares
+     * 
+     * @return list of hardwares
+     */
     public List<Hardware> getHardware() {
 	hardware = service.listAllProjectNames();
 	return hardware;
     }
 
+    /**
+     * Set hardware
+     * 
+     * @param hardware
+     *            list of hardwares
+     */
     public void setHardware(List<Hardware> hardware) {
 	this.hardware = hardware;
     }
