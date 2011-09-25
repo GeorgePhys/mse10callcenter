@@ -8,10 +8,12 @@ import javax.faces.bean.ViewScoped;
 
 import callcenter.entity.issue.Project;
 import callcenter.service.administration.IssueServiceBean;
+import callcenter.service.project.ProjectServiceBean;
+import callcenter.web.action.BaseAction;
 
 @ViewScoped
 @ManagedBean(name = "projectCreateAction")
-public class ProjectCreateAction implements Serializable {
+public class ProjectCreateAction extends BaseAction implements Serializable {
 
     private static final long serialVersionUID = -5533722715840256982L;
 
@@ -19,6 +21,8 @@ public class ProjectCreateAction implements Serializable {
 
     private Project project;
 
+    @EJB
+    private ProjectServiceBean projectService;
     @EJB
     private IssueServiceBean issueService;
 
@@ -29,11 +33,31 @@ public class ProjectCreateAction implements Serializable {
 
     public String createProject() {
 
-	issueService.save(project);
+	projectService.saveOrUpdate(project);
+	setReadonly(true);
 	setVisible(false);
 	return null;
     }
 
+    public void editProject(Project project) {
+	setReadonly(false);
+
+    }
+
+    //
+    // public String create() {
+    //
+    // issueService.saveOrUpdate(getTargetEntity());
+    // setReadonly(true);
+    // return null;
+    // }
+    //
+    // public void edit(IssueDetail issue) {
+    // setReadonly(false);
+    //
+    // }
+
+    //
     public Project getProject() {
 	if (project == null)
 	    project = new Project();
