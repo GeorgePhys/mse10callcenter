@@ -25,9 +25,20 @@
 						<h:message for="mail" />
 
 						<h:outputText value="#{labels.password}" />
-						<h:inputSecret value="#{userAction.targetEntity.password}"
-							required="true" id="password" />
+						<h:inputSecret value="#{userAction.password}" 
+							id="password" binding="#{password}">
+							<f:validateLength minimum="6" maximum="16" />
+						</h:inputSecret>
 						<h:message for="password" />
+
+						<h:outputText value="#{labels.password}" />
+						<h:inputSecret value="#{userAction.confirmPassword}" 
+							id="confirmPassword">
+							<f:validator validatorId="equalPasswordsValidator"/>
+							<f:validateLength minimum="6" maximum="16" />
+							<f:attribute name="passwordFiled" value="#{password}" />
+						</h:inputSecret>
+						<h:message for="confirmPassword" />
 
 						<h:outputText value="#{labels.fullName}" />
 						<h:inputText value="#{userAction.targetEntity.fullName}"
