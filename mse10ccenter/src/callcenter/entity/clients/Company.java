@@ -41,6 +41,8 @@ public class Company extends callcenter.entity.Entity implements Serializable {
     @Column(columnDefinition = "Varchar(50)")
     private String mail;
 
+    private Boolean deleted;
+
     public String getName() {
 	return name;
     }
@@ -100,5 +102,20 @@ public class Company extends callcenter.entity.Entity implements Serializable {
     @Override
     public void initializeBibirectional() {
 
+    }
+
+    /**
+     * @return the deleted
+     */
+    public Boolean getDeleted() {
+	return deleted;
+    }
+
+    /**
+     * @param deleted
+     *            the deleted to set
+     */
+    public void setDeleted(Boolean deleted) {
+	this.deleted = deleted;
     }
 }
