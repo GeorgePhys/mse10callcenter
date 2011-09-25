@@ -30,7 +30,7 @@ public class BaseServiceBean<E, T extends BaseDTO<E>> {
 	return getEntityManager().find(clazz, id);
     }
 
-    protected EntityManager getEntityManager() {
+    public EntityManager getEntityManager() {
 	return entityManager;
     }
 
