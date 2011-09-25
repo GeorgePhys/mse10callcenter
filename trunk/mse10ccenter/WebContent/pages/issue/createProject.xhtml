@@ -30,15 +30,21 @@
 						<tr>
 							<td><h:panelGrid columns="3">
 									<h:outputText value="#{labels.projectName}:"
-										styleClass="issueFieldPos" rendered="#{projectCreateAction.visible}"/>
+										styleClass="issueFieldPos"
+										 />
 									<h:inputText value="#{projectCreateAction.project.name}"
-										required="true" id="projectName" styleClass="issueField" rendered="#{projectCreateAction.visible}" />
+										required="true" id="projectName" styleClass="issueField"
+										
+										readonly="#{projectCreateAction.readonly}" />
 									<h:message for="projectName" styleClass="issueError" />
 
 									<h:outputText value="#{labels.shortProjectName}:"
-										styleClass="issueFieldPos" rendered="#{projectCreateAction.visible}"/>
+										styleClass="issueFieldPos"
+										 />
 									<h:inputText value="#{projectCreateAction.project.shortName}"
-										required="true" id="shortName" styleClass="issueField" rendered="#{projectCreateAction.visible}"/>
+										required="true" id="shortName" styleClass="issueField"
+										
+										readonly="#{projectCreateAction.readonly}" />
 									<h:message for="shortName" styleClass="issueError" />
 
 
@@ -49,12 +55,15 @@
 						<tr>
 
 							<h:panelGrid columns="3" columnClasses="wfcol1,wfcol2,wfcol3">
-								<h:outputText value="#{labels.description}:" rendered="#{projectCreateAction.visible}"/>
+								<h:outputText value="#{labels.description}:"
+									 />
 								<h:inputTextarea id="description"
 									value="#{projectCreateAction.project.description}"
-									required="true" style=" width : 260px;" rendered="#{projectCreateAction.visible}" />
+									required="true" style=" width : 260px;"
+									
+									readonly="#{projectCreateAction.readonly}" />
 								<h:message for="description" styleClass="issueError" />
-								<h:outputText value="Проектът е създаден!" rendered="#{not projectCreateAction.visible}"/>
+								
 							</h:panelGrid>
 
 
@@ -62,7 +71,12 @@
 					</table>
 				</rich:panel>
 				<h:commandButton action="#{projectCreateAction.createProject()}"
-					value="#{labels.save}" style="margin-left: 400px; width : 85px;" rendered="#{projectCreateAction.visible}" />
+					value="#{labels.save}" style="margin-left: 400px; width : 85px;"
+					 />
+				<h:commandButton
+					action="#{projectCreateAction.editProject(projectCreateAction.project)}"
+					value="#{labels.edit}" style="margin-left: 15px; width : 90px;" 
+					rendered="#{not projectCreateAction.visible}"/>
 
 			</h:form>
 
