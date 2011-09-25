@@ -10,11 +10,11 @@ import javax.persistence.Query;
 import org.apache.commons.lang.StringUtils;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import callcenter.dto.project.ProjectSearchDTO;
-import callcenter.entity.issue.IssueDetail;
 import callcenter.entity.issue.Project;
 import callcenter.service.base.BaseServiceBean;
 
@@ -25,15 +25,24 @@ public class ProjectServiceBean extends
     public static final String QUERY_ALL_PROJECT_NAMES_KEY = "QUERY_ALL_PROJECT_NAMES_KEY";
     public static final String QUERY_ALL_PROJECT_NAMES = "select p.name from Project p";
 
-    @SuppressWarnings("unchecked")
     @Override
+    @SuppressWarnings("unchecked")
     @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
     public List<Project> search(ProjectSearchDTO args, boolean countOnly) {
 	Session session = (Session) getEntityManager().getDelegate();
-	Criteria criteria = session.createCriteria(IssueDetail.class);
+	Criteria criteria = session.createCriteria(Project.class);
 
 	if (StringUtils.isNotEmpty(args.getProjectName())) {
-	    criteria.add(Restrictions.eq("projectName", args.getProjectName()));
+	    criteria.add(Restrictions.like("name", args.getProjectName(),
+		    MatchMode.ANYWHERE).ignoreCase());
+	}
+	if (StringUtils.isNotEmpty(args.getProjectShortName())) {
+	    criteria.add(Restrictions.eq("shortName",
+		    args.getProjectShortName()));
+	}
+	if (StringUtils.isNotEmpty(args.getDescription())) {
+	    criteria.add(Restrictions.like("description",
+		    args.getDescription(), MatchMode.ANYWHERE).ignoreCase());
 	}
 
 	if (countOnly) {

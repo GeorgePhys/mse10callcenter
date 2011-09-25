@@ -73,12 +73,17 @@
 							<li><h:outputLink>
 									<h:graphicImage class="icons" value="/images/icon1.JPG" />
 									<h:commandLink value="#{labels.registration}"
-										action="#{userAction.newRegistration}" />
+										action="#{userAction.newRegistration}" rendered="#{baseAction.user == null}" />
 								</h:outputLink></li>
 								<li><h:outputLink>
 									<h:graphicImage class="icons" value="/images/project.JPG" />
 									<h:commandLink value="#{labels.projectCreate}"
 										action="#{projectCreateAction.createNewProject}" />
+								</h:outputLink></li>
+								<li><h:outputLink>
+									<h:graphicImage class="icons" value="/images/project.JPG" />
+									<h:commandLink value="Project Search"
+										action="#{projectSearchAction.startSearch}" />
 								</h:outputLink></li>
 							<li><h:outputLink>
 									<h:graphicImage class="icons" value="/images/icon2.jpg" />
