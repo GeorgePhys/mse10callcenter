@@ -31,7 +31,7 @@ public class Value extends callcenter.entity.Entity implements Serializable {
     private String valueEn;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "code")
+    @JoinColumn(name = "code", referencedColumnName = "code")
     private Holder holder;
 
     /**

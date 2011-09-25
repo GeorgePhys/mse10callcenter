@@ -12,10 +12,8 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import callcenter.validation.Validatable;
-
 @MappedSuperclass
-public abstract class Entity extends Validatable implements Serializable {
+public abstract class Entity implements Serializable {
 
     /**
 	 * 
@@ -49,11 +47,6 @@ public abstract class Entity extends Validatable implements Serializable {
      */
     public void setLastModifiedDate(Date lastModifiedDate) {
 	this.lastModifiedDate = lastModifiedDate;
-    }
-
-    @Override
-    public void validate() {
-
     }
 
     public abstract void initializeBibirectional();

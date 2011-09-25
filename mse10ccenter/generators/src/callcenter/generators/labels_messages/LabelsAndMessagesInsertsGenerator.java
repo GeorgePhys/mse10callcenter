@@ -31,6 +31,11 @@ public class LabelsAndMessagesInsertsGenerator {
 	BufferedWriter out = new BufferedWriter(new FileWriter(file));
 
 	String lineSeparator = System.getProperty("line.separator");
+
+	out.write("delete from Value where code = 1000 or code = 1001;");
+	out.write(lineSeparator);
+	out.write("delete from Holder where code = 1000 or code = 1001;");
+
 	for (int i = 2;; i++) {
 	    String code = sheet.getCell(0, i).getContents();
 	    String value = sheet.getCell(1, i).getContents();
@@ -38,7 +43,7 @@ public class LabelsAndMessagesInsertsGenerator {
 		    .getCell(2, i).getContents().replaceAll("'", "''") : "";
 	    String descrBg = sheet.getCell(3, i).getContents() != null ? sheet
 		    .getCell(3, i).getContents().replaceAll("'", "''") : "";
-	    if (areAllEmpty(code, value, descrEn, descrBg)) {
+	    if (areAllCellsEmpty(code, value, descrEn, descrBg)) {
 		break;
 	    } else {
 		if (code != null && code.length() > 0) {
@@ -62,7 +67,7 @@ public class LabelsAndMessagesInsertsGenerator {
 	out.close();
     }
 
-    public static boolean areAllEmpty(String code, String value,
+    public static boolean areAllCellsEmpty(String code, String value,
 	    String descrEn, String descrBg) {
 	if (code != null && code.length() > 0) {
 	    return false;

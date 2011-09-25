@@ -41,9 +41,8 @@
 				<tr>
 					<td>Captcha</td>
 					<td><h:inputText id="CaptchaID" style="width:100%"
-							required="true" requiredMessage="Captcha missing"
-							validator="#{captchaValidator.validateCaptcha}"
-							validatorMessage="Captcha does not match" immediate="true">
+							required="true" requiredMessage="#{messagesBean.getMessage('captchaMissing')}" immediate="true">
+							<f:validator validatorId="captchaValidator" />
 						</h:inputText>
 					</td>
 				</tr>
