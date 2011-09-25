@@ -46,6 +46,8 @@ public class User extends callcenter.entity.Entity implements Serializable {
     @Column(columnDefinition = "Boolean")
     private Boolean confirmed;
 
+    private Boolean deleted;
+
     public String getMail() {
 	return mail;
     }
@@ -137,5 +139,20 @@ public class User extends callcenter.entity.Entity implements Serializable {
      */
     public void setRole(Role role) {
 	this.role = role;
+    }
+
+    /**
+     * @return the deleted
+     */
+    public Boolean getDeleted() {
+	return deleted;
+    }
+
+    /**
+     * @param deleted
+     *            the deleted to set
+     */
+    public void setDeleted(Boolean deleted) {
+	this.deleted = deleted;
     }
 }
