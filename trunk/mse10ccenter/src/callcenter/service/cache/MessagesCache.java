@@ -31,10 +31,8 @@ public class MessagesCache {
     @PersistenceContext
     private EntityManager entityManager;
 
-    private Map<String, String> messagesEn = Collections
-	    .unmodifiableMap(new HashMap<String, String>());
-    private Map<String, String> messagesBg = Collections
-	    .unmodifiableMap(new HashMap<String, String>());
+    private Map<String, String> messagesEn;
+    private Map<String, String> messagesBg;
 
     /**
      * Initializes the cache right after the bean has been instantiated.
@@ -45,17 +43,21 @@ public class MessagesCache {
 		.createNamedQuery(QUERY_LOAD_ALL_MESSAGES_EN_KEY);
 	@SuppressWarnings("unchecked")
 	List<Object[]> messagesEnResult = messagesEnQuery.getResultList();
+	Map<String, String> msgEn = new HashMap<String, String>();
 	for (Object[] objects : messagesEnResult) {
-	    messagesEn.put((String) objects[0], (String) objects[1]);
+	    msgEn.put((String) objects[0], (String) objects[1]);
 	}
+	messagesEn = Collections.unmodifiableMap(msgEn);
 
 	Query messagesBgQuery = entityManager
 		.createNamedQuery(QUERY_LOAD_ALL_MESSAGES_BG_KEY);
 	@SuppressWarnings("unchecked")
 	List<Object[]> messagesBgResult = messagesBgQuery.getResultList();
+	Map<String, String> msgBg = new HashMap<String, String>();
 	for (Object[] objects : messagesBgResult) {
-	    messagesBg.put((String) objects[0], (String) objects[1]);
+	    msgBg.put((String) objects[0], (String) objects[1]);
 	}
+	messagesBg = Collections.unmodifiableMap(msgBg);
     }
 
     /**
@@ -90,5 +92,13 @@ public class MessagesCache {
 	    return "";
 	}
 	return message;
+    }
+
+    public String getMessage(String localeCode, String messageKey) {
+	if ("bg_BG".equalsIgnoreCase(localeCode)) {
+	    return getMessageBg(messageKey);
+	} else {
+	    return getMessageEn(messageKey);
+	}
     }
 }

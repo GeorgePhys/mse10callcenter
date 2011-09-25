@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import callcenter.entity.clients.User;
 import callcenter.service.administration.UserServiceBean;
+import callcenter.service.cache.MessagesCache;
 import callcenter.web.action.BaseAction;
 
 @SessionScoped
@@ -18,6 +19,9 @@ public class LoginAction extends BaseAction<User> {
     @EJB
     private UserServiceBean userService;
 
+    @EJB
+    private MessagesCache messagesCache;
+
     public String initLogin() {
 	setTargetEntity(new User());
 	return "loginPage";
@@ -26,9 +30,12 @@ public class LoginAction extends BaseAction<User> {
     public String login() {
 	User checkLogin = userService.checkLogin(getTargetEntity());
 	if (checkLogin == null) {
+	    String loginFailedMessage = messagesCache.getMessage(FacesContext
+		    .getCurrentInstance().getViewRoot().getLocale().toString(),
+		    "loginFailed");
 	    FacesMessage message = new FacesMessage(
-		    FacesMessage.SEVERITY_ERROR, "This user dont exist",
-		    "asdasda");
+		    FacesMessage.SEVERITY_ERROR, loginFailedMessage,
+		    loginFailedMessage);
 	    FacesContext.getCurrentInstance().addMessage(null, message);
 	    return null;
 	}
