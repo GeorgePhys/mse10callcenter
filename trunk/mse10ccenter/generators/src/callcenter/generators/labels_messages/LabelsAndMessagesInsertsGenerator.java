@@ -35,6 +35,7 @@ public class LabelsAndMessagesInsertsGenerator {
 	out.write("delete from Value where code = 1000 or code = 1001;");
 	out.write(lineSeparator);
 	out.write("delete from Holder where code = 1000 or code = 1001;");
+	out.write(lineSeparator);
 
 	for (int i = 2;; i++) {
 	    String code = sheet.getCell(0, i).getContents();
