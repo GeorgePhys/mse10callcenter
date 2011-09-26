@@ -58,13 +58,13 @@
 						<h:message for="userType" />
 
 						<h:outputText value="#{labelsBean.getLabel('role')}"
-							rendered="#{user.role.label eq 'Admin'}" />
+							rendered="#{userAction.hasAdminRole()}" />
 						<h:selectOneMenu id="role" value="#{user.role}"
-							rendered="#{user.role.label eq 'Admin'}">
+							rendered="#{userAction.hasAdminRole()}">
 
 							<f:selectItems value="#{userAction.roles}" />
 						</h:selectOneMenu>
-						<h:message for="role" rendered="#{user.role.label eq 'Admin'}" />
+						<h:message for="role" rendered="#{userAction.hasAdminRole()}" />
 					</h:panelGrid>
 				</rich:tab>
 				<rich:tab header="#{labelsBean.getLabel('address')}">
