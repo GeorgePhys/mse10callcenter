@@ -1,5 +1,7 @@
 package callcenter.web.common;
 
+import java.io.Serializable;
+
 import javax.ejb.EJB;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
@@ -9,7 +11,8 @@ import callcenter.service.cache.MessagesCache;
 
 @ManagedBean(eager = true, name = "messagesBean")
 @ApplicationScoped
-public class MessagesBean {
+public class MessagesBean implements Serializable {
+    private static final long serialVersionUID = 8716627158201310775L;
 
     @EJB
     private MessagesCache messagesCache;
