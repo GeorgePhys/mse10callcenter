@@ -73,23 +73,23 @@ public class BaseAction<E extends Entity> implements Serializable {
 
     }
 
-    public boolean hasAdminRole() {
+    public boolean getHasAdminRole() {
 	return getUser() != null && Role.ADMIN.equals(getUser().getRole());
     }
 
-    public boolean hasUserRole() {
+    public boolean getHasUserRole() {
 	return getUser() != null && Role.USER.equals(getUser().getRole());
     }
 
-    public boolean hasClientRole() {
+    public boolean getHasClientRole() {
 	return getUser() != null && Role.CLIENT.equals(getUser().getRole());
     }
 
-    public boolean hasEmployeeRole() {
+    public boolean getHasEmployeeRole() {
 	return getUser() != null && Role.EMPLOYEE.equals(getUser().getRole());
     }
 
-    public boolean hasPermission(int permissionCode) {
+    public boolean getHasPermission(int permissionCode) {
 	return permissions.contains(permissionCode);
     }
 }
