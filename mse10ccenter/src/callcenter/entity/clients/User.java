@@ -1,6 +1,7 @@
 package callcenter.entity.clients;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -32,7 +33,7 @@ public class User extends callcenter.entity.Entity implements Serializable {
     private Address address = new Address();
 
     @ManyToMany(mappedBy = "representatives")
-    private List<Company> companies;
+    private List<Company> companies = new ArrayList<Company>();
 
     @Column(columnDefinition = "Varchar(20)")
     private String phone;
