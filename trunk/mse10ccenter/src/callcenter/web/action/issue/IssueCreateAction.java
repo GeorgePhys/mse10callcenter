@@ -10,7 +10,7 @@ import javax.faces.bean.SessionScoped;
 import callcenter.entity.issue.IssueDetail;
 import callcenter.service.administration.IssueServiceBean;
 import callcenter.service.project.ProjectServiceBean;
-import callcenter.util.MailSendAssignee;
+import callcenter.util.MailSender;
 import callcenter.web.action.BaseAction;
 
 @SessionScoped
@@ -27,7 +27,7 @@ public class IssueCreateAction extends BaseAction<IssueDetail> implements
     private IssueServiceBean issueService;
 
     public String create() {
-	MailSendAssignee.sendCreateIssueMessage(getTargetEntity());
+	MailSender.sendCreateIssueMessage(getTargetEntity());
 	issueService.saveOrUpdate(getTargetEntity());
 	setReadonly(true);
 	return null;
