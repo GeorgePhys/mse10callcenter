@@ -74,7 +74,12 @@ public final class MailSender {
 	    message.setSubject("MSE10 Call Center created issue for you.");
 	    StringBuilder builder = new StringBuilder();
 	    builder.append("Hello " + issueDetail.getAssignee() + ", <br/>");
-	    builder.append("you have recently created issue at MSE10 Call Center.<br/>");
+	    builder.append("there is created or updated issue for you at MSE10 Call Center.<br/><br/>");
+	    builder.append("<b>Title Issue: </b>" + issueDetail.getTitleIssue()
+		    + "<br/>");
+	    builder.append("<b>From: </b>" + issueDetail.getReporter()
+		    + "<br/>");
+
 	    message.setContent(builder.toString(), "text/html");
 	    Transport.send(message);
 	} catch (NamingException e) {
