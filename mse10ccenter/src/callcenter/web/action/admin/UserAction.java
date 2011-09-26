@@ -76,7 +76,8 @@ public class UserAction extends BaseAction<User> implements Serializable {
 
     public String saveProfile() throws Exception {
 	if (!StringUtils.isEmpty(password)) {
-	    setPassword(PasswordHashUtil.getPasswordHash(password));
+	    getTargetEntity().setPassword(
+		    PasswordHashUtil.getPasswordHash(password));
 	}
 	User user = userService.saveOrUpdate(getTargetEntity());
 	setTargetEntity(user);
