@@ -4,77 +4,56 @@ import java.io.Serializable;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 
 import callcenter.entity.issue.Project;
-import callcenter.service.administration.IssueServiceBean;
 import callcenter.service.project.ProjectServiceBean;
 import callcenter.web.action.BaseAction;
 
-@ViewScoped
+/**
+ * Manages creation of a project.
+ * 
+ * @author yasko
+ * @author sibel
+ * 
+ */
+@SessionScoped
 @ManagedBean(name = "projectCreateAction")
 public class ProjectCreateAction extends BaseAction<Project> implements
 	Serializable {
 
     private static final long serialVersionUID = -5533722715840256982L;
 
-    private boolean visible = true;
-
-    private Project project;
-
     @EJB
     private ProjectServiceBean projectService;
-    @EJB
-    private IssueServiceBean issueService;
 
+    /**
+     * Initializes project create action by setting new empty instance of
+     * {@link Project} as the target entity then return navigation string for
+     * the project creation screen.
+     * 
+     * @return Navigation string for project creation screen.
+     */
     public String createNewProject() {
-
+	setTargetEntity(new Project());
 	return "createNewProject";
     }
 
-    public String createProject() {
-
-	projectService.saveOrUpdate(project);
+    /**
+     * Persists the initialized targetEntity resets targetEntity with the new
+     * instance return by the back-end service and sets the read-only flag
+     * causing the for to be not editable.
+     */
+    public void createProject() {
+	Project project = projectService.saveOrUpdate(getTargetEntity());
+	setTargetEntity(project);
 	setReadonly(true);
-	setVisible(false);
-	return null;
     }
 
-    public void editProject(Project project) {
+    /**
+     * Resets the read-only to make the for editable again.
+     */
+    public void editProject() {
 	setReadonly(false);
-
     }
-
-    //
-    // public String create() {
-    //
-    // issueService.saveOrUpdate(getTargetEntity());
-    // setReadonly(true);
-    // return null;
-    // }
-    //
-    // public void edit(IssueDetail issue) {
-    // setReadonly(false);
-    //
-    // }
-
-    //
-    public Project getProject() {
-	if (project == null)
-	    project = new Project();
-	return project;
-    }
-
-    public void setProject(Project project) {
-	this.project = project;
-    }
-
-    public boolean getVisible() {
-	return visible;
-    }
-
-    public void setVisible(boolean visible) {
-	this.visible = visible;
-    }
-
 }

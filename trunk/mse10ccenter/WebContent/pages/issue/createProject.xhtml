@@ -30,60 +30,41 @@
 						<tr>
 							<td><h:panelGrid columns="3">
 									<h:outputText value="#{labels.projectName}:"
-										styleClass="issueFieldPos"
-										 />
-									<h:inputText value="#{projectCreateAction.project.name}"
+										styleClass="issueFieldPos" />
+									<h:inputText value="#{projectCreateAction.targetEntity.name}"
 										required="true" id="projectName" styleClass="issueField"
-										
 										readonly="#{projectCreateAction.readonly}" />
 									<h:message for="projectName" styleClass="issueError" />
 
 									<h:outputText value="#{labels.shortProjectName}:"
-										styleClass="issueFieldPos"
-										 />
-									<h:inputText value="#{projectCreateAction.project.shortName}"
+										styleClass="issueFieldPos" />
+									<h:inputText value="#{projectCreateAction.targetEntity.shortName}"
 										required="true" id="shortName" styleClass="issueField"
-										
 										readonly="#{projectCreateAction.readonly}" />
 									<h:message for="shortName" styleClass="issueError" />
-
-
-								</h:panelGrid>
-							</td>
+								</h:panelGrid></td>
 
 						</tr>
 						<tr>
-
 							<h:panelGrid columns="3" columnClasses="wfcol1,wfcol2,wfcol3">
-								<h:outputText value="#{labels.description}:"
-									 />
+								<h:outputText value="#{labels.description}:" />
 								<h:inputTextarea id="description"
-									value="#{projectCreateAction.project.description}"
+									value="#{projectCreateAction.targetEntity.description}"
 									required="true" style=" width : 260px;"
-									
 									readonly="#{projectCreateAction.readonly}" />
 								<h:message for="description" styleClass="issueError" />
-								
 							</h:panelGrid>
-
-
 						</tr>
 					</table>
 				</rich:panel>
 				<h:commandButton action="#{projectCreateAction.createProject()}"
-					value="#{labels.save}" style="margin-left: 400px; width : 85px;"
-					 />
+					value="#{labels.save}" style="margin-left: 400px; width : 85px;" 
+					rendered="#{not projectCreateAction.readonly}" />
 				<h:commandButton
-					action="#{projectCreateAction.editProject(projectCreateAction.project)}"
-					value="#{labels.edit}" style="margin-left: 15px; width : 90px;" 
-					rendered="#{not projectCreateAction.visible}"/>
-
+					action="#{projectCreateAction.editProject()}"
+					value="#{labels.edit}" style="margin-left: 15px; width : 90px;"
+					rendered="#{projectCreateAction.readonly}" />
 			</h:form>
-
-
-
-
 		</div>
-
 	</ui:define>
 </ui:composition>
