@@ -3,6 +3,7 @@ package callcenter.web.validators;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
+import javax.faces.component.html.HtmlInputSecret;
 import javax.faces.component.html.HtmlInputText;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.FacesValidator;
@@ -25,7 +26,7 @@ public class EqualPasswordValidator implements Validator {
 
 	if (!StringUtils.isEmpty(passwordValue)
 		&& !passwordValue.equals(confirmPassword)) {
-	    ((HtmlInputText) component).setSubmittedValue("");
+	    ((HtmlInputSecret) component).setSubmittedValue("");
 	    ((HtmlInputText) password).setSubmittedValue("");
 	    String message = "passwords don't match";
 	    throw new ValidatorException(new FacesMessage(
