@@ -71,15 +71,10 @@ public final class MailSender {
 	    to[0] = new InternetAddress(issueDetail.getAssignee());
 	    message.setRecipients(Message.RecipientType.TO, to);
 
-	    message.setSubject("MSE10 Call Center create issue for you.");
+	    message.setSubject("MSE10 Call Center created issue for you.");
 	    StringBuilder builder = new StringBuilder();
 	    builder.append("Hello " + issueDetail.getAssignee() + ", <br/>");
 	    builder.append("you have recently created issue at MSE10 Call Center.<br/>");
-	    // builder.append("To confirm your registration please click on the following link.<br/>");
-	    // builder.append("<a href=\"http://localhost:8080/mse10ccenter/confirmation?id=");
-	    //
-	    // builder.append("\">http://localhost:8080/mse10ccenter</a><br/><br/>");
-
 	    message.setContent(builder.toString(), "text/html");
 	    Transport.send(message);
 	} catch (NamingException e) {

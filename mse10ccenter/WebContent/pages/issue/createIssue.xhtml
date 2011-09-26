@@ -25,51 +25,73 @@
 							<td><h:panelGrid columns="3">
 									<h:outputText value="#{labels.projectName}:"
 										styleClass="issueFieldPos" />
-									<h:commandButton value="#{labels.serchProject}">
-										<rich:componentControl target="popup" operation="show" />
-									</h:commandButton>
-									<rich:popupPanel id="popup" modal="true" resizeable="true"
+									<h:panelGrid columns="2"> 
+										<h:inputText id="projectNameFiled" value="#{issueCreateAction.targetEntity.project.name}" readonly="true" />
+										<h:commandButton value="#{labels.searchProject}" rendered="#{not issueCreateAction.readonly}">
+											<rich:componentControl target="popup" operation="show" />
+										</h:commandButton>
+									</h:panelGrid>
+									<rich:popupPanel id="popup" modal="true" resizeable="true" width="700"
 										onmaskclick="#{rich:component('popup')}.hide()">
 										<f:facet name="header">
 											<h:outputText value="Избор на проект" />
 										</f:facet>
 										<f:facet name="controls">
-											<h:outputLink value="#" onclick="#{rich:component('popup')}.hide(); return false;">
-                   								 X
+											<h:outputLink value="#"
+												onclick="#{rich:component('popup')}.hide(); return false;">
+                   								 Close
                 							</h:outputLink>
 										</f:facet>
-										<rich:dataTable keepSaved="true" id="richTable" var="project"
-				value="#{projectSearchAction.dataModel}" rows="10">
-				<f:facet name="header">
-					<rich:columnGroup>
-						<h:column>
-							<h:outputText styleClass="headerText" value="Project Name" />
-							<br />
-							<h:inputText value="#{projectDto.projectName}" />
-						</h:column>
-						<h:column>
-							<h:outputText styleClass="headerText" value="Project Short Name" />
-							<br />
-							<h:inputText value="#{projectDto.projectShortName}" />
-						</h:column>
-						
-						<h:column>
-							<h:commandButton action="#{projectSearchAction.search(projectDto)}"
-								value="#{labels.search}" />
-						</h:column>
-					</rich:columnGroup>
-				</f:facet>
-				<h:column>
-					<h:commandLink action="#{projectSearchAction.previewSearchResult(project)}" value="#{project.name}" />
-				</h:column>
-				<h:column>
-					<h:commandLink action="#{projectSearchAction.previewSearchResult(project)}" value="#{project.shortName}" />
-				</h:column>
-				
-				<f:facet name="footer">
-					<rich:dataScroller id="scroller" />
-				</f:facet>
-			</rich:dataTable>
+										<a4j:region>
+											<rich:dataTable
+												style="margin-left: auto; margin-right: auto;"
+												keepSaved="false" id="richTable" var="project"
+												value="#{projectSearchAction.dataModel}" rows="10">
+												<f:facet name="header">
+													<rich:columnGroup>
+														<h:column>
+															<h:outputText styleClass="headerText"
+																value="Project Name" />
+															<br />
+															<h:inputText value="#{projectDto.projectName}" />
+														</h:column>
+														<h:column>
+															<h:outputText styleClass="headerText"
+																value="Project Short Name" />
+															<br />
+															<h:inputText value="#{projectDto.projectShortName}" />
+														</h:column>
+														<h:column>
+															<h:outputText styleClass="headerText" value="Selection" />
+														</h:column>
+
+														<h:column>
+															<h:commandButton
+																action="#{projectSearchAction.search(projectDto)}"
+																value="#{labels.search}">
+																<a4j:ajax render="richTable" />
+															</h:commandButton>
+														</h:column>
+													</rich:columnGroup>
+												</f:facet>
+												<h:column>
+													<h:outputText value="#{project.name}" />
+												</h:column>
+												<h:column>
+													<h:outputText value="#{project.shortName}" />
+												</h:column>
+												<h:column>
+													<h:commandLink value="Select"
+														action="#{issueCreateAction.addProject(project)}">
+														<a4j:ajax render="projectNameFiled" />
+													</h:commandLink>
+												</h:column>
+
+												<f:facet name="footer">
+													<rich:dataScroller id="scroller" />
+												</f:facet>
+											</rich:dataTable>
+										</a4j:region>
 									</rich:popupPanel>
 
 									<h:outputText value="#{labels.titleIssue}:"
@@ -145,7 +167,8 @@
 									</h:selectOneMenu>
 
 									<h:message for="resolution" styleClass="issueError" />
-								</h:panelGrid></td>
+								</h:panelGrid>
+							</td>
 							<td>
 								<div align="left" style="width: 443px;">
 
@@ -208,7 +231,8 @@
 											<h:message for="dateEnded" styleClass="issueError" />
 										</h:panelGrid>
 									</rich:panel>
-								</div></td>
+								</div>
+							</td>
 						</tr>
 						<tr>
 							<h:panelGrid columns="3" columnClasses="wfcol1,wfcol2,wfcol3">
