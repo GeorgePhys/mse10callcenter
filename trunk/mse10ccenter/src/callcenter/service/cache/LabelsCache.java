@@ -31,10 +31,8 @@ public class LabelsCache {
     @PersistenceContext
     private EntityManager entityManager;
 
-    private Map<String, String> labelsEn = Collections
-	    .unmodifiableMap(new HashMap<String, String>());
-    private Map<String, String> labelsBg = Collections
-	    .unmodifiableMap(new HashMap<String, String>());
+    private Map<String, String> labelsEn;
+    private Map<String, String> labelsBg;
 
     /**
      * Initializes the cache right after the bean has been instantiated.
@@ -45,17 +43,21 @@ public class LabelsCache {
 		.createNamedQuery(QUERY_LOAD_ALL_LABELS_EN_KEY);
 	@SuppressWarnings("unchecked")
 	List<Object[]> labelsEnResult = labelsEnQuery.getResultList();
+	Map<String, String> labelsEnTemp = new HashMap<String, String>();
 	for (Object[] objects : labelsEnResult) {
-	    labelsEn.put((String) objects[0], (String) objects[1]);
+	    labelsEnTemp.put((String) objects[0], (String) objects[1]);
 	}
+	labelsEn = Collections.unmodifiableMap(labelsEnTemp);
 
 	Query labelsBgQuery = entityManager
 		.createNamedQuery(QUERY_LOAD_ALL_LABELS_BG_KEY);
 	@SuppressWarnings("unchecked")
 	List<Object[]> labelsBgResult = labelsBgQuery.getResultList();
+	Map<String, String> labelsBgTemp = new HashMap<String, String>();
 	for (Object[] objects : labelsBgResult) {
-	    labelsBg.put((String) objects[0], (String) objects[1]);
+	    labelsBgTemp.put((String) objects[0], (String) objects[1]);
 	}
+	labelsBg = Collections.unmodifiableMap(labelsBgTemp);
     }
 
     /**
