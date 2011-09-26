@@ -1,6 +1,10 @@
 package callcenter.web.action.admin;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -8,6 +12,7 @@ import javax.faces.bean.SessionScoped;
 
 import org.apache.commons.lang.StringUtils;
 
+import callcenter.entity.clients.Company;
 import callcenter.entity.clients.Role;
 import callcenter.entity.clients.User;
 import callcenter.service.administration.UserServiceBean;
@@ -27,6 +32,24 @@ public class UserAction extends BaseAction<User> implements Serializable {
 
     private String confirmPassword;
 
+    private Map<Long, Company> selectedCompanies = new HashMap<Long, Company>();
+
+    public List<Company> getCompanies() {
+	return new ArrayList<Company>(selectedCompanies.values());
+    }
+
+    public void addCompany(Company company) {
+	getSelectedCompanies().put(company.getId(), company);
+    }
+
+    public void removeCompany(Company company) {
+	getSelectedCompanies().remove(company.getId());
+    }
+
+    public Map<Long, Company> getSelectedCompanies() {
+	return selectedCompanies;
+    }
+
     public String newRegistration() {
 	setTargetEntity(new User());
 	setPassword(null);
@@ -36,8 +59,9 @@ public class UserAction extends BaseAction<User> implements Serializable {
 
     public String register() throws Exception {
 	if (!StringUtils.isEmpty(password)) {
-	    setPassword(PasswordHashUtil.getPasswordHash(password));
+	    getTargetEntity().setPassword(getPassword());
 	}
+	getTargetEntity().getCompanies().addAll(getCompanies());
 	User registerUser = userService.registerUser(getTargetEntity());
 	setTargetEntity(registerUser);
 	return "successRegister";

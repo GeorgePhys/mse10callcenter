@@ -4,6 +4,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	template="/pages/templates/template.xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
 	xmlns:rich="http://richfaces.org/rich">
 
 	<ui:define name="title">User registration</ui:define>
@@ -25,16 +26,16 @@
 						<h:message for="mail" />
 
 						<h:outputText value="#{labels.password}" />
-						<h:inputSecret value="#{userAction.password}" 
-							id="password" binding="#{password}">
+						<h:inputSecret value="#{userAction.password}" id="password"
+							binding="#{password}">
 							<f:validateLength minimum="6" maximum="16" />
 						</h:inputSecret>
 						<h:message for="password" />
 
 						<h:outputText value="#{labels.password}" />
-						<h:inputSecret value="#{userAction.confirmPassword}" 
+						<h:inputSecret value="#{userAction.confirmPassword}"
 							id="confirmPassword">
-							<f:validator validatorId="equalPasswordsValidator"/>
+							<f:validator validatorId="equalPasswordsValidator" />
 							<f:validateLength minimum="6" maximum="16" />
 							<f:attribute name="passwordFiled" value="#{password}" />
 						</h:inputSecret>
@@ -58,13 +59,11 @@
 
 						<h:message for="userType" />
 
-
-
 						<h:outputText value="#{labels.role}"
 							rendered="#{user.role.label=='Admin'}" />
 						<h:selectOneMenu id="role" value="#{user.role}"
 							rendered="#{user.role.label=='Admin'}">
-							
+
 							<f:selectItems value="#{userAction.roles}"
 								rendered="#{user.role.label=='Admin'}" />
 						</h:selectOneMenu>
@@ -99,6 +98,90 @@
 							required="true" id="postCode" />
 						<h:message for="postCode" />
 					</h:panelGrid>
+				</rich:tab>
+				<rich:tab header="Companies">
+					<h:commandButton value="Associate Companies">
+						<rich:componentControl target="popup" operation="show" />
+					</h:commandButton>
+					<rich:list value="#{userAction.companies}" id="list"
+						var="selectedCompany" type="ordered">
+						<h:outputText value="#{selectedCompany.name}" />
+					</rich:list>
+					<rich:popupPanel id="popup" modal="true" resizeable="true" width="900"
+						onmaskclick="#{rich:component('popup')}.hide()">
+						<f:facet name="header">
+							<h:outputText value="Associate Companies" />
+						</f:facet>
+						<f:facet name="controls">
+							<h:outputLink value="#"
+								onclick="#{rich:component('popup')}.hide(); return false;">Close</h:outputLink>
+						</f:facet>
+							<a4j:region>
+								<rich:dataTable style="margin-left: auto; margin-right: auto;" keepSaved="false" id="richTable" var="company"
+									value="#{companySearchAction.dataModel}" rows="10">
+									<f:facet name="header">
+										<rich:columnGroup>
+											<h:column>
+												<h:outputText styleClass="headerText" value="#{labels.name}" />
+												<br />
+												<h:inputText value="#{companyDto.name}" />
+											</h:column>
+											<h:column>
+												<h:outputText styleClass="headerText"
+													value="#{labels.bulstat}" />
+												<br />
+												<h:inputText value="#{companyDto.bulstat}" />
+											</h:column>
+											<h:column>
+												<h:outputText styleClass="headerText"
+													value="#{labels.country}" />
+												<br />
+												<h:inputText value="#{companyDto.country}" />
+											</h:column>
+											<h:column>
+												<h:outputText styleClass="headerText" value="#{labels.city}" />
+												<br />
+												<h:inputText value="#{companyDto.city}" />
+											</h:column>
+											<h:column>
+												<h:outputText styleClass="headerText" value="Add/Remove" />
+											</h:column>
+											<h:column>
+												<h:commandButton
+													action="#{companySearchAction.search(companyDto)}"
+													value="#{labels.search}">
+													<a4j:ajax render="richTable" />
+												</h:commandButton>
+											</h:column>
+										</rich:columnGroup>
+									</f:facet>
+									<h:column>
+										<h:outputText value="#{company.name}" />
+									</h:column>
+									<h:column>
+										<h:outputText value="#{company.bulstat}" />
+									</h:column>
+									<h:column>
+										<h:outputText value="#{company.address.country}" />
+									</h:column>
+									<h:column>
+										<h:outputText value="#{company.address.city}" />
+									</h:column>
+									<h:column>
+										<h:commandLink action="#{userAction.addCompany(company)}" value="Add">
+											<a4j:ajax render="list" />
+										</h:commandLink>
+										<br/>
+										<h:commandLink action="#{userAction.removeCompany(company)}" value="Remove">
+											<a4j:ajax render="list" />
+										</h:commandLink>
+									</h:column>
+									<f:facet name="footer">
+										<rich:dataScroller id="scroller" />
+									</f:facet>
+								</rich:dataTable>
+							</a4j:region>
+					</rich:popupPanel>
 				</rich:tab>
 			</rich:tabPanel>
 			<h:commandButton action="#{userAction.register}"

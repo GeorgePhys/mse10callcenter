@@ -71,7 +71,7 @@
 					<div id="section-navigation">
 						<ul>
 							<li><h:outputLink>
-									<h:graphicImage class="icons" value="/images/icon1.JPG" />
+									<h:graphicImage class="icons" value="/images/icon1.JPG" rendered="#{baseAction.user == null}" />
 									<h:commandLink value="#{labels.registration}"
 										action="#{userAction.newRegistration}" rendered="#{baseAction.user == null}" />
 								</h:outputLink></li>

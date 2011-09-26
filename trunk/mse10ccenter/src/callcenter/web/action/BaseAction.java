@@ -1,12 +1,15 @@
 package callcenter.web.action;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import callcenter.entity.Entity;
+import callcenter.entity.clients.Role;
 import callcenter.entity.clients.User;
 
 @SessionScoped
@@ -14,6 +17,8 @@ import callcenter.entity.clients.User;
 public class BaseAction<E extends Entity> implements Serializable {
 
     private static final long serialVersionUID = 8997153037439218558L;
+
+    private Set<Integer> permissions = new HashSet<Integer>();
 
     private E targetEntity;
 
@@ -61,5 +66,30 @@ public class BaseAction<E extends Entity> implements Serializable {
     public void setUser(User user) {
 	FacesContext.getCurrentInstance().getExternalContext().getSessionMap()
 		.put("user", user);
+	permissions.clear();
+	// for (Privilege privilege : user.get) {
+	// initialize privileges list here!!! TODO:
+	// }
+
+    }
+
+    public boolean hasAdminRole() {
+	return getUser() != null && Role.ADMIN.equals(getUser().getRole());
+    }
+
+    public boolean hasUserRole() {
+	return getUser() != null && Role.USER.equals(getUser().getRole());
+    }
+
+    public boolean hasClientRole() {
+	return getUser() != null && Role.CLIENT.equals(getUser().getRole());
+    }
+
+    public boolean hasEmployeeRole() {
+	return getUser() != null && Role.EMPLOYEE.equals(getUser().getRole());
+    }
+
+    public boolean hasPermission(int permissionCode) {
+	return permissions.contains(permissionCode);
     }
 }
