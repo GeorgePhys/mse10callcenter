@@ -23,13 +23,22 @@ public class EqualPasswordValidator implements Validator {
 	String passwordValue = (String) password.getValue();
 	String confirmPassword = (String) value;
 
-	if (!StringUtils.isEmpty(passwordValue)
-		&& !passwordValue.equals(confirmPassword)) {
+	if (!StringUtils.isEmpty(passwordValue)) {
+	    if (passwordValue.length() < 6 || passwordValue.length() > 16
+		    || StringUtils.isEmpty(confirmPassword)
+		    || confirmPassword.length() < 6
+		    || confirmPassword.length() > 16) {
+		String message = "Passwords length must be between 6 and 16 characters long.";
+		throw new ValidatorException(new FacesMessage(
+			FacesMessage.SEVERITY_ERROR, message, message));
+	    }
+	    if (!passwordValue.equals(confirmPassword)) {
+		String message = "passwords don't match";
+		throw new ValidatorException(new FacesMessage(
+			FacesMessage.SEVERITY_ERROR, message, message));
+	    }
 	    ((HtmlInputSecret) component).setSubmittedValue("");
 	    ((HtmlInputSecret) password).setSubmittedValue("");
-	    String message = "passwords don't match";
-	    throw new ValidatorException(new FacesMessage(
-		    FacesMessage.SEVERITY_ERROR, message, message));
 	}
     }
 }
