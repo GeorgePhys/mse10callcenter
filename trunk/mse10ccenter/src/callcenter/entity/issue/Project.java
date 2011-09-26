@@ -13,6 +13,8 @@ import callcenter.service.project.ProjectServiceBean;
 @NamedQueries(value = { @NamedQuery(name = ProjectServiceBean.QUERY_ALL_PROJECT_NAMES_KEY, query = ProjectServiceBean.QUERY_ALL_PROJECT_NAMES) })
 public class Project extends callcenter.entity.Entity {
 
+    private static final long serialVersionUID = 1L;
+
     private String name;
 
     private String shortName;

@@ -13,7 +13,8 @@ import callcenter.web.action.BaseAction;
 
 @ViewScoped
 @ManagedBean(name = "projectCreateAction")
-public class ProjectCreateAction extends BaseAction implements Serializable {
+public class ProjectCreateAction extends BaseAction<Project> implements
+	Serializable {
 
     private static final long serialVersionUID = -5533722715840256982L;
 

@@ -38,9 +38,44 @@
                    								 X
                 							</h:outputLink>
 										</f:facet>
-										<p>You can also check and trigger events if the use clicks
-											outside of the panel.</p>
-										<p>In this example clicking outside closes the panel.</p>
+										<rich:dataTable keepSaved="true" id="richTable" var="project"
+				value="#{projectSearchAction.dataModel}" rows="10">
+				<f:facet name="header">
+					<rich:columnGroup>
+						<h:column>
+							<h:outputText styleClass="headerText" value="Project Name" />
+							<br />
+							<h:inputText value="#{projectDto.projectName}" />
+						</h:column>
+						<h:column>
+							<h:outputText styleClass="headerText" value="Project Short Name" />
+							<br />
+							<h:inputText value="#{projectDto.projectShortName}" />
+						</h:column>
+						<h:column>
+							<h:outputText styleClass="headerText" value="Description" />
+							<br />
+							<h:inputText value="#{projectDto.description}" />
+						</h:column>
+						<h:column>
+							<h:commandButton action="#{projectSearchAction.search(projectDto)}"
+								value="#{labels.search}" />
+						</h:column>
+					</rich:columnGroup>
+				</f:facet>
+				<h:column>
+					<h:commandLink action="#{projectSearchAction.previewSearchResult(project)}" value="#{project.name}" />
+				</h:column>
+				<h:column>
+					<h:commandLink action="#{projectSearchAction.previewSearchResult(project)}" value="#{project.shortName}" />
+				</h:column>
+				<h:column>
+					<h:commandLink action="#{projectSearchAction.previewSearchResult(project)}" value="#{project.description}" />
+				</h:column>
+				<f:facet name="footer">
+					<rich:dataScroller id="scroller" />
+				</f:facet>
+			</rich:dataTable>
 									</rich:popupPanel>
 
 									<h:outputText value="#{labels.titleIssue}:"
