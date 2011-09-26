@@ -27,7 +27,7 @@ public class EqualPasswordValidator implements Validator {
 	if (!StringUtils.isEmpty(passwordValue)
 		&& !passwordValue.equals(confirmPassword)) {
 	    ((HtmlInputSecret) component).setSubmittedValue("");
-	    ((HtmlInputText) password).setSubmittedValue("");
+	    ((HtmlInputSecret) password).setSubmittedValue("");
 	    String message = "passwords don't match";
 	    throw new ValidatorException(new FacesMessage(
 		    FacesMessage.SEVERITY_ERROR, message, message));
