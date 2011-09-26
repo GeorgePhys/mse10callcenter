@@ -69,7 +69,7 @@ public class LabelsCache {
      * @return the corresponding label or empty string if no label for that key
      *         exists.
      */
-    public String getLabelsEn(String key) {
+    public String getLabelEn(String key) {
 	String labels = labelsEn.get(key);
 	if (labels == null) {
 	    return "";
@@ -92,5 +92,13 @@ public class LabelsCache {
 	    return "";
 	}
 	return label;
+    }
+
+    public String getLabel(String localeCode, String labelKey) {
+	if ("bg_BG".equalsIgnoreCase(localeCode)) {
+	    return getLabelBg(labelKey);
+	} else {
+	    return getLabelEn(labelKey);
+	}
     }
 }
