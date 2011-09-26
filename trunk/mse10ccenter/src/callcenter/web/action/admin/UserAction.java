@@ -81,6 +81,7 @@ public class UserAction extends BaseAction<User> implements Serializable {
 	}
 	User user = userService.saveOrUpdate(getTargetEntity());
 	setTargetEntity(user);
+	setUser(user);
 	return "saveUserProfile";
     }
 
