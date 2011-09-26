@@ -4,14 +4,13 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.validator.ValidatorException;
 
 import callcenter.entity.issue.IssueDetail;
 import callcenter.service.administration.IssueServiceBean;
 import callcenter.service.project.ProjectServiceBean;
+import callcenter.util.MailSendAssignee;
 import callcenter.web.action.BaseAction;
 
 @SessionScoped
@@ -28,7 +27,7 @@ public class IssueCreateAction extends BaseAction<IssueDetail> implements
     private IssueServiceBean issueService;
 
     public String create() {
-
+	MailSendAssignee.sendCreateIssueMessage(getTargetEntity());
 	issueService.saveOrUpdate(getTargetEntity());
 	setReadonly(true);
 	return null;
@@ -51,6 +50,7 @@ public class IssueCreateAction extends BaseAction<IssueDetail> implements
     }
 
     public String createNewIssue() {
+
 	setReadonly(false);
 	setTargetEntity(new IssueDetail());
 	return "createNewIssue";
