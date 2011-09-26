@@ -31,7 +31,7 @@
 									<rich:popupPanel id="popup" modal="true" resizeable="true"
 										onmaskclick="#{rich:component('popup')}.hide()">
 										<f:facet name="header">
-											<h:outputText value="Simple popup panel" />
+											<h:outputText value="Избор на проект" />
 										</f:facet>
 										<f:facet name="controls">
 											<h:outputLink value="#" onclick="#{rich:component('popup')}.hide(); return false;">
@@ -52,11 +52,7 @@
 							<br />
 							<h:inputText value="#{projectDto.projectShortName}" />
 						</h:column>
-						<h:column>
-							<h:outputText styleClass="headerText" value="Description" />
-							<br />
-							<h:inputText value="#{projectDto.description}" />
-						</h:column>
+						
 						<h:column>
 							<h:commandButton action="#{projectSearchAction.search(projectDto)}"
 								value="#{labels.search}" />
@@ -69,9 +65,7 @@
 				<h:column>
 					<h:commandLink action="#{projectSearchAction.previewSearchResult(project)}" value="#{project.shortName}" />
 				</h:column>
-				<h:column>
-					<h:commandLink action="#{projectSearchAction.previewSearchResult(project)}" value="#{project.description}" />
-				</h:column>
+				
 				<f:facet name="footer">
 					<rich:dataScroller id="scroller" />
 				</f:facet>
