@@ -16,37 +16,16 @@
 			<rich:tabPanel switchType="client">
 				<rich:tab header="user">
 					<h:selectManyCheckbox value="#{createGroupAction.selected}">
-						
-							<f:selectItem itemLabel="India" itemValue="1" />
+						<f:selectItems value="#{createGroupAction.getPrivileges('user')}" var="p" itemLabel="#{createGroupAction.getLabel(p)}" itemValue="#{p.id}" />
 					</h:selectManyCheckbox>
-
-					
-
 				</rich:tab>
 				<rich:tab header="forum">
-
-					<h:selectManyCheckbox value="">
-
-
-
-					</h:selectManyCheckbox>
 
 				</rich:tab>
 				<rich:tab header="shop">
 
-					<h:selectManyCheckbox value="">
-
-
-					</h:selectManyCheckbox>
-
 				</rich:tab>
 				<rich:tab header="Issue">
-
-					<h:selectManyCheckbox value="">
-
-
-
-					</h:selectManyCheckbox>
 
 				</rich:tab>
 			</rich:tabPanel>
