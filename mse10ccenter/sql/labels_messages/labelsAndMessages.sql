@@ -144,3 +144,6 @@ insert into Value values (139, '2011-09-27', 'Добави Фирми', 'associa
 insert into Value values (140, '2011-09-27', 'Добави/Премахни', 'addRemove', 'Add/Remove', 1001);
 insert into Value values (141, '2011-09-27', 'Добави', 'add', 'Add', 1001);
 insert into Value values (142, '2011-09-27', 'Премахни', 'remove', 'Remove', 1001);
+insert into Value values (143, '2011-09-27', 'Контрол Панел', 'controlPanel', 'Control Panel', 1001);
+insert into Value values (144, '2011-09-27', 'Добавяне на софтуер', 'addSoftware', 'Add Software', 1001);
+insert into Value values (145, '2011-09-27', 'Добавяне на хардуер', 'addHardware', 'Add Hardware', 1001);
