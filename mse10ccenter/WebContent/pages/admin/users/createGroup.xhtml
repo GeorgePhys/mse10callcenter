@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/pages/templates/template.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<ui:define name="title">Group Privileges</ui:define>
+	<ui:define name="head">
+		<link rel="stylesheet" type="text/css"
+			href="#{facesContext.externalContext.requestContextPath}/css/admin.css" />
+	</ui:define>
+	<ui:define name="body">
+		<h:form id="groupPrivilges">
+			<rich:tabPanel switchType="client">
+				<rich:tab header="user">
+					<h:selectManyCheckbox value="#{createGroupAction.selected}">
+						
+							<f:selectItem itemLabel="India" itemValue="1" />
+					</h:selectManyCheckbox>
+
+					
+
+				</rich:tab>
+				<rich:tab header="forum">
+
+					<h:selectManyCheckbox value="">
+
+
+
+					</h:selectManyCheckbox>
+
+				</rich:tab>
+				<rich:tab header="shop">
+
+					<h:selectManyCheckbox value="">
+
+
+					</h:selectManyCheckbox>
+
+				</rich:tab>
+				<rich:tab header="Issue">
+
+					<h:selectManyCheckbox value="">
+
+
+
+					</h:selectManyCheckbox>
+
+				</rich:tab>
+			</rich:tabPanel>
+			<h:commandButton value="#{labelsBean.getLabel('save')}"
+				action="#{createGroupAction.saveGroup()}" />
+		</h:form>
+	</ui:define>
+</ui:composition>
