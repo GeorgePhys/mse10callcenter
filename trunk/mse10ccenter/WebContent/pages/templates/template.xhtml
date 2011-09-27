@@ -82,7 +82,7 @@
 								<li><h:outputLink>
 										<h:graphicImage class="icons" value="/images/icon1.JPG"
 											rendered="#{baseAction.user == null}" />
-										<h:commandLink value="#{labels.registration}"
+										<h:commandLink value="#{labels.registration}" rendered="#{baseAction.user == null}"
 											action="#{userAction.newRegistration}" />
 									</h:outputLink>
 								</li>
