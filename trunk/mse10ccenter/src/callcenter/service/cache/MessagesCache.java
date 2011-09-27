@@ -72,7 +72,7 @@ public class MessagesCache {
     public String getMessageEn(String key) {
 	String message = messagesEn.get(key);
 	if (message == null) {
-	    return "";
+	    return "!MISSING VALUE FOR KEY: " + key;
 	}
 	return message;
     }
@@ -89,7 +89,7 @@ public class MessagesCache {
     public String getMessageBg(String key) {
 	String message = messagesBg.get(key);
 	if (message == null) {
-	    return "";
+	    return "!MISSING VALUE FOR KEY: " + key;
 	}
 	return message;
     }

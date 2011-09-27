@@ -72,7 +72,7 @@ public class LabelsCache {
     public String getLabelEn(String key) {
 	String labels = labelsEn.get(key);
 	if (labels == null) {
-	    return "";
+	    return "!MISSING VALUE FOR KEY: " + key;
 	}
 	return labels;
     }
@@ -89,7 +89,7 @@ public class LabelsCache {
     public String getLabelBg(String key) {
 	String label = labelsBg.get(key);
 	if (label == null) {
-	    return "";
+	    return "!MISSING VALUE FOR KEY: " + key;
 	}
 	return label;
     }
