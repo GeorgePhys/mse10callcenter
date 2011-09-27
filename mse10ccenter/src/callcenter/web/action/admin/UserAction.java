@@ -23,104 +23,116 @@ import callcenter.web.action.BaseAction;
 @ManagedBean(name = "userAction")
 public class UserAction extends BaseAction<User> implements Serializable {
 
-    private static final long serialVersionUID = -5533722715840256982L;
+	private static final long serialVersionUID = -5533722715840256982L;
 
-    @EJB
-    private UserServiceBean userService;
+	@EJB
+	private UserServiceBean userService;
 
-    private String password;
+	private String password;
 
-    private String confirmPassword;
+	private String confirmPassword;
 
-    private Map<Long, Company> selectedCompanies = new HashMap<Long, Company>();
+	private Map<Long, Company> selectedCompanies = new HashMap<Long, Company>();
 
-    public List<Company> getCompanies() {
-	return new ArrayList<Company>(selectedCompanies.values());
-    }
-
-    public void addCompany(Company company) {
-	getSelectedCompanies().put(company.getId(), company);
-    }
-
-    public void removeCompany(Company company) {
-	getSelectedCompanies().remove(company.getId());
-    }
-
-    public Map<Long, Company> getSelectedCompanies() {
-	return selectedCompanies;
-    }
-
-    public String newRegistration() {
-	setTargetEntity(new User());
-	setPassword(null);
-	setConfirmPassword(null);
-	return "userRegistration";
-    }
-
-    public String register() throws Exception {
-	if (!StringUtils.isEmpty(password)) {
-	    getTargetEntity().setPassword(getPassword());
+	public List<Company> getCompanies() {
+		return new ArrayList<Company>(selectedCompanies.values());
 	}
-	getTargetEntity().getCompanies().addAll(getCompanies());
-	User registerUser = userService.registerUser(getTargetEntity());
-	setTargetEntity(registerUser);
-	return "successRegister";
-    }
 
-    public String loadProfile() {
-	setTargetEntity(getUser());
-	setPassword(null);
-	setConfirmPassword(null);
-	return "userProfile";
-    }
-
-    public String saveProfile() throws Exception {
-	if (!StringUtils.isEmpty(password)) {
-	    getTargetEntity().setPassword(
-		    PasswordHashUtil.getPasswordHash(password));
+	public void addCompany(Company company) {
+		getSelectedCompanies().put(company.getId(), company);
 	}
-	User user = userService.saveOrUpdate(getTargetEntity());
-	setTargetEntity(user);
-	setUser(user);
-	return "saveUserProfile";
-    }
 
-    public String[] getRoles() {
-	String[] roles = new String[Role.values().length];
-	int i = 0;
-	for (Role role : Role.values()) {
-	    roles[i++] = new String(role.getLabel());
+	public void removeCompany(Company company) {
+		getSelectedCompanies().remove(company.getId());
 	}
-	return roles;
-    }
 
-    /**
-     * @return the password
-     */
-    public String getPassword() {
-	return password;
-    }
+	public Map<Long, Company> getSelectedCompanies() {
+		return selectedCompanies;
+	}
 
-    /**
-     * @param password
-     *            the password to set
-     */
-    public void setPassword(String password) {
-	this.password = password;
-    }
+	public String newRegistration() {
+		setTargetEntity(new User());
+		setPassword(null);
+		setConfirmPassword(null);
+		return "userRegistration";
+	}
 
-    /**
-     * @return the confirmPassword
-     */
-    public String getConfirmPassword() {
-	return confirmPassword;
-    }
+	public String register() throws Exception {
+		if (!StringUtils.isEmpty(password)) {
+			getTargetEntity().setPassword(getPassword());
+		}
+		getTargetEntity().getCompanies().addAll(getCompanies());
+		User registerUser = userService.registerUser(getTargetEntity());
+		setTargetEntity(registerUser);
+		return "successRegister";
+	}
 
-    /**
-     * @param confirmPassword
-     *            the confirmPassword to set
-     */
-    public void setConfirmPassword(String confirmPassword) {
-	this.confirmPassword = confirmPassword;
-    }
+	public String loadProfile() {
+		setTargetEntity(getUser());
+		setPassword(null);
+		setConfirmPassword(null);
+		return "userProfile";
+	}
+
+	public String loadAdmin() {
+		return "controlPanel";
+	}
+
+	public String loadSoftware() {
+		return "addSoftware";
+	}
+
+	public String loadHardware() {
+		return "addHardware";
+	}
+
+	public String saveProfile() throws Exception {
+		if (!StringUtils.isEmpty(password)) {
+			getTargetEntity().setPassword(
+					PasswordHashUtil.getPasswordHash(password));
+		}
+		User user = userService.saveOrUpdate(getTargetEntity());
+		setTargetEntity(user);
+		setUser(user);
+		return "saveUserProfile";
+	}
+
+	public String[] getRoles() {
+		String[] roles = new String[Role.values().length];
+		int i = 0;
+		for (Role role : Role.values()) {
+			roles[i++] = new String(role.getLabel());
+		}
+		return roles;
+	}
+
+	/**
+	 * @return the password
+	 */
+	public String getPassword() {
+		return password;
+	}
+
+	/**
+	 * @param password
+	 *            the password to set
+	 */
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	/**
+	 * @return the confirmPassword
+	 */
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+	/**
+	 * @param confirmPassword
+	 *            the confirmPassword to set
+	 */
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
 }

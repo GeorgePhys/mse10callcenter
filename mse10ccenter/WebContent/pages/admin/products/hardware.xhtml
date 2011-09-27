@@ -7,7 +7,7 @@
 	xmlns:cc="http://mse10.net/ccenter"
 	xmlns:rich="http://richfaces.org/rich">
 
-	<ui:define name="title">Software Product</ui:define>
+	<ui:define name="title">Hardware Product</ui:define>
 	<ui:define name="head">
 		<link rel="stylesheet" type="text/css"
 			href="#{facesContext.externalContext.requestContextPath}/css/admin.css" />
@@ -15,26 +15,21 @@
 			href="#{facesContext.externalContext.requestContextPath}/css/common.css" />
 	</ui:define>
 	<ui:define name="body">
-		<h:form id="softwareRegistrationForm" method="post"
+		<h:form id="hardwareRegistrationForm" method="post"
 			enctype="multipart/form-data" style="FONT-FAMILY: 'Abyssinica SIL';">
 			<rich:tabPanel switchType="client">
 				<rich:tab header="General information">
 					<h:panelGrid columns="2">
 						<h:panelGrid columns="3">
 							<h:outputText value="#{labelsBean.getLabel('serialNumber')}" />
-							<h:inputText value="#{software.serialNumber}" required="true"
+							<h:inputText value="#{hardware.serialNumber}" required="true"
 								id="serialNumberId" />
 							<h:message for="serialNumberId" errorClass="error" />
 
 							<h:outputText value="#{labelsBean.getLabel('productName')}" />
-							<h:inputText value="#{software.productName}" required="true"
+							<h:inputText value="#{hardware.productName}" required="true"
 								id="productNameId" />
 							<h:message for="productNameId" errorClass="error" />
-
-							<h:outputText value="#{labelsBean.getLabel('version')}" />
-							<h:inputText value="#{software.version}" required="true"
-								id="versionId" />
-							<h:message for="versionId" errorClass="error" />
 
 							<h:outputText value="Picture" />
 							<cc:inputFile id="fileupload"
@@ -45,7 +40,7 @@
 							<h:outputText value="#{labelsBean.getLabel('description')}" />
 							<h:panelGrid columns="2">
 								<h:inputTextarea id="descriptionId"
-									value="#{software.description}" rows="6" cols="70"
+									value="#{hardware.description}" rows="6" cols="70"
 									required="true" />
 								<h:message for="descriptionId" errorClass="error" />
 							</h:panelGrid>

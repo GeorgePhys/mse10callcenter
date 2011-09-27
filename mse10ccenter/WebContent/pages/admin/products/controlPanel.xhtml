@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/pages/templates/template.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:cc="http://mse10.net/ccenter"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<ui:define name="title">Control Panel</ui:define>
+	<ui:define name="head">
+		<link rel="stylesheet" type="text/css"
+			href="#{facesContext.externalContext.requestContextPath}/css/admin.css" />
+		<link rel="stylesheet" type="text/css"
+			href="#{facesContext.externalContext.requestContextPath}/css/common.css" />
+	</ui:define>
+	<ui:define name="body">
+		<h:form id="controlPanel" method="post"
+			enctype="multipart/form-data" style="FONT-FAMILY: 'Abyssinica SIL';">
+			<li>
+				<h:commandButton action="#{userAction.loadHardware}"
+				value="#{labelsBean.getLabel('addHardware')}" />
+			</li>
+			<li>
+				<h:commandButton action="#{userAction.loadSoftware}"
+				value="#{labelsBean.getLabel('addSoftware')}" />
+			</li>
+		</h:form>
+	</ui:define>
+</ui:composition>
