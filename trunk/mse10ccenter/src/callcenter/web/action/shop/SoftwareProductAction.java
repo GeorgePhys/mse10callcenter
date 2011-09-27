@@ -1,6 +1,7 @@
 package callcenter.web.action.shop;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,7 +26,8 @@ public class SoftwareProductAction extends BaseAction implements Serializable {
     @EJB
     private SoftwareServiceBean service;
 
-    private ShoppingCartAction shoppingCart;
+    private List<Software> softwareItems = new ArrayList<Software>();
+    private List<Hardware> hardwareItems = new ArrayList<Hardware>();
     private List<Software> soft;
 
     private SoftwareDataModel dataModel;
@@ -92,7 +94,7 @@ public class SoftwareProductAction extends BaseAction implements Serializable {
     public double buy(Software software) {
 	if (!this.disable.containsKey(software.getProductName())) {
 	    // increase number of products that are buying
-	    this.shoppingCart.setSoftwareItems(software);
+	    addSoftwareItems(software);
 	    this.brItems++;
 	    this.amount = this.amount + software.getPrice();
 	    this.disable.put(software.getProductName(), Boolean.TRUE);
@@ -100,10 +102,14 @@ public class SoftwareProductAction extends BaseAction implements Serializable {
 	return this.amount;
     }
 
+    public String cartStatus() {
+	return "ShappingCart";
+    }
+
     public double buyHardware(Hardware hardware) {
 	if (!this.disable.containsKey(hardware.getProductName())) {
 	    // increase number of products that are buying
-	    this.shoppingCart.setHardwareItems(hardware);
+	    addHardwareItems(hardware);
 	    this.brItems++;
 	    this.amount = this.amount + hardware.getPrice();
 	    this.disable.put(hardware.getProductName(), Boolean.TRUE);
@@ -139,6 +145,22 @@ public class SoftwareProductAction extends BaseAction implements Serializable {
 
     public void setDisable(Map<String, Boolean> disable) {
 	this.disable = disable;
+    }
+
+    public List<Software> getSoftwareItems() {
+	return softwareItems;
+    }
+
+    public void addSoftwareItems(Software softwareItems) {
+	this.softwareItems.add(softwareItems);
+    }
+
+    public List<Hardware> getHardwareItems() {
+	return hardwareItems;
+    }
+
+    public void addHardwareItems(Hardware hardwareItems) {
+	this.hardwareItems.add(hardwareItems);
     }
 
 }

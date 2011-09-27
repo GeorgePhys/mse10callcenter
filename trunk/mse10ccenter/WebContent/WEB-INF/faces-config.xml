@@ -82,6 +82,13 @@
  <navigation-rule>
   <from-view-id>*</from-view-id>
   <navigation-case>
+   <from-outcome>ShappingCart</from-outcome>
+   <to-view-id>/pages/e_shop/cart.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>*</from-view-id>
+  <navigation-case>
    <from-outcome>AllSoftware</from-outcome>
    <to-view-id>/pages/e_shop/products.xhtml</to-view-id>
   </navigation-case>
