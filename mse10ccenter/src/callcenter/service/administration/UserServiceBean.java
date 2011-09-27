@@ -41,6 +41,9 @@ public class UserServiceBean extends BaseServiceBean<User, UserSearchDTO> {
     public static final String QUERY_USER_LOGIN_KEY = "QUERY_USER_LOGIN_KEY";
     public static final String QUERY_USER_LOGIN = "from User u where u.mail = :mail and u.password = :pass and u.confirmed = 1";
 
+    public static final String QUERY_USER_BY_EMAIL_KEY = "QUERY_USER_BY_EMAIL_KEY";
+    public static final String QUERY_USER_BY_EMAIL = "from User u where u.mail = :mail";
+
     @Override
     @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
     public List<User> search(UserSearchDTO args, boolean countOnly) {
@@ -178,5 +181,17 @@ public class UserServiceBean extends BaseServiceBean<User, UserSearchDTO> {
 	find.setConfirmed(Boolean.TRUE);
 	saveOrUpdate(find);
 	registrationTimer.cancelTimer(key.getId(), key.getUuid());
+    }
+
+    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+    public User getUserByEmail(String email) {
+	Query query = getEntityManager().createNamedQuery(
+		UserServiceBean.QUERY_USER_BY_EMAIL_KEY);
+	query.setParameter("mail", email);
+	List list = query.getResultList();
+	if (ObjectUtil.isValid(list)) {
+	    return (User) list.get(0);
+	}
+	return null;
     }
 }
