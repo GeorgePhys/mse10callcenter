@@ -51,8 +51,8 @@
 						<h:outputText value="#{labelsBean.getLabel('userType')}" />
 						<h:selectOneMenu value="#{userAction.targetEntity.userType}"
 							id="userType">
-							<f:selectItem id="typeUser" itemLabel="#{labels.user}" />
-							<f:selectItem id="typeCompany" itemLabel="#{labels.company}" />
+							<f:selectItem id="typeUser" itemLabel="#{labelsBean.getLabel('user')}" />
+							<f:selectItem id="typeCompany" itemLabel="#{labelsBean.getLabel('company')}" />
 						</h:selectOneMenu>
 
 						<h:message for="userType" />

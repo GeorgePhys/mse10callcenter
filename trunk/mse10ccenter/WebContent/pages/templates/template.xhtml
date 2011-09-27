@@ -61,6 +61,7 @@
 					</ul>
 					<div style="position: absolute; right: 0">
 						<ul>
+							<li><h:commandLink action="#{userAction.loadAdmin}" value="#{labelsBean.getLabel('controlPanel')}" rendered="#{loginAction.loggedIn}" /> </li>
 							<li><h:commandLink action="#{loginAction.initLogin}"
 									value="#{labels.login}" rendered="#{not loginAction.loggedIn}" />
 								<h:commandLink action="#{loginAction.logout}"

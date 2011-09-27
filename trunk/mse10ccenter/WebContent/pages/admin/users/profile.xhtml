@@ -14,19 +14,19 @@
 	<ui:define name="body">
 		<h:form id="userRegistrationForm">
 			<rich:tabPanel switchType="client">
-				<rich:tab header="#{labels.generalInformation}">
+				<rich:tab header="#{labelsBean.getLabel('generalInformation')}">
 					<h:panelGrid columns="3">
-						<h:outputText value="#{labels.email}" />
+						<h:outputText value="#{labelsBean.getLabel('email')}" />
 						<h:inputText value="#{userAction.targetEntity.mail}" required="true" id="mail" />
 						<h:message for="mail" />
 
-						<h:outputText value="#{labels.password}" />
+						<h:outputText value="#{labelsBean.getLabel('password')}" />
 						<h:inputSecret value="#{userAction.password}" 
 							id="password" binding="#{password}">
 						</h:inputSecret>
 						<h:message for="password" />
 
-						<h:outputText value="#{labels.password}" />
+						<h:outputText value="#{labelsBean.getLabel('password')}" />
 						<h:inputSecret value="#{userAction.confirmPassword}" 
 							id="confirmPassword">
 							<f:validator validatorId="equalPasswordsValidator"/>
@@ -34,47 +34,47 @@
 						</h:inputSecret>
 						<h:message for="confirmPassword" />
 
-						<h:outputText value="#{labels.fullName}" />
+						<h:outputText value="#{labelsBean.getLabel('fullName')}" />
 						<h:inputText value="#{userAction.targetEntity.fullName}" id="fullName"
 							required="true" />
 						<h:message for="fullName" />
 
-						<h:outputText value="#{labels.phone}" />
+						<h:outputText value="#{labelsBean.getLabel('phone')}" />
 						<h:inputText value="#{userAction.targetEntity.phone}" id="phone" />
 						<h:message for="phone" />
 
-						<h:outputText value="#{labels.userType}" />
+						<h:outputText value="#{labelsBean.getLabel('userType')}" />
 						<h:selectOneMenu value="#{userAction.targetEntity.userType}" id="userType">
-							<f:selectItem id="typeUser" itemLabel="#{labels.user}" />
-							<f:selectItem id="typeCompany" itemLabel="#{labels.company}" />
+							<f:selectItem id="typeUser" itemLabel="#{labelsBean.getLabel('user')}" />
+							<f:selectItem id="typeCompany" itemLabel="#{labelsBean.getLabel('company')}" />
 						</h:selectOneMenu>
 
 						<h:message for="userType" />
 					</h:panelGrid>
 				</rich:tab>
-				<rich:tab header="#{labels.address}">
+				<rich:tab header="#{labelsBean.getLabel('address')}">
 					<h:panelGrid columns="3">
-						<h:outputText value="#{labels.country}" />
+						<h:outputText value="#{labelsBean.getLabel('country')}" />
 						<h:inputText value="#{userAction.targetEntity.address.country}" required="true"
 							id="country" />
 						<h:message for="country" />
 
-						<h:outputText value="#{labels.municipality}" />
+						<h:outputText value="#{labelsBean.getLabel('municipality')}" />
 						<h:inputText value="#{userAction.targetEntity.address.municipality}" required="true"
 							id="municipality" />
 						<h:message for="municipality" />
 
-						<h:outputText value="#{labels.city}" />
+						<h:outputText value="#{labelsBean.getLabel('city')}" />
 						<h:inputText value="#{userAction.targetEntity.address.city}" required="true"
 							id="city" />
 						<h:message for="city" />
 
-						<h:outputText value="#{labels.street}" />
+						<h:outputText value="#{labelsBean.getLabel('street')}" />
 						<h:inputText value="#{userAction.targetEntity.address.street}" required="true"
 							id="street" />
 						<h:message for="street" />
 
-						<h:outputText value="#{labels.postCode}" />
+						<h:outputText value="#{labelsBean.getLabel('postCode')}" />
 						<h:inputText value="#{userAction.targetEntity.address.postCode}" required="true"
 							id="postCode" />
 						<h:message for="postCode" />
@@ -82,7 +82,7 @@
 				</rich:tab>
 			</rich:tabPanel>
 			<h:commandButton action="#{userAction.saveProfile}"
-				value="#{labels.save}" />
+				value="#{labelsBean.getLabel('save')}" />
 		</h:form>
 	</ui:define>
 </ui:composition>
