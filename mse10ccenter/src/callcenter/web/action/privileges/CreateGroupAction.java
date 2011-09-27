@@ -3,6 +3,7 @@
  */
 package callcenter.web.action.privileges;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -26,17 +27,19 @@ public class CreateGroupAction extends BaseAction<PrivilegesGroup> {
     @EJB
     private PrivilegesServiseBean privilegesServiseBean;
 
-    private int[] selected;
+    private List<String> selected;
 
     public List<Privilege> getPrivileges(String entityArea) {
-	return privilegesServiseBean.getPrivilegesByArea(entityArea);
+	List<Privilege> list = privilegesServiseBean
+		.getPrivilegesByArea(entityArea);
+	return list;
     }
 
-    public int[] getSelected() {
+    public List<String> getSelected() {
 	return selected;
     }
 
-    public void setSelected(int[] selected) {
+    public void setSelected(List<String> selected) {
 	this.selected = selected;
     }
 
@@ -58,8 +61,13 @@ public class CreateGroupAction extends BaseAction<PrivilegesGroup> {
 
     public void saveGroup() {
 	setReadonly(true);
-	for (int p : selected) {
-	    System.out.println(p);
+	List<Privilege> realPrevileges = new ArrayList<Privilege>();
+	for (String p : selected) {
+	    realPrevileges.add(privilegesServiseBean.find(Privilege.class,
+		    Long.valueOf(p)));
 	}
+	getTargetEntity().getPrivileges().clear();
+	getTargetEntity().getPrivileges().addAll(realPrevileges);
+	setTargetEntity(privilegesServiseBean.save(getTargetEntity()));
     }
 }
