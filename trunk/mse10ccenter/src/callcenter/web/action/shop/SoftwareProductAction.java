@@ -21,16 +21,13 @@ import callcenter.web.action.search.datamodel.JPADataModel;
 @ManagedBean(name = "softwareProducts")
 @SuppressWarnings("rawtypes")
 public class SoftwareProductAction extends BaseAction implements Serializable {
-    /**
-	 * 
-	 */
-    private static final long serialVersionUID = 1L;
 
     @EJB
     private SoftwareServiceBean service;
 
+    private ShoppingCartAction shoppingCart;
     private List<Software> soft;
-    private List<Software> specific;
+
     private SoftwareDataModel dataModel;
     private int brItems = 0;
     private double amount = 0.0;
@@ -95,6 +92,7 @@ public class SoftwareProductAction extends BaseAction implements Serializable {
     public double buy(Software software) {
 	if (!this.disable.containsKey(software.getProductName())) {
 	    // increase number of products that are buying
+	    this.shoppingCart.setSoftwareItems(software);
 	    this.brItems++;
 	    this.amount = this.amount + software.getPrice();
 	    this.disable.put(software.getProductName(), Boolean.TRUE);
@@ -105,6 +103,7 @@ public class SoftwareProductAction extends BaseAction implements Serializable {
     public double buyHardware(Hardware hardware) {
 	if (!this.disable.containsKey(hardware.getProductName())) {
 	    // increase number of products that are buying
+	    this.shoppingCart.setHardwareItems(hardware);
 	    this.brItems++;
 	    this.amount = this.amount + hardware.getPrice();
 	    this.disable.put(hardware.getProductName(), Boolean.TRUE);
@@ -132,14 +131,6 @@ public class SoftwareProductAction extends BaseAction implements Serializable {
 
     public void setAmount(double amount) {
 	this.amount = amount;
-    }
-
-    public List<Software> getSpecific() {
-	return specific;
-    }
-
-    public void setSpecific(List<Software> specific) {
-	this.specific = specific;
     }
 
     public Map<String, Boolean> getDisable() {
