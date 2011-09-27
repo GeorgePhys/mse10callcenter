@@ -18,7 +18,8 @@ import callcenter.service.administration.UserServiceBean;
 @Entity
 @NamedQueries(value = {
 	@NamedQuery(name = UserServiceBean.QUERY_EMAIL_EXISTS_KEY, query = UserServiceBean.QUERY_EMAIL_EXISTS),
-	@NamedQuery(name = UserServiceBean.QUERY_USER_LOGIN_KEY, query = UserServiceBean.QUERY_USER_LOGIN) })
+	@NamedQuery(name = UserServiceBean.QUERY_USER_LOGIN_KEY, query = UserServiceBean.QUERY_USER_LOGIN),
+	@NamedQuery(name = UserServiceBean.QUERY_USER_BY_EMAIL_KEY, query = UserServiceBean.QUERY_USER_BY_EMAIL) })
 public class User extends callcenter.entity.Entity implements Serializable {
 
     private Role role = Role.USER;
