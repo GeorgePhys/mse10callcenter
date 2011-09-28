@@ -29,6 +29,18 @@ public class CreateGroupAction extends BaseAction<PrivilegesGroup> {
 
     private List<String> selected;
 
+    public String getGroupName() {
+	return groupName;
+    }
+
+    public String getGroupDescription() {
+	return groupDescription;
+    }
+
+    private String groupName;
+
+    private String groupDescription;
+
     public List<Privilege> getPrivileges(String entityArea) {
 	List<Privilege> list = privilegesServiseBean
 		.getPrivilegesByArea(entityArea);
@@ -41,6 +53,14 @@ public class CreateGroupAction extends BaseAction<PrivilegesGroup> {
 
     public void setSelected(List<String> selected) {
 	this.selected = selected;
+    }
+
+    public void setGroupName(String groupName) {
+	this.groupName = groupName;
+    }
+
+    public void setGroupDescription(String description) {
+	this.groupDescription = description;
     }
 
     public String getLabel(Privilege privilege) {
@@ -66,8 +86,14 @@ public class CreateGroupAction extends BaseAction<PrivilegesGroup> {
 	    realPrevileges.add(privilegesServiseBean.find(Privilege.class,
 		    Long.valueOf(p)));
 	}
+
 	getTargetEntity().getPrivileges().clear();
 	getTargetEntity().getPrivileges().addAll(realPrevileges);
+
+	getTargetEntity().setName(groupName);
+	getTargetEntity().setDescription(groupDescription);
+
 	setTargetEntity(privilegesServiseBean.save(getTargetEntity()));
     }
+
 }
