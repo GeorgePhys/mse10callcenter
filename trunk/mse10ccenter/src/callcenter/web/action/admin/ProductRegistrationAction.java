@@ -12,19 +12,19 @@ import callcenter.web.action.BaseAction;
 @ManagedBean(name = "productRegistrationAction")
 public class ProductRegistrationAction extends BaseAction<Product> {
 
-    @EJB
-    private ProductServiceBean service;
+	@EJB
+	private ProductServiceBean service;
 
-    public String init() {
-	setTargetEntity(new Product());
-	setReadonly(false);
-	return "createProduct";
-    }
+	public String init() {
+		setTargetEntity(new Product());
+		setReadonly(false);
+		return "createProduct";
+	}
 
-    public String register() {
-	Product product = service.saveOrUpdate(getTargetEntity());
-	setTargetEntity(product);
-	setReadonly(true);
-	return null;
-    }
+	public String register() {
+		Product product = service.saveOrUpdate(getTargetEntity());
+		setTargetEntity(product);
+		setReadonly(true);
+		return null;
+	}
 }

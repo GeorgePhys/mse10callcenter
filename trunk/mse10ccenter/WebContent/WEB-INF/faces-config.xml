@@ -38,11 +38,11 @@
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
- 	<from-view-id>*</from-view-id>
- 	<navigation-case>
- 	<from-outcome>createGroup</from-outcome>
- 	<to-view-id>/pages/admin/users/createGroup.xhtml</to-view-id>
- 	</navigation-case>
+  <from-view-id>*</from-view-id>
+  <navigation-case>
+   <from-outcome>createGroup</from-outcome>
+   <to-view-id>/pages/admin/users/createGroup.xhtml</to-view-id>
+  </navigation-case>
  </navigation-rule>
  <navigation-rule>
   <from-view-id>*</from-view-id>
@@ -117,21 +117,7 @@
  <navigation-rule>
   <from-view-id>*</from-view-id>
   <navigation-case>
-   <from-outcome>controlPanel</from-outcome>
-   <to-view-id>/pages/admin/products/controlPanel.xhtml</to-view-id>
-  </navigation-case>
- </navigation-rule>
- <navigation-rule>
-  <from-view-id>*</from-view-id>
-  <navigation-case>
-   <from-outcome>addHardware</from-outcome>
-   <to-view-id>/pages/admin/products/hardware.xhtml</to-view-id>
-  </navigation-case>
- </navigation-rule>
- <navigation-rule>
-  <from-view-id>*</from-view-id>
-  <navigation-case>
-   <from-outcome>addSoftware</from-outcome>
+   <from-outcome>createProduct</from-outcome>
    <to-view-id>/pages/admin/products/software.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>

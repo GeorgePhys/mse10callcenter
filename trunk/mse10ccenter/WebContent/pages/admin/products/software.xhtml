@@ -7,7 +7,7 @@
 	xmlns:cc="http://mse10.net/ccenter"
 	xmlns:rich="http://richfaces.org/rich">
 
-	<ui:define name="title">Software Product</ui:define>
+	<ui:define name="title">Products</ui:define>
 	<ui:define name="head">
 		<link rel="stylesheet" type="text/css"
 			href="#{facesContext.externalContext.requestContextPath}/css/admin.css" />
@@ -15,10 +15,13 @@
 			href="#{facesContext.externalContext.requestContextPath}/css/common.css" />
 	</ui:define>
 	<ui:define name="body">
-		<h:form id="softwareRegistrationForm" method="post"
-			enctype="multipart/form-data" style="FONT-FAMILY: 'Abyssinica SIL';">
+		<h:form id="softandhardRegistrationForm" method="post" style="FONT-FAMILY: 'Abyssinica SIL';">
 			<rich:tabPanel switchType="client">
 				<rich:tab header="General information">
+				<h:selectManyMenu id="Products" multiple="true" onchange ="this.form.load();" title="Select Products">
+  <f:selectItem id="si1" itemLabel="Hardware" itemValue="1" />
+  <f:selectItem id="si2" itemLabel="Software" itemValue="2" />
+</h:selectManyMenu>
 					<h:panelGrid columns="2">
 						<h:panelGrid columns="3">
 							<h:outputText value="#{labelsBean.getLabel('serialNumber')}" />
@@ -38,7 +41,7 @@
 
 							<h:outputText value="Picture" />
 							<cc:inputFile id="fileupload"
-								value="#{productRegistrationAction.file}" />
+								value="#{productRegistrationAction}" />
 							<h:message for="fileupload" errorClass="error" />
 						</h:panelGrid>
 						<h:panelGrid columns="1">
