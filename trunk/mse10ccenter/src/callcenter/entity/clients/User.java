@@ -10,9 +10,11 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import callcenter.entity.Address;
+import callcenter.entity.order.Order;
 import callcenter.service.administration.UserServiceBean;
 
 @Entity
@@ -47,6 +49,9 @@ public class User extends callcenter.entity.Entity implements Serializable {
 
     @Column(columnDefinition = "Boolean")
     private Boolean confirmed;
+
+    @OneToMany(mappedBy = "user")
+    List<Order> order;
 
     private Boolean deleted;
 
@@ -156,5 +161,13 @@ public class User extends callcenter.entity.Entity implements Serializable {
      */
     public void setDeleted(Boolean deleted) {
 	this.deleted = deleted;
+    }
+
+    public List<Order> getOrder() {
+	return order;
+    }
+
+    public void setOrder(List<Order> order) {
+	this.order = order;
     }
 }
