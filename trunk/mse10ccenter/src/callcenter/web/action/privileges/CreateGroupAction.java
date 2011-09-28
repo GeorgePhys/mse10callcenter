@@ -8,7 +8,7 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import callcenter.entity.privileges.Privilege;
@@ -21,7 +21,7 @@ import callcenter.web.action.BaseAction;
  * 
  */
 @ManagedBean(name = "createGroupAction")
-@SessionScoped
+@ViewScoped
 public class CreateGroupAction extends BaseAction<PrivilegesGroup> {
 
     @EJB
@@ -52,7 +52,14 @@ public class CreateGroupAction extends BaseAction<PrivilegesGroup> {
     }
 
     public void setSelected(List<String> selected) {
-	this.selected = selected;
+	if (this.selected != null) {
+	    for (String string : selected) {
+		this.selected.add(string);
+	    }
+	} else {
+	    this.selected = selected;
+
+	}
     }
 
     public void setGroupName(String groupName) {
@@ -76,6 +83,12 @@ public class CreateGroupAction extends BaseAction<PrivilegesGroup> {
     public String init() {
 	setTargetEntity(new PrivilegesGroup());
 	setReadonly(false);
+	return "createGroup";
+    }
+
+    public String perview(PrivilegesGroup pg) {
+	setTargetEntity(pg);
+	setReadonly(true);
 	return "createGroup";
     }
 
