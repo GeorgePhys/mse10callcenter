@@ -4,8 +4,15 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+
+import callcenter.service.administration.ProductServiceBean;
 
 @Entity
+@NamedQueries(value = {
+	@NamedQuery(name = ProductServiceBean.QUERY_ALL_SOFTWARE_KEY, query = ProductServiceBean.QUERY_ALL_SOFTWARE),
+	@NamedQuery(name = ProductServiceBean.QUERY_ALL_HARDWARE_KEY, query = ProductServiceBean.QUERY_ALL_HARDWARE) })
 public class Product extends callcenter.entity.Entity implements Serializable {
 
     public enum ProductType {
