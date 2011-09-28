@@ -25,8 +25,7 @@ public class SoftwareProductAction extends BaseAction implements Serializable {
     @EJB
     private ProductServiceBean service;
 
-    private List<Product> softwareItems = new ArrayList<Product>();
-    private List<Product> hardwareItems = new ArrayList<Product>();
+    private List<Product> productItems = new ArrayList<Product>();
     private List<Product> soft;
 
     private SoftwareDataModel dataModel;
@@ -93,7 +92,7 @@ public class SoftwareProductAction extends BaseAction implements Serializable {
     public double buy(Product software) {
 	if (!this.disable.containsKey(software.getProductName())) {
 	    // increase number of products that are buying
-	    addSoftwareItems(software);
+	    addProductItems(software);
 	    this.brItems++;
 	    this.amount = this.amount + software.getPrice();
 	    this.disable.put(software.getProductName(), Boolean.TRUE);
@@ -105,10 +104,17 @@ public class SoftwareProductAction extends BaseAction implements Serializable {
 	return "ShappingCart";
     }
 
+    public String checkProductType(Product product) {
+	if (product.getType().name() == "SOFTWARE") {
+	    return "Software";
+	}
+	return "Hardware";
+    }
+
     public double buyHardware(Product hardware) {
 	if (!this.disable.containsKey(hardware.getProductName())) {
 	    // increase number of products that are buying
-	    addHardwareItems(hardware);
+	    addProductItems(hardware);
 	    this.brItems++;
 	    this.amount = this.amount + hardware.getPrice();
 	    this.disable.put(hardware.getProductName(), Boolean.TRUE);
@@ -146,20 +152,12 @@ public class SoftwareProductAction extends BaseAction implements Serializable {
 	this.disable = disable;
     }
 
-    public List<Product> getSoftwareItems() {
-	return softwareItems;
+    public List<Product> getProductItems() {
+	return productItems;
     }
 
-    public void addSoftwareItems(Product softwareItems) {
-	this.softwareItems.add(softwareItems);
-    }
-
-    public List<Product> getHardwareItems() {
-	return hardwareItems;
-    }
-
-    public void addHardwareItems(Product hardwareItems) {
-	this.hardwareItems.add(hardwareItems);
+    public void addProductItems(Product productItems) {
+	this.productItems.add(productItems);
     }
 
 }

@@ -129,4 +129,9 @@ public class HardwareProductAction extends BaseAction implements Serializable {
 	this.hardware = hardware;
     }
 
+    public List<Product> getHardware() {
+	this.hardware = service.getAllHardware();
+	return hardware;
+    }
+
 }
