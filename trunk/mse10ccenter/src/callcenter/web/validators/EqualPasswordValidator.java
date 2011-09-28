@@ -24,10 +24,10 @@ public class EqualPasswordValidator implements Validator {
 	String confirmPassword = (String) value;
 
 	if (!StringUtils.isEmpty(passwordValue)) {
-	    if (passwordValue.length() < 6 || passwordValue.length() > 16
+	    if (passwordValue.length() < 6 || passwordValue.length() > 20
 		    || StringUtils.isEmpty(confirmPassword)
 		    || confirmPassword.length() < 6
-		    || confirmPassword.length() > 16) {
+		    || confirmPassword.length() > 20) {
 		String message = "Passwords length must be between 6 and 16 characters long.";
 		throw new ValidatorException(new FacesMessage(
 			FacesMessage.SEVERITY_ERROR, message, message));
