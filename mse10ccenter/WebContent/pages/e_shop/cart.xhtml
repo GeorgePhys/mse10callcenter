@@ -14,10 +14,11 @@
 		<h:outputText style="font-size:23px; " value="Cart Content" />
 		<br />
 		<br />
-
+	<h:form>
 		<rich:dataTable value="#{softwareProducts.productItems}"
 			style="text-align:center; width:100%;" columnClasses="d" var="product"
 			rows="10">
+			
 			<f:facet name="header">
 				<rich:columnGroup>
 					<h:column>
@@ -32,6 +33,9 @@
 					<h:column>
 						<h:outputText value="Price" />
 					</h:column>
+							<h:column>
+						<h:outputText value="Value" />
+					</h:column>
 					<h:column>
 						<h:outputText value="Operation" />
 					</h:column>
@@ -44,16 +48,20 @@
 				<h:outputText value="#{softwareProducts.checkProductType(product)}" />
 			</h:column>
 			<h:column>
-				<h:inputText value="1" size="2" />
+				<h:outputText value="#{softwareProducts.checkProductNum(product)}" size="2" />
 			</h:column>
 			<h:column>
 				<h:outputText value="#{product.price}" />
 			</h:column>
-			<h:column>
-				<h:commandButton value="Remove" />
+				<h:column>
+				<h:outputText value="#{softwareProducts.sumPrice(product)}" />
 			</h:column>
+			<h:column>
+				<h:commandButton value="Remove" action="#{softwareProducts.removeProduct(product)}" />
+			</h:column>
+			
 		</rich:dataTable>
-		
+		</h:form>
 
 
 		<h:panelGrid columns="4"
@@ -62,15 +70,16 @@
 				<h:outputText style="margin-left:-10px;" value="Total" />
 			</h:column>
 			<h:column>
-				<h:outputText style="padding-left:50px;" value="1" />
+				<h:outputText style="padding-left:50px;" value="#{softwareProducts.brItems}" />
 			</h:column>
 			<h:column>
-				<h:outputText style="margin-left:-30px;" value="15 BGN" />
+				<h:outputText style="margin-left:-30px;" value="#{softwareProducts.amount} BGN" />
 			</h:column>
 			<h:column>
 				<h:commandButton value="Buy" />
 			</h:column>
 		</h:panelGrid>
+		
 	</ui:define>
 
 </ui:composition>
