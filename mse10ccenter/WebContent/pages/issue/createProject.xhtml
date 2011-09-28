@@ -59,11 +59,11 @@
 				</rich:panel>
 				<h:commandButton action="#{projectCreateAction.createProject()}"
 					value="#{labels.save}" style="margin-left: 400px; width : 85px;" 
-					rendered="#{not projectCreateAction.readonly}" />
+					disabled="#{projectCreateAction.readonly}" />
 				<h:commandButton
 					action="#{projectCreateAction.editProject()}"
 					value="#{labels.edit}" style="margin-left: 15px; width : 90px;"
-					rendered="#{projectCreateAction.readonly}" />
+					disabled="#{not projectCreateAction.readonly}" />
 			</h:form>
 		</div>
 	</ui:define>
