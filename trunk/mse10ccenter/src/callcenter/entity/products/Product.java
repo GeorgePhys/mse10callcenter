@@ -1,10 +1,12 @@
 package callcenter.entity.products;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
+import javax.persistence.Entity;
 
-import callcenter.entity.Entity;
-
-public class Product extends Entity {
+@Entity
+public class Product extends callcenter.entity.Entity implements Serializable {
 
     public enum ProductType {
 	SOFTWARE, HARDWARE;
