@@ -22,7 +22,7 @@ public class BaseAction<E extends Entity> implements Serializable {
 
     private E targetEntity;
 
-    private boolean readonly;
+    private boolean readonly = true;
 
     /**
      * @return the readonly

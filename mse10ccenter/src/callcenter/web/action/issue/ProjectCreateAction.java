@@ -27,6 +27,12 @@ public class ProjectCreateAction extends BaseAction<Project> implements
     @EJB
     private ProjectServiceBean projectService;
 
+    public String preview(Project project) {
+	setTargetEntity(project);
+	setReadonly(true);
+	return "createNewProject";
+    }
+
     /**
      * Initializes project create action by setting new empty instance of
      * {@link Project} as the target entity then return navigation string for
