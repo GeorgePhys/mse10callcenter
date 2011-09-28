@@ -37,38 +37,37 @@
 					<ul>
 						<li><h:outputLink
 								value="#{facesContext.externalContext.requestContextPath}/pages/home.jsf">
-								<h:outputText value="#{labels.home}" />
+								<h:outputText value="#{labelsBean.getLabel('home')}" />
 							</h:outputLink>
 						</li>
 						<li><h:outputLink
 								value="#{facesContext.externalContext.requestContextPath}/pages/forum/thread.jsf">
-								<h:outputText value="#{labels.forum}" />
+								<h:outputText value="#{labelsBean.getLabel('forum')}" />
 							</h:outputLink>
 						</li>
-						<li><h:commandLink value="#{labels.FAQ}"
+						<li><h:commandLink value="#{labelsBean.getLabel('FAQ')}"
 								action="#{faqAction.loadAndNavigateToFAQ}" />
 						</li>
 						<li><h:outputLink
 								value="#{facesContext.externalContext.requestContextPath}/pages/e_shop/products.jsf">
-								<h:outputText value="#{labels.shop}" />
+								<h:outputText value="#{labelsBean.getLabel('shop')}" />
 							</h:outputLink>
 						</li>
 						<li><h:outputLink
 								value="#{facesContext.externalContext.requestContextPath}/pages/contactUs.jsf">
-								<h:outputText value="#{labels.contactUs}" />
+								<h:outputText value="#{labelsBean.getLabel('contactUs')}" />
 							</h:outputLink>
 						</li>
 					</ul>
 					<div style="position: absolute; right: 0">
 						<ul>
-							<li><h:commandLink action="#{userAction.loadAdmin}" value="#{labelsBean.getLabel('controlPanel')}" rendered="#{loginAction.loggedIn}" /> </li>
 							<li><h:commandLink action="#{loginAction.initLogin}"
-									value="#{labels.login}" rendered="#{not loginAction.loggedIn}" />
+									value="#{labelsBean.getLabel('login')}" rendered="#{not loginAction.loggedIn}" />
 								<h:commandLink action="#{loginAction.logout}"
-									value="#{labels.logout}" rendered="#{loginAction.loggedIn}" />
+									value="#{labelsBean.getLabel('logout')}" rendered="#{loginAction.loggedIn}" />
 							</li>
 							<li><h:commandLink action="#{userAction.loadProfile}"
-									value="#{labels.profile}" rendered="#{loginAction.loggedIn}" />
+									value="#{labelsBean.getLabel('profile')}" rendered="#{loginAction.loggedIn}" />
 							</li>
 						</ul>
 					</div>
@@ -82,49 +81,49 @@
 								<li><h:outputLink>
 										<h:graphicImage class="icons" value="/images/icon1.JPG"
 											rendered="#{baseAction.user == null}" />
-										<h:commandLink value="#{labels.registration}" rendered="#{baseAction.user == null}"
+										<h:commandLink value="#{labelsBean.getLabel('registration')}" rendered="#{baseAction.user == null}"
 											action="#{userAction.newRegistration}" />
 									</h:outputLink>
 								</li>
 								<li><h:outputLink>
 										<h:graphicImage class="icons" value="/images/project.JPG" />
-										<h:commandLink value="#{labels.projectCreate}"
+										<h:commandLink value="#{labelsBean.getLabel('projectCreate')}"
 											action="#{projectCreateAction.createNewProject}" />
 									</h:outputLink>
 								</li>
 								<li><h:outputLink>
 										<h:graphicImage class="icons" value="/images/projectSearch.JPG" />
-										<h:commandLink value="Project Search"
+										<h:commandLink value="{labelsBean.getLabel('projectSearch')}"
 											action="#{projectSearchAction.startSearch}" />
 									</h:outputLink>
 								</li>
 								<li><h:outputLink>
 										<h:graphicImage class="icons" value="/images/icon2.jpg" />
-										<h:commandLink value="#{labels.issueCreate}"
+										<h:commandLink value="#{labelsBean.getLabel('issueCreate')}"
 											action="#{issueCreateAction.createNewIssue}" />
 									</h:outputLink>
 								</li>
 								<li><h:outputLink>
 										<h:graphicImage class="icons" value="/images/icon3.JPG" />
 										<h:commandLink action="#{issueSearchAction.startSearch}"
-											value="#{labels.issueSearch}" />
+											value="#{labelsBean.getLabel('issueSearch')}" />
 									</h:outputLink></li>
 								<li><h:outputLink
 										value="/mse10ccenter/pages/issue/reportIssue.jsf">
 										<h:graphicImage class="icons" value="/images/icon4.JPG" />
-										<h:outputText value="#{labels.issueReport}" />
+										<h:outputText value="#{labelsBean.getLabel('issueReport')}" />
 									</h:outputLink>
 								</li>
 								
 								<li><h:graphicImage class="icons" value="/images/icon5.JPG" />
 									<h:commandLink action="#{softwareProducts.allSoftware}"
-										value="#{labels.products}" />
+										value="#{labelsBean.getLabel('products')}" />
 								</li>
 								<li><h:graphicImage class="icons" value="/images/shoppingChart2.JPG" />
 									<h:commandLink action="#{softwareProducts.cartStatus}"
-										value="#{labels.shoppingCart}" />
+										value="#{labelsBean.getLabel('shoppingCart')}" />
 								</li>
-								
+								<li><h:commandLink action="#{productRegistrationAction.init}" value="#{labelsBean.getLabel('addProducts')}" rendered="#{baseAction.hasAdminRole()}" /> </li>
 
 							</ul>
 							<div id="info"></div>
