@@ -4,11 +4,11 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import callcenter.dto.BaseDTO;
-import callcenter.entity.products.Hardware;
+import callcenter.entity.products.Product;
 
 @ManagedBean(name = "hardwareDto")
 @ViewScoped
-public class HardwareDTO extends BaseDTO<Hardware> {
+public class ProductDTO extends BaseDTO<Product> {
 
     private static final long serialVersionUID = 1L;
 

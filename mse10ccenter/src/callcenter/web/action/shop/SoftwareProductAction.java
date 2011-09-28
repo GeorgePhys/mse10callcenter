@@ -11,9 +11,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import callcenter.dto.BaseDTO;
-import callcenter.entity.products.Hardware;
-import callcenter.entity.products.Software;
-import callcenter.service.administration.SoftwareServiceBean;
+import callcenter.entity.products.Product;
+import callcenter.service.administration.ProductServiceBean;
 import callcenter.service.base.BaseServiceBean;
 import callcenter.web.action.BaseAction;
 import callcenter.web.action.search.datamodel.JPADataModel;
@@ -24,25 +23,25 @@ import callcenter.web.action.search.datamodel.JPADataModel;
 public class SoftwareProductAction extends BaseAction implements Serializable {
 
     @EJB
-    private SoftwareServiceBean service;
+    private ProductServiceBean service;
 
-    private List<Software> softwareItems = new ArrayList<Software>();
-    private List<Hardware> hardwareItems = new ArrayList<Hardware>();
-    private List<Software> soft;
+    private List<Product> softwareItems = new ArrayList<Product>();
+    private List<Product> hardwareItems = new ArrayList<Product>();
+    private List<Product> soft;
 
     private SoftwareDataModel dataModel;
     private int brItems = 0;
     private double amount = 0.0;
     private Map<String, Boolean> disable = new HashMap<String, Boolean>();
 
-    private static final class SoftwareDataModel extends JPADataModel<Software> {
+    private static final class SoftwareDataModel extends JPADataModel<Product> {
 
 	private SoftwareDataModel(BaseServiceBean service, BaseDTO dto) {
-	    super(service, dto, Software.class);
+	    super(service, dto, Product.class);
 	}
 
 	@Override
-	protected Object getId(Software t) {
+	protected Object getId(Product t) {
 	    return t.getId();
 	}
     }
@@ -53,7 +52,7 @@ public class SoftwareProductAction extends BaseAction implements Serializable {
      * @return
      */
     @SuppressWarnings("unchecked")
-    public String openSlectedProduct(Software s) {
+    public String openSlectedProduct(Product s) {
 	setTargetEntity(s);
 
 	return "reviewSoftwareProduct";
@@ -67,8 +66,8 @@ public class SoftwareProductAction extends BaseAction implements Serializable {
 	this.dataModel = dataModel;
     }
 
-    public List<Software> getSoft() {
-	soft = service.listAllProjectNames();
+    public List<Product> getSoft() {
+	soft = service.getAllSoftware();
 	return soft;
     }
 
@@ -78,11 +77,11 @@ public class SoftwareProductAction extends BaseAction implements Serializable {
      * @return key for walk index - > products
      */
     public String allSoftware() {
-	this.soft = service.listAllProjectNames();
+	this.soft = service.getAllSoftware();
 	return "AllSoftware";
     }
 
-    public void setSoft(List<Software> soft) {
+    public void setSoft(List<Product> soft) {
 	this.soft = soft;
     }
 
@@ -91,7 +90,7 @@ public class SoftwareProductAction extends BaseAction implements Serializable {
      * @param software
      * @return
      */
-    public double buy(Software software) {
+    public double buy(Product software) {
 	if (!this.disable.containsKey(software.getProductName())) {
 	    // increase number of products that are buying
 	    addSoftwareItems(software);
@@ -106,7 +105,7 @@ public class SoftwareProductAction extends BaseAction implements Serializable {
 	return "ShappingCart";
     }
 
-    public double buyHardware(Hardware hardware) {
+    public double buyHardware(Product hardware) {
 	if (!this.disable.containsKey(hardware.getProductName())) {
 	    // increase number of products that are buying
 	    addHardwareItems(hardware);
@@ -147,19 +146,19 @@ public class SoftwareProductAction extends BaseAction implements Serializable {
 	this.disable = disable;
     }
 
-    public List<Software> getSoftwareItems() {
+    public List<Product> getSoftwareItems() {
 	return softwareItems;
     }
 
-    public void addSoftwareItems(Software softwareItems) {
+    public void addSoftwareItems(Product softwareItems) {
 	this.softwareItems.add(softwareItems);
     }
 
-    public List<Hardware> getHardwareItems() {
+    public List<Product> getHardwareItems() {
 	return hardwareItems;
     }
 
-    public void addHardwareItems(Hardware hardwareItems) {
+    public void addHardwareItems(Product hardwareItems) {
 	this.hardwareItems.add(hardwareItems);
     }
 
