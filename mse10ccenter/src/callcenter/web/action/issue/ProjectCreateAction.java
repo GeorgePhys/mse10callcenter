@@ -36,6 +36,7 @@ public class ProjectCreateAction extends BaseAction<Project> implements
      */
     public String createNewProject() {
 	setTargetEntity(new Project());
+	setReadonly(false);
 	return "createNewProject";
     }
 
