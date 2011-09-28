@@ -63,7 +63,7 @@
 		</rich:dataTable>
 		</h:form>
 
-
+		<form>
 		<h:panelGrid columns="4"
 			style="margin-top:20px; border-top:1px solid black;text-align:right; width:100%; font-weight:bold;">
 			<h:column>
@@ -76,10 +76,10 @@
 				<h:outputText style="margin-left:-30px;" value="#{softwareProducts.amount} BGN" />
 			</h:column>
 			<h:column>
-				<h:commandButton value="Buy" />
+				<h:commandButton value="Buy" action="#{softwareProducts.order()}" />
 			</h:column>
 		</h:panelGrid>
-		
+		</form>
 	</ui:define>
 
 </ui:composition>
