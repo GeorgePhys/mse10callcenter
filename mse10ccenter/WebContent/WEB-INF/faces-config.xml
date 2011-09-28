@@ -54,6 +54,13 @@
 	<navigation-rule>
 		<from-view-id>*</from-view-id>
 		<navigation-case>
+			<from-outcome>groupSearch</from-outcome>
+			<to-view-id>/pages/admin/users/searchGroup.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
 			<from-outcome>createNewIssue</from-outcome>
 			<to-view-id>/pages/issue/createIssue.xhtml</to-view-id>
 		</navigation-case>
