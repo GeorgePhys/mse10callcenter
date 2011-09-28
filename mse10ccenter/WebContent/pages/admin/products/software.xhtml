@@ -15,29 +15,29 @@
 			href="#{facesContext.externalContext.requestContextPath}/css/common.css" />
 	</ui:define>
 	<ui:define name="body">
-		<h:form id="softandhardRegistrationForm" method="post" style="FONT-FAMILY: 'Abyssinica SIL';">
+		<h:form id="softandhardRegistrationForm">
 			<rich:tabPanel switchType="client">
 				<rich:tab header="General information">
-				<h:selectManyMenu id="Products" multiple="true" onchange ="this.form.load();" title="Select Products">
-  <f:selectItem id="si1" itemLabel="Hardware" itemValue="1" />
-  <f:selectItem id="si2" itemLabel="Software" itemValue="2" />
-</h:selectManyMenu>
+				<h:selectOneMenu id="Products" title="Select Products" value="#{productRegistrationAction.selectedType}"
+				valueChangeListener="#{productRegistrationAction.typeCodeChanged}" onchange="submit();" >
+				<f:selectItems value="#{productRegistrationAction.allTypes}"/>
+</h:selectOneMenu>
 					<h:panelGrid columns="2">
 						<h:panelGrid columns="3">
 							<h:outputText value="#{labelsBean.getLabel('serialNumber')}" />
-							<h:inputText value="#{software.serialNumber}" required="true"
+							<h:inputText value="#{productRegistrationAction.targetEntity.serialNumber}" required="true"
 								id="serialNumberId" />
 							<h:message for="serialNumberId" errorClass="error" />
 
 							<h:outputText value="#{labelsBean.getLabel('productName')}" />
-							<h:inputText value="#{software.productName}" required="true"
+							<h:inputText value="#{productRegistrationAction.targetEntity.productName}" required="true"
 								id="productNameId" />
 							<h:message for="productNameId" errorClass="error" />
 
-							<h:outputText value="#{labelsBean.getLabel('version')}" />
-							<h:inputText value="#{software.version}" required="true"
-								id="versionId" />
-							<h:message for="versionId" errorClass="error" />
+							<h:outputText value="#{labelsBean.getLabel('version')}" rendered="#{productRegistrationAction.hardwareSelected}" />
+							<h:inputText value="#{productRegistrationAction.targetEntity.version}" required="true"
+								id="versionId" rendered="#{productRegistrationAction.hardwareSelected}" />
+							<h:message for="versionId" errorClass="error" rendered="#{productRegistrationAction.hardwareSelected}" />
 
 							<h:outputText value="Picture" />
 							<cc:inputFile id="fileupload"
@@ -48,7 +48,7 @@
 							<h:outputText value="#{labelsBean.getLabel('description')}" />
 							<h:panelGrid columns="2">
 								<h:inputTextarea id="descriptionId"
-									value="#{software.description}" rows="6" cols="70"
+									value="#{productRegistrationAction.targetEntity.description}" rows="6" cols="70"
 									required="true" />
 								<h:message for="descriptionId" errorClass="error" />
 							</h:panelGrid>
@@ -56,7 +56,7 @@
 					</h:panelGrid>
 				</rich:tab>
 			</rich:tabPanel>
-			<h:commandButton action="#{productRegistrationAction.submit()}"
+			<h:commandButton action="#{productRegistrationAction.register}"
 				value="#{labelsBean.getLabel('registration')}" />
 		</h:form>
 	</ui:define>

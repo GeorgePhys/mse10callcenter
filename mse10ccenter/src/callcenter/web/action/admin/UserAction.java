@@ -74,18 +74,6 @@ public class UserAction extends BaseAction<User> implements Serializable {
 		return "userProfile";
 	}
 
-	public String loadAdmin() {
-		return "controlPanel";
-	}
-
-	public String loadSoftware() {
-		return "addSoftware";
-	}
-
-	public String loadHardware() {
-		return "addHardware";
-	}
-
 	public String saveProfile() throws Exception {
 		if (!StringUtils.isEmpty(password)) {
 			getTargetEntity().setPassword(
