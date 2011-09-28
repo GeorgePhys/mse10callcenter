@@ -18,16 +18,16 @@
 			<h:form id="formCreateIssue" name="formCreateIssue">
 				<rich:panel>
 					<f:facet name="header">
-						<h:outputText value="#{labels.issueDetail}" />
+						<h:outputText value="#{labelsBean.getLabel('issueDetail')}" />
 					</f:facet>
 					<table>
 						<tr>
 							<td><h:panelGrid columns="3">
-									<h:outputText value="#{labels.projectName}:"
+									<h:outputText value="#{labelsBean.getLabel('projectName')}:"
 										styleClass="issueFieldPos" />
 									<h:panelGrid columns="2"> 
 										<h:inputText id="projectNameFiled" value="#{issueCreateAction.targetEntity.project.name}" readonly="true" />
-										<h:commandButton value="#{labels.searchProject}" rendered="#{not issueCreateAction.readonly}">
+										<h:commandButton value="#{labelsBean.getLabel('searchProject')}" rendered="#{not issueCreateAction.readonly}">
 											<rich:componentControl target="popup" operation="show" />
 										</h:commandButton>
 									</h:panelGrid>
@@ -68,7 +68,7 @@
 														<h:column>
 															<h:commandButton
 																action="#{projectSearchAction.search(projectDto)}"
-																value="#{labels.search}">
+																value="#{labelsBean.getLabel('search')}">
 																<a4j:ajax render="richTable" />
 															</h:commandButton>
 														</h:column>
@@ -94,7 +94,7 @@
 										</a4j:region>
 									</rich:popupPanel>
 
-									<h:outputText value="#{labels.titleIssue}:"
+									<h:outputText value="#{labelsBean.getLabel('titleIssue')}:"
 										styleClass="issueFieldPos" />
 									<h:inputText
 										value="#{issueCreateAction.targetEntity.titleIssue}"
@@ -104,65 +104,65 @@
 
 
 
-									<h:outputText value="#{labels.type}:"
+									<h:outputText value="#{labelsBean.getLabel('type')}:"
 										styleClass="issueFieldPos" />
 									<h:selectOneMenu value="#{issueCreateAction.targetEntity.type}"
 										id="type" styleClass="issueField"
 										disabled="#{issueCreateAction.readonly}">
-										<f:selectItem itemLabel="#{labels.choiceOption}" itemValue="0" />
-										<f:selectItem itemLabel="#{labels.bug}" itemValue="1" />
-										<f:selectItem itemLabel="#{labels.improvement}" itemValue="2" />
-										<f:selectItem itemLabel="#{labels.newFeature}" itemValue="3" />
-										<f:selectItem itemLabel="#{labels.task}" itemValue="4" />
-										<f:selectItem itemLabel="#{labels.customIssue}" itemValue="5" />
+										<f:selectItem itemLabel="#{labelsBean.getLabel('choiceOption')}" itemValue="0" />
+										<f:selectItem itemLabel="#{labelsBean.getLabel('bug')}" itemValue="1" />
+										<f:selectItem itemLabel="#{labelsBean.getLabel('improvement')}" itemValue="2" />
+										<f:selectItem itemLabel="#{labelsBean.getLabel('newFeature')}" itemValue="3" />
+										<f:selectItem itemLabel="#{labelsBean.getLabel('task')}" itemValue="4" />
+										<f:selectItem itemLabel="#{labelsBean.getLabel('customIssue')}" itemValue="5" />
 
 									</h:selectOneMenu>
 
 									<h:message for="type" styleClass="issueError" />
 
-									<h:outputText value="#{labels.priority}:"
+									<h:outputText value="#{labelsBean.getLabel('priority')}:"
 										styleClass="issueFieldPos" />
 									<h:selectOneMenu
 										value="#{issueCreateAction.targetEntity.priority}"
 										id="priority" styleClass="issueField"
 										disabled="#{issueCreateAction.readonly}">
-										<f:selectItem itemLabel="#{labels.choiceOption}" itemValue="0" />
-										<f:selectItem itemLabel="#{labels.critical}" itemValue="1" />
-										<f:selectItem itemLabel="#{labels.major}" itemValue="2" />
-										<f:selectItem itemLabel="#{labels.minor}" itemValue="3" />
-										<f:selectItem itemLabel="#{labels.trivial}" itemValue="4" />
+										<f:selectItem itemLabel="#{labelsBean.getLabel('choiceOption')}" itemValue="0" />
+										<f:selectItem itemLabel="#{labelsBean.getLabel('critical')}" itemValue="1" />
+										<f:selectItem itemLabel="#{labelsBean.getLabel('major')}" itemValue="2" />
+										<f:selectItem itemLabel="#{labelsBean.getLabel('minor')}" itemValue="3" />
+										<f:selectItem itemLabel="#{labelsBean.getLabel('trivial')}" itemValue="4" />
 									</h:selectOneMenu>
 
 									<h:message for="priority" />
 
-									<h:outputText value="#{labels.status}:"
+									<h:outputText value="#{labelsBean.getLabel('status')}:"
 										styleClass="issueFieldPos" />
 									<h:selectOneMenu
 										value="#{issueCreateAction.targetEntity.status}" id="status"
 										styleClass="issueField"
 										disabled="#{issueCreateAction.readonly}">
-										<f:selectItem itemLabel="#{labels.choiceOption}" itemValue="0" />
-										<f:selectItem itemLabel="#{labels.open}" itemValue="1" />
-										<f:selectItem itemLabel="#{labels.inProgress}" itemValue="2" />
-										<f:selectItem itemLabel="#{labels.resolved}" itemValue="3" />
-										<f:selectItem itemLabel="#{labels.reopened}" itemValue="4" />
-										<f:selectItem itemLabel="#{labels.closed}" itemValue="5" />
+										<f:selectItem itemLabel="#{labelsBean.getLabel('choiceOption')}" itemValue="0" />
+										<f:selectItem itemLabel="#{labelsBean.getLabel('open')}" itemValue="1" />
+										<f:selectItem itemLabel="#{labelsBean.getLabel('inProgress')}" itemValue="2" />
+										<f:selectItem itemLabel="#{labelsBean.getLabel('resolved')}" itemValue="3" />
+										<f:selectItem itemLabel="#{labelsBean.getLabel('reopened')}" itemValue="4" />
+										<f:selectItem itemLabel="#{labelsBean.getLabel('closed')}" itemValue="5" />
 									</h:selectOneMenu>
 
 									<h:message for="status" styleClass="issueError" />
 
-									<h:outputText value="#{labels.resolution}:"
+									<h:outputText value="#{labelsBean.getLabel('resolution')}:"
 										styleClass="issueFieldPos" />
 									<h:selectOneMenu
 										value="#{issueCreateAction.targetEntity.resolution}"
 										id="resolution" styleClass="issueField"
 										disabled="#{issueCreateAction.readonly}">
-										<f:selectItem itemLabel="#{labels.choiceOption}" itemValue="0" />
-										<f:selectItem itemLabel="#{labels.fixed}" itemValue="1" />
-										<f:selectItem itemLabel="#{labels.woNotFix}" itemValue="2" />
-										<f:selectItem itemLabel="#{labels.duplicate}" itemValue="3" />
-										<f:selectItem itemLabel="#{labels.incomplete}" itemValue="4" />
-										<f:selectItem itemLabel="#{labels.cannotReproduce}"
+										<f:selectItem itemLabel="#{labelsBean.getLabel('choiceOption')}" itemValue="0" />
+										<f:selectItem itemLabel="#{labelsBean.getLabel('fixed')}" itemValue="1" />
+										<f:selectItem itemLabel="#{labelsBean.getLabel('woNotFix')}" itemValue="2" />
+										<f:selectItem itemLabel="#{labelsBean.getLabel('duplicate')}" itemValue="3" />
+										<f:selectItem itemLabel="#{labelsBean.getLabel('incomplete')}" itemValue="4" />
+										<f:selectItem itemLabel="#{labelsBean.getLabel('cannotReproduce')}"
 											itemValue="5" />
 									</h:selectOneMenu>
 
@@ -174,11 +174,11 @@
 
 									<rich:panel>
 										<f:facet name="header">
-											<h:outputText value="#{labels.staff}" />
+											<h:outputText value="#{labelsBean.getLabel('staff')}" />
 										</f:facet>
 
 										<h:panelGrid columns="3">
-											<h:outputText value="#{labels.reporter}:"
+											<h:outputText value="#{labelsBean.getLabel('reporter')}:"
 												styleClass="issueFieldPos" />
 											<h:inputText
 												value="#{issueCreateAction.targetEntity.reporter}"
@@ -188,7 +188,7 @@
 											</h:inputText>
 											<h:message for="reporter" styleClass="issueError" />
 
-											<h:outputText value="#{labels.assignee}:"
+											<h:outputText value="#{labelsBean.getLabel('assignee')}:"
 												styleClass="issueFieldPos" />
 											<h:inputText
 												value="#{issueCreateAction.targetEntity.assignee}"
@@ -203,10 +203,10 @@
 
 									<rich:panel>
 										<f:facet name="header">
-											<h:outputText value="#{labels.date}" />
+											<h:outputText value="#{labelsBean.getLabel('date')}" />
 										</f:facet>
 										<h:panelGrid columns="3">
-											<h:outputText value="#{labels.dateCreated}:"
+											<h:outputText value="#{labelsBean.getLabel('dateCreated')}:"
 												readonly="#{issueCreateAction.readonly}" />
 
 											<rich:calendar id="dateCreated" binding="#{dateCreated}"
@@ -218,7 +218,7 @@
 
 											<h:message for="dateCreated" styleClass="issueError" />
 
-											<h:outputText value="#{labels.dateEnded}:" />
+											<h:outputText value="#{labelsBean.getLabel('dateEnded')}:" />
 
 											<rich:calendar id="dateEnded"
 												value="#{issueCreateAction.targetEntity.dateEnded}"
@@ -236,7 +236,7 @@
 						</tr>
 						<tr>
 							<h:panelGrid columns="3" columnClasses="wfcol1,wfcol2,wfcol3">
-								<h:outputText value="#{labels.description}:" />
+								<h:outputText value="#{labelsBean.getLabel('description')}:" />
 								<h:inputTextarea id="description"
 									value="#{issueCreateAction.targetEntity.desctription}"
 									required="true" style=" width : 260px;"
@@ -247,10 +247,10 @@
 					</table>
 				</rich:panel>
 				<h:commandButton action="#{issueCreateAction.create()}"
-					value="#{labels.save}" style="margin-left: 400px; width : 85px;" />
+					value="#{labelsBean.getLabel('save')}" style="margin-left: 400px; width : 85px;" />
 				<h:commandButton
 					action="#{issueCreateAction.edit(issueCreateAction.targetEntity)}"
-					value="#{labels.edit}" style="margin-left: 15px; width : 90px;" />
+					value="#{labelsBean.getLabel('edit')}" style="margin-left: 15px; width : 90px;" />
 			</h:form>
 		</div>
 	</ui:define>

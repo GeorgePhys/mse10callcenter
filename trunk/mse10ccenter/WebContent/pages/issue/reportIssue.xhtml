@@ -15,49 +15,49 @@
 			<h:form>
 				<table class="search">
 					<tr>
-						<td>#{labels.issueTask}</td>
+						<td>#{labelsBean.getLabel('issueTask')}</td>
 						<td></td>
 						<td><h:inputText value="" /></td>
 					</tr>
 					<tr>
-						<td>#{labels.issueNumber}</td>
+						<td>#{labelsBean.getLabel('issueNumber')}</td>
 						<td></td>
 						<td><h:inputText value="" /></td>
 					</tr>
 					<tr>
-						<td>#{labels.issueCreatedFrom}</td>
+						<td>#{labelsBean.getLabel('issueCreatedFrom')}</td>
 						<td></td>
 						<td><h:inputText value="" /></td>
 
 					</tr>
 					<tr>
-						<td>#{labels.issueOwnerCreate}</td>
+						<td>#{labelsBean.getLabel('issueOwnerCreate')}</td>
 						<td></td>
 						<td><h:inputText value="" /></td>
 					</tr>
 					<tr>
-						<td>#{labels.issueStatus}</td>
+						<td>#{labelsBean.getLabel('issueStatus')}</td>
 						<td></td>
 						<td><h:inputText value="" /></td>
 					</tr>
 					<tr>
-						<td>#{labels.issueDecision}</td>
+						<td>#{labelsBean.getLabel('issueDecision')}</td>
 						<td></td>
 						<td><h:inputText value="" /></td>
 					</tr>
 					<tr>
-						<td>#{labels.issuePriority}</td>
+						<td>#{labelsBean.getLabel('issuePriority')}</td>
 						<td></td>
 						<td><h:inputText value="" /></td>
 					</tr>
 
 					<tr>
-						<td>#{labels.dateFrom}</td>
+						<td>#{labelsBean.getLabel('dateFrom')}</td>
 						<td></td>
 						<td><h:inputText value="" /></td>
 					</tr>
 					<tr>
-						<td>#{labels.dateTo}</td>
+						<td>#{labelsBean.getLabel('dateTo')}</td>
 						<td></td>
 						<td><h:inputText value="" /></td>
 					</tr>
@@ -65,9 +65,9 @@
 
 					<tr>
 						<td>
-							<h:commandButton value="#{labels.generate}" /> 
-							<h:commandButton value="#{labels.print}" /> 
-							<h:commandButton value="#{labels.cancel}" />
+							<h:commandButton value="#{labelsBean.getLabel('generate')}" /> 
+							<h:commandButton value="#{labelsBean.getLabel('print')}" /> 
+							<h:commandButton value="#{labelsBean.getLabel('cancel')}" />
 						</td>
 					</tr>
 				</table>

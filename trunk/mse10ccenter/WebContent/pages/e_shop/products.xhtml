@@ -16,7 +16,7 @@
 
 		<rich:panel style="width:250px; float:right; margin-top:-17px;">
 			<f:facet name="header">
-				<h:outputText value="#{labels.shopCart}"></h:outputText>
+				<h:outputText value="#{labelsBean.getLabel('shopCart')}"></h:outputText>
 			</f:facet>
 			<h:form>
 
@@ -27,18 +27,18 @@
 					</h:column>
 					<h:panelGroup>
 						<h:column>
-							<h:outputText value="#{labels.shopItemNumber}: " />
+							<h:outputText value="#{labelsBean.getLabel('shopItemNumber')}: " />
 							<h:outputText value="#{softwareProducts.brItems}" />
 						</h:column>
 						<br />
 						<h:column>
-							<h:outputText value="#{labels.shopTotalPrice}: " />
+							<h:outputText value="#{labelsBean.getLabel('shopTotalPrice')}: " />
 							<h:outputText value="#{softwareProducts.amount}" />
 							<h:outputText value=" BGN" />
 						</h:column>
 						<br />
 						<h:column>
-							<h:commandLink value="#{labels.shopClear}"
+							<h:commandLink value="#{labelsBean.getLabel('shopClear')}"
 								action="#{softwareProducts.clearChart}" />
 						</h:column>
 					</h:panelGroup>
@@ -50,7 +50,7 @@
 
 				<rich:tab value="Software">
 					<f:facet name="header">
-						<h:outputText value="#{labels.shopSoftwareProducts}"></h:outputText>
+						<h:outputText value="#{labelsBean.getLabel('shopSoftwareProducts')}"></h:outputText>
 					</f:facet>
 
 					<rich:dataTable id="richTableOut" style="text-align:justify; "
@@ -59,14 +59,14 @@
 							<rich:columnGroup>
 								<h:column>
 
-									<h:outputText styleClass="headerText" value="#{labels.shopProductScreen}"></h:outputText>
+									<h:outputText styleClass="headerText" value="#{labelsBean.getLabel('shopProductScreen')}"></h:outputText>
 								</h:column>
 								<h:column>
 									<h:outputText styleClass="headerText"
-										value="#{labels.shopNameDescription}"></h:outputText>
+										value="#{labelsBean.getLabel('shopNameDescription')}"></h:outputText>
 								</h:column>
 								<h:column>
-									<h:outputText styleClass="headerText" value="#{labels.price}"></h:outputText>
+									<h:outputText styleClass="headerText" value="#{labelsBean.getLabel('price')}"></h:outputText>
 								</h:column>
 
 							</rich:columnGroup>
@@ -87,7 +87,7 @@
 							<h:outputText value="#{software.price}" />
 							<br />
 							<h:commandButton action="#{softwareProducts.buy(software)}"
-								value="#{labels.shopBuy}"
+								value="#{labelsBean.getLabel('shopBuy')}"
 								disabled="#{softwareProducts.disable[software.productName]}" />
 
 						</h:column>
@@ -99,7 +99,7 @@
 
 				<rich:tab value="Hardware">
 					<f:facet name="header">
-						<h:outputText value="#{labels.shopHardwareProducts}"></h:outputText>
+						<h:outputText value="#{labelsBean.getLabel('shopHardwareProducts')}"></h:outputText>
 					</f:facet>
 					<rich:dataTable id="richTableOut2" style="text-align:justify; "
 						value="#{hardwareProducts.hardware}" var="hardware" rows="10">
@@ -107,14 +107,14 @@
 							<rich:columnGroup>
 								<h:column>
 
-									<h:outputText styleClass="headerText" value="#{labels.shopProductScreen}"></h:outputText>
+									<h:outputText styleClass="headerText" value="#{labelsBean.getLabel('shopProductScreen')}"></h:outputText>
 								</h:column>
 								<h:column>
 									<h:outputText styleClass="headerText"
-										value="#{labels.shopNameDescription}"></h:outputText>
+										value="#{labelsBean.getLabel('shopNameDescription')}"></h:outputText>
 								</h:column>
 								<h:column>
-									<h:outputText styleClass="headerText" value="#{labels.price}"></h:outputText>
+									<h:outputText styleClass="headerText" value="#{labelsBean.getLabel('price')}"></h:outputText>
 								</h:column>
 
 							</rich:columnGroup>
@@ -135,7 +135,7 @@
 							<h:outputText value="#{hardware.price}" />
 							<br />
 							<h:commandButton action="#{softwareProducts.buyHardware(hardware)}"
-								value="#{labels.shopBuy}"
+								value="#{labelsBean.getLabel('shopBuy')}"
 								disabled="#{softwareProducts.disable[hardware.productName]}" />
 
 						</h:column>

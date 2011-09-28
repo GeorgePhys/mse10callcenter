@@ -14,49 +14,49 @@
 		<h:form>
 			<rich:panel>
 				<f:facet name="header">
-					<h:outputText value="#{labels.search}" />
+					<h:outputText value="#{labelsBean.getLabel('search')}" />
 				</f:facet>
 				<table class="search">
 					<tr>
-						<td>#{labels.projectName}</td>
+						<td>#{labelsBean.getLabel('projectName')}</td>
 						<td><h:inputText value="#{issueSearch.project}" />
 						</td>
 					</tr>
 					<tr>
-						<td>#{labels.issueTask}</td>
+						<td>#{labelsBean.getLabel('issueTask')}</td>
 						<td><h:inputText value="#{issueSearch.titleIssue}" id="title" />
 						</td>
 					</tr>
 					<tr>
-						<td>#{labels.issueOwnerCreate}</td>
+						<td>#{labelsBean.getLabel('issueOwnerCreate')}</td>
 						<td><h:inputText value="#{issueSearch.createdBy}" /></td>
 					</tr>
 					<tr>
-						<td>#{labels.issueCreatedFrom}</td>
+						<td>#{labelsBean.getLabel('issueCreatedFrom')}</td>
 						<td><h:inputText value="#{issueSearch.assignedTo}" /></td>
 					</tr>
 					<tr>
-						<td>#{labels.issueStatus}</td>
+						<td>#{labelsBean.getLabel('issueStatus')}</td>
 						<td><h:selectOneMenu id="subscriptions"
 								value="#{issueSearch.status}" style=" width : 149px;">
-								<f:selectItem itemLabel="#{labels.choiceOption}" />
-								<f:selectItem itemLabel="#{labels.open}" itemValue="1" />
-								<f:selectItem itemLabel="#{labels.inProgress}" itemValue="2" />
-								<f:selectItem itemLabel="#{labels.resolved}" itemValue="3" />
-								<f:selectItem itemLabel="#{labels.reopened}" itemValue="4" />
-								<f:selectItem itemLabel="#{labels.closed}" itemValue="5" />
+								<f:selectItem itemLabel="#{labelsBean.getLabel('choiceOption')}" />
+								<f:selectItem itemLabel="#{labelsBean.getLabel('open')}" itemValue="1" />
+								<f:selectItem itemLabel="#{labelsBean.getLabel('inProgress')}" itemValue="2" />
+								<f:selectItem itemLabel="#{labelsBean.getLabel('resolved')}" itemValue="3" />
+								<f:selectItem itemLabel="#{labelsBean.getLabel('reopened')}" itemValue="4" />
+								<f:selectItem itemLabel="#{labelsBean.getLabel('closed')}" itemValue="5" />
 							</h:selectOneMenu> <h:message for="subscriptions" styleClass="issueError" /></td>
 					</tr>
 					<tr>
 						<td>#{labels.issueDecision}</td>
 						<td><h:selectOneMenu id="subscriptions2"
 								value="#{issueSearch.resolution}" style=" width : 150px;">
-								<f:selectItem itemLabel="#{labels.choiceOption}" />
-								<f:selectItem itemLabel="#{labels.fixed}" itemValue="1" />
-								<f:selectItem itemLabel="#{labels.woNotFix}" itemValue="2" />
-								<f:selectItem itemLabel="#{labels.duplicate}" itemValue="3" />
-								<f:selectItem itemLabel="#{labels.incomplete}" itemValue="4" />
-								<f:selectItem itemLabel="#{labels.cannotReproduce}"
+								<f:selectItem itemLabel="#{labelsBean.getLabel('choiceOption')}" />
+								<f:selectItem itemLabel="#{labelsBean.getLabel('fixed')}" itemValue="1" />
+								<f:selectItem itemLabel="#{labelsBean.getLabel('woNotFix')}" itemValue="2" />
+								<f:selectItem itemLabel="#{labelsBean.getLabel('duplicate')}" itemValue="3" />
+								<f:selectItem itemLabel="#{labelsBean.getLabel('incomplete')}" itemValue="4" />
+								<f:selectItem itemLabel="#{labelsBean.getLabel('cannotReproduce')}"
 									itemValue="5" />
 							</h:selectOneMenu></td>
 					</tr>
@@ -64,11 +64,11 @@
 						<td>#{labels.issuePriority}</td>
 						<td><h:selectOneMenu id="subscriptions3"
 								value="#{issueSearch.priority}" style=" width : 149px;">
-								<f:selectItem itemLabel="#{labels.choiceOption}" />
-								<f:selectItem itemLabel="#{labels.critical}" itemValue="1" />
-								<f:selectItem itemLabel="#{labels.major}" itemValue="2" />
-								<f:selectItem itemLabel="#{labels.minor}" itemValue="3" />
-								<f:selectItem itemLabel="#{labels.trivial}" itemValue="4" />
+								<f:selectItem itemLabel="#{labelsBean.getLabel('choiceOption')}" />
+								<f:selectItem itemLabel="#{labelsBean.getLabel('critical')}" itemValue="1" />
+								<f:selectItem itemLabel="#{labelsBean.getLabel('major')}" itemValue="2" />
+								<f:selectItem itemLabel="#{labelsBean.getLabel('minor')}" itemValue="3" />
+								<f:selectItem itemLabel="#{labelsBean.getLabel('trivial')}" itemValue="4" />
 							</h:selectOneMenu>
 						</td>
 					</tr>
@@ -86,7 +86,7 @@
 						<td></td>
 					</tr>
 					<tr>
-						<td><h:commandButton value="#{labels.search}"
+						<td><h:commandButton value="#{labelsBean.getLabel('search')}"
 								action="#{issueSearchAction.search(issueSearch)}" /></td>
 					</tr>
 				</table>
@@ -96,56 +96,56 @@
 					value="#{issueSearchAction.dataModel}" rows="10"
 					rendered="#{issueSearchAction.dataModel ne null}">
 					<f:facet name="header">
-						<h3>#{labels.issueResult}</h3>
+						<h3>#{labelsBean.getLabel('issueResult')}</h3>
 						<rich:columnGroup>
 						<h:column>
 								<h:outputText styleClass="headerText"
-									value="#{labels.projectName}" />
+									value="#{labelsBean.getLabel('projectName')}" />
 								<br />
 							</h:column>
 							<h:column>
 								<h:outputText styleClass="headerText"
-									value="#{labels.titleIssue}" />
+									value="#{labelsBean.getLabel('titleIssue')}" />
 								<br />
 							</h:column>
 							<h:column>
 								<h:outputText styleClass="headerText"
-									value="#{labels.issueOwnerCreate}" />
+									value="#{labelsBean.getLabel('issueOwnerCreate')}" />
 								<br />
 							</h:column>
 							<h:column>
 								<h:outputText styleClass="headerText"
-									value="#{labels.issueCreatedFrom}" />
+									value="#{labelsBean.getLabel('issueCreatedFrom')}" />
 								<br />
 							</h:column>
 							<h:column>
 								<h:outputText styleClass="headerText"
-									value="#{labels.issueCreateDate}" />
+									value="#{labelsBean.getLabel('issueCreateDate')}" />
 								<br />
 							</h:column>
 							<h:column>
 								<h:outputText styleClass="headerText"
-									value="#{labels.dateEnded}" />
+									value="#{labelsBean.getLabel('dateEnded')}" />
 								<br />
 							</h:column>
 							<h:column>
 								<h:outputText styleClass="headerText"
-									value="#{labels.issueStatus}" />
+									value="#{labelsBean.getLabel('issueStatus')}" />
 								<br />
 							</h:column>
 							<h:column>
 								<h:outputText styleClass="headerText"
-									value="#{labels.issuePriority}" />
+									value="#{labelsBean.getLabel('issuePriority')}" />
 								<br />
 							</h:column>
 							<h:column>
 								<h:outputText styleClass="headerText"
-									value="#{labels.resolution}" />
+									value="#{labelsBean.getLabel('resolution')}" />
 								<br />
 							</h:column>
 							<h:column>
 								<h:outputText styleClass="headerText"
-									value="#{labels.issueDetail}" />
+									value="#{labelsBean.getLabel('issueDetail')}" />
 								<br />
 							</h:column>
 

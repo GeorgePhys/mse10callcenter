@@ -6,7 +6,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:rich="http://richfaces.org/rich">
 
-	<ui:define name="title">#{labels.userSearch}</ui:define>
+	<ui:define name="title">#{labelsBean.getLabel('userSearch')}</ui:define>
 	<ui:define name="head">
 		<link rel="stylesheet" type="text/css"
 			href="#{facesContext.externalContext.requestContextPath}/css/common.css" />
@@ -34,7 +34,7 @@
 						</h:column>
 						<h:column>
 							<h:commandButton action="#{projectSearchAction.search(projectDto)}"
-								value="#{labels.search}" />
+								value="#{labelsBean.getLabel('search')}" />
 						</h:column>
 					</rich:columnGroup>
 				</f:facet>

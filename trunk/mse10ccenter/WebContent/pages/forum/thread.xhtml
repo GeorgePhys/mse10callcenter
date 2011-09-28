@@ -26,7 +26,7 @@
 							rendered="#{loginAction.loggedIn}" />
 					</f:facet>
 					<h:inputTextarea value="#{post.text}" readonly="#{post.id ne null}" />
-					<h:commandButton value="#{labels.save}"
+					<h:commandButton value="#{labelsBean.getLabel('save')}"
 						action="#{forumAction.saveThread()}" rendered="#{post.id eq null}" />
 					<h:panelGrid columns="1">
 						<rich:list value="#{post.comments}" id="commentId" var="comment"
@@ -41,7 +41,7 @@
 						</rich:list>
 						<h:inputTextarea value="#{forumAction.comment}"
 							rendered="#{forumAction.newComment}" />
-						<h:commandButton value="#{labels.save}"
+						<h:commandButton value="#{labelsBean.getLabel('save')}"
 							action="#{forumAction.saveComment(post)}"
 							rendered="#{forumAction.newComment}" />
 					</h:panelGrid>

@@ -18,29 +18,29 @@
 				<f:facet name="header">
 					<rich:columnGroup>
 						<h:column>
-							<h:outputText styleClass="headerText" value="#{labels.name}" />
+							<h:outputText styleClass="headerText" value="#{labelsBean.getLabel('name')}" />
 							<br />
 							<h:inputText value="#{companyDto.name}" />
 						</h:column>
 						<h:column>
-							<h:outputText styleClass="headerText" value="#{labels.bulstat}" />
+							<h:outputText styleClass="headerText" value="#{labelsBean.getLabel('bulstat')}" />
 							<br />
 							<h:inputText value="#{companyDto.bulstat}" />
 						</h:column>
 						<h:column>
-							<h:outputText styleClass="headerText" value="#{labels.country}" />
+							<h:outputText styleClass="headerText" value="#{labelsBean.getLabel('country')}" />
 							<br />
 							<h:inputText value="#{companyDto.country}" />
 						</h:column>
 						<h:column>
-							<h:outputText styleClass="headerText" value="#{labels.city}" />
+							<h:outputText styleClass="headerText" value="#{labelsBean.getLabel('city')}" />
 							<br />
 							<h:inputText value="#{companyDto.city}" />
 						</h:column>
 						<h:column>
 							<h:commandButton
 								action="#{companySearchAction.search(companyDto)}"
-								value="#{labels.search}" />
+								value="#{labelsBean.getLabel('search')}" />
 						</h:column>
 					</rich:columnGroup>
 				</f:facet>
