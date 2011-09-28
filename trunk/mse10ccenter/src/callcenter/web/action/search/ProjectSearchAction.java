@@ -2,36 +2,25 @@ package callcenter.web.action.search;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
-import callcenter.dto.BaseDTO;
 import callcenter.dto.project.ProjectSearchDTO;
 import callcenter.entity.issue.Project;
-import callcenter.service.base.BaseServiceBean;
 import callcenter.service.project.ProjectServiceBean;
 import callcenter.web.action.BaseSearchAction;
-import callcenter.web.action.search.datamodel.JPADataModel;
+import callcenter.web.action.issue.ProjectCreateAction;
 
 @SessionScoped
 @ManagedBean(name = "projectSearchAction")
-@SuppressWarnings("rawtypes")
 public class ProjectSearchAction extends
 	BaseSearchAction<Project, ProjectSearchDTO> {
 
+    @ManagedProperty(value = "#{projectCreateAction}")
+    private ProjectCreateAction projectAction;
+
     @EJB
     private ProjectServiceBean service;
-
-    private static final class ProjectDataModel extends JPADataModel<Project> {
-
-	private ProjectDataModel(BaseServiceBean service, BaseDTO dto) {
-	    super(service, dto, Project.class);
-	}
-
-	@Override
-	protected Object getId(Project t) {
-	    return t.getId();
-	}
-    }
 
     public String startSearch() {
 	setDataModel(null);
@@ -40,9 +29,7 @@ public class ProjectSearchAction extends
 
     @Override
     public String previewSearchResult(Project result) {
-	getBaseAction().setTargetEntity(result);
-	getBaseAction().setReadonly(true);
-	return "createNewProject";
+	return projectAction.preview(result);
     }
 
     @Override
@@ -53,5 +40,20 @@ public class ProjectSearchAction extends
     @Override
     public Class<Project> getEntityClass() {
 	return Project.class;
+    }
+
+    /**
+     * @return the projectAction
+     */
+    public ProjectCreateAction getProjectAction() {
+	return projectAction;
+    }
+
+    /**
+     * @param projectAction
+     *            the projectAction to set
+     */
+    public void setProjectAction(ProjectCreateAction projectAction) {
+	this.projectAction = projectAction;
     }
 }
