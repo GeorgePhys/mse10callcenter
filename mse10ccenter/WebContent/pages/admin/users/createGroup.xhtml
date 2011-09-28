@@ -13,20 +13,39 @@
 	</ui:define>
 	<ui:define name="body">
 		<h:form id="groupPrivilges">
+			<h:outputLabel value="#{labelsBean.getLabel('groupName')}" />
+			<h:inputText value="${createGroupAction.groupName}" />
+			<h:outputLabel value="#{labelsBean.getLabel('groupDescription')}" />
+			<h:inputText value="${createGroupAction.groupDescription}" />
+
 			<rich:tabPanel switchType="client">
 				<rich:tab header="user">
 					<h:selectManyCheckbox value="#{createGroupAction.selected}">
-						<f:selectItems value="#{createGroupAction.getPrivileges('user')}" var="p" itemLabel="#{createGroupAction.getLabel(p)}" itemValue="#{p.id}" />
+						<f:selectItems value="#{createGroupAction.getPrivileges('user')}"
+							var="p" itemLabel="#{createGroupAction.getLabel(p)}"
+							itemValue="#{p.id}" />
 					</h:selectManyCheckbox>
 				</rich:tab>
 				<rich:tab header="forum">
-
+					<h:selectManyCheckbox value="#{createGroupAction.selected}">
+						<f:selectItems value="#{createGroupAction.getPrivileges('forum')}"
+							var="p" itemLabel="#{createGroupAction.getLabel(p)}"
+							itemValue="#{p.id}" />
+					</h:selectManyCheckbox>
 				</rich:tab>
 				<rich:tab header="shop">
-
+					<h:selectManyCheckbox value="#{createGroupAction.selected}">
+						<f:selectItems value="#{createGroupAction.getPrivileges('shop')}"
+							var="p" itemLabel="#{createGroupAction.getLabel(p)}"
+							itemValue="#{p.id}" />
+					</h:selectManyCheckbox>
 				</rich:tab>
 				<rich:tab header="Issue">
-
+					<h:selectManyCheckbox value="#{createGroupAction.selected}">
+						<f:selectItems value="#{createGroupAction.getPrivileges('issue')}"
+							var="p" itemLabel="#{createGroupAction.getLabel(p)}"
+							itemValue="#{p.id}" />
+					</h:selectManyCheckbox>
 				</rich:tab>
 			</rich:tabPanel>
 			<h:commandButton value="#{labelsBean.getLabel('save')}"
