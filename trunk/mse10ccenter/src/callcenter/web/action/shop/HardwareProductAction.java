@@ -10,8 +10,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import callcenter.dto.BaseDTO;
-import callcenter.entity.products.Hardware;
-import callcenter.service.administration.HardwareServiceBean;
+import callcenter.entity.products.Product;
+import callcenter.service.administration.ProductServiceBean;
 import callcenter.service.base.BaseServiceBean;
 import callcenter.web.action.BaseAction;
 import callcenter.web.action.search.datamodel.JPADataModel;
@@ -24,9 +24,9 @@ public class HardwareProductAction extends BaseAction implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @EJB
-    private HardwareServiceBean service;
+    private ProductServiceBean service;
 
-    private List<Hardware> hardware;
+    private List<Product> hardware;
     private HardwareDataModel dataModel;
 
     private Map<Long, Boolean> disable = new HashMap<Long, Boolean>();
@@ -34,14 +34,14 @@ public class HardwareProductAction extends BaseAction implements Serializable {
     /**
      * Represent hardware data model
      */
-    private static final class HardwareDataModel extends JPADataModel<Hardware> {
+    private static final class HardwareDataModel extends JPADataModel<Product> {
 
 	private HardwareDataModel(BaseServiceBean service, BaseDTO dto) {
-	    super(service, dto, Hardware.class);
+	    super(service, dto, Product.class);
 	}
 
 	@Override
-	protected Object getId(Hardware t) {
+	protected Object getId(Product t) {
 	    return t.getId();
 	}
     }
@@ -54,7 +54,7 @@ public class HardwareProductAction extends BaseAction implements Serializable {
      * @return navigation text
      */
     @SuppressWarnings("unchecked")
-    public String openSlectedProduct(Hardware s) {
+    public String openSlectedProduct(Product s) {
 	setTargetEntity(s);
 	return "reviewHardwareProduct";
     }
@@ -65,7 +65,7 @@ public class HardwareProductAction extends BaseAction implements Serializable {
      * @return list
      */
     public String allSoftware() {
-	this.hardware = service.listAllProjectNames();
+	this.hardware = service.getAllHardware();
 	return "AllSoftware";
     }
 
@@ -75,7 +75,7 @@ public class HardwareProductAction extends BaseAction implements Serializable {
      * @return
      */
     @SuppressWarnings("unchecked")
-    public String openSlectedHardware(Hardware s) {
+    public String openSlectedHardware(Product s) {
 	setTargetEntity(s);
 
 	return "reviewHardwareProduct";
@@ -120,22 +120,12 @@ public class HardwareProductAction extends BaseAction implements Serializable {
     }
 
     /**
-     * Get list of hardwares
-     * 
-     * @return list of hardwares
-     */
-    public List<Hardware> getHardware() {
-	hardware = service.listAllProjectNames();
-	return hardware;
-    }
-
-    /**
      * Set hardware
      * 
      * @param hardware
      *            list of hardwares
      */
-    public void setHardware(List<Hardware> hardware) {
+    public void setHardware(List<Product> hardware) {
 	this.hardware = hardware;
     }
 
