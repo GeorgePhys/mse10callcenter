@@ -14,6 +14,13 @@ import javax.naming.NamingException;
 import callcenter.entity.clients.User;
 import callcenter.entity.issue.IssueDetail;
 
+/**
+ * Manage mail send for confirm registration and message for issue.
+ * 
+ * @author yasko
+ * @author Sibel
+ * 
+ */
 public final class MailSender {
 
     private static InitialContext CONTEXT;
