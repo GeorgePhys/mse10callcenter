@@ -47,6 +47,21 @@
 							itemValue="#{p.id}" />
 					</h:selectManyCheckbox>
 				</rich:tab>
+				<rich:tab header="FAQ">
+					<h:selectManyCheckbox value="#{createGroupAction.selected}">
+						<f:selectItems value="#{createGroupAction.getPrivileges('FAQ')}"
+							var="p" itemLabel="#{createGroupAction.getLabel(p)}"
+							itemValue="#{p.id}" />
+					</h:selectManyCheckbox>
+					</rich:tab>
+					<rich:tab header="Project">
+					<h:selectManyCheckbox value="#{createGroupAction.selected}">
+						<f:selectItems value="#{createGroupAction.getPrivileges('project')}"
+							var="p" itemLabel="#{createGroupAction.getLabel(p)}"
+							itemValue="#{p.id}" />
+					</h:selectManyCheckbox>
+				</rich:tab>
+				
 			</rich:tabPanel>
 			<h:commandButton value="#{labelsBean.getLabel('save')}"
 				action="#{createGroupAction.saveGroup()}" />
