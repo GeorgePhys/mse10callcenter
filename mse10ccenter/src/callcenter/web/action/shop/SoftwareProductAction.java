@@ -27,7 +27,8 @@ public class SoftwareProductAction extends BaseAction implements Serializable {
 
     private List<Product> productItems = new ArrayList<Product>();
     private List<Product> soft;
-
+    private Map<Long, Integer> amountProducts = new HashMap<Long, Integer>();
+    private int numProducts;
     private SoftwareDataModel dataModel;
     private int brItems = 0;
     private double amount = 0.0;
@@ -90,13 +91,17 @@ public class SoftwareProductAction extends BaseAction implements Serializable {
      * @return
      */
     public double buy(Product software) {
-	if (!this.disable.containsKey(software.getProductName())) {
-	    // increase number of products that are buying
+	if (this.amountProducts.containsKey(software.getId())) {
+	    int t = this.amountProducts.get(software.getId());
+	    this.amountProducts.put(software.getId(), t + 1);
+	} else {
 	    addProductItems(software);
-	    this.brItems++;
-	    this.amount = this.amount + software.getPrice();
-	    this.disable.put(software.getProductName(), Boolean.TRUE);
+	    this.amountProducts.put(software.getId(), 1);
 	}
+	this.brItems++;
+
+	this.amount = this.amount + software.getPrice();
+
 	return this.amount;
     }
 
@@ -111,21 +116,47 @@ public class SoftwareProductAction extends BaseAction implements Serializable {
 	return "Hardware";
     }
 
-    public double buyHardware(Product hardware) {
-	if (!this.disable.containsKey(hardware.getProductName())) {
-	    // increase number of products that are buying
-	    addProductItems(hardware);
-	    this.brItems++;
-	    this.amount = this.amount + hardware.getPrice();
-	    this.disable.put(hardware.getProductName(), Boolean.TRUE);
+    public int checkProductNum(Product p) {
+
+	if (this.amountProducts.containsKey(p.getId())) {
+	    this.numProducts = this.amountProducts.get(p.getId());
+	} else {
+	    this.numProducts = 0;
 	}
+	return this.numProducts;
+    }
+
+    public double buyHardware(Product hardware) {
+
+	if (this.amountProducts.containsKey(hardware.getId())) {
+	    int t = this.amountProducts.get(hardware.getId());
+	    this.amountProducts.put(hardware.getId(), t + 1);
+	} else {
+	    addProductItems(hardware);
+	    this.amountProducts.put(hardware.getId(), 1);
+	}
+
+	this.brItems++;
+
+	this.amount = this.amount + hardware.getPrice();
+
 	return this.amount;
     }
 
-    public void clearChart() {
-	this.amount = 0.0;
-	this.brItems = 0;
-	this.disable.clear();
+    public void removeProduct(Product product) {
+	this.amount -= product.getPrice();
+	this.brItems -= 1;
+	if (this.amountProducts.containsKey(product.getId())) {
+	    if (this.amountProducts.get(product.getId()) > 1) {
+		int t = this.amountProducts.get(product.getId());
+		this.amountProducts.put(product.getId(), t - 1);
+
+	    } else {
+		this.productItems.remove(product);
+		this.amountProducts.remove(product.getId());
+	    }
+	}
+
     }
 
     public int getBrItems() {
@@ -158,6 +189,28 @@ public class SoftwareProductAction extends BaseAction implements Serializable {
 
     public void addProductItems(Product productItems) {
 	this.productItems.add(productItems);
+    }
+
+    public Map<Long, Integer> getAmountProducts() {
+	return amountProducts;
+    }
+
+    public void addAmountProducts(Long id, int amount) {
+	this.amountProducts.put(id, amount);
+    }
+
+    public int getNumProducts() {
+	return numProducts;
+    }
+
+    public void setNumProducts(int numProducts) {
+	this.numProducts = numProducts;
+    }
+
+    public double sumPrice(Product p) {
+	double value = 0.0;
+	value = this.amountProducts.get(p.getId()) * p.getPrice();
+	return value;
     }
 
 }
