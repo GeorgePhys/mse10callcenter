@@ -40,7 +40,8 @@ public class PrivilegesGenerator {
 	BufferedWriter out = new BufferedWriter(new FileWriter(file));
 
 	String lineSeparator = System.getProperty("line.separator");
-
+	out.write("SET FOREIGN_KEY_CHECKS=0;");
+	out.write(lineSeparator);
 	out.write("delete from Privilege;");
 	out.write(lineSeparator);
 
@@ -62,6 +63,8 @@ public class PrivilegesGenerator {
 		id++;
 	    }
 	}
+	out.write("SET FOREIGN_KEY_CHECKS=1;");
+	out.write(lineSeparator);
 	out.flush();
 	out.close();
 
