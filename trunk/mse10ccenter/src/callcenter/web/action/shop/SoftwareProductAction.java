@@ -11,6 +11,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import callcenter.dto.BaseDTO;
+import callcenter.entity.order.Item;
+import callcenter.entity.order.Order;
 import callcenter.entity.products.Product;
 import callcenter.service.administration.ProductServiceBean;
 import callcenter.service.base.BaseServiceBean;
@@ -21,6 +23,11 @@ import callcenter.web.action.search.datamodel.JPADataModel;
 @ManagedBean(name = "softwareProducts")
 @SuppressWarnings("rawtypes")
 public class SoftwareProductAction extends BaseAction implements Serializable {
+
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
 
     @EJB
     private ProductServiceBean service;
@@ -157,6 +164,20 @@ public class SoftwareProductAction extends BaseAction implements Serializable {
 	    }
 	}
 
+    }
+
+    public void order() {
+	Order order = new Order();
+	for (Product p : productItems) {
+	    Item item = new Item();
+	    item.setProduct(p);
+	    int count = this.amountProducts.get(p.getId());
+	    item.setAmount(this.amountProducts.get(p.getId()));
+	    item.setPrice(p.getPrice() * count);
+	    order.getItems().add(item);
+	}
+	getUser().getOrder().add(order);
+	this.service.save(getUser());
     }
 
     public int getBrItems() {
