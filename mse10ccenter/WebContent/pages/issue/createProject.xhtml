@@ -11,9 +11,6 @@
 	<ui:define name="head">
 		<link rel="stylesheet" type="text/css"
 			href="#{facesContext.externalContext.requestContextPath}/css/issue.css" />
-		<f:loadBundle basename="labels.labels" var="labels" />
-
-		<f:loadBundle basename="messages.messages" var="messages" />
 	</ui:define>
 
 	<ui:define name="body">
@@ -23,20 +20,20 @@
 
 				<rich:panel>
 					<f:facet name="header">
-						<h:outputText value="#{labels.projectDetail}" />
+						<h:outputText value="#{labelsBean.getLabel('projectDetail')}" />
 					</f:facet>
 
 					<table>
 						<tr>
 							<td><h:panelGrid columns="3">
-									<h:outputText value="#{labels.projectName}:"
+									<h:outputText value="#{labelsBean.getLabel('projectName')}:"
 										styleClass="issueFieldPos" />
 									<h:inputText value="#{projectCreateAction.targetEntity.name}"
 										required="true" id="projectName" styleClass="issueField"
 										readonly="#{projectCreateAction.readonly}" />
 									<h:message for="projectName" styleClass="issueError" />
 
-									<h:outputText value="#{labels.shortProjectName}:"
+									<h:outputText value="#{labelsBean.getLabel('shortProjectName')}:"
 										styleClass="issueFieldPos" />
 									<h:inputText value="#{projectCreateAction.targetEntity.shortName}"
 										required="true" id="shortName" styleClass="issueField"
@@ -47,7 +44,7 @@
 						</tr>
 						<tr>
 							<h:panelGrid columns="3" columnClasses="wfcol1,wfcol2,wfcol3">
-								<h:outputText value="#{labels.description}:" />
+								<h:outputText value="#{labelsBean.getLabel('description')}:" />
 								<h:inputTextarea id="description"
 									value="#{projectCreateAction.targetEntity.description}"
 									required="true" style=" width : 260px;"
@@ -58,11 +55,11 @@
 					</table>
 				</rich:panel>
 				<h:commandButton action="#{projectCreateAction.createProject()}"
-					value="#{labels.save}" style="margin-left: 400px; width : 85px;" 
+					value="#{labelsBean.getLabel('save')}" style="margin-left: 400px; width : 85px;" 
 					disabled="#{projectCreateAction.readonly}" />
 				<h:commandButton
 					action="#{projectCreateAction.editProject()}"
-					value="#{labels.edit}" style="margin-left: 15px; width : 90px;"
+					value="#{labelsBean.getLabel('edit')}" style="margin-left: 15px; width : 90px;"
 					disabled="#{not projectCreateAction.readonly}" />
 			</h:form>
 		</div>

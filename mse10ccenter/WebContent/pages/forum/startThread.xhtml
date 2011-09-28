@@ -16,13 +16,13 @@
 		<h:form>
 			<h:panelGrid>
 				<h:panelGrid columns="2">
-					<h:outputText value="#{labels.threadTitle}" />
+					<h:outputText value="#{labelsBean.getLabel('threadTitle')}" />
 					<h:inputText value="#{forumAction.thread.title}" />
 				</h:panelGrid>
 				<rich:panel bodyClass="pbody">
 					<h:inputTextarea value="#{forumAction.post.text}" />
 				</rich:panel>
-				<h:commandButton value="#{labels.save}"
+				<h:commandButton value="#{labelsBean.getLabel('save')}"
 					action="#{forumAction.createThread()}">
 				</h:commandButton>
 			</h:panelGrid>

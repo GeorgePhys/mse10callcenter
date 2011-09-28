@@ -11,7 +11,7 @@
 		<h:form id="CaptchaForm">
 			<table>
 				<tr>
-					<td><h:outputText value="#{labels.email}" />
+					<td><h:outputText value="#{labelsBean.getLabel('email')}" />
 					</td>
 					<td><h:inputText id="email" style="width:100%"
 							value="#{loginAction.targetEntity.mail}" required="true" />
@@ -22,7 +22,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td><h:outputText value="#{labels.password}" />
+					<td><h:outputText value="#{labelsBean.getLabel('password')}" />
 					</td>
 					<td><h:inputSecret id="password" style="width:100%"
 							value="#{loginAction.targetEntity.password}" required="true">
@@ -53,10 +53,10 @@
 				</tr>
 			</table>
 			<h:commandButton action="#{loginAction.login}"
-				value="#{labels.loginTitle}" />
+				value="#{labelsBean.getLabel('loginTitle')}" />
 		</h:form>
 		<h:form>
-			<h:commandButton value="#{labels.registration}"
+			<h:commandButton value="#{labelsBean.getLabel('registration')}"
 				action="#{userAction.newRegistration}" />
 		</h:form>
 	</ui:define>

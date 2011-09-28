@@ -16,25 +16,25 @@
 			<rich:tabPanel switchType="client">
 				<rich:tab header="General information">
 					<h:panelGrid columns="3">
-						<h:outputText value="#{labels.name}" />
+						<h:outputText value="#{labelsBean.getLabel('name')}" />
 						<h:inputText value="#{company.name}" id="companyName"
 							required="true" />
 						<h:message for="companyName" />
 
-						<h:outputText value="#{labels.bulstat}" />
+						<h:outputText value="#{labelsBean.getLabel('bulstat')}" />
 						<h:inputText value="#{company.bulstat}" id="companyBulstat"
 							required="true" />
 						<h:message for="companyBulstat" />
 
-						<h:outputText value="#{labels.phone}" />
+						<h:outputText value="#{labelsBean.getLabel('phone')}" />
 						<h:inputText value="#{company.phone}" id="companyPhone" required="true" />
 						<h:message for="companyPhone" />
 
-						<h:outputText value="#{labels.webSite}" />
+						<h:outputText value="#{labelsBean.getLabel('webSite')}" />
 						<h:inputText value="#{company.webAddress}" id="companyWebAddress" required="true" />
 						<h:message for="companyWebAddress" />
 
-						<h:outputText value="#{labels.email}" />
+						<h:outputText value="#{labelsBean.getLabel('email')}" />
 						<h:inputText value="#{company.mail}" required="true"
 							id="companyMail" />
 						<h:message for="companyMail" />
@@ -42,27 +42,27 @@
 				</rich:tab>
 				<rich:tab header="Address">
 					<h:panelGrid columns="3">
-						<h:outputText value="#{labels.country}" />
+						<h:outputText value="#{labelsBean.getLabel('country')}" />
 						<h:inputText value="#{user.address.country}" required="true"
 							id="country" />
 						<h:message for="country" />
 
-						<h:outputText value="#{labels.municipality}" />
+						<h:outputText value="#{labelsBean.getLabel('municipality')}" />
 						<h:inputText value="#{company.address.municipality}"
 							required="true" id="municipality" />
 						<h:message for="municipality" />
 
-						<h:outputText value="#{labels.city}" />
+						<h:outputText value="#{labelsBean.getLabel('city')}" />
 						<h:inputText value="#{company.address.city}" required="true"
 							id="city" />
 						<h:message for="city" />
 
-						<h:outputText value="#{labels.street}" />
+						<h:outputText value="#{labelsBean.getLabel('street')}" />
 						<h:inputText value="#{company.address.street}" required="true"
 							id="street" />
 						<h:message for="street" />
 
-						<h:outputText value="#{labels.postCode}" />
+						<h:outputText value="#{labelsBean.getLabel('postCode')}" />
 						<h:inputText value="#{company.address.postCode}" required="true"
 							id="postCode" />
 						<h:message for="postCode" />
@@ -70,7 +70,7 @@
 				</rich:tab>
 			</rich:tabPanel>
 			<h:commandButton action="#{companyRegistrationAction.register(company)}"
-				value="#{labels.registration}" />
+				value="#{labelsBean.getLabel('registration')}" />
 		</h:form>
 	</ui:define>
 </ui:composition>
