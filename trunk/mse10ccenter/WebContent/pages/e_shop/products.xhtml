@@ -36,11 +36,7 @@
 							<h:outputText value="#{softwareProducts.amount}" />
 							<h:outputText value=" BGN" />
 						</h:column>
-						<br />
-						<h:column>
-							<h:commandLink value="#{labelsBean.getLabel('shopClear')}"
-								action="#{softwareProducts.clearChart}" />
-						</h:column>
+
 					</h:panelGroup>
 				</h:panelGrid>
 			</h:form>
@@ -50,7 +46,8 @@
 
 				<rich:tab value="Software">
 					<f:facet name="header">
-						<h:outputText value="#{labelsBean.getLabel('shopSoftwareProducts')}"></h:outputText>
+						<h:outputText
+							value="#{labelsBean.getLabel('shopSoftwareProducts')}"></h:outputText>
 					</f:facet>
 
 					<rich:dataTable id="richTableOut" style="text-align:justify; "
@@ -59,14 +56,16 @@
 							<rich:columnGroup>
 								<h:column>
 
-									<h:outputText styleClass="headerText" value="#{labelsBean.getLabel('shopProductScreen')}"></h:outputText>
+									<h:outputText styleClass="headerText"
+										value="#{labelsBean.getLabel('shopProductScreen')}"></h:outputText>
 								</h:column>
 								<h:column>
 									<h:outputText styleClass="headerText"
 										value="#{labelsBean.getLabel('shopNameDescription')}"></h:outputText>
 								</h:column>
 								<h:column>
-									<h:outputText styleClass="headerText" value="#{labelsBean.getLabel('price')}"></h:outputText>
+									<h:outputText styleClass="headerText"
+										value="#{labelsBean.getLabel('price')}"></h:outputText>
 								</h:column>
 
 							</rich:columnGroup>
@@ -87,8 +86,7 @@
 							<h:outputText value="#{software.price}" />
 							<br />
 							<h:commandButton action="#{softwareProducts.buy(software)}"
-								value="#{labelsBean.getLabel('shopBuy')}"
-								disabled="#{softwareProducts.disable[software.productName]}" />
+								value="#{labelsBean.getLabel('shopBuy')}" />
 
 						</h:column>
 					</rich:dataTable>
@@ -99,7 +97,8 @@
 
 				<rich:tab value="Hardware">
 					<f:facet name="header">
-						<h:outputText value="#{labelsBean.getLabel('shopHardwareProducts')}"></h:outputText>
+						<h:outputText
+							value="#{labelsBean.getLabel('shopHardwareProducts')}"></h:outputText>
 					</f:facet>
 					<rich:dataTable id="richTableOut2" style="text-align:justify; "
 						value="#{hardwareProducts.hardware}" var="hardware" rows="10">
@@ -107,14 +106,16 @@
 							<rich:columnGroup>
 								<h:column>
 
-									<h:outputText styleClass="headerText" value="#{labelsBean.getLabel('shopProductScreen')}"></h:outputText>
+									<h:outputText styleClass="headerText"
+										value="#{labelsBean.getLabel('shopProductScreen')}"></h:outputText>
 								</h:column>
 								<h:column>
 									<h:outputText styleClass="headerText"
 										value="#{labelsBean.getLabel('shopNameDescription')}"></h:outputText>
 								</h:column>
 								<h:column>
-									<h:outputText styleClass="headerText" value="#{labelsBean.getLabel('price')}"></h:outputText>
+									<h:outputText styleClass="headerText"
+										value="#{labelsBean.getLabel('price')}"></h:outputText>
 								</h:column>
 
 							</rich:columnGroup>
@@ -134,9 +135,9 @@
 						<h:column>
 							<h:outputText value="#{hardware.price}" />
 							<br />
-							<h:commandButton action="#{softwareProducts.buyHardware(hardware)}"
-								value="#{labelsBean.getLabel('shopBuy')}"
-								disabled="#{softwareProducts.disable[hardware.productName]}" />
+							<h:commandButton
+								action="#{softwareProducts.buyHardware(hardware)}"
+								value="#{labelsBean.getLabel('shopBuy')}" />
 
 						</h:column>
 					</rich:dataTable>
