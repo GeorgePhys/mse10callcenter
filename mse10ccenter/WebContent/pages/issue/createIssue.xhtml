@@ -186,7 +186,7 @@
 												readonly="#{issueCreateAction.readonly}">
 												<f:validateLength minimum="5" maximum="100" />
 											</h:inputText>
-											<h:message for="reporter" styleClass="issueError" />
+											<h:message for="reporter" styleClass="error" />
 
 											<h:outputText value="#{labelsBean.getLabel('assignee')}:"
 												styleClass="issueFieldPos" />
@@ -196,7 +196,7 @@
 												readonly="#{issueCreateAction.readonly}">
 												<f:validateLength minimum="5" maximum="100" />
 											</h:inputText>
-											<h:message for="assignee" styleClass="issueError" />
+											<h:message for="assignee" styleClass="error" />
 
 										</h:panelGrid>
 									</rich:panel>
@@ -247,10 +247,12 @@
 					</table>
 				</rich:panel>
 				<h:commandButton action="#{issueCreateAction.create()}"
-					value="#{labelsBean.getLabel('save')}" style="margin-left: 400px; width : 85px;" />
+					value="#{labelsBean.getLabel('save')}" style="margin-left: 400px; width : 85px;"
+					disabled="#{issueCreateAction.readonly}" />
 				<h:commandButton
 					action="#{issueCreateAction.edit(issueCreateAction.targetEntity)}"
-					value="#{labelsBean.getLabel('edit')}" style="margin-left: 15px; width : 90px;" />
+					value="#{labelsBean.getLabel('edit')}" style="margin-left: 15px; width : 90px;" 
+					disabled="#{not issueCreateAction.readonly}"/>
 			</h:form>
 		</div>
 	</ui:define>
