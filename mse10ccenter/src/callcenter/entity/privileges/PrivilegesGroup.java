@@ -1,6 +1,7 @@
 package callcenter.entity.privileges;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -18,7 +19,7 @@ public class PrivilegesGroup extends callcenter.entity.Entity implements
     private String description;
 
     @ManyToMany
-    private List<Privilege> privileges;
+    private List<Privilege> privileges = new ArrayList<Privilege>();
 
     public String getName() {
 	return name;
