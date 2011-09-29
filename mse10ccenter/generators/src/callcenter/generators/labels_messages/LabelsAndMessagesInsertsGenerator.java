@@ -70,16 +70,16 @@ public class LabelsAndMessagesInsertsGenerator {
 
     public static boolean areAllCellsEmpty(String code, String value,
 	    String descrEn, String descrBg) {
-	if (code != null && code.length() > 0) {
+	if (code != null && code.trim().length() > 0) {
 	    return false;
 	}
-	if (value != null && value.length() > 0) {
+	if (value != null && value.trim().length() > 0) {
 	    return false;
 	}
-	if (descrBg != null && descrBg.length() > 0) {
+	if (descrBg != null && descrBg.trim().length() > 0) {
 	    return false;
 	}
-	if (descrEn != null && descrEn.length() > 0) {
+	if (descrEn != null && descrEn.trim().length() > 0) {
 	    return false;
 	}
 	return true;
