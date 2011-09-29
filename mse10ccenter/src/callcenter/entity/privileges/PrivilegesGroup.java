@@ -23,7 +23,7 @@ public class PrivilegesGroup extends callcenter.entity.Entity implements
     @ManyToMany
     private List<Privilege> privileges = new ArrayList<Privilege>();
 
-    @ManyToMany(mappedBy = "groups")
+    @ManyToMany
     private List<User> users = new ArrayList<User>();
 
     public String getName() {
