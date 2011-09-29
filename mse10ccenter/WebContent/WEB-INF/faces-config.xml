@@ -17,6 +17,13 @@
   		</navigation-case>
  	</navigation-rule>
 	<navigation-rule>
+    	<from-view-id>*</from-view-id>
+  		<navigation-case>
+   			<from-outcome>startNewThreadSearch</from-outcome>
+   			<to-view-id>/pages/forum/searchForumThread.xhtml</to-view-id>
+  		</navigation-case>
+ 	</navigation-rule>
+	<navigation-rule>
 		<from-view-id>*</from-view-id>
 		<navigation-case>
 			<from-outcome>faqPage</from-outcome>
