@@ -52,7 +52,7 @@
 							<h:commandLink action="#{topMenuSelectionAction.changeSelected(2)}" value="#{labelsBean.getLabel('issuesAndProjects')}" />
 						</li>
 						<li>
-							<h:commandLink action="#{topMenuSelectionAction.changeSelected(3)}" value="#{labelsBean.getLabel('admin')}" />
+							<h:commandLink rendered="#{baseAction.hasAdminRole()}" action="#{topMenuSelectionAction.changeSelected(3)}" value="#{labelsBean.getLabel('admin')}" />
 						</li>
 						<li>
 							<h:outputLink
@@ -95,6 +95,13 @@
 										<h:graphicImage class="icons" value="/images/icon1.JPG" />
 										<h:commandLink value="#{labelsBean.getLabel('startThread')}"
 											action="#{threadAction.init()}" />
+									</h:panelGroup>
+								</li>
+								<li>
+									<h:panelGroup rendered="#{topMenuSelectionAction.isSameArea(1)}">
+										<h:graphicImage class="icons" value="/images/icon1.JPG" />
+										<h:commandLink value="#{labelsBean.getLabel('searchThread')}"
+											action="#{forumSearchAction.startSearch()}" />
 									</h:panelGroup>
 								</li>
 								<li>

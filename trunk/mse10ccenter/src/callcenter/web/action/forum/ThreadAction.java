@@ -28,6 +28,14 @@ public class ThreadAction extends BaseAction<ForumThread> {
 	return "forumThreadPreview";
     }
 
+    public String preview(ForumThread forumThread) {
+	setTargetEntity(forumThread);
+	isCreate = false;
+	setReadonly(false);
+	setPost(null);
+	return "forumThreadPreview";
+    }
+
     public void saveThread() {
 	if (isCreate) {
 	    getTargetEntity().setCreatedBy(getUser());

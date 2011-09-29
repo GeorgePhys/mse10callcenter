@@ -156,3 +156,5 @@ insert into Value values (151, '2011-09-29', 'Администриране', 'ad
 insert into Value values (152, '2011-09-29', 'Търсене на Групи от Права', 'searchGroup', 'Privilege Group Search', 1001);
 insert into Value values (153, '2011-09-29', 'Създаване на Група от Права', 'createGroup', 'Create Privilege Group', 1001);
 insert into Value values (154, '2011-09-29', 'Проекти и Задачи', 'issuesAndProjects', 'Projects & Issues', 1001);
+insert into Value values (155, '2011-09-29', 'Търсене на Теми', 'searchThread', 'Search Forum Threads', 1001);
+insert into Value values (156, '2011-09-29', 'Създадена от', 'threadCreateBy', 'Created By', 1001);
