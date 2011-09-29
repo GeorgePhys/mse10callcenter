@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/pages/templates/template.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<ui:define name="title">Forum</ui:define>
+	<ui:define name="head">
+		<link rel="stylesheet" type="text/css"
+			href="#{facesContext.externalContext.requestContextPath}/css/forum.css" />
+	</ui:define>
+	<ui:define name="body">
+		<h:form>
+			<rich:dataGrid value="#{faqAction.entries}" var="entry" columns="1"
+				elements="5" styleClass="faqContainer">
+				<f:facet name="header">
+					<h:outputText value="FAQ" />
+					<h:commandLink value="Add new" action="#{faqAction.addNew()}"
+						rendered="#{loginAction.loggedIn}" />
+				</f:facet>
+				<rich:panel bodyClass="pbody" styleClass="faqAnswerContainer">
+					<f:facet name="header">
+						<h:outputText value="#{entry.question}"
+							rendered="#{entry.id ne null}" />
+						<h:inputText value="#{entry.question}"
+							rendered="#{entry.id eq null}" />
+					</f:facet>
+					<h:inputTextarea value="#{entry.answer}"
+						readonly="#{entry.id ne null}" styleClass="faqAnswer" />
+					<h:commandButton value="#{labels.save}"
+						action="#{faqAction.save()}" rendered="#{entry.id eq null}" />
+				</rich:panel>
+				<f:facet name="footer">
+					<rich:dataScroller />
+				</f:facet>
+			</rich:dataGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>

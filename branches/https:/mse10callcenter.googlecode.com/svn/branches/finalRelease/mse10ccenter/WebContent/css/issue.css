@@ -1,0 +1,39 @@
+td {
+    color: #888888;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    font-size: 12px;
+}
+.issueDescription {
+	width: 508px;
+	height: 163px;
+}
+
+.issueError {
+	color: red;
+	font-size:12px;
+}
+
+.issueField {
+	width: 180px;
+	margin-top: 10px;
+}
+
+.issueFieldPos {
+	width: 180px;
+	margin: 0;
+    padding: 4px;
+}
+
+.completeMess{
+	font-style:italic;
+	font-weight:bold;
+	font-size:x-large;
+	color:blue;
+}
+.containerSt{
+height: 180px;
+}
+
+#containerSt{
+height: 180px;
+}

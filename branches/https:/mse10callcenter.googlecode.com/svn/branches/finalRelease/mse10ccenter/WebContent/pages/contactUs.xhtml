@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/pages/templates/template.xhtml"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+	<ui:define name="title">Contact us</ui:define>
+	<ui:define name="head">
+		<link rel="stylesheet" type="text/css"
+			href="#{facesContext.externalContext.requestContextPath}/css/issue.css" />
+	</ui:define>
+
+	<ui:define name="body">
+
+		<div id="createIssue" align="left">
+			<h:form id="formCreateProject" name="formCreateProject">
+
+				<rich:panel>
+					<f:facet name="header">
+						<h:outputText value="MSE Call Center" />
+					</f:facet>
+
+					<table>
+						<tr>
+							<td><h:panelGrid columns="3">
+							<h:outputText value="#{labelsBean.getLabel('descriptionContactUs')}" />
+									
+			<a href="mailto:mse2011callcenter@googlegroups.com">#{labelsBean.getLabel('sendMailContactUs')}</a>
+									
+								</h:panelGrid></td>
+
+						</tr>
+						<tr>
+							
+						</tr>
+					</table>
+				</rich:panel>
+				
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>

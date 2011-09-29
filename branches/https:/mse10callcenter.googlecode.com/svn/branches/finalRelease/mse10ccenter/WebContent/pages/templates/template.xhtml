@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<f:view locale="#{localeChanger.localeCode}">
+	<h:head>
+		<title><ui:insert name="title">Page Title</ui:insert>
+		</title>
+		<link rel="stylesheet" type="text/css"
+			href="#{facesContext.externalContext.requestContextPath}/css/template.css" />
+		<ui:insert name="head" />
+
+	</h:head>
+
+	<body>
+		<div id="container">
+			<div id="header">
+				<a
+					href="#{facesContext.externalContext.requestContextPath}/pages/home.jsf">
+					<img
+					src="#{facesContext.externalContext.requestContextPath}/images/logo.gif"
+					alt="Home" align="left" width="70" height="70" /> </a>
+				<h1 style="display: inline;">Call Center</h1>
+				<div style="float: right;">
+					<h:form>
+						<h:selectOneMenu value="#{localeChanger.localeCode}"
+							onchange="submit()"
+							valueChangeListener="#{localeChanger.countryLocaleCodeChanged}">
+							<f:selectItems value="#{localeChanger.countriesInMap}" />
+						</h:selectOneMenu>
+					</h:form>
+				</div>
+			</div>
+			<div id="navigation">
+				<h:form>
+					<ul>
+						<li><h:outputLink
+								value="#{facesContext.externalContext.requestContextPath}/pages/home.jsf">
+								<h:outputText value="#{labelsBean.getLabel('home')}" />
+							</h:outputLink>
+						</li>
+						<li><h:commandLink value="#{labelsBean.getLabel('forum')}"
+								action="#{topMenuSelectionAction.changeSelected(1)}" /></li>
+						<li><h:commandLink value="#{labelsBean.getLabel('FAQ')}"
+								action="#{faqAction.loadAndNavigateToFAQ}" />
+						</li>
+						<li>
+							<h:commandLink value="#{labelsBean.getLabel('shop')}" action="#{topMenuSelectionAction.changeSelected(4)}" />
+						</li>
+						<li>
+							<h:commandLink action="#{topMenuSelectionAction.changeSelected(2)}" value="#{labelsBean.getLabel('issuesAndProjects')}" />
+						</li>
+						<li>
+							<h:commandLink rendered="#{baseAction.hasAdminRole()}" action="#{topMenuSelectionAction.changeSelected(3)}" value="#{labelsBean.getLabel('admin')}" />
+						</li>
+						<li>
+							<h:outputLink
+								value="#{facesContext.externalContext.requestContextPath}/pages/contactUs.jsf">
+								<h:outputText value="#{labelsBean.getLabel('contactUs')}" />
+							</h:outputLink>
+						</li>
+					</ul>
+					<div style="position: absolute; right: 0">
+						<ul>
+							<li><h:commandLink action="#{loginAction.initLogin}"
+									value="#{labelsBean.getLabel('login')}"
+									rendered="#{not loginAction.loggedIn}" /> <h:commandLink
+									action="#{loginAction.logout}"
+									value="#{labelsBean.getLabel('logout')}"
+									rendered="#{loginAction.loggedIn}" />
+							</li>
+							<li><h:commandLink action="#{userAction.loadProfile}"
+									value="#{labelsBean.getLabel('profile')}"
+									rendered="#{loginAction.loggedIn}" />
+							</li>
+						</ul>
+					</div>
+				</h:form>
+			</div>
+			<div id="content-container1">
+				<div id="content-container2">
+					<h:form>
+						<div id="section-navigation">
+							<ul>
+								<li>
+									<h:panelGroup rendered="#{baseAction.user == null}">
+										<h:graphicImage class="icons" value="/images/icon1.JPG" />
+										<h:commandLink value="#{labelsBean.getLabel('registration')}"
+											action="#{userAction.newRegistration}" />
+									</h:panelGroup>
+								</li>
+								<li>
+									<h:panelGroup rendered="#{topMenuSelectionAction.isSameArea(1)}">
+										<h:graphicImage class="icons" value="/images/icon1.JPG" />
+										<h:commandLink value="#{labelsBean.getLabel('startThread')}"
+											action="#{threadAction.init()}" />
+									</h:panelGroup>
+								</li>
+								<li>
+									<h:panelGroup rendered="#{topMenuSelectionAction.isSameArea(1)}">
+										<h:graphicImage class="icons" value="/images/icon1.JPG" />
+										<h:commandLink value="#{labelsBean.getLabel('searchThread')}"
+											action="#{forumSearchAction.startSearch()}" />
+									</h:panelGroup>
+								</li>
+								<li>
+									<h:panelGroup rendered="#{topMenuSelectionAction.isSameArea(2)}">
+										<h:graphicImage class="icons" value="/images/project.JPG" />
+										<h:commandLink value="#{labelsBean.getLabel('projectCreate')}"
+											action="#{projectCreateAction.createNewProject}" />
+									</h:panelGroup>
+								</li>
+								<li>
+									<h:panelGroup rendered="#{topMenuSelectionAction.isSameArea(3)}">
+										<h:commandLink action="#{createGroupAction.init()}" value="#{labelsBean.getLabel('createGroup')}" />
+									</h:panelGroup>
+								</li>
+								<li>
+									<h:panelGroup rendered="#{topMenuSelectionAction.isSameArea(3)}">
+										<h:commandLink action="#{privilegesGroupSearchAction.init()}" value="#{labelsBean.getLabel('searchGroup')}" />
+									</h:panelGroup>
+								</li>
+								<li>
+									<h:panelGroup rendered="#{topMenuSelectionAction.isSameArea(2)}">
+										<h:graphicImage class="icons"
+											value="/images/projectSearch.JPG" />
+										<h:commandLink value="#{labelsBean.getLabel('projectSearch')}"
+											action="#{projectSearchAction.startSearch}" />
+									</h:panelGroup>
+								</li>
+								<li>
+									<h:panelGroup rendered="#{topMenuSelectionAction.isSameArea(2)}">
+										<h:graphicImage class="icons" value="/images/icon2.jpg" />
+										<h:commandLink value="#{labelsBean.getLabel('issueCreate')}"
+											action="#{issueCreateAction.createNewIssue}" />
+									</h:panelGroup>
+								</li>
+								<li>
+									<h:panelGroup rendered="#{topMenuSelectionAction.isSameArea(2)}">
+										<h:graphicImage class="icons" value="/images/icon3.JPG" />
+										<h:commandLink action="#{issueSearchAction.startSearch}"
+											value="#{labelsBean.getLabel('issueSearch')}" />
+									</h:panelGroup>
+								</li>
+								<li>
+									<h:panelGroup rendered="#{topMenuSelectionAction.isSameArea(2)}">
+										<h:graphicImage class="icons" value="/images/icon4.JPG" />
+										<h:commandLink action="asd" value="#{labelsBean.getLabel('issueReport')}" />
+									</h:panelGroup>
+								</li>
+
+								<li>
+									<h:panelGroup rendered="#{topMenuSelectionAction.isSameArea(4)}">
+										<h:graphicImage class="icons" value="/images/icon5.JPG" />
+										<h:commandLink action="#{softwareProducts.allSoftware}"
+												value="#{labelsBean.getLabel('products')}" />
+									</h:panelGroup>
+								</li>
+								<li>
+									<h:panelGroup rendered="#{topMenuSelectionAction.isSameArea(4)}">
+										<h:graphicImage class="icons" value="/images/shoppingChart2.JPG" /> 
+										<h:commandLink action="#{softwareProducts.cartStatus}"
+												value="#{labelsBean.getLabel('shoppingCart')}" />
+									</h:panelGroup>
+								</li>
+								<li>
+									<h:panelGroup rendered="#{topMenuSelectionAction.isSameArea(3)}">
+										<h:commandLink action="#{productRegistrationAction.init}"
+												value="#{labelsBean.getLabel('addProducts')}"
+												rendered="#{baseAction.hasAdminRole()}" />
+									</h:panelGroup>
+								</li>
+
+							</ul>
+							<div id="info"></div>
+						</div>
+					</h:form>
+					<div id="content">
+						<h:messages globalOnly="true" />
+						<ui:insert name="body">Page Body</ui:insert>
+					</div>
+				</div>
+			</div>
+			<div id="footer">
+				<ui:include src="/pages/footer.xhtml" />
+			</div>
+		</div>
+	</body>
+</f:view>
+</html>

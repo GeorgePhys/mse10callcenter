@@ -1,0 +1,83 @@
+<ui:composition template="/pages/templates/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich">
+	<ui:define name="title">E-SHOP</ui:define>
+	<ui:define name="head">
+		<link rel="stylesheet" type="text/css"
+			href="#{facesContext.externalContext.requestContextPath}/css/issue.css" />
+	</ui:define>
+	<ui:define name="title">Hardware Review</ui:define>
+	<ui:define name="body">
+
+
+		<rich:panel style="width:220px; float:right; margin-top:-17px;">
+			<f:facet name="header">
+				<h:outputText value="#{labelsBean.getLabel('shopCart')}"></h:outputText>
+			</f:facet>
+			<h:form>
+
+				<h:panelGrid columns="2">
+					<h:column>
+						<h:graphicImage style="width:40px; float:left;"
+							value="/images/shoppingChart.jpg" />
+					</h:column>
+					<h:panelGroup>
+						<h:column>
+							<h:outputText value="#{labelsBean.getLabel('shopItemNumber')}: " />
+							<h:outputText value="#{softwareProducts.brItems}" />
+						</h:column>
+						<br />
+						<h:column>
+							<h:outputText value="#{labelsBean.getLabel('shopTotalPrice')}: " />
+							<h:outputText value="#{softwareProducts.amount}" />
+							<h:outputText value=" #{labelsBean.getLabel('shopBgn')}" />
+						</h:column>
+						
+					</h:panelGroup>
+				</h:panelGrid>
+			</h:form>
+		</rich:panel>
+
+
+		<rich:panel style="margin-top:80px; height:270px;">
+
+			<f:facet name="header">
+				<h:outputText value="#{labelsBean.getLabel('shopHardwareProducts')}"></h:outputText>
+			</f:facet>
+			<h:panelGrid columns="2">
+				<h:panelGroup>
+					<h:column>
+						<h:outputText
+							style="font-size:17px; color:black;"
+							value="#{hardwareProducts.targetEntity.productName}" />
+						<br />
+						<h:graphicImage style="width:200px;padding:10px;"
+							value="/images/images.jpg" />
+					</h:column>
+				</h:panelGroup>
+
+				<h:panelGroup>
+				<h:form>
+					<h:column>
+						<h:outputText style="text-align:justify;font-size:12px; line-height:20px; color:gray;" value="#{hardwareProducts.targetEntity.description}" />
+						<br />
+					</h:column>
+					<h:panelGroup style="float:right; padding:30px 10px 10px 10px;">
+						<h:column>
+							<h:outputText value="#{labelsBean.getLabel('price')}: " />
+							<h:outputText value="#{hardwareProducts.targetEntity.price}" />
+							<h:commandButton action="#{softwareProducts.buy(softwareProducts.targetEntity)}"
+								value="#{labelsBean.getLabel('shopBuy')}"  />
+						</h:column>
+					</h:panelGroup>
+					</h:form>
+				</h:panelGroup>
+			</h:panelGrid>
+		</rich:panel>
+
+	</ui:define>
+
+</ui:composition>
