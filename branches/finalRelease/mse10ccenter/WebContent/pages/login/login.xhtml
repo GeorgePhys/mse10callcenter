@@ -14,7 +14,7 @@
 					<td><h:outputText value="#{labelsBean.getLabel('email')}" />
 					</td>
 					<td><h:inputText id="email" style="width:100%"
-							value="#{loginAction.targetEntity.mail}" required="true" />
+							value="#{loginAction.targetEntity.mail}"  required="true"  requiredMessage="#{messagesBean.getMessage('fieldRequired')}"  />
 					</td>
 				</tr>
 				<tr>
@@ -25,7 +25,7 @@
 					<td><h:outputText value="#{labelsBean.getLabel('password')}" />
 					</td>
 					<td><h:inputSecret id="password" style="width:100%"
-							value="#{loginAction.targetEntity.password}" required="true">
+							value="#{loginAction.targetEntity.password}"  required="true"  requiredMessage="#{messagesBean.getMessage('fieldRequired')}" >
 							<f:validateLength for="password" minimum="6" maximum="20" />
 						</h:inputSecret></td>
 				</tr>
@@ -41,7 +41,7 @@
 				<tr>
 					<td>Captcha</td>
 					<td><h:inputText id="CaptchaID" style="width:100%"
-							required="true" requiredMessage="#{messagesBean.getMessage('captchaMissing')}" immediate="true">
+							 required="true" requiredMessage="#{messagesBean.getMessage('captchaMissing')}" immediate="true">
 							<f:validator validatorId="captchaValidator" />
 						</h:inputText>
 					</td>

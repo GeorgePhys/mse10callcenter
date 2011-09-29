@@ -20,10 +20,10 @@
 					<h:panelGrid columns="3">
 						<h:outputText value="#{labelsBean.getLabel('email')}" />
 						<h:inputText value="#{userAction.targetEntity.mail}"
-							required="true" id="mail">
+							 required="true"  requiredMessage="#{messagesBean.getMessage('fieldRequired')}"  id="mail">
 							<f:validator validatorId="checkEmail" />
 						</h:inputText>
-						<h:message for="mail" />
+						<h:message for="mail" style="color: red;" />
 
 						<h:outputText value="#{labelsBean.getLabel('password')}" />
 						<h:inputSecret value="#{userAction.password}" id="password"
@@ -41,8 +41,8 @@
 
 						<h:outputText value="#{labelsBean.getLabel('fullName')}" />
 						<h:inputText value="#{userAction.targetEntity.fullName}"
-							id="fullName" required="true" />
-						<h:message for="fullName" />
+							id="fullName"  required="true"  requiredMessage="#{messagesBean.getMessage('fieldRequired')}"  />
+						<h:message for="fullName" style="color: red;" />
 
 						<h:outputText value="#{labelsBean.getLabel('phone')}" />
 						<h:inputText value="#{userAction.targetEntity.phone}" id="phone" />
@@ -71,29 +71,29 @@
 					<h:panelGrid columns="3">
 						<h:outputText value="#{labelsBean.getLabel('country')}" />
 						<h:inputText value="#{userAction.targetEntity.address.country}"
-							required="true" id="country" />
-						<h:message for="country" />
+							 required="true"  requiredMessage="#{messagesBean.getMessage('fieldRequired')}"  id="country" />
+						<h:message for="country" style="color: red;" />
 
 						<h:outputText value="#{labelsBean.getLabel('municipality')}" />
 						<h:inputText
 							value="#{userAction.targetEntity.address.municipality}"
-							required="true" id="municipality" />
-						<h:message for="municipality" />
+							 required="true"  requiredMessage="#{messagesBean.getMessage('fieldRequired')}"  id="municipality" />
+						<h:message for="municipality" style="color: red;" />
 
 						<h:outputText value="#{labelsBean.getLabel('city')}" />
 						<h:inputText value="#{userAction.targetEntity.address.city}"
-							required="true" id="city" />
-						<h:message for="city" />
+							 required="true"  requiredMessage="#{messagesBean.getMessage('fieldRequired')}"  id="city" />
+						<h:message for="city" style="color: red;" />
 
 						<h:outputText value="#{labelsBean.getLabel('street')}" />
 						<h:inputText value="#{userAction.targetEntity.address.street}"
-							required="true" id="street" />
-						<h:message for="street" />
+							 required="true"  requiredMessage="#{messagesBean.getMessage('fieldRequired')}"  id="street" />
+						<h:message for="street" style="color: red;" />
 
 						<h:outputText value="#{labelsBean.getLabel('postCode')}" />
 						<h:inputText value="#{userAction.targetEntity.address.postCode}"
-							required="true" id="postCode" />
-						<h:message for="postCode" />
+							 required="true"  requiredMessage="#{messagesBean.getMessage('fieldRequired')}"  id="postCode" />
+						<h:message for="postCode" style="color: red;" />
 					</h:panelGrid>
 				</rich:tab>
 				<rich:tab header="#{labelsBean.getLabel('companies')}">
