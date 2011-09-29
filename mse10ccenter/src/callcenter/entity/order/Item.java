@@ -19,7 +19,7 @@ public class Item extends callcenter.entity.Entity implements Serializable {
     private int amount;
     private double price;
     @ManyToOne
-    private Order order;
+    private UserOrder order;
 
     public Product getProduct() {
 	return product;
@@ -45,11 +45,11 @@ public class Item extends callcenter.entity.Entity implements Serializable {
 	this.price = price;
     }
 
-    public Order getOrder() {
+    public UserOrder getOrder() {
 	return order;
     }
 
-    public void setOrder(Order order) {
+    public void setOrder(UserOrder order) {
 	this.order = order;
     }
 

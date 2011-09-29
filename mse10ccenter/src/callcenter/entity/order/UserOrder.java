@@ -11,17 +11,16 @@ import javax.persistence.OneToMany;
 import callcenter.entity.clients.User;
 
 @Entity
-public class Order extends callcenter.entity.Entity implements Serializable {
+public class UserOrder extends callcenter.entity.Entity implements Serializable {
 
     @ManyToOne
     private User user;
+
     @OneToMany(mappedBy = "order")
     private List<Item> items = new ArrayList<Item>();
 
     @Override
     public void initializeBibirectional() {
-	// TODO Auto-generated method stub
-
     }
 
     public User getUser() {

@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import callcenter.entity.Address;
-import callcenter.entity.order.Order;
+import callcenter.entity.order.UserOrder;
 import callcenter.service.administration.UserServiceBean;
 
 @Entity
@@ -51,7 +51,7 @@ public class User extends callcenter.entity.Entity implements Serializable {
     private Boolean confirmed;
 
     @OneToMany(mappedBy = "user")
-    List<Order> order;
+    List<UserOrder> order;
 
     private Boolean deleted;
 
@@ -163,11 +163,11 @@ public class User extends callcenter.entity.Entity implements Serializable {
 	this.deleted = deleted;
     }
 
-    public List<Order> getOrder() {
+    public List<UserOrder> getOrder() {
 	return order;
     }
 
-    public void setOrder(List<Order> order) {
+    public void setOrder(List<UserOrder> order) {
 	this.order = order;
     }
 }

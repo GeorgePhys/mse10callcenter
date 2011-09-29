@@ -12,7 +12,7 @@ import javax.faces.bean.SessionScoped;
 
 import callcenter.dto.BaseDTO;
 import callcenter.entity.order.Item;
-import callcenter.entity.order.Order;
+import callcenter.entity.order.UserOrder;
 import callcenter.entity.products.Product;
 import callcenter.service.administration.ProductServiceBean;
 import callcenter.service.base.BaseServiceBean;
@@ -167,7 +167,7 @@ public class SoftwareProductAction extends BaseAction implements Serializable {
     }
 
     public void order() {
-	Order order = new Order();
+	UserOrder order = new UserOrder();
 	for (Product p : productItems) {
 	    Item item = new Item();
 	    item.setProduct(p);
