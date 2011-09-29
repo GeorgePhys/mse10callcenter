@@ -4,6 +4,7 @@
 package callcenter.web.action.privileges;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -11,6 +12,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import callcenter.entity.clients.User;
 import callcenter.entity.privileges.Privilege;
 import callcenter.entity.privileges.PrivilegesGroup;
 import callcenter.service.administration.PrivilegesServiseBean;
@@ -27,7 +29,9 @@ public class CreateGroupAction extends BaseAction<PrivilegesGroup> {
     @EJB
     private PrivilegesServiseBean privilegesServiseBean;
 
-    private List<String> selected;
+    private List<User> selectedUsers = new LinkedList<User>();
+
+    private List<String> selected = new ArrayList<String>();
 
     public String getGroupName() {
 	return groupName;
@@ -103,10 +107,30 @@ public class CreateGroupAction extends BaseAction<PrivilegesGroup> {
 	getTargetEntity().getPrivileges().clear();
 	getTargetEntity().getPrivileges().addAll(realPrevileges);
 
+	getTargetEntity().getUsers().clear();
+	getTargetEntity().getUsers().addAll(getSelectedUsers());
+
 	getTargetEntity().setName(groupName);
 	getTargetEntity().setDescription(groupDescription);
 
 	setTargetEntity(privilegesServiseBean.save(getTargetEntity()));
+
+    }
+
+    /**
+     * @return the selectedUsers
+     */
+    public List<User> getSelectedUsers() {
+	return selectedUsers;
+    }
+
+    /**
+     * @param selectedUsers
+     *            the selectedUsers to set
+     */
+    public void setSelectedUsers(List<User> selectedUsers) {
+	System.out.println(selectedUsers);
+	this.selectedUsers = selectedUsers;
     }
 
 }

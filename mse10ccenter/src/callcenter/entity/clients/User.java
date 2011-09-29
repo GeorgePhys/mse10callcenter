@@ -15,13 +15,15 @@ import javax.persistence.OneToOne;
 
 import callcenter.entity.Address;
 import callcenter.entity.order.UserOrder;
+import callcenter.entity.privileges.PrivilegesGroup;
 import callcenter.service.administration.UserServiceBean;
 
 @Entity
 @NamedQueries(value = {
 	@NamedQuery(name = UserServiceBean.QUERY_EMAIL_EXISTS_KEY, query = UserServiceBean.QUERY_EMAIL_EXISTS),
 	@NamedQuery(name = UserServiceBean.QUERY_USER_LOGIN_KEY, query = UserServiceBean.QUERY_USER_LOGIN),
-	@NamedQuery(name = UserServiceBean.QUERY_USER_BY_EMAIL_KEY, query = UserServiceBean.QUERY_USER_BY_EMAIL) })
+	@NamedQuery(name = UserServiceBean.QUERY_USER_BY_EMAIL_KEY, query = UserServiceBean.QUERY_USER_BY_EMAIL),
+	@NamedQuery(name = UserServiceBean.QUERY_USER_ALL_KEY, query = UserServiceBean.QUERY_USER_ALL) })
 public class User extends callcenter.entity.Entity implements Serializable {
 
     private Role role = Role.USER;
@@ -54,6 +56,9 @@ public class User extends callcenter.entity.Entity implements Serializable {
     List<UserOrder> order;
 
     private Boolean deleted;
+
+    @ManyToMany(mappedBy = "users")
+    private List<PrivilegesGroup> groups;
 
     public String getMail() {
 	return mail;
@@ -170,4 +175,13 @@ public class User extends callcenter.entity.Entity implements Serializable {
     public void setOrder(List<UserOrder> order) {
 	this.order = order;
     }
+
+    public List<PrivilegesGroup> getGroups() {
+	return groups;
+    }
+
+    public void setGroups(List<PrivilegesGroup> groups) {
+	this.groups = groups;
+    }
+
 }
