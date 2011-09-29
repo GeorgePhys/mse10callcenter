@@ -1,6 +1,7 @@
 package callcenter.entity.order;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -12,14 +13,10 @@ import callcenter.entity.clients.User;
 @Entity
 public class Order extends callcenter.entity.Entity implements Serializable {
 
-    /**
-     * 
-     */
-    private static final long serialVersionUID = 1L;
     @ManyToOne
     private User user;
     @OneToMany(mappedBy = "order")
-    private List<Item> items;
+    private List<Item> items = new ArrayList<Item>();
 
     @Override
     public void initializeBibirectional() {
