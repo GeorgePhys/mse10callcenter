@@ -176,8 +176,13 @@ public class SoftwareProductAction extends BaseAction implements Serializable {
 	    item.setPrice(p.getPrice() * count);
 	    order.getItems().add(item);
 	}
-	getUser().getOrder().add(order);
+
 	this.service.save(getUser());
+
+	getUser().getOrder().add(order);
+	this.amount = 0.0;
+	this.brItems = 0;
+	this.amountProducts.clear();
     }
 
     public int getBrItems() {
