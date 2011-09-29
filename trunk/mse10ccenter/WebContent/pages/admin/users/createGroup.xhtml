@@ -53,16 +53,52 @@
 							var="p" itemLabel="#{createGroupAction.getLabel(p)}"
 							itemValue="#{p.id}" />
 					</h:selectManyCheckbox>
-					</rich:tab>
-					<rich:tab header="Project">
+				</rich:tab>
+				<rich:tab header="Project">
 					<h:selectManyCheckbox value="#{createGroupAction.selected}">
-						<f:selectItems value="#{createGroupAction.getPrivileges('project')}"
-							var="p" itemLabel="#{createGroupAction.getLabel(p)}"
-							itemValue="#{p.id}" />
+						<f:selectItems
+							value="#{createGroupAction.getPrivileges('project')}" var="p"
+							itemLabel="#{createGroupAction.getLabel(p)}" itemValue="#{p.id}" />
 					</h:selectManyCheckbox>
 				</rich:tab>
-				
+
 			</rich:tabPanel>
+
+			<rich:dataTable value="#{userSearchAction.service.all}" var="user"
+				rows="10">
+				<h:column>
+					<h:commandLink  value="#{user.fullName}" />
+				</h:column>
+				<h:column>
+					<h:commandLink  value="#{user.mail}" />
+				</h:column>
+				<h:column>
+					<h:commandLink  value="#{user.address.country}" />
+				</h:column>
+				<h:column>
+					<h:commandLink  value="#{user.address.city}" />
+				</h:column>
+				<h:column>
+					<h:commandLink  value="#{user.address.street}" />
+				</h:column>
+				<h:column>
+					<h:commandLink  value="#{user.address.postCode}" />
+				</h:column>
+				<h:column>
+					<h:commandLink  value="#{user.phone}" />
+				</h:column>
+
+				<f:facet name="footer">
+					<rich:dataScroller id="scroller" />
+				</f:facet>
+
+			</rich:dataTable>
+			<h:selectManyCheckbox value="#{createGroupAction.selectedUsers}">
+						<f:selectItems
+							value="#{userSearchAction.service.all}" var="user"
+							itemLabel="#{user.fullName}" itemValue="#{user}" />
+					</h:selectManyCheckbox>
+
 			<h:commandButton value="#{labelsBean.getLabel('save')}"
 				action="#{createGroupAction.saveGroup()}" />
 		</h:form>

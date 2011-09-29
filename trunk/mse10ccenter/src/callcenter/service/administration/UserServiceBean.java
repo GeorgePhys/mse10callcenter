@@ -44,6 +44,10 @@ public class UserServiceBean extends BaseServiceBean<User, UserSearchDTO> {
     public static final String QUERY_USER_BY_EMAIL_KEY = "QUERY_USER_BY_EMAIL_KEY";
     public static final String QUERY_USER_BY_EMAIL = "from User u where u.mail = :mail";
 
+    public static final String QUERY_USER_ALL_KEY = "QUERY_USER_ALL_KEY";// all
+									 // users
+    public static final String QUERY_USER_ALL = "from User";//
+
     @Override
     @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
     public List<User> search(UserSearchDTO args, boolean countOnly) {
@@ -96,6 +100,12 @@ public class UserServiceBean extends BaseServiceBean<User, UserSearchDTO> {
 
 	List list = criteria.list();
 	return list;
+    }
+
+    public List<User> getAll() {
+	Query allUsers = getEntityManager()
+		.createNamedQuery(QUERY_USER_ALL_KEY);
+	return allUsers.getResultList();
     }
 
     @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)

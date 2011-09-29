@@ -8,6 +8,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 
+import callcenter.entity.clients.User;
+
 @Entity
 public class PrivilegesGroup extends callcenter.entity.Entity implements
 	Serializable {
@@ -20,6 +22,9 @@ public class PrivilegesGroup extends callcenter.entity.Entity implements
 
     @ManyToMany
     private List<Privilege> privileges = new ArrayList<Privilege>();
+
+    @ManyToMany(mappedBy = "groups")
+    private List<User> users = new ArrayList<User>();
 
     public String getName() {
 	return name;
@@ -49,5 +54,20 @@ public class PrivilegesGroup extends callcenter.entity.Entity implements
     public void initializeBibirectional() {
 	// TODO Auto-generated method stub
 
+    }
+
+    /**
+     * @return the users
+     */
+    public List<User> getUsers() {
+	return users;
+    }
+
+    /**
+     * @param users
+     *            the users to set
+     */
+    public void setUsers(List<User> users) {
+	this.users = users;
     }
 }
