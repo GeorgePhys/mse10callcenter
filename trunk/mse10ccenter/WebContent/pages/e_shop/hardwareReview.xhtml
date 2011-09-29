@@ -33,7 +33,7 @@
 						<h:column>
 							<h:outputText value="#{labelsBean.getLabel('shopTotalPrice')}: " />
 							<h:outputText value="#{softwareProducts.amount}" />
-							<h:outputText value=" BGN" />
+							<h:outputText value=" #{labelsBean.getLabel('shopBgn')}" />
 						</h:column>
 						<br />
 						<h:column>
@@ -73,8 +73,8 @@
 						<h:column>
 							<h:outputText value="#{labelsBean.getLabel('price')}: " />
 							<h:outputText value="#{hardwareProducts.targetEntity.price}" />
-							<h:commandButton action="#{softwareProducts.buyHardware(hardwareProduct.targetEntity)}"
-								value="#{labelsBean.getLabel('shopBuy')}" disabled="#{softwareProducts.disable[hardwareProducts.targetEntity.productName]}" />
+							<h:commandButton action="#{softwareProducts.buy(softwareProducts.targetEntity)}"
+								value="#{labelsBean.getLabel('shopBuy')}"  />
 						</h:column>
 					</h:panelGroup>
 					</h:form>

@@ -11,7 +11,7 @@
 	</ui:define>
 	<ui:define name="title">Cart content</ui:define>
 	<ui:define name="body">
-		<h:outputText style="font-size:23px; " value="Cart Content" />
+		<h:outputText style="font-size:23px; " value="#{labelsBean.getLabel('shoppingCart')}" />
 		<br />
 		<br />
 	<h:form>
@@ -22,22 +22,22 @@
 			<f:facet name="header">
 				<rich:columnGroup>
 					<h:column>
-						<h:outputText value="Product title" />
+						<h:outputText value="#{labelsBean.getLabel('shopProductTitle')}" />
 					</h:column>
 					<h:column>
-						<h:outputText value="Type" />
+						<h:outputText value="#{labelsBean.getLabel('shopProductType')}" />
 					</h:column>
 					<h:column>
-						<h:outputText value="Amount" />
+						<h:outputText value="#{labelsBean.getLabel('shopItemNumber')}" />
 					</h:column>
 					<h:column>
-						<h:outputText value="Price" />
+						<h:outputText value="#{labelsBean.getLabel('price')}" />
 					</h:column>
 							<h:column>
-						<h:outputText value="Value" />
+						<h:outputText value="#{labelsBean.getLabel('shopProductValue')}" />
 					</h:column>
 					<h:column>
-						<h:outputText value="Operation" />
+						<h:outputText value="#{labelsBean.getLabel('shopProductOperation')}" />
 					</h:column>
 				</rich:columnGroup>
 			</f:facet>
@@ -57,7 +57,7 @@
 				<h:outputText value="#{softwareProducts.sumPrice(product)}" />
 			</h:column>
 			<h:column>
-				<h:commandButton value="Remove" action="#{softwareProducts.removeProduct(product)}" />
+				<h:commandButton value="#{labelsBean.getLabel('shopProductRemove')}" action="#{softwareProducts.removeProduct(product)}" />
 			</h:column>
 			
 		</rich:dataTable>
@@ -73,10 +73,10 @@
 				<h:outputText style="padding-left:50px;" value="#{softwareProducts.brItems}" />
 			</h:column>
 			<h:column>
-				<h:outputText style="margin-left:-30px;" value="#{softwareProducts.amount} BGN" />
+				<h:outputText style="margin-left:-30px;" value="#{softwareProducts.amount} #{labelsBean.getLabel('shopBgn')}" />
 			</h:column>
 			<h:column>
-				<h:commandButton value="Buy" action="#{softwareProducts.order()}" />
+				<h:commandButton value="#{labelsBean.getLabel('shopProductOrder')}" action="#{softwareProducts.order()}" />
 			</h:column>
 		</h:panelGrid>
 		</h:form>
