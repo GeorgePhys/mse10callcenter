@@ -25,17 +25,17 @@
 					<h:panelGrid columns="2">
 						<h:panelGrid columns="3">
 							<h:outputText value="#{labelsBean.getLabel('serialNumber')}" />
-							<h:inputText value="#{productRegistrationAction.targetEntity.serialNumber}" required="true"
+							<h:inputText value="#{productRegistrationAction.targetEntity.serialNumber}"  required="true"  requiredMessage="#{messagesBean.getMessage('fieldRequired')}" 
 								id="serialNumberId" />
 							<h:message for="serialNumberId" errorClass="error" />
 
 							<h:outputText value="#{labelsBean.getLabel('productName')}" />
-							<h:inputText value="#{productRegistrationAction.targetEntity.productName}" required="true"
+							<h:inputText value="#{productRegistrationAction.targetEntity.productName}"  required="true"  requiredMessage="#{messagesBean.getMessage('fieldRequired')}" 
 								id="productNameId" />
 							<h:message for="productNameId" errorClass="error" />
 
 							<h:outputText value="#{labelsBean.getLabel('version')}" rendered="#{productRegistrationAction.hardwareSelected}" />
-							<h:inputText value="#{productRegistrationAction.targetEntity.version}" required="true"
+							<h:inputText value="#{productRegistrationAction.targetEntity.version}"  required="true"  requiredMessage="#{messagesBean.getMessage('fieldRequired')}" 
 								id="versionId" rendered="#{productRegistrationAction.hardwareSelected}" />
 							<h:message for="versionId" errorClass="error" rendered="#{productRegistrationAction.hardwareSelected}" />
 
@@ -49,7 +49,7 @@
 							<h:panelGrid columns="2">
 								<h:inputTextarea id="descriptionId"
 									value="#{productRegistrationAction.targetEntity.description}" rows="6" cols="70"
-									required="true" />
+									 required="true"  requiredMessage="#{messagesBean.getMessage('fieldRequired')}"  />
 								<h:message for="descriptionId" errorClass="error" />
 							</h:panelGrid>
 						</h:panelGrid>

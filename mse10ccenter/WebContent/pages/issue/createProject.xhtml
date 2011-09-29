@@ -29,14 +29,14 @@
 									<h:outputText value="#{labelsBean.getLabel('projectName')}:"
 										styleClass="issueFieldPos" />
 									<h:inputText value="#{projectCreateAction.targetEntity.name}"
-										required="true" id="projectName" styleClass="issueField"
+										 required="true"  requiredMessage="#{messagesBean.getMessage('fieldRequired')}"  id="projectName" styleClass="issueField"
 										readonly="#{projectCreateAction.readonly}" />
 									<h:message for="projectName" styleClass="issueError" />
 
 									<h:outputText value="#{labelsBean.getLabel('shortProjectName')}:"
 										styleClass="issueFieldPos" />
 									<h:inputText value="#{projectCreateAction.targetEntity.shortName}"
-										required="true" id="shortName" styleClass="issueField"
+										 required="true"  requiredMessage="#{messagesBean.getMessage('fieldRequired')}"  id="shortName" styleClass="issueField"
 										readonly="#{projectCreateAction.readonly}" />
 									<h:message for="shortName" styleClass="issueError" />
 								</h:panelGrid></td>
@@ -47,7 +47,7 @@
 								<h:outputText value="#{labelsBean.getLabel('description')}:" />
 								<h:inputTextarea id="description"
 									value="#{projectCreateAction.targetEntity.description}"
-									required="true" style=" width : 260px;"
+									 required="true"  requiredMessage="#{messagesBean.getMessage('fieldRequired')}"  style=" width : 260px;"
 									readonly="#{projectCreateAction.readonly}" />
 								<h:message for="description" styleClass="issueError" />
 							</h:panelGrid>

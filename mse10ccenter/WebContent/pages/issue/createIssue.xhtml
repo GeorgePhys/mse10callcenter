@@ -98,7 +98,7 @@
 										styleClass="issueFieldPos" />
 									<h:inputText
 										value="#{issueCreateAction.targetEntity.titleIssue}"
-										required="true" id="titleIssue" styleClass="issueField"
+										 required="true"  requiredMessage="#{messagesBean.getMessage('fieldRequired')}"  id="titleIssue" styleClass="issueField"
 										readonly="#{issueCreateAction.readonly}" />
 									<h:message for="titleIssue" styleClass="issueError" />
 
@@ -182,21 +182,21 @@
 												styleClass="issueFieldPos" />
 											<h:inputText
 												value="#{issueCreateAction.targetEntity.reporter}"
-												required="true" id="reporter" styleClass="issueField"
+												 required="true"  requiredMessage="#{messagesBean.getMessage('fieldRequired')}"  id="reporter" styleClass="issueField"
 												readonly="#{issueCreateAction.readonly}">
 												<f:validateLength minimum="5" maximum="100" />
 											</h:inputText>
-											<h:message for="reporter" styleClass="error" />
+											<h:message for="reporter" style="color: red;" />
 
 											<h:outputText value="#{labelsBean.getLabel('assignee')}:"
 												styleClass="issueFieldPos" />
 											<h:inputText
 												value="#{issueCreateAction.targetEntity.assignee}"
-												required="true" id="assignee" styleClass="issueField"
+												 required="true"  requiredMessage="#{messagesBean.getMessage('fieldRequired')}"  id="assignee" styleClass="issueField"
 												readonly="#{issueCreateAction.readonly}">
 												<f:validateLength minimum="5" maximum="100" />
 											</h:inputText>
-											<h:message for="assignee" styleClass="error" />
+											<h:message for="assignee" style="color: red;" />
 
 										</h:panelGrid>
 									</rich:panel>
@@ -211,7 +211,7 @@
 
 											<rich:calendar id="dateCreated" binding="#{dateCreated}"
 												value="#{issueCreateAction.targetEntity.dateCreated}"
-												required="true" locale="bg" popup="true"
+												 required="true"  requiredMessage="#{messagesBean.getMessage('fieldRequired')}"  locale="bg" popup="true"
 												datePattern="d/M/yy" showApplyButton="false"
 												disabled="#{issueCreateAction.readonly}">
 											</rich:calendar>
@@ -222,7 +222,7 @@
 
 											<rich:calendar id="dateEnded"
 												value="#{issueCreateAction.targetEntity.dateEnded}"
-												required="true" locale="bg" popup="true"
+												 required="true"  requiredMessage="#{messagesBean.getMessage('fieldRequired')}"  locale="bg" popup="true"
 												datePattern="d/M/yy" showApplyButton="false"
 												disabled="#{issueCreateAction.readonly}">
 												<f:validator validatorId="notAfterDateValidator" />
@@ -239,7 +239,7 @@
 								<h:outputText value="#{labelsBean.getLabel('description')}:" />
 								<h:inputTextarea id="description"
 									value="#{issueCreateAction.targetEntity.desctription}"
-									required="true" style=" width : 260px;"
+									 required="true"  requiredMessage="#{messagesBean.getMessage('fieldRequired')}"  style=" width : 260px;"
 									readonly="#{issueCreateAction.readonly}" />
 								<h:message for="description" styleClass="issueError" />
 							</h:panelGrid>
