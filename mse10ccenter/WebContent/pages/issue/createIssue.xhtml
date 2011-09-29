@@ -30,6 +30,7 @@
 										<h:commandButton value="#{labelsBean.getLabel('searchProject')}" rendered="#{not issueCreateAction.readonly}">
 											<rich:componentControl target="popup" operation="show" />
 										</h:commandButton>
+										<h:message for="projectNameFiled" styleClass="issueError" />
 									</h:panelGrid>
 									<rich:popupPanel id="popup" modal="true" resizeable="true" width="700"
 										onmaskclick="#{rich:component('popup')}.hide()">
