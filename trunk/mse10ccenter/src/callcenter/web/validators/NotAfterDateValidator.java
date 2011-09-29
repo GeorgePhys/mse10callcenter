@@ -30,7 +30,7 @@ public class NotAfterDateValidator implements Validator {
 
 	// Compare the dates
 	if (date.before(secondDateValue)) {
-	    String message = "Date may not be later than today.";
+	    String message = "Date may not be earlier than Date Created.";
 	    throw new ValidatorException(new FacesMessage(message));
 	}
 
