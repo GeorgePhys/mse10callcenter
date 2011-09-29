@@ -8,7 +8,7 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import callcenter.entity.privileges.Privilege;
@@ -21,7 +21,7 @@ import callcenter.web.action.BaseAction;
  * 
  */
 @ManagedBean(name = "createGroupAction")
-@ViewScoped
+@SessionScoped
 public class CreateGroupAction extends BaseAction<PrivilegesGroup> {
 
     @EJB
