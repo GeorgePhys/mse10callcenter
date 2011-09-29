@@ -6,7 +6,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:rich="http://richfaces.org/rich">
 
-	<ui:define name="title">Group Privileges</ui:define>
+	<ui:define name="title">#{labelsBean.getLabel('groupPrivileges')}</ui:define>
 	<ui:define name="head">
 		<link rel="stylesheet" type="text/css"
 			href="#{facesContext.externalContext.requestContextPath}/css/admin.css" />
@@ -14,48 +14,51 @@
 	<ui:define name="body">
 		<h:form id="groupPrivilges">
 			<h:outputLabel value="#{labelsBean.getLabel('groupName')}" />
+			<br />
 			<h:inputText value="${createGroupAction.groupName}" />
-			<h:outputLabel value="#{labelsBean.getLabel('groupDescription')}" />
-			<h:inputText value="${createGroupAction.groupDescription}" />
+			<br />
+			<h:outputLabel value="#{labelsBean.getLabel('description')}" />
+			<br />
+			<h:inputTextarea value="${createGroupAction.groupDescription}" />
 
 			<rich:tabPanel switchType="client">
-				<rich:tab header="user">
-					<h:selectManyCheckbox value="#{createGroupAction.selected}">
+				<rich:tab header="#{labelsBean.getLabel('user')}">
+					<h:selectManyCheckbox value="#{createGroupAction.selectedUserArea}" layout="pageDirection">
 						<f:selectItems value="#{createGroupAction.getPrivileges('user')}"
 							var="p" itemLabel="#{createGroupAction.getLabel(p)}"
 							itemValue="#{p.id}" />
 					</h:selectManyCheckbox>
 				</rich:tab>
-				<rich:tab header="forum">
-					<h:selectManyCheckbox value="#{createGroupAction.selected}">
+				<rich:tab header="#{labelsBean.getLabel('forum')}">
+					<h:selectManyCheckbox value="#{createGroupAction.selectedForumArea}" layout="pageDirection">
 						<f:selectItems value="#{createGroupAction.getPrivileges('forum')}"
 							var="p" itemLabel="#{createGroupAction.getLabel(p)}"
 							itemValue="#{p.id}" />
 					</h:selectManyCheckbox>
 				</rich:tab>
-				<rich:tab header="shop">
-					<h:selectManyCheckbox value="#{createGroupAction.selected}">
+				<rich:tab header="#{labelsBean.getLabel('shop')}">
+					<h:selectManyCheckbox value="#{createGroupAction.selectedShopArea}" layout="pageDirection">
 						<f:selectItems value="#{createGroupAction.getPrivileges('shop')}"
 							var="p" itemLabel="#{createGroupAction.getLabel(p)}"
 							itemValue="#{p.id}" />
 					</h:selectManyCheckbox>
 				</rich:tab>
-				<rich:tab header="Issue">
-					<h:selectManyCheckbox value="#{createGroupAction.selected}">
+				<rich:tab header="#{labelsBean.getLabel('issue')}">
+					<h:selectManyCheckbox value="#{createGroupAction.selectedIssueArea}" layout="pageDirection">
 						<f:selectItems value="#{createGroupAction.getPrivileges('issue')}"
 							var="p" itemLabel="#{createGroupAction.getLabel(p)}"
 							itemValue="#{p.id}" />
 					</h:selectManyCheckbox>
 				</rich:tab>
-				<rich:tab header="FAQ">
-					<h:selectManyCheckbox value="#{createGroupAction.selected}">
+				<rich:tab header="#{labelsBean.getLabel('FAQ')}">
+					<h:selectManyCheckbox value="#{createGroupAction.selectedFaqArea}" layout="pageDirection">
 						<f:selectItems value="#{createGroupAction.getPrivileges('FAQ')}"
 							var="p" itemLabel="#{createGroupAction.getLabel(p)}"
 							itemValue="#{p.id}" />
 					</h:selectManyCheckbox>
 				</rich:tab>
-				<rich:tab header="Project">
-					<h:selectManyCheckbox value="#{createGroupAction.selected}">
+				<rich:tab header="#{labelsBean.getLabel('project')}">
+					<h:selectManyCheckbox value="#{createGroupAction.selectedProjectArea}" layout="pageDirection">
 						<f:selectItems
 							value="#{createGroupAction.getPrivileges('project')}" var="p"
 							itemLabel="#{createGroupAction.getLabel(p)}" itemValue="#{p.id}" />
@@ -64,41 +67,19 @@
 
 			</rich:tabPanel>
 
-			<rich:dataTable value="#{userSearchAction.service.all}" var="user"
-				rows="10">
-				<h:column>
-					<h:commandLink  value="#{user.fullName}" />
-				</h:column>
-				<h:column>
-					<h:commandLink  value="#{user.mail}" />
-				</h:column>
-				<h:column>
-					<h:commandLink  value="#{user.address.country}" />
-				</h:column>
-				<h:column>
-					<h:commandLink  value="#{user.address.city}" />
-				</h:column>
-				<h:column>
-					<h:commandLink  value="#{user.address.street}" />
-				</h:column>
-				<h:column>
-					<h:commandLink  value="#{user.address.postCode}" />
-				</h:column>
-				<h:column>
-					<h:commandLink  value="#{user.phone}" />
-				</h:column>
+			
 
 				<f:facet name="footer">
 					<rich:dataScroller id="scroller" />
 				</f:facet>
-
-			</rich:dataTable>
-			<h:selectManyCheckbox value="#{createGroupAction.selectedUsers}">
+			<h:selectManyCheckbox value="#{createGroupAction.selectedUsers}" layout="pageDirection">
 						<f:selectItems
 							value="#{userSearchAction.service.all}" var="user"
-							itemLabel="#{user.fullName}" itemValue="#{user}" />
-					</h:selectManyCheckbox>
-
+							itemLabel="#{user.fullName} #{user.mail} #{user.address.city} #{user.address.country}" itemValue="#{user.id}" />
+							
+					</h:selectManyCheckbox>	
+			
+			
 			<h:commandButton value="#{labelsBean.getLabel('save')}"
 				action="#{createGroupAction.saveGroup()}" />
 		</h:form>
