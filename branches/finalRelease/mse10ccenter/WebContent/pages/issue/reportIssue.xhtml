@@ -1,0 +1,77 @@
+<ui:composition template="/pages/templates/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<ui:define name="title">Issue search</ui:define>
+	<ui:define name="head">
+		<link rel="stylesheet" type="text/css" href="../css/template.css" />
+	</ui:define>
+	<ui:define name="pageHeader">Issue Reports</ui:define>
+	<ui:define name="body">
+		
+		<fieldset style="width: 800px;">
+			<legend align="left">Отчети</legend>
+			<h:form>
+				<table class="search">
+					<tr>
+						<td>#{labelsBean.getLabel('issueTask')}</td>
+						<td></td>
+						<td><h:inputText value="" /></td>
+					</tr>
+					<tr>
+						<td>#{labelsBean.getLabel('issueNumber')}</td>
+						<td></td>
+						<td><h:inputText value="" /></td>
+					</tr>
+					<tr>
+						<td>#{labelsBean.getLabel('issueCreatedFrom')}</td>
+						<td></td>
+						<td><h:inputText value="" /></td>
+
+					</tr>
+					<tr>
+						<td>#{labelsBean.getLabel('issueOwnerCreate')}</td>
+						<td></td>
+						<td><h:inputText value="" /></td>
+					</tr>
+					<tr>
+						<td>#{labelsBean.getLabel('issueStatus')}</td>
+						<td></td>
+						<td><h:inputText value="" /></td>
+					</tr>
+					<tr>
+						<td>#{labelsBean.getLabel('issueDecision')}</td>
+						<td></td>
+						<td><h:inputText value="" /></td>
+					</tr>
+					<tr>
+						<td>#{labelsBean.getLabel('issuePriority')}</td>
+						<td></td>
+						<td><h:inputText value="" /></td>
+					</tr>
+
+					<tr>
+						<td>#{labelsBean.getLabel('dateFrom')}</td>
+						<td></td>
+						<td><h:inputText value="" /></td>
+					</tr>
+					<tr>
+						<td>#{labelsBean.getLabel('dateTo')}</td>
+						<td></td>
+						<td><h:inputText value="" /></td>
+					</tr>
+
+
+					<tr>
+						<td>
+							<h:commandButton value="#{labelsBean.getLabel('generate')}" /> 
+							<h:commandButton value="#{labelsBean.getLabel('print')}" /> 
+							<h:commandButton value="#{labelsBean.getLabel('cancel')}" />
+						</td>
+					</tr>
+				</table>
+			</h:form>
+		</fieldset>
+	</ui:define>
+</ui:composition>

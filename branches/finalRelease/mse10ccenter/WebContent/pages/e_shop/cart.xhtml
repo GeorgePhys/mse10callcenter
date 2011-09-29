@@ -1,0 +1,85 @@
+<ui:composition template="/pages/templates/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+	<ui:define name="head">
+		<link rel="stylesheet" type="text/css"
+			href="#{facesContext.externalContext.requestContextPath}/css/shop.css" />
+	</ui:define>
+	<ui:define name="title">Cart content</ui:define>
+	<ui:define name="body">
+		<h:outputText style="font-size:23px; " value="#{labelsBean.getLabel('shoppingCart')}" />
+		<br />
+		<br />
+	<h:form>
+		<rich:dataTable value="#{softwareProducts.productItems}"
+			style="text-align:center; width:100%;" columnClasses="d" var="product"
+			rows="10">
+			
+			<f:facet name="header">
+				<rich:columnGroup>
+					<h:column>
+						<h:outputText value="#{labelsBean.getLabel('shopProductTitle')}" />
+					</h:column>
+					<h:column>
+						<h:outputText value="#{labelsBean.getLabel('shopProductType')}" />
+					</h:column>
+					<h:column>
+						<h:outputText value="#{labelsBean.getLabel('shopItemNumber')}" />
+					</h:column>
+					<h:column>
+						<h:outputText value="#{labelsBean.getLabel('price')}" />
+					</h:column>
+							<h:column>
+						<h:outputText value="#{labelsBean.getLabel('shopProductValue')}" />
+					</h:column>
+					<h:column>
+						<h:outputText value="#{labelsBean.getLabel('shopProductOperation')}" />
+					</h:column>
+				</rich:columnGroup>
+			</f:facet>
+			<h:column>
+				<h:outputText value="#{product.productName}" />
+			</h:column>
+			<h:column>
+				<h:outputText value="#{softwareProducts.checkProductType(product)}" />
+			</h:column>
+			<h:column>
+				<h:outputText value="#{softwareProducts.checkProductNum(product)}" size="2" />
+			</h:column>
+			<h:column>
+				<h:outputText value="#{product.price}" />
+			</h:column>
+				<h:column>
+				<h:outputText value="#{softwareProducts.sumPrice(product)}" />
+			</h:column>
+			<h:column>
+				<h:commandButton value="#{labelsBean.getLabel('shopProductRemove')}" action="#{softwareProducts.removeProduct(product)}" />
+			</h:column>
+			
+		</rich:dataTable>
+	</h:form>
+	<h:form>
+		
+		<h:panelGrid columns="4"
+			style="margin-top:20px; border-top:1px solid black;text-align:right; width:100%; font-weight:bold;">
+			<h:column>
+				<h:outputText style="margin-left:-10px;" value="Total" />
+			</h:column>
+			<h:column>
+				<h:outputText style="padding-left:50px;" value="#{softwareProducts.brItems}" />
+			</h:column>
+			<h:column>
+				<h:outputText style="margin-left:-30px;" value="#{softwareProducts.amount} #{labelsBean.getLabel('shopBgn')}" />
+			</h:column>
+			<h:column>
+				<h:commandButton value="#{labelsBean.getLabel('shopProductOrder')}" action="#{softwareProducts.order()}" />
+			</h:column>
+		</h:panelGrid>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
