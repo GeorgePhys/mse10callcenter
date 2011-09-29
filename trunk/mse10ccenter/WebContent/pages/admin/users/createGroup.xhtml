@@ -15,12 +15,13 @@
 		<h:form id="groupPrivilges">
 			<h:outputLabel value="#{labelsBean.getLabel('groupName')}" />
 			<br />
-			<h:inputText value="${createGroupAction.groupName}" />
+			<h:inputText value="${createGroupAction.groupName}" required="true" id="groupnName"/>
+			<h:message for="groupnName"/>
 			<br />
 			<h:outputLabel value="#{labelsBean.getLabel('description')}" />
 			<br />
-			<h:inputTextarea value="${createGroupAction.groupDescription}" />
-
+			<h:inputTextarea value="${createGroupAction.groupDescription}" required="true" id="groupDescription" />
+			<h:message for="groupDescription"/>
 			<rich:tabPanel switchType="client">
 				<rich:tab header="#{labelsBean.getLabel('user')}">
 					<h:selectManyCheckbox value="#{createGroupAction.selectedUserArea}" layout="pageDirection">
