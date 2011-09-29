@@ -17,8 +17,10 @@ public class ForumThread extends Entity {
 
     private String title;
 
-    @OneToMany(mappedBy = "thread", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private String text;
+
     @OrderBy("id")
+    @OneToMany(mappedBy = "thread", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Post> posts = new ArrayList<Post>();
 
     @OneToOne
@@ -75,5 +77,20 @@ public class ForumThread extends Entity {
      */
     public void setCreatedBy(User createdBy) {
 	this.createdBy = createdBy;
+    }
+
+    /**
+     * @return the text
+     */
+    public String getText() {
+	return text;
+    }
+
+    /**
+     * @param text
+     *            the text to set
+     */
+    public void setText(String text) {
+	this.text = text;
     }
 }

@@ -8,7 +8,6 @@ import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 import callcenter.entity.clients.User;
@@ -22,16 +21,6 @@ import callcenter.entity.issue.IssueDetail;
  * 
  */
 public final class MailSender {
-
-    private static InitialContext CONTEXT;
-
-    static {
-	try {
-	    CONTEXT = new InitialContext();
-	} catch (NamingException e) {
-	    e.printStackTrace();
-	}
-    }
 
     private MailSender() {
     }

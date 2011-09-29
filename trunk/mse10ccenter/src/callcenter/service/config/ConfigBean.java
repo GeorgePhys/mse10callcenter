@@ -10,6 +10,7 @@ import javax.ejb.Startup;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import callcenter.entity.clients.Role;
 import callcenter.entity.clients.User;
 import callcenter.service.administration.UserServiceBean;
 import callcenter.util.ObjectUtil;
@@ -32,6 +33,7 @@ public class ConfigBean {
 	User admin = userServiceBean.getUserByEmail(ConfigBean.SYS_ADMIN_EMAIL);
 	if (!ObjectUtil.isValid(admin)) {
 	    admin = new User();
+	    admin.setRole(Role.ADMIN);
 	    admin.setConfirmed(Boolean.TRUE);
 	    admin.setMail(ConfigBean.SYS_ADMIN_EMAIL);
 	    admin.setFullName("Initial System User");
